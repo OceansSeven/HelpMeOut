@@ -13,6 +13,7 @@ CREATE TABLE users (
  lastName TEXT,
  email VARCHAR,
  rating DECIMAL,
+ contractor BOOLEAN,
  specialties TEXT []
 );
 
@@ -82,3 +83,15 @@ ALTER TABLE jobsPosted ADD CONSTRAINT jobsPosted_client_id_fkey FOREIGN KEY (cli
 ALTER TABLE messages ADD CONSTRAINT messages_from_id_fkey FOREIGN KEY (from_id) REFERENCES users(id);
 ALTER TABLE messages ADD CONSTRAINT messages_to_id_fkey FOREIGN KEY (to_id) REFERENCES users(id);
 ALTER TABLE sessions ADD CONSTRAINT sessions_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+INSERT INTO users (username, password, salt, firstName, lastName, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1.2, FALSE, ARRAY ['pipes']);
+INSERT INTO users (username, password, salt, firstName, lastName, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 5, FALSE, ARRAY ['potatoes']);
+INSERT INTO reviews (client_id, contractor_id, rating, body, date) VALUES (2, 1, 1.2, 'All my questions got punted to the end', '1980-01-01');
+INSERT INTO jobsPosted (client_id, name, type, description, completed, date) VALUES (2, 'Clean my potatoes', ARRAY ['pipes'], 'I need someone to come clean my potatoes', TRUE, '1980-01-02');
+INSERT INTO jobsAccepted (contractor_id, job_id) VALUES (1, 1);
+INSERT INTO messages (from_id, to_id, body, date) VALUES (1, 2, 'I can clean ur potatoes', '1980-01-01');
+
+
+-- Command for executing this file into your local psql
+-- psql -h localhost -d postgres -U [your host name] -f ./schema.sql
