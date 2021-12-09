@@ -1,0 +1,22 @@
+
+{
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": false
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ]
+}
