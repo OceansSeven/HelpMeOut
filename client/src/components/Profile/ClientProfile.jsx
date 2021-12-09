@@ -27,7 +27,9 @@ const ClientProfile = () => {
           alignItems: "center",
         }}
       >
-        <p style={{ alignSelf: "flex-end" }}>Edit profile</p>
+        <Button color="secondary" style={{ alignSelf: "flex-end" }}>
+          Edit Profile
+        </Button>
         <h2>First Name Last Name</h2>
         <h3>Username</h3>
         <Button variant="outlined">Message Me</Button>

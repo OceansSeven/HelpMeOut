@@ -13,7 +13,7 @@ const ContractorProfile = () => {
         <div>Member since 12-2021</div>
       </div>
       <div className="profileRight">
-        <p>Edit profile</p>
+        <Button color="secondary">Edit Profile</Button>
         <h2>Username/Company Name</h2>
         <h4>Company contact email</h4>
         <ul className="specialties">
