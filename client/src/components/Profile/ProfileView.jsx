@@ -5,7 +5,7 @@ import ContractorProfile from "./ContractorProfile.jsx";
 import ClientProfile from "./ClientProfile.jsx";
 
 const ProfileView = () => {
-  const [isContractor, setIsContractor] = useState(true);
+  const [isContractor, setIsContractor] = useState(false);
   // On render setIsContractor based on current user
   useEffect(() => {
     //  setIsContractor(currentUser.isContractor)
