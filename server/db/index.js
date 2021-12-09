@@ -6,3 +6,7 @@ const config = {
   database: 'helpmeout',
   user: (process.env.HOST || 'postgres'),
 }
+
+const pool = new Pool(config);
+
+module.exports = pool;
