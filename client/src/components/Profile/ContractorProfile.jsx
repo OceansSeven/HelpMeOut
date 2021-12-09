@@ -9,7 +9,10 @@ const ContractorProfile = () => {
       <div className="profileLeft">
         <BuildIcon />
         <div>*****</div>
-        <Card>Map tools here</Card>
+        <Card>
+          Tools:
+          <Card>Map tools here</Card>
+        </Card>
         <div>Member since 12-2021</div>
       </div>
       <div className="profileRight">
@@ -21,7 +24,10 @@ const ContractorProfile = () => {
           <li>SPECIALTY</li>
         </ul>
         <Button variant="outlined">Message Me</Button>
-        <Card>Map certifications here</Card>
+        <Card>
+          Certifications:
+          <Card>Map Certs here</Card>
+        </Card>
       </div>
     </Paper>
   );
