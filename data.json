@@ -1,0 +1,71 @@
+{
+  "user": {
+    "user_id": "user_id",
+    "firstName": "first name",
+    "lastName": "last name",
+    "email": "email",
+    "contractor": "boolean",
+    "specialties": ["specialty", "specialty", "specialty"],
+    "certifications": ["cert", "cert", "cert"],
+    "tools": ["tool", "tool", "tool"],
+    "client_tasks": [
+      {
+        "title": "name of task",
+        "description": "description",
+        "type": ["category", "category", "category"],
+        "date": "date of posting",
+        "accepted": "boolean",
+        "contractor": "name of contractor",
+        "completed": "boolean"
+      }
+    ],
+    "contractor_tasks": [
+      {
+        "client_id": "client id",
+        "client_firstName": "client first name",
+        "client_lastName": "client last name",
+        "title": "title of job",
+        "description": "description of job",
+        "type": ["category", "category", "category"],
+        "date": "date of posting",
+        "completed": "boolean"
+      }
+    ]
+  },
+
+  "messages": [
+    {
+      "id": "message id",
+      "from_firstName": "first name of who its from",
+      "from_lastName": "last name of who its from",
+      "body": "message body",
+      "date": "date of message sent"
+    }
+  ],
+
+  "contractors": [
+    {
+      "user_id": "user id",
+      "firstName": "first name",
+      "lastName": "last name",
+      "email": "email",
+      "rating": "rating",
+      "specialties": ["specialty", "specialty", "specialty"],
+      "certifications": ["cert", "cert", "cert"],
+      "tools": ["tool", "tool", "tool"]
+    }
+  ],
+
+  "jobs": [
+    {
+      "id": "job id",
+      "client_id": "client id",
+      "firstName": "clients first name",
+      "lastName": "clients last name",
+      "title": "job title",
+      "description": "job description",
+      "type": ["category", "category", "category"],
+      "date": "date posted"
+    }
+  ]
+}
