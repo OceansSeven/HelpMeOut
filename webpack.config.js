@@ -24,4 +24,6 @@ module.exports = {
   resolve: {
     extensions: ['.jsx', '.js'],
   },
+  // builds source map so there is no devtool error
+  devtool: 'inline-source-map',
 };
