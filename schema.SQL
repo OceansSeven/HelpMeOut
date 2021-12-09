@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS helpmeout;
+
+CREATE DATABASE helpmeout;
+
+\c helpmeout;
+
 CREATE TABLE users (
  id BIGSERIAL,
  username VARCHAR,
