@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
+import SignIn from '../SignIn';
 
 const Login = function Login() {
   return (
     <div>
-      Login
+      <SignIn />
     </div>
   );
 };

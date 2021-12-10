@@ -15,5 +15,7 @@ router.get('/contractors', controller.contractors.getContractors);
 router.get('/jobs', controller.jobs.getJobs);
 router.post('/jobs', controller.jobs.postJobs);
 
+router.post('/v1/text-mail', controller.nodemail.sendMail);
+
 
 module.exports = router;
