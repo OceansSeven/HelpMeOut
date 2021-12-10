@@ -92,7 +92,7 @@ export default function SignIn() {
             </Button>
             <Grid container style={{justifyContent: 'center'}}>             
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
