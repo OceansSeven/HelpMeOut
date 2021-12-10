@@ -49,6 +49,7 @@
       "firstName": "first name",
       "lastName": "last name",
       "email": "email",
+      "company": "company name",
       "rating": "rating",
       "specialties": ["specialty", "specialty", "specialty"],
       "certifications": ["cert", "cert", "cert"],
