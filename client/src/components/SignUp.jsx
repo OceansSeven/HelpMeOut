@@ -29,6 +29,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const [checked, setChecked] = React.useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,6 +38,10 @@ export default function SignUp() {
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+      client: checked, 
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
+      company: data.get('company')
     });
   };
 
@@ -102,9 +108,19 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  name="company"
+                  label="Company Name (optional)"
+                  type="company"
+                  id="company"
+                  autoComplete="new-company"
+                />
+              </Grid>
+              <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  control={<Checkbox value="allowExtraEmails" color="primary" checked={checked} onClick={() => { setChecked(!checked); }}/>}
+                  label="I am a client looking for contractors."
                 />
               </Grid>
             </Grid>
