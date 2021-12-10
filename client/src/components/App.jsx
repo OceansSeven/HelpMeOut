@@ -11,7 +11,11 @@ import EditProfile from "./Profile/EditProfile";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
-  const [userId, setUserId] = useState(null);
+  // ########################################
+  // TODO - set starting user to be null
+  // right now the starting user will be 1 for testing purposes
+  // ########################################
+  const [userId, setUserId] = useState(1);
 
   useEffect(() => {
     // axios call to get data
