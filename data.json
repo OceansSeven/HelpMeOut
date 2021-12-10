@@ -12,7 +12,7 @@
       {
         "title": "name of task",
         "description": "description",
-        "type": ["category", "category", "category"],
+        "specialties": ["specialty", "specialty", "specialty"],
         "date": "date of posting",
         "accepted": "boolean",
         "contractor": "name of contractor",
@@ -26,7 +26,7 @@
         "client_lastName": "client last name",
         "title": "title of job",
         "description": "description of job",
-        "type": ["category", "category", "category"],
+        "specialties": ["specialty", "specialty", "specialty"],
         "date": "date of posting",
         "completed": "boolean"
       }
@@ -64,7 +64,7 @@
       "lastName": "clients last name",
       "title": "job title",
       "description": "job description",
-      "type": ["category", "category", "category"],
+      "specialties": ["specialty", "specialty", "specialty"],
       "date": "date posted"
     }
   ]

@@ -38,7 +38,7 @@ export default function SignUp() {
     console.log({
       email: data.get('email'),
       password: data.get('password'),
-      client: checked, 
+      contractor: !checked, 
       firstName: data.get('firstName'),
       lastName: data.get('lastName'),
       company: data.get('company')
