@@ -13,9 +13,14 @@
         "title": "name of task",
         "description": "description",
         "specialties": ["specialty", "specialty", "specialty"],
+        "price_per_hour": "price per hour",
         "date": "date of posting",
         "accepted": "boolean",
-        "contractor": "name of contractor",
+        "contractor": {
+          "id": "contractor id",
+          "firstName": "first name of contractor",
+          "lastName": "lastName of contractor"
+        },
         "completed": "boolean"
       }
     ],
