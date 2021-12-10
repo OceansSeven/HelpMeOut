@@ -49,6 +49,7 @@ CREATE TABLE jobsPosted (
  title VARCHAR,
  type TEXT [],
  description VARCHAR,
+ price_per_hour INTEGER,
  completed BOOLEAN,
  date DATE
 );
