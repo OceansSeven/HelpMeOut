@@ -12,6 +12,9 @@ const ProfileView = ({ currentUser, target }) => {
     firstName: "Derek",
     lastName: "Mason",
     isContractor: false,
+    specialties: ["WOOD work", "Clogging/Unclogging Pipes"],
+    tools: ["jackhammer", "quick hardening caulk"],
+    certifications: ["NASM", "HR"],
   });
   const [isContractor, setIsContractor] = useState(false);
 
@@ -36,7 +39,7 @@ const ProfileView = ({ currentUser, target }) => {
     return isContractor ? (
       <ContractorProfile user={user} />
     ) : (
-      <EditProfile user={user} />
+      <ClientProfile user={user} />
     );
   }
 };

@@ -13,55 +13,142 @@ import Container from "@mui/material/Container";
 export default function EditProfile({ user }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    const data = new FormData(event.target);
+    // eslint-disable-next-line no-console
+    console.log({
+      first: data.get("firstName"),
+      last: data.get("lastName"),
+      company: data.get("companyName"),
+      tool: data.get("addTool"),
+      cert: data.get("addCert"),
+    });
   };
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography component="h1" variant="h5">
-          Update Profile
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <h2 style={{ textAlign: "center" }}>
-            {user.firstName} {user.lastName}
-          </h2>
-          <TextField
-            margin="normal"
-            fullWidth
-            id="updateFirstName"
-            label="Edit First Name"
-            name="firstName"
-          />
-          <TextField
-            margin="normal"
-            fullWidth
-            name="lastName"
-            label="Edit Last Name"
-            id="updateLastName"
-          />
-          <FormControlLabel
-            control={<Checkbox value="updateContractor" color="primary" />}
-            label="I would like to start helping out others!"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+  if (!user?.isContractor) {
+    return (
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Update Profile
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
           >
-            Update
-          </Button>
+            <h2 style={{ textAlign: "center" }}>
+              {user.firstName} {user.lastName}
+            </h2>
+            <TextField
+              margin="normal"
+              fullWidth
+              id="updateFirstName"
+              label="Edit First Name"
+              name="firstName"
+            />
+            <TextField
+              margin="normal"
+              fullWidth
+              name="lastName"
+              label="Edit Last Name"
+              id="updateLastName"
+            />
+            <FormControlLabel
+              control={<Checkbox value="updateContractor" color="primary" />}
+              label="I would like to start helping out others!"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Update
+            </Button>
+          </Box>
         </Box>
-      </Box>
-    </Container>
-  );
+      </Container>
+    );
+  } else {
+    return (
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Update Profile
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <h2 style={{ textAlign: "center" }}>
+              {user.firstName} {user.lastName}
+            </h2>
+            <TextField
+              margin="normal"
+              fullWidth
+              id="updateFirstName"
+              label="Edit First Name"
+              name="firstName"
+            />
+            <TextField
+              margin="normal"
+              fullWidth
+              name="lastName"
+              label="Edit Last Name"
+              id="updateLastName"
+            />
+            <TextField
+              margin="normal"
+              fullWidth
+              name="companyName"
+              label="Edit Company Name"
+              id="updateCompanyName"
+            />
+            <TextField
+              fullWidth
+              id="addTool"
+              name="addTool"
+              label="Add a tool"
+              variant="filled"
+            />
+            <TextField
+              fullWidth
+              id="addCert"
+              name="addCert"
+              label="Add a certification"
+              variant="filled"
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Update
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    );
+  }
 }

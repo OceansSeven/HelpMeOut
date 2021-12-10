@@ -11,14 +11,14 @@ const ContractorProfile = ({ user }) => {
         <div>{user.rating}</div>
         <Card>
           Tools:
-          {user.tools.map((tool) => (
+          {user?.tools.map((tool) => (
             <Card>{tool}</Card>
           ))}
         </Card>
         <div>Member since 12-2021</div>
       </div>
       <div className="profileRight">
-        <h2>user.company</h2>
+        <h2>{user?.company}</h2>
         <ul className="specialties">
           {user.specialties?.map((specialty) => (
             <li>{specialty}</li>
