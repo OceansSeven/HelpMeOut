@@ -40,7 +40,7 @@ const MyProfile = ({ user }) => {
         <CardHeader></CardHeader>
         <div className="profileLeft">
           <BuildIcon />
-          <div>user.rating</div>
+          <div>{user.rating}</div>
           <Card>
             Tools:
             <Button color="secondary">Add</Button>
