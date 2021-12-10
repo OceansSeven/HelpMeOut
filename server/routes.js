@@ -3,7 +3,7 @@ const controller = require('./controllers');
 
 // Connect controller methods to their corresponding routes
 
-router.get('/user', controller.user.getUser);
+router.get('/user/:user_id', controller.user.getUser);
 router.post('/user', controller.user.postUser);
 router.put('/user', controller.user.editUser);
 
