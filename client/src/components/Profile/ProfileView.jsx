@@ -3,6 +3,7 @@ import { Container, Card, Paper } from "@material-ui/core";
 
 import ContractorProfile from "./ContractorProfile.jsx";
 import ClientProfile from "./ClientProfile.jsx";
+import EditProfile from "./EditProfile.jsx";
 import MyProfile from "./MyProfile.jsx";
 
 const ProfileView = ({ currentUser, target }) => {
@@ -35,7 +36,7 @@ const ProfileView = ({ currentUser, target }) => {
     return isContractor ? (
       <ContractorProfile user={user} />
     ) : (
-      <ClientProfile user={user} />
+      <EditProfile user={user} />
     );
   }
 };
