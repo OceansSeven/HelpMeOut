@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 // import { Paper } from '@mui/material/core';
 import axios from 'axios';
 
-export default function Contractors(props) {
+export default function Contractors({data}) {
 
   // function getContractorData(data) {
   //   axios.get('/api/contractors')
