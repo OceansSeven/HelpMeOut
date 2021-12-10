@@ -21,6 +21,7 @@ const EditProfile = (user) => {
       company: data.get("companyName"),
       tool: data.get("addTool"),
       cert: data.get("addCert"),
+      setContractor: data.get("setContractor"),
     });
   };
 
@@ -63,7 +64,9 @@ const EditProfile = (user) => {
               id="updateLastName"
             />
             <FormControlLabel
-              control={<Checkbox value="updateContractor" color="primary" />}
+              control={
+                <Checkbox value={true} name="setContractor" color="primary" />
+              }
               label="I would like to start helping out others!"
             />
             <Button
