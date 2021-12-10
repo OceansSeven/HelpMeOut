@@ -5,7 +5,8 @@ import ContractorProfile from "./ContractorProfile.jsx";
 import ClientProfile from "./ClientProfile.jsx";
 import MyProfile from "./MyProfile.jsx";
 
-const ProfileView = () => {
+const ProfileView = ({currentUser, target}) => {
+
   const [user, setUser] = useState({
     id: 1,
     firstName: "Derek",
@@ -13,7 +14,16 @@ const ProfileView = () => {
     isContractor: false,
   });
   const [isContractor, setIsContractor] = useState(false);
-  const currentUser = { id: 1 };
+
+
+  const getTargetUser = (targetID) => {
+    const targetID = target?.userID;
+
+    // fetch(`/api/?userId=${targetID}`)
+    // .then(res => res.json())
+    // .then(data => {
+    //   setUser(data);
+    // })
 
   useEffect(() => {
     setIsContractor(user?.isContractor);
