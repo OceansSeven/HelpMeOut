@@ -93,6 +93,7 @@ INSERT INTO reviews (client_id, contractor_id, rating, body, date) VALUES (2, 1,
 INSERT INTO jobsPosted (client_id, title, type, description, completed, date) VALUES (2, 'Clean my potatoes', ARRAY ['pipes'], 'I need someone to come clean my potatoes', TRUE, '1980-01-02');
 INSERT INTO jobsAccepted (contractor_id, jobPosted_id) VALUES (1, 1);
 INSERT INTO messages (from_id, to_id, body, date) VALUES (1, 2, 'I can clean ur potatoes', '1980-01-01');
+INSERT INTO messages (from_id, to_id, body, date) VALUES (2, 1, 'Please clean my potatoes', '1980-01-01');
 
 
 -- Command for executing this file into your local psql

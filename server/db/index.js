@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 
+// Include password in config if needed
 
 const config = {
   host: 'localhost',
