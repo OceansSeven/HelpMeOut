@@ -30,8 +30,8 @@ const ClientProfile = () => {
         <Button color="secondary" style={{ alignSelf: "flex-end" }}>
           Edit Profile
         </Button>
-        <h2>First Name Last Name</h2>
-        <h3>Username</h3>
+        <h2>First Name</h2>
+        <h3>Last Name</h3>
         <Button variant="outlined">Message Me</Button>
       </div>
     </Paper>
