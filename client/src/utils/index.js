@@ -3,5 +3,8 @@ export const specialities = [
 ];
 
 export const sortByCategories = [
-  'Newest First', 'Oldest First', 'Price: Lowest First', 'Price: Highest First'
+  'Newest First',
+  'Oldest First',
+  'Price: Lowest First',
+  'Price: Highest First'
 ];
