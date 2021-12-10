@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Contractors from '../Contractors';
 
 const Landing = function Landing() {
 
@@ -8,6 +9,7 @@ const Landing = function Landing() {
       <div>Landing</div>
       <Link to='/login'>Login</Link>
       <Link to='/register'>Register</Link>
+      <Contractors/>
     </div>
   );
 };

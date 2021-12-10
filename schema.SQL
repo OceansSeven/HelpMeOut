@@ -37,7 +37,7 @@ ALTER TABLE reviews ADD CONSTRAINT reviews_pkey PRIMARY KEY (id);
 CREATE TABLE jobsAccepted (
  id BIGSERIAL,
  contractor_id INTEGER,
- jobPosted_id INTEGER,
+ jobPosted_id INTEGER
 );
 
 
@@ -96,4 +96,4 @@ INSERT INTO messages (from_id, to_id, body, date) VALUES (1, 2, 'I can clean ur 
 
 
 -- Command for executing this file into your local psql
--- psql -h localhost -d postgres -U [your host name] -f ./schema.sql
+-- psql -h localhost -d postgres -U michael -f ./schema.sql
