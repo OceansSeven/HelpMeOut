@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "build": "webpack --config ./webpack.config.js -w",
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,8 @@
     "webpack": "^5.65.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.4.4",
     "eslint": "^8.4.1",
     "eslint-config-airbnb": "^19.0.2",
     "eslint-plugin-import": "^2.25.3",
@@ -51,6 +53,8 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^27.4.3",
+    "jsdom": "^19.0.0",
+    "react-test-renderer": "^17.0.2",
     "webpack-cli": "^4.9.1"
   }
 }
