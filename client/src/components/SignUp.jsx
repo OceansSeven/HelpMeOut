@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -38,11 +39,24 @@ export default function SignUp() {
     console.log({
       email: data.get('email'),
       password: data.get('password'),
-      contractor: !checked, 
+      contractor: checked, 
       firstName: data.get('firstName'),
       lastName: data.get('lastName'),
       company: data.get('company')
     });
+    axios({
+      method: "POST",
+      data: {
+        email: data.get('email'),
+        password: data.get('password'),
+        contractor: checked, 
+        firstName: data.get('firstName'),
+        lastName: data.get('lastName'),
+        company: data.get('company')
+      },
+      withCredentials: true,
+      url: "http://localhost:3000/api/register",
+    }).then((res) => console.log(res));
   };
 
   return (
@@ -120,7 +134,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" checked={checked} onClick={() => { setChecked(!checked); }}/>}
-                  label="I am a client looking for contractors."
+                  label="I am a contractor looking for jobs."
                 />
               </Grid>
             </Grid>
