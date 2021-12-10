@@ -17,6 +17,7 @@ const ProfileView = ({ currentUser, target }) => {
   const getTargetUser = (id) => {
     const targetID = target?.userID;
 
+    // * * * GET PROFILE DATA FOR CLICKED PROFILE * * *
     // fetch(`/api/?userId=${targetID}`)
     // .then(res => res.json())
     // .then(data => {
