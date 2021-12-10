@@ -65,7 +65,8 @@
       "title": "job title",
       "description": "job description",
       "specialties": ["specialty", "specialty", "specialty"],
-      "date": "date posted"
+      "date": "date posted",
+      "price_per_hour": "price per hour"
     }
   ]
 }

@@ -3,8 +3,8 @@ export const specialities = [
 ];
 
 export const sortByCategories = [
-  'Newest First',
-  'Oldest First',
-  'Price: Lowest First',
-  'Price: Highest First'
+  { display: 'Newest First', sort: 'date', compare: 'ascending'},
+  { display: 'Oldest First', sort: 'date', compare: 'descending'},
+  { display: 'Price: Low to High', sort: 'price_per_hour', compare: 'ascending'},
+  { display: 'Price: High to Low', sort: 'price_per_hour', compare: 'descending'}
 ];

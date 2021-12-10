@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { specialties, sortByCategories } from '../utils';
 
 function Search({ searchType, feed }) {
-  const [keyword, setKeyword] = useState('');
-  const [selectedSpecialty, setSelectedSpecialty] = useState('');
-  const [sortBy, setSortBy] = useState('');
+  // const [keyword, setKeyword] = useState('');
+  // const [selectedSpecialty, setSelectedSpecialty] = useState('');
+  // const [sortBy, setSortBy] = useState('');
 
   const handleKeywordSearch = (e) => {
     const searchTerm = e.target.value;
@@ -35,8 +35,12 @@ function Search({ searchType, feed }) {
   };
 
   const handleSortBySearch = (e) => {
-    const searchSortBy = e.target.value;
-    feed = feed.sort()
+    const { sort, compare } = e.target.value;
+    if (compare === 'ascending') {
+      feed = feed.sort((a, b) => { return  a[sort] - b[sort] })
+    } else {
+      feed = feed.sort((a, b) => { return  b[sort] - a[sort] })
+    }
   };
 
   return (
@@ -48,9 +52,12 @@ function Search({ searchType, feed }) {
       {searchType === 'jobs'
         && (
         <select onChange={handleSortBySearch}>
-          {sortByCategories.map((category, i) => <option value={category} key={i}>{category}</option>)}
+          <option>Sort By</option>
+          {sortByCategories.map((category, i) => <option value={category} key={i}>{category.display}</option>)}
         </select>
       )}
     </div>
   );
 }
+
+export default Search;
