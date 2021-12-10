@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream
 import React, { useState, useContext } from 'react';
 import JobCard from '../JobCard';
 import ListManager from '../ListManager.jsx';
-=======
-import React from 'react';
-import { Link } from 'react-router-dom';
-import AppContext from '../../hooks/context'
->>>>>>> Stashed changes
 
 const Main = function Main() {
 
@@ -32,7 +26,6 @@ const Main = function Main() {
   //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <div>
-<<<<<<< Updated upstream
       <div className='userPosts'>
         <ListManager data={jobsPosted}>
           <JobCard/>
@@ -49,10 +42,6 @@ const Main = function Main() {
           <JobCard />
         </ListManager>
       </div>
-=======
-      Main
-      <Link to={`/messages`}>Messages</Link>
->>>>>>> Stashed changes
     </div>
   );
 };
