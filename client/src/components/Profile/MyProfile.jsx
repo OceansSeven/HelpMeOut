@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import BuildIcon from "@material-ui/icons/Build";
+import Link from "@mui/material/Link";
 
 const MyProfile = ({ user }) => {
   if (!user?.isContractor) {
@@ -28,7 +29,9 @@ const MyProfile = ({ user }) => {
             alignItems: "center",
           }}
         >
-          <Button color="secondary">Edit Profile</Button>
+          <Link href="/update">
+            <Button color="secondary">Edit Profile</Button>
+          </Link>
           <h2>{user?.firstName}</h2>
           <h3>{user?.lastName}</h3>
         </div>

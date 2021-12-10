@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -10,11 +10,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-export default function EditProfile({ user }) {
+const EditProfile = (user) => {
+  //const {user} = useContext()   <---- current user from app context
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(event.target);
-    // eslint-disable-next-line no-console
     console.log({
       first: data.get("firstName"),
       last: data.get("lastName"),
@@ -46,7 +46,7 @@ export default function EditProfile({ user }) {
             sx={{ mt: 1 }}
           >
             <h2 style={{ textAlign: "center" }}>
-              {user.firstName} {user.lastName}
+              {user?.firstName} {user?.lastName}
             </h2>
             <TextField
               margin="normal"
@@ -100,7 +100,7 @@ export default function EditProfile({ user }) {
             sx={{ mt: 1 }}
           >
             <h2 style={{ textAlign: "center" }}>
-              {user.firstName} {user.lastName}
+              {user?.firstName} {user?.lastName}
             </h2>
             <TextField
               margin="normal"
@@ -151,4 +151,6 @@ export default function EditProfile({ user }) {
       </Container>
     );
   }
-}
+};
+
+export default EditProfile;

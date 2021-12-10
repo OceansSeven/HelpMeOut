@@ -33,7 +33,7 @@ const ProfileView = ({ currentUser, target }) => {
     setIsContractor(user?.isContractor);
   }, [user]);
 
-  if (currentUser?.id === user?.id) {
+  if (1 === user?.id) {
     return <MyProfile user={user} />;
   } else {
     return isContractor ? (
