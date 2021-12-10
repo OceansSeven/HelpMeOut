@@ -3,7 +3,7 @@ import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 
 import PersonIcon from "@material-ui/icons/Person";
 // * * * * in line styling just so i dont throw up while working on functionality... * * * *
-const ClientProfile = ({ current }) => {
+const ClientProfile = ({ user }) => {
   return (
     <Paper style={{ display: "flex", justifyContent: "center" }}>
       <CardHeader></CardHeader>
@@ -27,8 +27,8 @@ const ClientProfile = ({ current }) => {
           alignItems: "center",
         }}
       >
-        <h2>{current?.firstName}</h2>
-        <h3>{current?.lastName}</h3>
+        <h2>{user?.firstName}</h2>
+        <h3>{user?.lastName}</h3>
         <Button variant="outlined">Message Me</Button>
       </div>
     </Paper>

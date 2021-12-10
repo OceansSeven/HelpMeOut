@@ -3,10 +3,8 @@ import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import BuildIcon from "@material-ui/icons/Build";
 
-const MyProfile = ({ current }) => {
-  const [isContractor, setIsContractor] = useState(true);
-
-  if (!isContractor) {
+const MyProfile = ({ user }) => {
+  if (!user?.isContractor) {
     return (
       <Paper style={{ display: "flex", justifyContent: "center" }}>
         <CardHeader></CardHeader>
@@ -31,8 +29,8 @@ const MyProfile = ({ current }) => {
           }}
         >
           <Button color="secondary">Edit Profile</Button>
-          <h2>{current?.firstName}</h2>
-          <h3>{current?.lastName}</h3>
+          <h2>{user?.firstName}</h2>
+          <h3>{user?.lastName}</h3>
         </div>
       </Paper>
     );

@@ -6,22 +6,28 @@ import ClientProfile from "./ClientProfile.jsx";
 import MyProfile from "./MyProfile.jsx";
 
 const ProfileView = () => {
-  const [currentUser, setCurrentUser] = useState({
+  const [user, setUser] = useState({
     id: 1,
     firstName: "Derek",
     lastName: "Mason",
     isContractor: false,
   });
   const [isContractor, setIsContractor] = useState(false);
+  const currentUser = { id: 1 };
 
   useEffect(() => {
-    setIsContractor(currentUser?.isContractor);
-  }, [currentUser]);
-  return isContractor ? (
-    <MyProfile current={currentUser} />
-  ) : (
-    <MyProfile current={currentUser} />
-  );
+    setIsContractor(user?.isContractor);
+  }, [user]);
+
+  if (currentUser?.id === user?.id) {
+    return <MyProfile user={user} />;
+  } else {
+    return isContractor ? (
+      <ContractorProfile user={user} />
+    ) : (
+      <ClientProfile user={user} />
+    );
+  }
 };
 
 export default ProfileView;
