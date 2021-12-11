@@ -1,17 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useContext} from 'react';
+import AppContext from '../hooks/context';
 
-const Message = function Message({msg, userId}) {
+const Message = function Message({data}) {
+  const {userId} = useContext(AppContext);
+
   return (
-    <li className={msg.from_id === userId ? 'from' : 'to'} >
-      <span>
-        <div>
-          {`${msg.from_id === userId ? msg.from_firstname : msg.to_firstname}: ${msg.body}`}
+    <div className={(data.from_id === userId || data.fromId === userId) ? 'from' : 'to'} >
+      <span className='message-container'>
+        <div className='message-from'>
+          {`${data.from_firstname} ${data.from_lastname}`}
         </div>
-        <div>
-          {`${new Date(msg.date).toLocaleDateString('en-US', {hour:'numeric', minute: '2-digit'})}`}
+        <div className='message-contents'>
+          {`${data.body}`}
+        </div>
+        <div className='message-time'>
+          {`${new Date(data.date).toLocaleDateString('en-US', {hour:'numeric', minute: '2-digit'})}`}
         </div>
       </span>
-    </li>
+    </div>
   );
 };
 
