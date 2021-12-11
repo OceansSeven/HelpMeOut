@@ -32,21 +32,18 @@ const Main = function Main() {
   //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <div>
-      {/* <div className='userPosts'>
+      <div className='userPosts'>
         <ListManager data={jobsPosted}>
           <JobCard />
         </ListManager>
         <ListManager data={jobsAccepted}>
           <JobCard />
         </ListManager>
-      </div> */}
+      </div>
       <div className='searchList'>
         {/* <Search /> */}
         <ListManager data={contractorList}>
           <Contractors />
-          {/* {isContractor &&
-          <JobCard />
-          } */}
         </ListManager>
       </div>
     </div>
