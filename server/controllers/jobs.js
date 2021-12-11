@@ -3,7 +3,7 @@ const pool = require('../db');
 module.exports = {
   getJobs: (req, res) => {
     const sql = `SELECT
-       json_agg(
+       coalesce(json_agg(
         json_build_object(
           'id', j.id,
           'title', j.title,
@@ -21,7 +21,7 @@ module.exports = {
             WHERE j.client_id = u.id
           )
         )
-      ) jobs
+      ), '[]'::json) AS jobs
     FROM jobsPosted j WHERE contractor_id = 0`;
     pool
       .query(sql)

@@ -11,12 +11,12 @@ module.exports = {
       if (results.rows.length === 1) res.send("User Already Exists");
       if (results.rows.length === 0) {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const queryStr = `INSERT INTO 
-                            users (email, password, contractor, firstname, lastname, company) 
+        const queryStr = `INSERT INTO
+                            users (email, password, contractor, firstname, lastname, company)
                           VALUES ($1, $2, $3, $4, $5, $6)`
-  
+
         pool.query(queryStr, [email, hashedPassword, contractor, firstName, lastName, company], (err, results) => {
-          if (err) { 
+          if (err) {
             console.error('error inserting new user: ', err);
           } else {
             res.send("User Created");
