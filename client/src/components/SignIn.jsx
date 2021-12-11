@@ -103,6 +103,11 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
+            {!userExists && 
+              <div style={{color: 'red'}}>
+                Invalid email or password
+              </div>
+            }
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
