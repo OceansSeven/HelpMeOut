@@ -6,7 +6,7 @@ import ListManager from '../ListManager.jsx';
 import Contractors from '../Contractors.jsx';
 import AppContext from '../../hooks/context';
 import { getContractors, getUser, getJobs } from '../../utils';
-import Contractors from '../Contractors';
+// import Contractors from '../Contractors';
 
 const Main = function Main() {
   const { user } = useContext(AppContext);

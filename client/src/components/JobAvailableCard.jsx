@@ -1,12 +1,17 @@
 import React, {useContext, useState} from "react";
 import { Paper } from "@material-ui/core";
 import AppContext from "../hooks/context";
+import { Link } from 'react-router-dom';
+
 
 function JobAvailableCard({data}) {
   const user = useContext(AppContext).user;
 
   console.log(user);
   console.log(data);
+
+  function acceptJob() {
+  }
 
   return (
     <Paper>
@@ -18,7 +23,7 @@ function JobAvailableCard({data}) {
         {data?.description}
       </div>
       <div>
-        <button style={{float:'right'}}>Accept</button>
+        <button style={{float:'right'}} onClick={acceptJob}>Accept</button>
         <button style={{float:'right'}}>Contact</button>
       </div>
     </Paper>
