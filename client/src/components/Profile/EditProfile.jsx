@@ -10,8 +10,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-const EditProfile = ({ user }) => {
-  //const {user} = useContext()   <---- current user from app context
+import AppContext from "../../hooks/context.js";
+
+const EditProfile = () => {
+  const user = useContext(AppContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(event.target);
@@ -25,7 +27,7 @@ const EditProfile = ({ user }) => {
     });
   };
 
-  if (!user?.isContractor) {
+  if (!user?.contractor) {
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -52,7 +54,7 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.firstName}
+              label={user?.lastname}
               name="firstName"
             />
             Edit Last Name:
@@ -60,7 +62,7 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.lastName}
+              label={user?.lastname}
               id="updateLastName"
             />
             <FormControlLabel
@@ -112,7 +114,7 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.firstName}
+              label={user?.firstname}
               name="firstName"
             />
             Edit Last Name:
@@ -120,7 +122,7 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.lastName}
+              label={user?.lastname}
               id="updateLastName"
             />
             Edit Company Name:

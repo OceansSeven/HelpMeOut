@@ -5,7 +5,7 @@ import BuildIcon from "@material-ui/icons/Build";
 import Link from "@mui/material/Link";
 
 const MyProfile = ({ user }) => {
-  if (!user?.isContractor) {
+  if (!user?.contractor) {
     return (
       <Paper style={{ display: "flex", justifyContent: "center" }}>
         <CardHeader></CardHeader>
@@ -32,8 +32,8 @@ const MyProfile = ({ user }) => {
           <Link href="/update">
             <Button color="secondary">Edit Profile</Button>
           </Link>
-          <h2>{user?.firstName}</h2>
-          <h3>{user?.lastName}</h3>
+          <h2>{user?.firstname}</h2>
+          <h3>{user?.lastname}</h3>
         </div>
       </Paper>
     );
@@ -54,8 +54,11 @@ const MyProfile = ({ user }) => {
           <div>Member since 12-2021</div>
         </div>
         <div className="profileRight">
-          <Button color="secondary">Edit Profile</Button>
-          <h2>user.company</h2>
+          <Link href="/update">
+            <Button color="secondary">Edit Profile</Button>
+          </Link>{" "}
+          <h2>{user.company}</h2>
+          <h5>{user.firstname + " " + user.lastname}</h5>
           <ul className="specialties">
             {user.specialties?.map((specialty) => (
               <li>{specialty}</li>
