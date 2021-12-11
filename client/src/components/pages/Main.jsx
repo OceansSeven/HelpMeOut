@@ -8,10 +8,6 @@ import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getUser, getJobs } from '../../utils';
-<<<<<<< HEAD
-// import Contractors from '../Contractors';
-=======
->>>>>>> 1bd1af5c810ca6907485ac9ccb076938ab87ff9b
 
 const Main = function Main() {
   const { user } = useContext(AppContext);

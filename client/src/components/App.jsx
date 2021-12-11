@@ -51,7 +51,7 @@ const App = function App() {
           <Route path="/messages/:recepient" element={<Messages />} />
           <Route path="/profile" element={<ProfileView />} />
           {/* <Route path="/update" element={<EditProfile />} /> */}
-          <Route path="leaveAReview" element={<LeaveAReview />} />
+          <Route path="/leaveAReview" element={<LeaveAReview />} />
           <Route path="/*" element={<ErrorPage />}/>
         </Routes>
       </Router>
