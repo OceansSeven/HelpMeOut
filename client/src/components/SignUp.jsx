@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -31,25 +32,63 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [checked, setChecked] = React.useState(false);
+  const [validData, setValidData] = React.useState(true);
+  const [registered, setRegistered] = React.useState(false);
+  const [userExists, setUserExists] = React.useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    axios({
-      method: "POST",
-      data: {
-        email: data.get('email'),
-        password: data.get('password'),
-        contractor: checked, 
-        firstName: data.get('firstName'),
-        lastName: data.get('lastName'),
-        company: data.get('company')
-      },
-      withCredentials: true,
-      url: "http://localhost:3000/api/register",
-    }).then((res) => console.log(res));
+    const email = data.get('email');
+    const password = data.get('password');
+    const contractor = checked;
+    const firstName = data.get('firstName');
+    const lastName = data.get('lastName');
+    const company = data.get('company');
+    
+    setValidData(true);
+    setUserExists(false);
+
+    if (
+      email.includes('@') &&
+      email.includes('.') &&
+      password &&
+      firstName &&
+      lastName
+    ) {
+      axios({
+        method: "POST",
+        data: {
+          email: data.get('email'),
+          password: data.get('password'),
+          contractor: checked, 
+          firstName: data.get('firstName'),
+          lastName: data.get('lastName'),
+          company: data.get('company')
+        },
+        withCredentials: true,
+        url: "http://localhost:3000/api/register",
+      })
+      .then(({ data }) => {
+        console.log(data);
+        if (data === 'User Already Exists') {
+          setUserExists(true);
+        } else {
+          axios
+            .post('api/v1/text-mail', { email })
+            .then(() => console.log('email sent!'))
+          setRegistered(true);
+        }
+      });
+    } else {
+      setValidData(false);
+    }
   };
+
+  if (registered) {
+    return (<Navigate to="/login"/>)
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -122,6 +161,16 @@ export default function SignUp() {
                   id="company"
                   autoComplete="new-company"
                 />
+              {!validData &&
+                <div style={{color: 'red', marginTop: '16px'}}>
+                  Please enter valid information
+                </div>
+              }
+              {userExists &&
+                <div style={{color: 'red', marginTop: '16px'}}>
+                  User already exists
+                </div>
+              }
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel

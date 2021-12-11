@@ -18,5 +18,9 @@ module.exports = {
   },
   getLoggedInUser: (req, res) => {
     res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+  },
+  logOutUser: (req, res) => {
+    req.logout();
+    res.send(200);
   }
 };

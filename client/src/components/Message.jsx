@@ -2,10 +2,10 @@ import React, {useContext} from 'react';
 import AppContext from '../hooks/context';
 
 const Message = function Message({data}) {
-  const {userId} = useContext(AppContext);
+  const {user} = useContext(AppContext);
 
   return (
-    <div className={(data.from_id === userId || data.fromId === userId) ? 'from' : 'to'} >
+    <div className={(data.from_id === Number(user.id) || data.fromId === Number(user.id)) ? 'from' : 'to'} >
       <span className='message-container'>
         <div className='message-from'>
           {`${data.from_firstname} ${data.from_lastname}`}

@@ -7,12 +7,15 @@ import { Link } from 'react-router-dom';
 function JobAvailableCard({data}) {
   const user = useContext(AppContext).user;
 
+<<<<<<< HEAD
   console.log(user);
   console.log(data);
 
   function acceptJob() {
   }
 
+=======
+>>>>>>> 1bd1af5c810ca6907485ac9ccb076938ab87ff9b
   return (
     <Paper>
       <p style={{fontSize:'12px'}}>{data?.date}</p>
