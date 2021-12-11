@@ -2,6 +2,7 @@ const pool = require('../db');
 
 module.exports = {
   getContractors: (req, res) => {
+
     pool.query(`select
      id,
      company,
@@ -20,5 +21,6 @@ module.exports = {
     .catch((err) => {
       console.log(err);
     })
+
   },
 };
