@@ -9,8 +9,8 @@ CREATE TABLE users (
  company VARCHAR,
  password VARCHAR,
  salt VARCHAR,
- firstName TEXT,
- lastName TEXT,
+ firstname TEXT,
+ lastname TEXT,
  email VARCHAR,
  rating DECIMAL,
  contractor BOOLEAN,
@@ -47,7 +47,7 @@ CREATE TABLE jobsPosted (
 );
 
 
-ALTER TABLE jobsPosted ADD CONSTRAINT jobsPosted_pkey PRIMARY KEY (id);
+ALTER TABLE jobsposted ADD CONSTRAINT jobsPosted_pkey PRIMARY KEY (id);
 
 CREATE TABLE messages (
  id BIGSERIAL,
@@ -73,19 +73,20 @@ ALTER TABLE sessions ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
 ALTER TABLE reviews ADD CONSTRAINT reviews_client_id_fkey FOREIGN KEY (client_id) REFERENCES users(id);
 ALTER TABLE reviews ADD CONSTRAINT reviews_contractor_id_fkey FOREIGN KEY (contractor_id) REFERENCES users(id);
 -- ALTER TABLE jobsPosted ADD CONSTRAINT jobsPosted_contractor_id_fkey FOREIGN KEY (contractor_id) REFERENCES users(id);
-ALTER TABLE jobsPosted ADD CONSTRAINT jobsPosted_client_id_fkey FOREIGN KEY (client_id) REFERENCES users(id);
+ALTER TABLE jobsposted ADD CONSTRAINT jobsposted_client_id_fkey FOREIGN KEY (client_id) REFERENCES users(id);
 ALTER TABLE messages ADD CONSTRAINT messages_from_id_fkey FOREIGN KEY (from_id) REFERENCES users(id);
 ALTER TABLE messages ADD CONSTRAINT messages_to_id_fkey FOREIGN KEY (to_id) REFERENCES users(id);
 ALTER TABLE sessions ADD CONSTRAINT sessions_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
 
 
-INSERT INTO users (company, password, salt, firstName, lastName, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1.2, TRUE, ARRAY ['pipes']);
-INSERT INTO users (company, password, salt, firstName, lastName, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 5, FALSE, ARRAY ['potatoes']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1.2, TRUE, ARRAY ['pipes']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 5, FALSE, ARRAY ['potatoes']);
 INSERT INTO reviews (client_id, contractor_id, rating, body, date) VALUES (2, 1, 1.2, 'All my questions got punted to the end', '1980-01-01');
-INSERT INTO jobsPosted (client_id, title, specialties, description, completed, contractor_id, date) VALUES (2, 'Clean my potatoes', ARRAY ['pipes'], 'I need someone to come clean my potatoes', TRUE, 1, '1980-01-02');
+INSERT INTO jobsposted (client_id, title, specialties, description, completed, contractor_id, date) VALUES (2, 'Clean my potatoes', ARRAY ['pipes'], 'I need someone to come clean my potatoes', TRUE, 1, '1980-01-02');
 INSERT INTO messages (from_id, to_id, body, date) VALUES (1, 2, 'I can clean ur potatoes', '1980-01-01');
 INSERT INTO messages (from_id, to_id, body, date) VALUES (2, 1, 'Please clean my potatoes', '1980-01-01');
 
 
 -- Command for executing this file into your local psql
 -- psql -h localhost -d postgres -U [your username] -f ./schema.SQL
+

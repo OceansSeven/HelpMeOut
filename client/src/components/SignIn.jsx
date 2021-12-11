@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import AppContext from '../hooks/context';
+import { Redirect } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -31,23 +32,38 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const { setUserId } = React.useContext(AppContext);
+  const { setUser } = React.useContext(AppContext);
+  const [userExists, setUserExists] = React.useState(true);
+  const [toLanding, setToLanding] = React.useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+    const password = data.get('password')
     axios({
       method: "POST",
       data: {
-        username: data.get('email'),
-        password: data.get('password'),
+        username: email,
+        password: password,
       },
       withCredentials: true,
-      url: "http://localhost:3000/api/login",
-    }).then(({ data }) => {
-      setUserId(Number(data.id))
+      url: "http://localhost:3000/api/login"
+    })
+    .then(({ data }) => { 
+      console.log('data: ', data);
+      if (data === 'No User Exists') {
+        setUserExists(false);
+      } else {
+        setToLanding(true);
+      }
+      //setUser(Number(data.id))
     });
   };
+
+  // if (toLanding) {
+  //   return (<Redirect to='/'/>)
+  // }
 
   return (
     <ThemeProvider theme={theme}>
