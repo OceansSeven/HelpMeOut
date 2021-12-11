@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-const EditProfile = (user) => {
+const EditProfile = ({ user }) => {
   //const {user} = useContext()   <---- current user from app context
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,18 +115,20 @@ const EditProfile = (user) => {
               label={user?.firstName}
               name="firstName"
             />
+            Edit Last Name:
             <TextField
               margin="normal"
               fullWidth
               name="lastName"
-              label="Edit Last Name"
+              label={user?.lastName}
               id="updateLastName"
             />
+            Edit Company Name:
             <TextField
               margin="normal"
               fullWidth
               name="companyName"
-              label="Edit Company Name"
+              label={user?.company}
               id="updateCompanyName"
             />
             <TextField

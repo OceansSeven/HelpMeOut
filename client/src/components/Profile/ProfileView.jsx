@@ -11,7 +11,7 @@ const ProfileView = ({ currentUser, target }) => {
     id: 1,
     firstName: "Derek",
     lastName: "Mason",
-    isContractor: false,
+    isContractor: true,
     specialties: ["WOOD work", "Clogging/Unclogging Pipes"],
     tools: ["jackhammer", "quick hardening caulk"],
     certifications: ["NASM", "HR"],
@@ -34,7 +34,7 @@ const ProfileView = ({ currentUser, target }) => {
   }, [user]);
 
   if (1 === user?.id) {
-    return <MyProfile user={user} />;
+    return <EditProfile user={user} />;
   } else {
     return isContractor ? (
       <ContractorProfile user={user} />
