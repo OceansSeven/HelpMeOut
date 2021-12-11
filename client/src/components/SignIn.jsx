@@ -14,7 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import AppContext from '../hooks/context';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { Paper } from '@mui/material';
 
 function Copyright(props) {
   return (
@@ -34,7 +35,7 @@ const theme = createTheme();
 export default function SignIn() {
   const { setUser } = React.useContext(AppContext);
   const [userExists, setUserExists] = React.useState(true);
-  const [toLanding, setToLanding] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,28 +56,44 @@ export default function SignIn() {
       if (data === 'No User Exists') {
         setUserExists(false);
       } else {
-        setToLanding(true);
+        setUser(data);
+        setLoggedIn(true);
       }
-      //setUser(Number(data.id))
     });
   };
 
-  // if (toLanding) {
-  //   return (<Redirect to='/'/>)
-  // }
+  if (loggedIn) {
+    return (<Navigate to="/main"/>)
+  }
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Box
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
           sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            backgroundImage: 'url(https://upcloseaz.com/wp-content/uploads/2014/11/12781919_l.jpg)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
-        >
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -104,6 +121,11 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
+            {!userExists && 
+              <div style={{color: 'red'}}>
+                Invalid email or password
+              </div>
+            }
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -126,7 +148,8 @@ export default function SignIn() {
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
+        </Grid>
+      </Grid>
     </ThemeProvider>
   );
 }
