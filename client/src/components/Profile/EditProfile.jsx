@@ -30,7 +30,7 @@ const EditProfile = () => {
       last: data.get("lastName"),
       setContractor: data.get("setContractor"),
       company: data.get("companyName"),
-      tool: data.get("addTool"),
+      tools: myTools,
       cert: data.get("addCert"),
     });
   };
@@ -170,9 +170,18 @@ const EditProfile = () => {
               </IconButton>
             </div>
             My tools:
-            {myTools?.map((tool) => (
-              <h4>{tool}</h4>
-            ))}
+            <ul
+              id="toolList"
+              style={{
+                listStyle: "none",
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              {myTools?.map((tool) => (
+                <h4>{tool}</h4>
+              ))}
+            </ul>
             <TextField
               fullWidth
               id="addCert"
