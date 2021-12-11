@@ -15,7 +15,6 @@ const App = function App() {
   // TODO - set starting user to be null
   // right now the starting user will be 1 for testing purposes
   // ########################################
-<<<<<<< HEAD
   const [user, setUser] = useState({
     id: '2', 
     company: 'potatoMan', 
@@ -38,27 +37,6 @@ const App = function App() {
       user,
       setUser
     }}>
-=======
-  const [userId, setUserId] = useState(1);
-
-  useEffect(() => {
-    // axios call to get logged in user
-    axios.get("/api/logged-in-user").then(({ data }) => {
-      if (data) {
-        setUserId(Number(data.id));
-      }
-    });
-  }, []);
-
-  return (
-    <AppContext.Provider
-      value={{
-        // user id available to the whole app
-        userId,
-        setUserId,
-      }}
-    >
->>>>>>> 758329b1a173655d7288290206d431e8f632b762
       <Router>
         <Routes>
           <Route exact path="/" element={<Landing />} />
