@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import JobAvailableCard from '../JobAvailableCard.jsx';
-import JobPostedCard from '../JobPostedCard.jsx';
-import ListManager from '../ListManager.jsx';
-import Contractors from '../Contractors.jsx';
+import JobAvailableCard from '../JobAvailableCard';
+import JobPostedCard from '../JobPostedCard';
+import ListManager from '../ListManager';
+import Contractors from '../Contractors';
 import AppContext from '../../hooks/context';
 import { getContractors, getUser, getJobs } from '../../utils';
 
@@ -21,8 +21,8 @@ const Main = function Main() {
   //current userfeed -> defaults to client view
   //current searchFeed ->
 
-
-  const userBtns = (<div><button>Posted</button> <button>Accepted</button></div>)
+  const userBtns = (<div><button>Client</button> <button>Contractor</button></div>);
+  const bottomBtns = (<div><button>Contractors</button> <button>Jobs Available</button></div>);
 
   //get jobs posted by user from API
   useEffect(() => {
@@ -38,9 +38,9 @@ const Main = function Main() {
   //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <div>
-      <div className='userPosts'>
+      <div style={{border: '1px solid black'}} className='userPosts'>
         {user.contractor ? userBtns : null}
-        {/*currentfeed === false ? jobsPosted : jobs accepted */}
+        {/* currentfeed === false ? jobsPosted : jobs accepted */}
         <ListManager data={jobsPosted}>
           <JobPostedCard />
         </ListManager>
@@ -48,8 +48,7 @@ const Main = function Main() {
           <JobPostedCard />
         </ListManager>
       </div>
-
-      <div className='searchList'>
+      <div style={{border: '1px solid black'}} className='searchList'>
         <ListManager data={contractorList}>
           <Contractors />
         </ListManager>
