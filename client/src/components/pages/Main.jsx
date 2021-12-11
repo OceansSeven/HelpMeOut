@@ -2,11 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import JobCard from '../JobCard';
 import ListManager from '../ListManager.jsx';
+import Contractors from '../Contractors.jsx';
 import AppContext from '../../hooks/context';
 import { getContractors, getUser, getJobs } from '../../utils';
 
 const Main = function Main() {
   const { user } = useContext(AppContext);
+  console.log(user);
 
   //set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
@@ -37,9 +39,9 @@ const Main = function Main() {
         </ListManager>
       </div>
       <div className='searchList'>
-        {/* <ListManager data={contractorList}>
-          Contractor component goes here
-        </ListManager> */}
+        <ListManager data={contractorList}>
+          <Contractors />
+        </ListManager>
         <ListManager data={jobsAvailable}>
           <JobCard />
         </ListManager>
