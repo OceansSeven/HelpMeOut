@@ -4,6 +4,7 @@ import JobCard from '../JobCard';
 import ListManager from '../ListManager.jsx';
 import AppContext from '../../hooks/context';
 import { getContractors, getUser, getJobs } from '../../utils';
+import Contractors from '../Contractors';
 
 const Main = function Main() {
   const { userId } = useContext(AppContext);
@@ -21,7 +22,8 @@ const Main = function Main() {
       setJobsAccepted(results.contractor_tasks);
     })
     .catch(err => console.error(err));
-    getContractors().then(setContractorList).catch(err => console.error(err));
+    getContractors().then((results) => {
+      setContractorList(results)}).catch(err => console.error(err));
     getJobs().then(setJobsAvailable).catch(err => console.error(err));
   }, [])
 
@@ -37,9 +39,9 @@ const Main = function Main() {
         </ListManager>
       </div>
       <div className='searchList'>
-        {/* <ListManager data={contractorList}>
-          Contractor component goes here
-        </ListManager> */}
+        <ListManager data={contractorList}>
+          <Contractors />
+        </ListManager>
         <ListManager data={jobsAvailable}>
           <JobCard />
         </ListManager>

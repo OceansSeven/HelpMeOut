@@ -89,3 +89,4 @@ INSERT INTO messages (from_id, to_id, body, date) VALUES (2, 1, 'Please clean my
 
 -- Command for executing this file into your local psql
 -- psql -h localhost -d postgres -U [your username] -f ./schema.SQL
+
