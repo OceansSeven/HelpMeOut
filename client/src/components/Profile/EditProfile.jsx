@@ -20,7 +20,9 @@ const EditProfile = () => {
   const user = useContext(AppContext);
 
   const [myTools, setMyTools] = useState();
-  const [newTool, setNewTool] = useState();
+  const [newTool, setNewTool] = useState("");
+  const [myCerts, setMyCerts] = useState();
+  const [newCert, setNewCert] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,12 +33,13 @@ const EditProfile = () => {
       setContractor: data.get("setContractor"),
       company: data.get("companyName"),
       tools: myTools,
-      cert: data.get("addCert"),
+      certs: myCerts,
     });
   };
 
   useEffect(() => {
     setMyTools(user.tools);
+    setMyCerts(user.certifications);
   }, []);
 
   if (!user?.contractor) {
@@ -145,8 +148,8 @@ const EditProfile = () => {
               label={user?.company}
               id="updateCompanyName"
             />
+            Add a tool:
             <div>
-              Add a tool:
               <TextField
                 id="addTool"
                 name="addTool"
@@ -169,7 +172,9 @@ const EditProfile = () => {
                 <AddIcon />
               </IconButton>
             </div>
-            My tools:
+            <Typography component="h3" variant="caption">
+              My Tools
+            </Typography>
             <ul
               id="toolList"
               style={{
@@ -182,13 +187,45 @@ const EditProfile = () => {
                 <h4>{tool}</h4>
               ))}
             </ul>
-            <TextField
-              fullWidth
-              id="addCert"
-              name="addCert"
-              label="Add a certification"
-              variant="filled"
-            />
+            Add a certification:
+            <div>
+              <TextField
+                id="addCert"
+                name="addCert"
+                label="Certification title"
+                value={newCert}
+                variant="filled"
+                onChange={(e) => {
+                  setNewCert(e.target.value);
+                }}
+              />
+              <IconButton
+                aria-label="add"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const currentCerts = myCerts;
+                  setMyCerts(currentCerts.concat(newCert));
+                  setNewCert("");
+                }}
+              >
+                <AddIcon />
+              </IconButton>
+            </div>
+            <Typography component="h3" variant="caption">
+              My Certifications
+            </Typography>
+            <ul
+              id="certList"
+              style={{
+                listStyle: "none",
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              {myCerts?.map((cert) => (
+                <h4>{cert}</h4>
+              ))}
+            </ul>
             <Button
               type="submit"
               fullWidth
