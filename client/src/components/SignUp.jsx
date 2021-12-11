@@ -75,6 +75,9 @@ export default function SignUp() {
         if (data === 'User Already Exists') {
           setUserExists(true);
         } else {
+          axios
+            .post('api/v1/text-mail', { email })
+            .then(() => console.log('email sent!'))
           setRegistered(true);
         }
       });
