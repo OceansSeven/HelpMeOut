@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-export const specialties = [
-  'Appliance Repair', 'Carpentry', 'Electrical', 'HVAC', 'Landscaping', 'Mechanic', 'Plumbing', 'Snow/Waste Removal'
-];
+export const specialties = ['All', 'Appliance Repair', 'Carpentry', 'Electrical', 'HVAC', 'Landscaping', 'Mechanic', 'Plumbing', 'Snow/Waste Removal'];
 
 export const sortByCategories = [
   { display: 'Newest First', sort: 'date', compare: 'ascending'},

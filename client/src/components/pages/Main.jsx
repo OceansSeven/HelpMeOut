@@ -7,7 +7,6 @@ import Contractors from '../Contractors';
 import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import { getContractors, getUser, getJobs } from '../../utils';
-import Contractors from '../Contractors';
 
 const Main = function Main() {
   const { user } = useContext(AppContext);
@@ -20,15 +19,12 @@ const Main = function Main() {
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
   const [searchFeedData, setSearchFeedData] = useState([]);
-  const [contractorListClicked, setContractorListClicked] = useState(true);
-
-  //current userfeed -> defaults to client view
-  //current searchFeed ->
+  const [searchFeedType, setSearchFeedType]  = useState('contractors')
 
   const userBtns = (<div><button>Client</button> <button>Contractor</button></div>);
   const searchFeedButtons = (<div>
-    <button onClick={() => { setSearchFeedData(contractorList); setContractorListClicked(true)}}>Contractors</button>
-    <button onClick={() => { setSearchFeedData(jobsAvailable); setContractorListClicked(false)}}>Jobs Available</button>
+    <button onClick={() => { setSearchFeedData(contractorList); setSearchFeedType('contractors')}}>Contractors</button>
+    <button onClick={() => { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs')}}>Jobs Available</button>
   </div>);
 
   //get jobs posted by user from API
@@ -39,7 +35,9 @@ const Main = function Main() {
     })
     .catch(err => console.error(err));
     getContractors().then((results) => {
-      setContractorList(results)}).catch(err => console.error(err));
+      setSearchFeedData(results);
+      setContractorList(results)
+    }).catch(err => console.error(err));
     getJobs().then(setJobsAvailable).catch(err => console.error(err));
   }, [])
 
@@ -57,14 +55,15 @@ const Main = function Main() {
         </ListManager>
       </div>
       <div style={{border: '1px solid black'}} className='searchList'>
+        <Search feed={searchFeedData} searchType={searchFeedType} />
         {user.contractor && searchFeedButtons}
-        {contractorListClicked
-          ? <ListManager data={contractorList}>
+        {searchFeedType === 'contractors'
+          ? (<ListManager data={contractorList}>
               <Contractors />
-            </ListManager>
-          : <ListManager data={jobsAvailable}>
-              <jobsAvailableCard />
-            </ListManager>}
+            </ListManager>)
+          : (<ListManager data={jobsAvailable}>
+              <JobAvailableCard />
+            </ListManager>)}
       </div>
     </div>
   );

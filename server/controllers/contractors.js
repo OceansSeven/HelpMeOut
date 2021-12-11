@@ -15,7 +15,6 @@ module.exports = {
      tools
      from users where contractor = true`)
     .then((results) => {
-      // console.log('controllers', results.rows)
       res.send(results.rows);
     })
     .catch((err) => {
