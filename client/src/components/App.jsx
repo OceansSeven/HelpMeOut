@@ -8,7 +8,7 @@ import Messages from "./pages/Messages";
 import ProfileView from "./Profile/ProfileView";
 import AppContext from "../hooks/context";
 import axios from "axios";
-import ErrorPage from "./pages/ErrorPage";
+// import ErrorPage from "./pages/ErrorPage";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -46,7 +46,7 @@ const App = function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
-          <Route path="/wrong" element={<ErrorPage />}/>
+          {/* <Route path="/wrong" element={<ErrorPage />}/> */}
           <Route path="/profile" element={<ProfileView />} />
           {/* <Route path="/update" element={<EditProfile />} /> */}
         </Routes>
