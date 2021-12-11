@@ -12,21 +12,22 @@ export default function Contractors({data}) {
   // }
 
   return (
-    <Paper variant="contained">
-      <div>{data.firstName} {data.lastName}</div>
-      <div>{data.contractorSpecialties.map((specialty) => {
-        <span>{specialty}</span>
-      })}
-      </div>
-      <div>{data.certifications.map((certification) => {
-        <span>{certification}</span>
-      })}
-      </div>
-      <div>{data.tools.map((tool) => {
-        <span>{tool}</span>
-      })}
-      </div>
-      <div>{data.rating}</div>
-    </Paper>
+    <div>Contractors</div>
+    // <Paper variant="contained">
+    //   <div>{data.firstName} {data.lastName}</div>
+    //   <div>{data.contractorSpecialties.map((specialty) => {
+    //     <span>{specialty}</span>
+    //   })}
+    //   </div>
+    //   <div>{data.certifications.map((certification) => {
+    //     <span>{certification}</span>
+    //   })}
+    //   </div>
+    //   <div>{data.tools.map((tool) => {
+    //     <span>{tool}</span>
+    //   })}
+    //   </div>
+    //   <div>{data.rating}</div>
+    // </Paper>
   );
 }
