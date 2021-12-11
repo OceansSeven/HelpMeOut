@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import JobCard from '../JobCard';
+import JobAvailableCard from '../JobAvailableCard.jsx';
+import JobPostedCard from '../JobPostedCard.jsx';
 import ListManager from '../ListManager.jsx';
 import Contractors from '../Contractors.jsx';
 import AppContext from '../../hooks/context';
@@ -10,11 +11,18 @@ const Main = function Main() {
   const { user } = useContext(AppContext);
   console.log(user);
 
+
   //set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
   const [contractorList, setContractorList] = useState([]);
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
+
+  //current userfeed -> defaults to client view
+  //current searchFeed ->
+
+
+  const userBtns = (<div><button>Posted</button> <button>Accepted</button></div>)
 
   //get jobs posted by user from API
   useEffect(() => {
@@ -31,19 +39,22 @@ const Main = function Main() {
   return (
     <div>
       <div className='userPosts'>
+        {user.contractor ? userBtns : null}
+        {/*currentfeed === false ? jobsPosted : jobs accepted */}
         <ListManager data={jobsPosted}>
-          <JobCard />
+          <JobPostedCard />
         </ListManager>
         <ListManager data={jobsAccepted}>
-          <JobCard />
+          <JobPostedCard />
         </ListManager>
       </div>
+
       <div className='searchList'>
         <ListManager data={contractorList}>
           <Contractors />
         </ListManager>
         <ListManager data={jobsAvailable}>
-          <JobCard />
+          <JobAvailableCard />
         </ListManager>
       </div>
     </div>
