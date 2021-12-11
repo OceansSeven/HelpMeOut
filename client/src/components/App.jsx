@@ -40,9 +40,9 @@ const App = function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/messages" element={<Messages />} />
+          <Route path="/messages/:recepient" element={<Messages />} />
           <Route path="/profile" element={<ProfileView />} />
-          <Route path="/update" element={<EditProfile />} />
+          {/* <Route path="/update" element={<EditProfile />} /> */}
         </Routes>
       </Router>
     </AppContext.Provider>
