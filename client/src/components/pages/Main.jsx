@@ -7,7 +7,7 @@ import { getContractors, getUser, getJobs } from '../../utils';
 import Contractors from '../Contractors';
 
 const Main = function Main() {
-  const { userId } = useContext(AppContext);
+  const { user } = useContext(AppContext);
 
   //set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
@@ -17,7 +17,7 @@ const Main = function Main() {
 
   //get jobs posted by user from API
   useEffect(() => {
-    getUser(userId).then((results) => {
+    getUser(user.id).then((results) => {
       setJobsPosted(results.client_tasks);
       setJobsAccepted(results.contractor_tasks);
     })
