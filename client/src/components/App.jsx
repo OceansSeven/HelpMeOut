@@ -46,9 +46,9 @@ const App = function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
-          <Route path="/wrong" element={<ErrorPage />}/>
           <Route path="/profile" element={<ProfileView />} />
           {/* <Route path="/update" element={<EditProfile />} /> */}
+          <Route path="/*" element={<ErrorPage />}/>
         </Routes>
       </Router>
     </AppContext.Provider>
