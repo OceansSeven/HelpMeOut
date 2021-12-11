@@ -16,6 +16,7 @@ router.get('/jobs', controller.jobs.getJobs);
 router.post('/jobs', controller.jobs.postJobs);
 
 router.post('/login', controller.login.authenticateUser);
+router.get('/logout', controller.login.logOutUser);
 router.post('/register', controller.register.registerUser);
 router.post('/v1/text-mail', controller.nodemail.sendMail);
 

@@ -56,13 +56,14 @@ export default function SignIn() {
       if (data === 'No User Exists') {
         setUserExists(false);
       } else {
+        setUser(data);
         setLoggedIn(true);
       }
     });
   };
 
   if (loggedIn) {
-    return (<Navigate to="/"/>)
+    return (<Navigate to="/main"/>)
   }
 
   return (
