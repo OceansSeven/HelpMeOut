@@ -15,7 +15,6 @@
         "specialties": ["specialty", "specialty", "specialty"],
         "price_per_hour": "price per hour",
         "date": "date of posting",
-        "accepted": "boolean",
         "contractor": {
           "id": "contractor id",
           "firstName": "first name of contractor",
@@ -43,10 +42,9 @@
   "messages": [
     {
       "id": "message id",
+      "from_id": "user id of sender",
       "from_firstName": "first name of who its from",
       "from_lastName": "last name of who its from",
-      "to_firstName": "first name of who its to",
-      "to_lastName": "last name of who its to",
       "body": "message body",
       "date": "date of message sent"
     }

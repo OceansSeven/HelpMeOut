@@ -7,6 +7,7 @@ module.exports = {
         json_build_object(
           'id', j.id,
           'title', j.title,
+          'specialties', j.specialties,
           'description', j.description,
           'rate', j.price_per_hour,
           'date', j.date,
@@ -21,7 +22,7 @@ module.exports = {
           )
         )
       ) jobs
-    FROM jobsPosted j WHERE  completed = false`;
+    FROM jobsPosted j WHERE contractor_id = 0`;
     pool
       .query(sql)
       .then(({ rows }) => {
@@ -31,14 +32,11 @@ module.exports = {
   },
 
   postJobs: (req, res) => {
-    console.log('posting');
-    console.log('request body:', req.body);
     let { client_id, title, description, specialties, date, price_per_hour } =
       req.body;
     const sArray = `ARRAY [${specialties.map((item, i) => "'" + item + "'")}]`;
 
     const sql = `INSERT INTO jobsPosted (client_id, title, specialties, description, completed, date, price_per_hour) VALUES (${client_id}, '${title}', ${sArray}, '${description}', FALSE, '${date}', ${price_per_hour})`;
-    console.log('query', sql);
     pool
       .query(sql)
       .then((result) => res.status(201).end())

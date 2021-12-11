@@ -48,7 +48,7 @@ module.exports = {
     FROM users WHERE id = $1`;
     const values = [user_id]
     pool.query(sql, values)
-    .then (({rows}) => res.status(200).send(rows))
+    .then (({rows}) => res.status(200).send(rows[0]))
     .catch(err => res.status(400).send(err))
   },
 

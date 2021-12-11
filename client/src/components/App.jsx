@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Registration from './pages/Registration';
-import Landing from './pages/Landing'
-import Main from './pages/Main'
-import Messages from './pages/Messages';
-import ProfileView from './Profile/ProfileView';
-import AppContext from '../hooks/context';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Registration from "./pages/Registration";
+import Landing from "./pages/Landing";
+import Main from "./pages/Main";
+import Messages from "./pages/Messages";
+import ProfileView from "./Profile/ProfileView";
+import AppContext from "../hooks/context";
+import axios from "axios";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -15,6 +15,7 @@ const App = function App() {
   // TODO - set starting user to be null
   // right now the starting user will be 1 for testing purposes
   // ########################################
+<<<<<<< HEAD
   const [user, setUser] = useState({
     id: '2', 
     company: 'potatoMan', 
@@ -37,14 +38,36 @@ const App = function App() {
       user,
       setUser
     }}>
+=======
+  const [userId, setUserId] = useState(1);
+
+  useEffect(() => {
+    // axios call to get logged in user
+    axios.get("/api/logged-in-user").then(({ data }) => {
+      if (data) {
+        setUserId(Number(data.id));
+      }
+    });
+  }, []);
+
+  return (
+    <AppContext.Provider
+      value={{
+        // user id available to the whole app
+        userId,
+        setUserId,
+      }}
+    >
+>>>>>>> 758329b1a173655d7288290206d431e8f632b762
       <Router>
         <Routes>
-            <Route exact path="/" element={<Landing />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Registration />} />
-            <Route path="/main" element={<Main />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/profile" element={<ProfileView />} />
+          <Route exact path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/messages/:recepient" element={<Messages />} />
+          <Route path="/profile" element={<ProfileView />} />
+          {/* <Route path="/update" element={<EditProfile />} /> */}
         </Routes>
       </Router>
     </AppContext.Provider>
