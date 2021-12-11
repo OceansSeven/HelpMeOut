@@ -1,8 +1,11 @@
 import React, { useState, useContext } from 'react';
 import JobCard from '../JobCard';
 import ListManager from '../ListManager.jsx';
+import AppContext from '../../hooks/context';
 
 const Main = function Main() {
+  const { userId } = useContext(AppContext);
+  console.log(userId);
 
   //set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
