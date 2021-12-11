@@ -1,33 +1,30 @@
 import React, {useEffect, useState} from "react";
-import { Paper } from "@material-ui/core";
-import axios from 'axios';
+import { Paper } from '@material-ui/core';
+import StarRatings from "./StarRatings";
 
 export default function Contractors({data}) {
 
-  // function getContractorData(data) {
-  //   axios.get('/api/contractors')
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  // }
-  console.log(data);
-
   return (
-    <Paper variant="contained">
-      <div>{data?.fist_name} {data.last_name}</div>
-      <div>{data?.specialties?.map((specialty) => {
-        <span>{specialty}</span>
-      })}
+    <Paper>
+      <div>{data.firstname} {data.lastname}</div>
+      <div>{data.company}</div>
+      <div>{data.specialties ? data.specialties.map((specialty) => {
+        <div>{specialty}</div>
+      })
+    :null}
       </div>
-      <div>{data?.certifications?.map((certification) => {
-        <span>{certification}</span>
-      })}
+      <div>{data.certifications ? data.certifications.map((certification) => {
+        <div>{certification}</div>
+
+      })
+      :null}
       </div>
-      <div>{data?.tools?.map((tool) => {
-        <span>{tool}</span>
-      })}
+      <div>{data.tools ? data.tools.map((tool) => {
+        <div>{tool}</div>
+      })
+    :null}
       </div>
-      <div>{data?.rating}</div>
+      <div><StarRatings rating={Number(data.rating)}/></div>
     </Paper>
   );
 }

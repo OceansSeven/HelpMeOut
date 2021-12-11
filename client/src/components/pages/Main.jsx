@@ -7,6 +7,7 @@ import Contractors from '../Contractors';
 import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import { getContractors, getUser, getJobs } from '../../utils';
+import Contractors from '../Contractors';
 
 const Main = function Main() {
   const { user } = useContext(AppContext);
@@ -37,7 +38,8 @@ const Main = function Main() {
       setJobsAccepted(results.contractor_tasks);
     })
     .catch(err => console.error(err));
-    getContractors().then(setContractorList).catch(err => console.error(err));
+    getContractors().then((results) => {
+      setContractorList(results)}).catch(err => console.error(err));
     getJobs().then(setJobsAvailable).catch(err => console.error(err));
   }, [])
 
