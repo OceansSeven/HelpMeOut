@@ -3,7 +3,7 @@ import axios from 'axios';
 import JobCard from '../JobCard';
 import ListManager from '../ListManager.jsx';
 import AppContext from '../../hooks/context';
-import { getContractors, getUser } from '../../utils';
+import { getContractors, getUser, getJobs } from '../../utils';
 
 const Main = function Main() {
   const { userId } = useContext(AppContext);
@@ -15,24 +15,15 @@ const Main = function Main() {
   const [jobsAccepted, setJobsAccepted] = useState([]);
 
   //get jobs posted by user from API
-  //  store results in state?
-
   useEffect(() => {
     getUser(userId).then((results) => {
       setJobsPosted(results.client_tasks);
       setJobsAccepted(results.contractor_tasks);
-    });
-    getContractors().then(setContractorList);
-  }, [userId])
-
-  //get jobs accepted by user from API
-
-  //get contractors from API
-
-  //get jobs available from API
-  //    setJobsAvailable(results)
-
-
+    })
+    .catch(err => console.error(err));
+    getContractors().then(setContractorList).catch(err => console.error(err));
+    getJobs().then(setJobsAvailable).catch(err => console.error(err));
+  }, [])
 
   //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (

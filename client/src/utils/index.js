@@ -20,5 +20,5 @@ export async function getContractors () {
 }
 
 export async function getJobs () {
-  return (await axios.get('/jobs')).data;
+  return (await axios.get('/api/jobs')).data;
 }
