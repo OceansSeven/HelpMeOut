@@ -14,15 +14,15 @@ module.exports = {
           'client', (
             select json_build_object(
               'client_id', u.id,
-              'firstName', u.firstName,
-              'lastName', u.lastName
+              'firstname', u.firstname,
+              'lastname', u.lastname
             )
             from users u
             WHERE j.client_id = u.id
           )
         )
       ), '[]'::json) AS jobs
-    FROM jobsPosted j WHERE contractor_id = 0`;
+    FROM jobsposted j WHERE contractor_id = 0`;
     pool
       .query(sql)
       .then(({ rows }) => {
