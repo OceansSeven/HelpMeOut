@@ -26,9 +26,11 @@
     ],
     "contractor_tasks": [
       {
-        "client_id": "client id",
-        "client_firstName": "client first name",
-        "client_lastName": "client last name",
+        "client": {
+          "id": "client id",
+          "firstName": "client first name",
+          "lastName": "client last name"
+        },
         "title": "title of job",
         "description": "description of job",
         "specialties": ["specialty", "specialty", "specialty"],

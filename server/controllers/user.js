@@ -29,13 +29,27 @@ module.exports = {
               'lastName', lastName
             ) FROM users WHERE users.id = jobsPosted.contractor_id)
           ) FROM jobsPosted WHERE client_id = $1
-        ) AS client_tasks)
+        ) AS client_tasks),
+      (SELECT
+        array(
+          SELECT json_build_object(
+            'client', (SELECT json_build_object(
+              'id', id,
+              'firstName', firstName,
+              'lastName', lastName
+            ) FROM users WHERE users.id = jp.client_id),
+            'title', jp.title,
+            'description', jp.description,
+            'specialties', jp.specialties,
+            'date', jp.date,
+            'completed', jp.completed
+          ) FROM jobsPosted jp WHERE contractor_id = $1
+        ) AS contractor_tasks)
     FROM users WHERE id = $1`;
     const values = [user_id]
     pool.query(sql, values)
     .then (({rows}) => res.status(200).send(rows))
     .catch(err => res.status(400).send(err))
-
   },
 
   postUser: (req, res) => {
