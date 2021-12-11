@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import AppContext from '../hooks/context';
 
 function Copyright(props) {
   return (
@@ -30,14 +31,11 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const { setUserId } = React.useContext(AppContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
     axios({
       method: "POST",
       data: {
@@ -46,9 +44,8 @@ export default function SignIn() {
       },
       withCredentials: true,
       url: "http://localhost:3000/api/login",
-    }).then((res) => { 
-      console.log(res);
-      axios.get('api/logged-in-user').then(res => console.log('logged in user?: ', res)) 
+    }).then(({ data }) => { 
+      setUserId(Number(data.id))
     });
   };
 
