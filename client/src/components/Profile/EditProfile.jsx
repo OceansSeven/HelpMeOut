@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -10,10 +11,17 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/Add";
+
 import AppContext from "../../hooks/context.js";
 
 const EditProfile = () => {
   const user = useContext(AppContext);
+
+  const [myTools, setMyTools] = useState();
+  const [newTool, setNewTool] = useState();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(event.target);
@@ -26,6 +34,10 @@ const EditProfile = () => {
       cert: data.get("addCert"),
     });
   };
+
+  useEffect(() => {
+    setMyTools(user.tools);
+  }, []);
 
   if (!user?.contractor) {
     return (
@@ -133,13 +145,34 @@ const EditProfile = () => {
               label={user?.company}
               id="updateCompanyName"
             />
-            <TextField
-              fullWidth
-              id="addTool"
-              name="addTool"
-              label="Add a tool"
-              variant="filled"
-            />
+            <div>
+              Add a tool:
+              <TextField
+                id="addTool"
+                name="addTool"
+                label="Name of tool"
+                value={newTool}
+                variant="filled"
+                onChange={(e) => {
+                  setNewTool(e.target.value);
+                }}
+              />
+              <IconButton
+                aria-label="add"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const currentTools = myTools;
+                  setMyTools(currentTools.concat(newTool));
+                  setNewTool("");
+                }}
+              >
+                <AddIcon />
+              </IconButton>
+            </div>
+            My tools:
+            {myTools?.map((tool) => (
+              <h4>{tool}</h4>
+            ))}
             <TextField
               fullWidth
               id="addCert"
