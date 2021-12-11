@@ -51,6 +51,7 @@ CREATE TABLE jobsPosted (
  description VARCHAR,
  price_per_hour INTEGER,
  completed BOOLEAN,
+ contractor_id INTEGER,
  date DATE
 );
 
@@ -88,14 +89,14 @@ ALTER TABLE messages ADD CONSTRAINT messages_to_id_fkey FOREIGN KEY (to_id) REFE
 ALTER TABLE sessions ADD CONSTRAINT sessions_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
 
 
-INSERT INTO users (company, password, salt, firstName, lastName, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1.2, FALSE, ARRAY ['pipes']);
+INSERT INTO users (company, password, salt, firstName, lastName, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1.2, TRUE, ARRAY ['pipes']);
 INSERT INTO users (company, password, salt, firstName, lastName, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 5, FALSE, ARRAY ['potatoes']);
 INSERT INTO reviews (client_id, contractor_id, rating, body, date) VALUES (2, 1, 1.2, 'All my questions got punted to the end', '1980-01-01');
-INSERT INTO jobsPosted (client_id, title, specialties, description, completed, date) VALUES (2, 'Clean my potatoes', ARRAY ['pipes'], 'I need someone to come clean my potatoes', TRUE, '1980-01-02');
+INSERT INTO jobsPosted (client_id, title, specialties, description, completed, contractor_id, date) VALUES (2, 'Clean my potatoes', ARRAY ['pipes'], 'I need someone to come clean my potatoes', TRUE, 1, '1980-01-02');
 INSERT INTO jobsAccepted (contractor_id, jobPosted_id) VALUES (1, 1);
 INSERT INTO messages (from_id, to_id, body, date) VALUES (1, 2, 'I can clean ur potatoes', '1980-01-01');
 INSERT INTO messages (from_id, to_id, body, date) VALUES (2, 1, 'Please clean my potatoes', '1980-01-01');
 
 
 -- Command for executing this file into your local psql
--- psql -h localhost -d postgres -U [your username] -f ./schema.sql
+-- psql -h localhost -d postgres -U [your username] -f ./schema.SQL
