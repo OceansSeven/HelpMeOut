@@ -5,12 +5,9 @@ function ListManager({children, data, id}){
 
   return (
     <div className="list" id={id}>
-      {children.map((child) => {
-        data.map((obj, i) => {
-          //create new component of type child for each piece of data in set
-          React.cloneElement(child, { data: obj, key: i});
-        });
-      })};
+      {data.map((obj, i) => (
+        React.cloneElement(children, {data: obj, key: i})
+      ))}
     </div>
   );
 }
@@ -18,7 +15,7 @@ function ListManager({children, data, id}){
 export default ListManager;
 
 /*
-  <ListManager data={<array of objs>}>
+  <ListManager data={<array of objs>} id={<id for list>}>
     <Message />
   </ListManager>
 */
