@@ -46,21 +46,21 @@ const EditProfile = (user) => {
             noValidate
             sx={{ mt: 1 }}
           >
-            <h2 style={{ textAlign: "center" }}>
-              {user?.firstName} {user?.lastName}
-            </h2>
+            <h2 style={{ textAlign: "center" }}></h2>
+            Edit First Name:
             <TextField
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label="Edit First Name"
+              label={user?.firstName}
               name="firstName"
             />
+            Edit Last Name:
             <TextField
               margin="normal"
               fullWidth
               name="lastName"
-              label="Edit Last Name"
+              label={user?.lastName}
               id="updateLastName"
             />
             <FormControlLabel
@@ -106,14 +106,13 @@ const EditProfile = (user) => {
             noValidate
             sx={{ mt: 1 }}
           >
-            <h2 style={{ textAlign: "center" }}>
-              {user?.firstName} {user?.lastName}
-            </h2>
+            <h2 style={{ textAlign: "center" }}>{user?.company}</h2>
+            Edit First Name:
             <TextField
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label="Edit First Name"
+              label={user?.firstName}
               name="firstName"
             />
             <TextField
@@ -144,7 +143,6 @@ const EditProfile = (user) => {
               label="Add a certification"
               variant="filled"
             />
-
             <Button
               type="submit"
               fullWidth
