@@ -20,7 +20,6 @@ const Main = function Main() {
   const [searchFeedData, setSearchFeedData] = useState([]);
   const [searchFeedType, setSearchFeedType]  = useState('contractors')
 
-  const userBtns = (<div><button>Client</button> <button>Contractor</button></div>);
   const searchFeedButtons = (<div>
     <button onClick={() => { setSearchFeedData(contractorList); setSearchFeedType('contractors')}}>Contractors</button>
     <button onClick={() => { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs')}}>Jobs Available</button>
@@ -103,7 +102,7 @@ const Main = function Main() {
           {showClient ? clientFeed : contractorFeed}
         </div>
         <div style={{border: '1px solid black'}} className='searchList'>
-          <Search feed={searchFeedData} searchType={searchFeedType} />
+          {/* <Search feed={searchFeedData} searchType={searchFeedType} /> */}
           {user.contractor && searchFeedButtons}
           {searchFeedType === 'contractors'
             ? (<ListManager data={contractorList}>

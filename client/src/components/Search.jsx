@@ -5,7 +5,7 @@ function Search({ searchType, feed }) {
   const [keyword, setKeyword] = useState('');
   // const [selectedSpecialty, setSelectedSpecialty] = useState('');
   // const [sortBy, setSortBy] = useState('');
-  console.log('feed: ', feed);
+  // console.log('feed: ', feed);
 
   const handleKeywordSearch = (e) => {
     setKeyword(e.target.value);
@@ -20,7 +20,7 @@ function Search({ searchType, feed }) {
       : feed.filter(card => {
         if (keyword === '') {
           return card;
-        } else if (card.firstname.toLowerCase().container(keyword.lowerCase()) || card.lastname.toLowerCase().container(keyword.lowerCase())) {
+        } else if (card.firstname.toLowerCase().includes(keyword.toLowerCase()) || card.lastname.toLowerCase().includes(keyword.toLowerCase())) {
           return card;
         }
       })
@@ -30,7 +30,7 @@ function Search({ searchType, feed }) {
     const searchSpecialty = e.target.value;
     if (searchSpecialty === 'All') {return};
     feed = feed.filter(card => {
-      if (card.specialties.includes(searchSpecialty)) {
+      if (card.specialties.contains(searchSpecialty)) {
         return card;
       }
     })
