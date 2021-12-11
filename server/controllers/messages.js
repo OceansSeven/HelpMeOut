@@ -10,13 +10,12 @@ module.exports = {
       messages.from_id from_id,
       users.firstName from_firstName,
       users.lastName from_lastName,
-      users.firstName to_firstName,
-      users.lastName to_lastName,
       messages.body,
       messages.date
     FROM messages INNER JOIN users
     ON users.id = messages.from_id
-    WHERE (to_id = $1 AND from_id =$2) OR (from_id = $1 AND to_id = $2);`;
+    WHERE (to_id = $1 AND from_id =$2) OR (from_id = $1 AND to_id = $2)
+    ORDER BY messages.id ASC;`;
     const values = [userId, recipientId];
 
     pool.query(sql, values)

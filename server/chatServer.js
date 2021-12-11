@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
   socket.on('chat', ({room, fromId, toId, body, date}) => {
     console.log(`${date} - room: ${room}, msg: ${body}, user: ${fromId}`);
 
-    // emit a JSON object
+    // emit object
     io.to(room).emit('chat', {fromId, toId, body, date});
   })
 });

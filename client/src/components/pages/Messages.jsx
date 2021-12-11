@@ -1,17 +1,18 @@
 import React, {useContext, useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import AppContext from '../../hooks/context';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from '../../utils/socket-utils';
 import ListManager from '../ListManager';
 import Message from '../Message';
 
-
-const userId = Math.floor(Math.random() * 2) + 1;
-const recepient = userId === 1 ? 2 : 1;
-
 const Messages = function Messages() {
   // TODO - need to pull in user id from app context provider
-  // const {userId} = useContext(AppContext);
+  const { userId } = useContext(AppContext);
+  // get URL location
+  const location = useLocation();
+  // get recepient from URL path
+  const recepient = location.pathname.split('/').pop();
 
   // set chat room to be determined by the current logged in user and the recepient
   // chat room will allow one to one communication
@@ -27,9 +28,10 @@ const Messages = function Messages() {
     axios.get(`/api/messages/?user_id=${userId}&recepient_id=${recepient}`)
       .then(({data}) => {
         setChat([...data]);
+        scrollToBottomOfChat();
       })
       .catch(console.log)
-  }, [])
+  }, []);
 
   // useEffect to initate a socket, and subscribe to chat if room changes
   useEffect(() => {
@@ -50,6 +52,11 @@ const Messages = function Messages() {
     }
   }, [room]);
 
+  const scrollToBottomOfChat = () => {
+    const messageContainer = document.getElementById('messages');
+    messageContainer.scrollTo(0, messageContainer.scrollHeight);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -62,7 +69,7 @@ const Messages = function Messages() {
       body: message,
       date
     })
-      .then((response) => {console.log(response);})
+      .then(scrollToBottomOfChat)
       .catch(console.log)
   };
 
@@ -74,19 +81,14 @@ const Messages = function Messages() {
   return (
     <>
       <div>
-        <h1>{`Room: ${room}`}</h1>
+        <h1>{`Now talking with: ${recepient}`}</h1>
       </div>
       <div>{`Current user: ${userId}`}</div>
       {/* Chat box */}
       <div id="chat-client">
-        <ul id="messages">
-          {chat.map((m, i) => (
-            <Message key={i} msg={m} userId={userId}/>
-          ))}
-        </ul>
-        {/* <ListManager data>
+        <ListManager data={chat} id={'messages'}>
           <Message />
-        </ListManager> */}
+        </ListManager>
         <form id="form" onSubmit={(e) => {
             if (message !== '') {
               handleSubmit(e);

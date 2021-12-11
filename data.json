@@ -42,10 +42,9 @@
   "messages": [
     {
       "id": "message id",
+      "from_id": "user id of sender",
       "from_firstName": "first name of who its from",
       "from_lastName": "last name of who its from",
-      "to_firstName": "first name of who its to",
-      "to_lastName": "last name of who its to",
       "body": "message body",
       "date": "date of message sent"
     }

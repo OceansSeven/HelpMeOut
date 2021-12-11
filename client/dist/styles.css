@@ -32,16 +32,13 @@
 */
 #chat-client {
   margin: 0;
-  padding-bottom: 3rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  max-width: 70vw;
+  min-width: 200px;
+  border: 1px solid black;
 }
 #chat-client #form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
   height: 3rem;
   box-sizing: border-box;
@@ -67,16 +64,37 @@
   color: #fff;
 }
 #chat-client #messages {
-  list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
+  height: 70vh;
 }
-#chat-client #messages > li {
+#chat-client #messages > div {
   padding: 0.5rem 1rem;
 }
+#chat-client .message-container {
+  padding: 0.8em;
+  border-radius: 2em;
+  display: inline-block;
+  width: fit-content;
+  max-width: 70%;
+}
+.to .message-container{
+  background-color: #2746ce;
+  color: #fff;
+}
 #chat-client #messages .to {
-  background: #f00;
+  text-align: start;
+}
+.from .message-container{
+  background-color: #bbb;
 }
 #chat-client #messages .from {
-  background: #0f0;
+  text-align: end;
+}
+.message-contents {
+  overflow-wrap: break-word;
+}
+.message-time {
+  font-size: 0.8em;
 }
