@@ -4,17 +4,19 @@ import JobCard from '../JobCard';
 import ListManager from '../ListManager.jsx';
 import Contractors from '../Contractors.jsx';
 import AppContext from '../../hooks/context';
+import Search from '../Search.jsx';
 import { getContractors, getUser, getJobs } from '../../utils';
 
 const Main = function Main() {
   const { user } = useContext(AppContext);
-  console.log(user);
+  // console.log(user);
 
   //set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
   const [contractorList, setContractorList] = useState([]);
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
+  const [isContractor, setIsContractor] = useState(true);
 
   //get jobs posted by user from API
   useEffect(() => {
@@ -30,20 +32,21 @@ const Main = function Main() {
   //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <div>
-      <div className='userPosts'>
+      {/* <div className='userPosts'>
         <ListManager data={jobsPosted}>
           <JobCard />
         </ListManager>
         <ListManager data={jobsAccepted}>
           <JobCard />
         </ListManager>
-      </div>
+      </div> */}
       <div className='searchList'>
+        {/* <Search /> */}
         <ListManager data={contractorList}>
           <Contractors />
-        </ListManager>
-        <ListManager data={jobsAvailable}>
+          {/* {isContractor &&
           <JobCard />
+          } */}
         </ListManager>
       </div>
     </div>

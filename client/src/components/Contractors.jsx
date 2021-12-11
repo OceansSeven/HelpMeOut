@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-// import { Paper } from '@mui/material/core';
+import { Paper } from "@material-ui/core";
 import axios from 'axios';
 
 export default function Contractors({data}) {
@@ -10,24 +10,24 @@ export default function Contractors({data}) {
   //     console.log(response);
   //   })
   // }
+  console.log(data);
 
   return (
-    <div>Contractors</div>
-    // <Paper variant="contained">
-    //   <div>{data.firstName} {data.lastName}</div>
-    //   <div>{data.contractorSpecialties.map((specialty) => {
-    //     <span>{specialty}</span>
-    //   })}
-    //   </div>
-    //   <div>{data.certifications.map((certification) => {
-    //     <span>{certification}</span>
-    //   })}
-    //   </div>
-    //   <div>{data.tools.map((tool) => {
-    //     <span>{tool}</span>
-    //   })}
-    //   </div>
-    //   <div>{data.rating}</div>
-    // </Paper>
+    <Paper variant="contained">
+      <div>{data?.fist_name} {data.last_name}</div>
+      <div>{data?.specialties?.map((specialty) => {
+        <span>{specialty}</span>
+      })}
+      </div>
+      <div>{data?.certifications?.map((certification) => {
+        <span>{certification}</span>
+      })}
+      </div>
+      <div>{data?.tools?.map((tool) => {
+        <span>{tool}</span>
+      })}
+      </div>
+      <div>{data?.rating}</div>
+    </Paper>
   );
 }
