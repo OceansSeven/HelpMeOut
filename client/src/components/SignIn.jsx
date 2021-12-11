@@ -48,7 +48,7 @@ export default function SignIn() {
         password: password,
       },
       withCredentials: true,
-      url: "http://localhost:3000/api/login",
+      url: "http://localhost:3000/api/login"
     })
     .then(({ data }) => { 
       console.log('data: ', data);
@@ -116,7 +116,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-            <Grid container style={{justifyContent: 'center'}}>             
+            <Grid container style={{justifyContent: 'center'}}>
               <Grid item>
                 <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
