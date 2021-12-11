@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const specialities = [
+export const specialties = [
   'Appliance Repair', 'Carpentry', 'Electrical', 'HVAC', 'Landscaping', 'Mechanic', 'Plumbing', 'Snow/Waste Removal'
 ];
 
