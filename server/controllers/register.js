@@ -5,7 +5,6 @@ const passportLocal = require("passport-local").Strategy;
 
 module.exports = {
   registerUser: (req, res) => {
-    console.log('req.body: ', req.body)
     const { email, password, contractor, firstName, lastName, company } = req.body;
     pool.query(`SELECT * FROM users WHERE email = $1`, [email], async (err, results) => {
       if (err) throw err;

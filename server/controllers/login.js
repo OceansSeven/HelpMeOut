@@ -4,9 +4,7 @@ const passportLocal = require("passport-local").Strategy;
 
 module.exports = {
   authenticateUser: (req, res, next) => {
-    console.log('login req.body: ', req.body)
     passport.authenticate("local", (err, user, info) => {
-      console.log('login user: ', user)
       if (err) throw err;
       if (!user) res.send("No User Exists");
       else {
@@ -17,5 +15,9 @@ module.exports = {
         });
       }
     })(req, res, next);
+  },
+  getLoggedInUser: (req, res) => {
+    console.log('req.user: ', req.user);
+    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
   }
 };

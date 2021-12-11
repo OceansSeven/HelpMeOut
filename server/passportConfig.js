@@ -5,7 +5,6 @@ const pool = require('./db');
 module.exports = function (passport) {
   passport.use(
     new localStrategy((username, password, done) => {
-      console.log('username?: ', username)
       pool.query('select * from users where email = $1', [username], (err, data) => {
         var user = data.rows[0];
         if (err) throw err;
@@ -23,12 +22,10 @@ module.exports = function (passport) {
   );
 
   passport.serializeUser((user, cb) => {
-    console.log('user in serializeUser function in passportconfig: ', user);
     cb(null, user.id);
   });
 
   passport.deserializeUser((id, cb) => {
-    console.log('ID from deserializeUser in passport config: ', id)
     pool.query('SELECT * FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
       if(err) {
         console.error('Error when selecting user on session deserialize', err)

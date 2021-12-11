@@ -46,7 +46,10 @@ export default function SignIn() {
       },
       withCredentials: true,
       url: "http://localhost:3000/api/login",
-    }).then((res) => console.log(res));
+    }).then((res) => { 
+      console.log(res);
+      axios.get('api/logged-in-user').then(res => console.log('logged in user?: ', res)) 
+    });
   };
 
   return (
