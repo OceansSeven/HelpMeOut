@@ -34,14 +34,14 @@ CREATE TABLE reviews (
 
 ALTER TABLE reviews ADD CONSTRAINT reviews_pkey PRIMARY KEY (id);
 
-CREATE TABLE jobsAccepted (
- id BIGSERIAL,
- contractor_id INTEGER,
- jobPosted_id INTEGER
-);
+-- CREATE TABLE jobsAccepted (
+--  id BIGSERIAL,
+--  contractor_id INTEGER,
+--  jobPosted_id INTEGER
+-- );
 
 
-ALTER TABLE jobsAccepted ADD CONSTRAINT jobsAccepted_pkey PRIMARY KEY (id);
+-- ALTER TABLE jobsAccepted ADD CONSTRAINT jobsAccepted_pkey PRIMARY KEY (id);
 
 CREATE TABLE jobsPosted (
  id BIGSERIAL,

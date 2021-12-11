@@ -15,7 +15,6 @@
         "specialties": ["specialty", "specialty", "specialty"],
         "price_per_hour": "price per hour",
         "date": "date of posting",
-        "accepted": "boolean",
         "contractor": {
           "id": "contractor id",
           "firstName": "first name of contractor",

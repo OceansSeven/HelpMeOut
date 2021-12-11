@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const specialities = [
   'Appliance Repair', 'Carpentry', 'Electrical', 'HVAC', 'Landscaping', 'Mechanic', 'Plumbing', 'Snow/Waste Removal'
 ];
@@ -8,3 +10,15 @@ export const sortByCategories = [
   { display: 'Price: Low to High', sort: 'price_per_hour', compare: 'ascending'},
   { display: 'Price: High to Low', sort: 'price_per_hour', compare: 'descending'}
 ];
+
+export async function getUser (userId) {
+  return (await axios.get(`/api/user/${userId}`)).data;
+}
+
+export async function getContractors () {
+  return (await axios.get('/api/contractors')).data;
+}
+
+export async function getJobs () {
+  return (await axios.get('/jobs')).data;
+}
