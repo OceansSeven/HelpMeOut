@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import JobCard from '../JobCard';
-import ListManager from '../ListManager.jsx';
-import Contractors from '../Contractors.jsx';
+import JobAvailableCard from '../JobAvailableCard';
+import JobPostedCard from '../JobPostedCard';
+import ListManager from '../ListManager';
+import Contractors from '../Contractors';
 import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import { getContractors, getUser, getJobs } from '../../utils';
@@ -11,12 +12,23 @@ const Main = function Main() {
   const { user } = useContext(AppContext);
   // console.log(user);
 
+
   //set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
   const [contractorList, setContractorList] = useState([]);
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
-  const [isContractor, setIsContractor] = useState(true);
+  const [searchFeedData, setSearchFeedData] = useState([]);
+  const [contractorListClicked, setContractorListClicked] = useState(true);
+
+  //current userfeed -> defaults to client view
+  //current searchFeed ->
+
+  const userBtns = (<div><button>Client</button> <button>Contractor</button></div>);
+  const searchFeedButtons = (<div>
+    <button onClick={() => { setSearchFeedData(contractorList); setContractorListClicked(true)}}>Contractors</button>
+    <button onClick={() => { setSearchFeedData(jobsAvailable); setContractorListClicked(false)}}>Jobs Available</button>
+  </div>);
 
   //get jobs posted by user from API
   useEffect(() => {
@@ -32,19 +44,25 @@ const Main = function Main() {
   //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <div>
-      <div className='userPosts'>
+      <div style={{border: '1px solid black'}} className='userPosts'>
+        {user.contractor ? userBtns : null}
+        {/* currentfeed === false ? jobsPosted : jobs accepted */}
         <ListManager data={jobsPosted}>
-          <JobCard />
+          <JobPostedCard />
         </ListManager>
         <ListManager data={jobsAccepted}>
-          <JobCard />
+          <JobPostedCard />
         </ListManager>
       </div>
-      <div className='searchList'>
-        {/* <Search /> */}
-        <ListManager data={contractorList}>
-          <Contractors />
-        </ListManager>
+      <div style={{border: '1px solid black'}} className='searchList'>
+        {user.contractor && searchFeedButtons}
+        {contractorListClicked
+          ? <ListManager data={contractorList}>
+              <Contractors />
+            </ListManager>
+          : <ListManager data={jobsAvailable}>
+              <jobsAvailableCard />
+            </ListManager>}
       </div>
     </div>
   );

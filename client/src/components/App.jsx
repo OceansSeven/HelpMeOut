@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Landing from "./pages/Landing";
@@ -8,6 +8,7 @@ import Messages from "./pages/Messages";
 import ProfileView from "./Profile/ProfileView";
 import AppContext from "../hooks/context";
 import axios from "axios";
+import ErrorPage from "./pages/ErrorPage";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -16,10 +17,11 @@ const App = function App() {
   // right now the starting user will be 1 for testing purposes
   // ########################################
   const [user, setUser] = useState({
-    id: '2', 
-    company: 'potatoMan', 
+    id: '2',
+    company: 'potatoMan',
     firstname: 'Samwise',
     lastname: 'Gamgee',
+    contractor: true
   })
 
   useEffect(() => {
@@ -44,6 +46,7 @@ const App = function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
+          <Route path="/wrong" element={<ErrorPage />}/>
           <Route path="/profile" element={<ProfileView />} />
           {/* <Route path="/update" element={<EditProfile />} /> */}
         </Routes>
