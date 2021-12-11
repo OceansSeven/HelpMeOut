@@ -10,8 +10,6 @@ import { getContractors, getUser, getJobs } from '../../utils';
 
 const Main = function Main() {
   const { user } = useContext(AppContext);
-  // console.log(user);
-
 
   //set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
