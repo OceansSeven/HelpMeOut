@@ -10,14 +10,13 @@ module.exports = {
       else {
         req.logIn(user, (err) => {
           if (err) throw err;
-          res.send("Successfully Authenticated");
+          res.send(req.user);
           console.log(req.user);
         });
       }
     })(req, res, next);
   },
   getLoggedInUser: (req, res) => {
-    console.log('req.user: ', req.user);
     res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
   }
 };

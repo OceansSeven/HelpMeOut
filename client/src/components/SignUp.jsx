@@ -36,14 +36,6 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      contractor: checked, 
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName'),
-      company: data.get('company')
-    });
     axios({
       method: "POST",
       data: {

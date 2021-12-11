@@ -7,7 +7,7 @@ import Main from "./pages/Main";
 import Messages from "./pages/Messages";
 import ProfileView from "./Profile/ProfileView";
 import AppContext from "../hooks/context";
-import EditProfile from "./Profile/EditProfile";
+import axios from "axios";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -18,7 +18,12 @@ const App = function App() {
   const [userId, setUserId] = useState(1);
 
   useEffect(() => {
-    // axios call to get data
+    // axios call to get logged in user
+    axios.get("/api/logged-in-user").then(({ data }) => {
+      if (data) {
+        setUserId(Number(data.id));
+      }
+    });
   }, []);
 
   return (
