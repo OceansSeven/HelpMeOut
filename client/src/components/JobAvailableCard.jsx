@@ -5,9 +5,6 @@ import AppContext from "../hooks/context";
 function JobAvailableCard({data}) {
   const user = useContext(AppContext).user;
 
-  console.log(user);
-  console.log(data);
-
   return (
     <Paper>
       <p style={{fontSize:'12px'}}>{data?.date}</p>

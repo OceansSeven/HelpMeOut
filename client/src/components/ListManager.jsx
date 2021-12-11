@@ -2,6 +2,7 @@ import React from "react";
 
 function ListManager({children, data, id}){
   //data refers to an array of Objects containing necessary props for sub-component
+  // console.log(children);
 
   return (
     <div className="list" id={id}>

@@ -1,12 +1,9 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Paper } from "@material-ui/core";
 import AppContext from "../hooks/context";
 
 function JobPostedCard({data}) {
-  const user = useContext(AppContext).user;
-
-  console.log(user);
-  console.log(data);
+  const { user } = useContext(AppContext);
 
   return (
     <Paper>
