@@ -184,7 +184,7 @@ const EditProfile = () => {
               }}
             >
               {myTools?.map((tool) => (
-                <h4>{tool}</h4>
+                <li>{tool}</li>
               ))}
             </ul>
             Add a certification:
@@ -223,7 +223,7 @@ const EditProfile = () => {
               }}
             >
               {myCerts?.map((cert) => (
-                <h4>{cert}</h4>
+                <li>{cert}</li>
               ))}
             </ul>
             <Button

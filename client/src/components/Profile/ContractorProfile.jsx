@@ -4,7 +4,7 @@ import BuildIcon from "@material-ui/icons/Build";
 
 const ContractorProfile = ({ user }) => {
   return (
-    <Paper>
+    <Container style={{ display: "flex", justifyContent: "center" }}>
       <CardHeader></CardHeader>
       <div className="profileLeft">
         <BuildIcon />
@@ -32,7 +32,7 @@ const ContractorProfile = ({ user }) => {
           ))}
         </Card>
       </div>
-    </Paper>
+    </Container>
   );
 };
 

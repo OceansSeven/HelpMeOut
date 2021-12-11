@@ -15,6 +15,31 @@
 /*
   * * * * * * * * Profile/ edit profile * * * * * * * *
 */
+.profilePage {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.profileIcon {
+  font-size: 80px;
+  margin-top: 40px;
+}
+
+.profileLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 16px;
+}
+
+.profileRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 16px;
+}
 
 /************************* Toggle Client ****************************************
 /*
@@ -79,14 +104,14 @@
   width: fit-content;
   max-width: 70%;
 }
-.to .message-container{
+.to .message-container {
   background-color: #2746ce;
   color: #fff;
 }
 #chat-client #messages .to {
   text-align: start;
 }
-.from .message-container{
+.from .message-container {
   background-color: #bbb;
 }
 #chat-client #messages .from {
