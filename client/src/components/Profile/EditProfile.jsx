@@ -18,10 +18,10 @@ const EditProfile = (user) => {
     console.log({
       first: data.get("firstName"),
       last: data.get("lastName"),
+      setContractor: data.get("setContractor"),
       company: data.get("companyName"),
       tool: data.get("addTool"),
       cert: data.get("addCert"),
-      setContractor: data.get("setContractor"),
     });
   };
 
@@ -65,7 +65,11 @@ const EditProfile = (user) => {
             />
             <FormControlLabel
               control={
-                <Checkbox value={true} name="setContractor" color="primary" />
+                <Checkbox
+                  value="checked"
+                  name="setContractor"
+                  color="primary"
+                />
               }
               label="I would like to start helping out others!"
             />
