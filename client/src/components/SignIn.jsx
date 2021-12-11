@@ -14,7 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import AppContext from '../hooks/context';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -34,7 +34,7 @@ const theme = createTheme();
 export default function SignIn() {
   const { setUser } = React.useContext(AppContext);
   const [userExists, setUserExists] = React.useState(true);
-  const [toLanding, setToLanding] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,15 +55,14 @@ export default function SignIn() {
       if (data === 'No User Exists') {
         setUserExists(false);
       } else {
-        setToLanding(true);
+        setLoggedIn(true);
       }
-      //setUser(Number(data.id))
     });
   };
 
-  // if (toLanding) {
-  //   return (<Redirect to='/'/>)
-  // }
+  if (loggedIn) {
+    return (<Navigate to="/"/>)
+  }
 
   return (
     <ThemeProvider theme={theme}>
