@@ -13,17 +13,24 @@
         "title": "name of task",
         "description": "description",
         "specialties": ["specialty", "specialty", "specialty"],
+        "price_per_hour": "price per hour",
         "date": "date of posting",
         "accepted": "boolean",
-        "contractor": "name of contractor",
+        "contractor": {
+          "id": "contractor id",
+          "firstName": "first name of contractor",
+          "lastName": "lastName of contractor"
+        },
         "completed": "boolean"
       }
     ],
     "contractor_tasks": [
       {
-        "client_id": "client id",
-        "client_firstName": "client first name",
-        "client_lastName": "client last name",
+        "client": {
+          "id": "client id",
+          "firstName": "client first name",
+          "lastName": "client last name"
+        },
         "title": "title of job",
         "description": "description of job",
         "specialties": ["specialty", "specialty", "specialty"],
