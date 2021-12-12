@@ -9,7 +9,7 @@ module.exports = {
           'title', j.title,
           'specialties', j.specialties,
           'description', j.description,
-          'rate', j.price_per_hour,
+          'price_per_hour', j.price_per_hour,
           'date', j.date,
           'client', (
             select json_build_object(
