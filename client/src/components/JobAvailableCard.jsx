@@ -16,7 +16,7 @@ function JobAvailableCard({data}) {
   return (
     <Paper>
       <p style={{fontSize:'12px'}}>{data?.date}</p>
-      <h3 > {data?.title} ${data?.rate}/hr</h3>
+      <h3 > {data?.title} ${data?.price_per_hour}/hr</h3>
       <h5> {data?.client.firstname} {data?.client.lastname[0]}.</h5>
       <p>Category(s): {data?.specialties.map((category, i) => <span key={i}>{category}{i===data?.specialties?.length - 1 ? '' : ', '}</span>)}</p>
       <div>
