@@ -9,18 +9,18 @@ export default function Contractors({data}) {
       <div id="contractorname">{data.firstname} {data.lastname}</div>
       <div id="contractorcompany">{data.company}</div>
       <div id="contractorspecialties">{data.specialties ? data.specialties.map((specialty, i) =>
-        <span>{specialty}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
+        <span key={i}>{specialty}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
       )
     :null}
       </div>
       <div id="contractorcertifications">{data.certifications ? data.certifications.map((certification, i) =>
-        <span>{certification}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
+        <span key={i}>{certification}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
 
       )
       :null}
       </div>
       <div id="contractortools">{data.tools ? data.tools.map((tool, i) =>
-        <span>{tool}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
+        <span key={i}>{tool}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
       )
     :null}
       </div>

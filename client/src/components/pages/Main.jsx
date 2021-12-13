@@ -51,13 +51,13 @@ const Main = function Main() {
   const clientFeed = (
     <>
       <div>
-        <button onClick={handleButtonClick}>Jobs Posted</button>
-        <button onClick={handleButtonClick}>Jobs Completed</button>
+        <button onClick={handleButtonClick}>Job(s) Posted</button>
+        <button onClick={handleButtonClick}>Job(s) Completed</button>
       </div>
       <div>
         <ListManager data={
           showCompleted ? jobsPosted.filter(j => j.completed) : jobsPosted.filter(j => !j.completed)
-          }>
+        }>
           <JobPostedCard />
         </ListManager>
       </div>
@@ -66,12 +66,14 @@ const Main = function Main() {
   const contractorFeed = (
     <>
       <div>
-        <button onClick={handleButtonClick}>Jobs Accepted</button>
-        <button onClick={handleButtonClick}>Jobs Completed</button>
+        <button onClick={handleButtonClick}>Job(s) Accepted</button>
+        <button onClick={handleButtonClick}>Job(s) Completed</button>
       </div>
       <div>
-        <ListManager data={showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted}>
-          {showCompleted ? <JobAvailableCard /> : <JobPostedCard />}
+        <ListManager data={
+          showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
+        }>
+          <JobAvailableCard />
         </ListManager>
       </div>
     </>

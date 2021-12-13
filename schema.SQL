@@ -54,7 +54,7 @@ CREATE TABLE messages (
  from_id INTEGER,
  to_id INTEGER,
  body VARCHAR,
- date DATE
+ date TIMESTAMP WITH TIME ZONE
 );
 
 
@@ -99,3 +99,12 @@ INSERT INTO messages (from_id, to_id, body, date) VALUES (2, 1, 'Please clean my
 -- Command for executing this file into your local psql
 -- psql -h localhost -d postgres -U [your username] -f ./schema.SQL
 
+
+-- fake job posting data
+INSERT INTO jobsPosted (client_id, title, specialties, price_per_hour, description, completed, contractor_id, date) VALUES (1, 'posted by 1 not picked up', ARRAY ['pipes'], 50, 'posted by 1 not picked up and incomplete', FALSE, null, '1980-01-02');
+INSERT INTO jobsPosted (client_id, title, specialties, price_per_hour, description, completed, contractor_id, date) VALUES (1, 'posted by 1 picked up by 2', ARRAY ['pipes'], 50, 'posted by 1 picked up by 2', FALSE, 2, '1980-01-02');
+INSERT INTO jobsPosted (client_id, title, specialties, price_per_hour, description, completed, contractor_id, date) VALUES (1, 'posted by 1 complete by 2', ARRAY ['pipes'], 50, 'posted by 1 complete by 2', TRUE, 2, '1980-01-02');
+
+INSERT INTO jobsPosted (client_id, title, specialties, price_per_hour, description, completed, contractor_id, date) VALUES (2, 'posted by 2 not picked up', ARRAY ['pipes'], 50, 'posted by 2 not picked up and incomplete', FALSE, null, '1980-01-02');
+INSERT INTO jobsPosted (client_id, title, specialties, price_per_hour, description, completed, contractor_id, date) VALUES (2, 'posted by 2 picked up by 1', ARRAY ['pipes'], 50, 'posted by 2 picked up by 1', FALSE, 1, '1980-01-02');
+INSERT INTO jobsPosted (client_id, title, specialties, price_per_hour, description, completed, contractor_id, date) VALUES (2, 'posted by 2 complete by 1', ARRAY ['pipes'], 50, 'posted by 2 complete by 1', TRUE, 1, '1980-01-02');
