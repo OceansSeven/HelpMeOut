@@ -8,10 +8,10 @@ const ContractorProfile = ({ user }) => {
       <CardHeader></CardHeader>
       <div className="profileLeft">
         <BuildIcon />
-        <div>{user.rating}</div>
+        <div>{user?.rating}</div>
         <Card>
           Tools:
-          {user?.tools.map((tool) => (
+          {user?.tools?.map((tool) => (
             <Card>{tool}</Card>
           ))}
         </Card>
@@ -19,15 +19,18 @@ const ContractorProfile = ({ user }) => {
       </div>
       <div className="profileRight">
         <h2>{user?.company}</h2>
+        <h4>
+          {user?.firstname} {user?.lastname}
+        </h4>
         <ul className="specialties">
-          {user.specialties?.map((specialty) => (
+          {user?.specialties?.map((specialty) => (
             <li>{specialty}</li>
           ))}
         </ul>
         <Button variant="outlined">Message Me</Button>
         <Card>
           Certifications:
-          {user.certifications?.map((cert) => (
+          {user?.certifications?.map((cert) => (
             <Card>{cert}</Card>
           ))}
         </Card>

@@ -39,7 +39,7 @@ const MyProfile = ({ user }) => {
         <Paper elevation="3" className="profilePage">
           <div className="profileLeft">
             <BuildIcon className="profileIcon" />
-            <div>{user.rating}</div>
+            <div>{user?.rating}</div>
             <Card>
               Tools:
               <Link href="/update">
@@ -47,7 +47,7 @@ const MyProfile = ({ user }) => {
               </Link>{" "}
               <Card>
                 <ul>
-                  {user.tools.map((tool) => (
+                  {user?.tools?.map((tool) => (
                     <li>{tool}</li>
                   ))}
                 </ul>
@@ -62,7 +62,7 @@ const MyProfile = ({ user }) => {
             <h2>{user.company}</h2>
             <h5>{user.firstname + " " + user.lastname}</h5>
             <ul className="specialties">
-              {user.specialties?.map((specialty) => (
+              {user?.specialties?.map((specialty) => (
                 <li>{specialty}</li>
               ))}
             </ul>
@@ -73,7 +73,7 @@ const MyProfile = ({ user }) => {
               </Link>{" "}
               <Card>
                 <ul>
-                  {user.certifications.map((cert) => (
+                  {user?.certifications?.map((cert) => (
                     <li>{cert}</li>
                   ))}
                 </ul>

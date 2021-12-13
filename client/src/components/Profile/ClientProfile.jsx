@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 
 import PersonIcon from "@material-ui/icons/Person";
-// * * * * in line styling just so i dont throw up while working on functionality... * * * *
 const ClientProfile = ({ user }) => {
   return (
     <Paper className="profilePage">

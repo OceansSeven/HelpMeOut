@@ -38,11 +38,11 @@ const EditProfile = () => {
   };
 
   useEffect(() => {
-    setMyTools(user.tools);
-    setMyCerts(user.certifications);
+    setMyTools(user.user.tools);
+    setMyCerts(user.user.certifications);
   }, []);
 
-  if (!user?.contractor) {
+  if (!user?.user.contractor) {
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -69,7 +69,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.lastname}
+              label={user?.user.firstname}
               name="firstName"
             />
             Edit Last Name:
@@ -77,7 +77,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.lastname}
+              label={user?.user.lastname}
               id="updateLastName"
             />
             <FormControlLabel
@@ -123,13 +123,13 @@ const EditProfile = () => {
             noValidate
             sx={{ mt: 1 }}
           >
-            <h2 style={{ textAlign: "center" }}>{user?.company}</h2>
+            <h2 style={{ textAlign: "center" }}>{user?.user.company}</h2>
             Edit First Name:
             <TextField
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.firstname}
+              label={user?.user.firstname}
               name="firstName"
             />
             Edit Last Name:
@@ -137,7 +137,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.lastname}
+              label={user?.user.lastname}
               id="updateLastName"
             />
             Edit Company Name:
@@ -145,7 +145,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               name="companyName"
-              label={user?.company}
+              label={user?.user.company}
               id="updateCompanyName"
             />
             Add a tool:
