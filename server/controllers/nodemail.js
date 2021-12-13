@@ -11,10 +11,10 @@ const transporter = nodemailer.createTransport({
 
 module.exports = {
 sendMail: (req, res) => {
-  const {to, subject, text } = req.body;
+  const { subject, text, email } = req.body;
   const mailData = {
       from: process.env.USER_LOGIN,
-      to: '',
+      to: email,
       subject: 'Account-Confirmaton (Do-Not-Reply)',
       text: text,
       attachments: [
