@@ -46,14 +46,6 @@ const App = function App() {
         // user id available to the whole app
         user,
         setUser,
-        // id: 3,
-        // firstname: "Derek",
-        // lastname: "Mason",
-        // company: "Derek Inc.",
-        // specialties: ["Carpentry", "Snow/Waste removal"],
-        // tools: ["one tool", "two tool"],
-        // certifications: ["red cert", "blue cert"],
-        // contractor: true,
       }}
     >
       <Router>
@@ -63,7 +55,7 @@ const App = function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
-          <Route path="/profile" element={<ProfileView />} />
+          <Route path="/profile/:userID" element={<ProfileView />} />
           <Route path="/update" element={<EditProfile />} />
           <Route path="/leaveAReview" element={<LeaveAReview />} />
           <Route path="/*" element={<ErrorPage />} />

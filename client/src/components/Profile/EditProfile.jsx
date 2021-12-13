@@ -19,27 +19,27 @@ import AppContext from "../../hooks/context.js";
 const EditProfile = () => {
   const user = useContext(AppContext);
 
-  const [myTools, setMyTools] = useState();
+  const [myTools, setMyTools] = useState([]);
   const [newTool, setNewTool] = useState("");
-  const [myCerts, setMyCerts] = useState();
+  const [myCerts, setMyCerts] = useState([]);
   const [newCert, setNewCert] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(event.target);
     console.log({
-      first: data.get("firstName"),
-      last: data.get("lastName"),
-      setContractor: data.get("setContractor"),
-      company: data.get("companyName"),
+      first: data.get("firstName") || user.user.firstname,
+      last: data.get("lastName") || user.user.lastname,
+      setContractor: data.get("setContractor") || user.user.contractor,
+      company: data.get("companyName") || user.user.company,
       tools: myTools,
       certs: myCerts,
     });
   };
 
   useEffect(() => {
-    setMyTools(user.user.tools);
-    setMyCerts(user.user.certifications);
+    setMyTools(user.user.tools || []);
+    setMyCerts(user.user.certifications || []);
   }, []);
 
   if (!user?.user.contractor) {
