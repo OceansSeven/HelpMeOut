@@ -1,10 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import BuildIcon from "@material-ui/icons/Build";
 import Link from "@mui/material/Link";
 
-const MyProfile = ({ user }) => {
+import AppContext from "../../hooks/context.js";
+
+const MyProfile = () => {
+  const { user } = useContext(AppContext);
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    if (!currentUser) {
+      setCurrentUser(user);
+    }
+  }, [currentUser]);
+
   if (!user?.contractor) {
     return (
       <Container maxWidth="xs">
@@ -36,7 +47,7 @@ const MyProfile = ({ user }) => {
     return (
       <Container maxWidth="xs">
         <CardHeader style={{ background: "#1d2d44" }}></CardHeader>
-        <Paper elevation="3" className="profilePage">
+        <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
             <BuildIcon className="profileIcon" />
             <div>{user?.rating}</div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -27,20 +28,29 @@ const EditProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(event.target);
-    console.log({
-      first: data.get("firstName") || user.user.firstname,
-      last: data.get("lastName") || user.user.lastname,
-      setContractor: data.get("setContractor") || user.user.contractor,
-      company: data.get("companyName") || user.user.company,
-      tools: myTools,
-      certs: myCerts,
-    });
+
+    axios({
+      method: "PUT",
+      data: {
+        first: data.get("firstName") || user.user.firstname,
+        last: data.get("lastName") || user.user.lastname,
+        setContractor: data.get("setContractor") || user.user.contractor,
+        company: data.get("companyName") || user.user.company,
+        tools: myTools,
+        certs: myCerts,
+        userId: Number(user.user.id),
+      },
+      withCredentials: true,
+      url: "http://localhost:3000/api/user",
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
     setMyTools(user.user.tools || []);
     setMyCerts(user.user.certifications || []);
-  }, []);
+  }, [user.user]);
 
   if (!user?.user.contractor) {
     return (

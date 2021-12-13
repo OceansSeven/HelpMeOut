@@ -10,7 +10,7 @@ import AppContext from "../../hooks/context.js";
 
 const ProfileView = () => {
   const currentUser = useContext(AppContext);
-  const [isContractor, setIsContractor] = useState();
+  const [isContractor, setIsContractor] = useState(false);
   const [target, setTarget] = useState();
 
   const location = useLocation();
@@ -20,11 +20,13 @@ const ProfileView = () => {
   const getTargetUser = (id) => {};
 
   useEffect(() => {
-    setIsContractor(currentUser.user.contractor);
     if (!target) {
       fetch(`/api/user/${targetProfileId}`)
         .then((res) => res.json())
-        .then((data) => setTarget(data));
+        .then((data) => {
+          setTarget(data);
+          setIsContractor(data.contractor);
+        });
     }
     console.log(target);
   }, [target]);

@@ -1,4 +1,4 @@
-const pool = require('../db');
+const pool = require("../db");
 
 module.exports = {
   getUser: (req, res) => {
@@ -55,5 +55,30 @@ module.exports = {
 
   postUser: (req, res) => {},
 
-  editUser: (req, res) => {},
+  editUser: (req, res) => {
+    const {
+      firstname,
+      lastname,
+      contractor,
+      company,
+      tools,
+      certifications,
+      userId,
+    } = req.body;
+    pool
+      .query(
+        `UPDATE users SET firstname = $1, lastname = $2, contractor = $3, company = $4, tools = $5, certifications = $6 WHERE id = $7`,
+        [
+          firstname,
+          lastname,
+          contractor,
+          company,
+          tools,
+          certifications,
+          userId,
+        ]
+      )
+      .then((data) => res.status(201).send(data))
+      .catch((err) => res.status(400).send(err));
+  },
 };
