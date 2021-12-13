@@ -79,7 +79,7 @@ ALTER TABLE messages ADD CONSTRAINT messages_to_id_fkey FOREIGN KEY (to_id) REFE
 ALTER TABLE sessions ADD CONSTRAINT sessions_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
 
 
-INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1.2, TRUE, ARRAY ['pipes']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1, TRUE, ARRAY ['pipes']);
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 5, FALSE, ARRAY ['potatoes']);
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('silkWorm', 'password', '1234', 'Ron', 'Jones', 'smooth@hotmail.com', 5, TRUE, ARRAY ['Plumbing']);
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('Rockies', 'password', '1234', 'Elvin', 'Sims', 'rockbottom@hotmail.com', 5, TRUE, ARRAY ['Electrical']);

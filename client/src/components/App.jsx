@@ -31,6 +31,16 @@ const App = function App() {
     lastname: "Gamgee",
     contractor: true,
   });
+  const [reviewJob, setReviewJob] = useState({
+    task_id: 12,
+    title: 'posted by 2 complete by 1',
+    specialties: ['pipes'],
+    description: 'posted by 2 complete by 1',
+    price_per_hour: 50,
+    date: '1980-01-02',
+    completed: true,
+    contractor: {id: 1, firstname: 'Josh', lastname: 'Elder'},
+    });
 
   useEffect(() => {
     // axios call to get logged in user
@@ -45,7 +55,9 @@ const App = function App() {
     <AppContext.Provider value={{
       // user id available to the whole app
       user,
-      setUser
+      setUser,
+      reviewJob,
+      setReviewJob,
     }}>
       <Router>
       {user ? <AppBar /> : ''}
