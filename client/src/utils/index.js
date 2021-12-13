@@ -40,3 +40,11 @@ export function filterByKeyword(feed, keyword) {
 
   return feed.filter(filterFunc)
 }
+
+export function filterBySpecialty(feed, specialty) {
+  return feed.filter(card => {
+    if (card.specialties.includes(specialty)) {
+      return card;
+    }
+  })
+}
