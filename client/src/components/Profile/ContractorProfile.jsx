@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import BuildIcon from "@material-ui/icons/Build";
+import StarRatings from "../StarRatings.jsx";
 
 const ContractorProfile = ({ user }) => {
   return (
@@ -8,7 +9,7 @@ const ContractorProfile = ({ user }) => {
       <CardHeader></CardHeader>
       <div className="profileLeft">
         <BuildIcon style={{ fontSize: "72px" }} />
-        <div>{user?.rating}</div>
+        <StarRatings rating={Number(user?.rating)} />
         <Card>
           Tools:
           {user?.tools?.map((tool) => (
