@@ -24,7 +24,7 @@ function JobAvailableCard({data}) {
       </div>
       <div>
         <button style={{float:'right'}} onClick={acceptJob}>Accept</button>
-        <Link to={`/messages/${data.client.client_id}`}>
+        <Link to={`/profile/${data.client.client_id}`}>
           <button style={{float:'right'}}>Contact</button>
         </Link>
       </div>
