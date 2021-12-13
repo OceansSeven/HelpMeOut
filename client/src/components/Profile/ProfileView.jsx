@@ -16,17 +16,19 @@ const ProfileView = () => {
   const location = useLocation();
 
   const targetProfileId = location.pathname.split("/").pop();
-  console.log(targetProfileId);
 
   const getTargetUser = (id) => {};
 
   useEffect(() => {
     setIsContractor(currentUser.user.contractor);
     if (!target) {
-      setTarget(currentUser.user);
+      fetch(`/api/user/${targetProfileId}`)
+        .then((res) => res.json())
+        .then((data) => setTarget(data));
     }
     console.log(target);
   }, [target]);
+
   if (!target) {
     return <div>Loading....</div>;
   }

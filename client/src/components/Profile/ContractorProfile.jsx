@@ -12,7 +12,7 @@ const ContractorProfile = ({ user }) => {
         <Card>
           Tools:
           {user?.tools?.map((tool) => (
-            <Card>{tool}</Card>
+            <Card key={Math.random()}>{tool}</Card>
           ))}
         </Card>
         <div>Member since 12-2021</div>
@@ -24,14 +24,14 @@ const ContractorProfile = ({ user }) => {
         </h4>
         <ul className="specialties">
           {user?.specialties?.map((specialty) => (
-            <li>{specialty}</li>
+            <li key={Math.random()}>{specialty}</li>
           ))}
         </ul>
         <Button variant="outlined">Message Me</Button>
         <Card>
           Certifications:
           {user?.certifications?.map((cert) => (
-            <Card>{cert}</Card>
+            <Card key={Math.random()}>{cert}</Card>
           ))}
         </Card>
       </div>

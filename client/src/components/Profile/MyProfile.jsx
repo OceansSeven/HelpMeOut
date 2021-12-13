@@ -9,7 +9,7 @@ const MyProfile = ({ user }) => {
     return (
       <Container maxWidth="xs">
         <CardHeader style={{ background: "#3d3d3d" }}></CardHeader>
-        <Paper elevation="3" className="profilePage">
+        <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
             <PersonIcon fontSize="large" />
             <div>Member since 12-2021</div>
@@ -48,7 +48,7 @@ const MyProfile = ({ user }) => {
               <Card>
                 <ul>
                   {user?.tools?.map((tool) => (
-                    <li>{tool}</li>
+                    <li key={Math.random()}>{tool}</li>
                   ))}
                 </ul>
               </Card>
@@ -63,7 +63,7 @@ const MyProfile = ({ user }) => {
             <h5>{user.firstname + " " + user.lastname}</h5>
             <ul className="specialties">
               {user?.specialties?.map((specialty) => (
-                <li>{specialty}</li>
+                <li key={Math.random()}>{specialty}</li>
               ))}
             </ul>
             <Card>
@@ -74,7 +74,7 @@ const MyProfile = ({ user }) => {
               <Card>
                 <ul>
                   {user?.certifications?.map((cert) => (
-                    <li>{cert}</li>
+                    <li key={Math.random()}>{cert}</li>
                   ))}
                 </ul>
               </Card>
