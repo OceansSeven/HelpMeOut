@@ -2,6 +2,8 @@
   box-sizing: border-box;
   margin: 0;
   font-family: Roboto, sans-serif;
+  width: 100vw;
+  height: 100vh;
 }
 li {
   list-style: none;
@@ -9,6 +11,82 @@ li {
 /*
   * * * * * * * * Landing Page * * * * * * * *
 */
+
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* App Bar Styles */
+#background-appbar {
+  background: rgb(13, 19, 33);
+  background: linear-gradient(
+    163deg,
+    rgba(13, 19, 33, 1) 0%,
+    rgba(116, 139, 171, 1) 43%,
+    rgba(240, 235, 216, 1) 79%
+  );
+  background-size: cover;
+}
+
+.account-icon {
+  color: black;
+  font-weight: bolder;
+  height: 60px;
+  width: 60px;
+}
+
+/* Landing Page */
+.landing-page {
+  /* position: absolute; */
+  height: 100vh;
+  width: 100vw;
+  background: rgb(13, 19, 33);
+  background: linear-gradient(
+    163deg,
+    rgba(13, 19, 33, 1) 0%,
+    rgba(116, 140, 171, 1) 43%,
+    rgba(240, 235, 216, 1) 79%
+  );
+  background-size: cover;
+}
+
+.logo-landing-contain {
+  position: relative;
+  display: grid;
+  justify-content: center;
+}
+
+.landing-logo {
+  margin-top: 100px;
+  width: 900px;
+  height: auto;
+}
+
+.about-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.landing-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+/* .btn-xl {
+  padding: 1.25rem 2.5rem;
+} */
+
+.btn-primary {
+  color: #fff;
+  background-color: cornflowerblue;
+  border-color: royalblue;
+  display: inline;
+  width: 140px;
+  height: 69px;
+}
 
 /*
   * * * * * * * * Registration Page * * * * * * * *

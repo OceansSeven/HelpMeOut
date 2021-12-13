@@ -8,7 +8,7 @@ import Message from '../Message';
 
 const Messages = function Messages() {
   // TODO - need to pull in user id from app context provider
-  const { userId } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   // get URL location
   const location = useLocation();
   // get recepient from URL path
@@ -16,7 +16,7 @@ const Messages = function Messages() {
 
   // set chat room to be determined by the current logged in user and the recepient
   // chat room will allow one to one communication
-  const [room, setRoom] = useState(`${Math.max(userId, recepient)}-${Math.min(userId, recepient)}`);
+  const [room, setRoom] = useState(`${Math.max(user.id, recepient)}-${Math.min(user.id, recepient)}`);
 
   // message is the current text input
   const [message, setMessage] = useState('');
@@ -25,7 +25,7 @@ const Messages = function Messages() {
 
   // useEffect to get data from DB
   useEffect(() => {
-    axios.get(`/api/messages/?user_id=${userId}&recepient_id=${recepient}`)
+    axios.get(`/api/messages/?user_id=${user.id}&recepient_id=${recepient}`)
       .then(({data}) => {
         setChat([...data]);
         scrollToBottomOfChat();
@@ -36,7 +36,7 @@ const Messages = function Messages() {
   // useEffect to initate a socket, and subscribe to chat if room changes
   useEffect(() => {
     if (room) {
-      initiateSocket(room, userId);
+      initiateSocket(room, user.id);
     }
 
     subscribeToChat((err, data) => {
@@ -61,10 +61,10 @@ const Messages = function Messages() {
     e.preventDefault();
 
     const date = new Date();
-    sendMessage(room, userId, recepient, message, date);
+    sendMessage(room, user.id, recepient, message, date);
     setMessage('');
     await axios.post(`/api/messages`, {
-      from: userId,
+      from: user.id,
       to: recepient,
       body: message,
       date
@@ -83,7 +83,7 @@ const Messages = function Messages() {
       <div>
         <h1>{`Now talking with: ${recepient}`}</h1>
       </div>
-      <div>{`Current user: ${userId}`}</div>
+      <div>{`Current user: ${user.id}`}</div>
       {/* Chat box */}
       <div id="chat-client">
         <ListManager data={chat} id={'messages'}>

@@ -1,5 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Landing from "./pages/Landing";
@@ -9,6 +14,8 @@ import ProfileView from "./Profile/ProfileView";
 import EditProfile from "./Profile/EditProfile";
 import AppContext from "../hooks/context";
 import axios from "axios";
+import ErrorPage from "./pages/ErrorPage";
+import LeaveAReview from "./LeaveAReview";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -21,6 +28,7 @@ const App = function App() {
     company: "potatoMan",
     firstname: "Samwise",
     lastname: "Gamgee",
+    contractor: true,
   });
 
   useEffect(() => {
@@ -56,7 +64,9 @@ const App = function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
           <Route path="/profile" element={<ProfileView />} />
-          <Route path="/update" element={<EditProfile />} />
+          {/* <Route path="/update" element={<EditProfile />} /> */}
+          <Route path="/leaveAReview" element={<LeaveAReview />} />
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </AppContext.Provider>
