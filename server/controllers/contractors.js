@@ -3,7 +3,7 @@ const pool = require('../db');
 module.exports = {
   getContractors: (req, res) => {
 
-    pool.query(`select
+    pool.query(`SELECT
      id,
      company,
      firstName,
@@ -13,7 +13,7 @@ module.exports = {
      specialties,
      certifications,
      tools
-     from users where contractor = true`)
+     FROM users WHERE contractor = true ORDER BY rating DESC NULLS LAST`)
     .then((results) => {
       res.send(results.rows);
     })
