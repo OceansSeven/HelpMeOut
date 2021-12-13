@@ -20,3 +20,47 @@ export async function getContractors () {
 export async function getJobs () {
   return (await axios.get('/api/jobs')).data;
 }
+
+export function filterByKeyword(feed, keyword) {
+  const filterFunc = (obj) => {
+    if (keyword === '') return obj;
+    for (let prop in obj) {
+      if (Array.isArray(obj[prop])) {
+        for (let i = 0; i < obj[prop].length; i++) {
+          if (obj[prop][i].toString().toLowerCase().includes(keyword.toLowerCase())) return obj;
+        }
+      } else if (typeof obj[prop] === 'object') {
+        const nestedObj = obj[prop];
+        for (let nestedProp in nestedObj) {
+          if (nestedObj[nestedProp].toString().toLowerCase().includes(keyword.toLowerCase())) return obj;
+        }
+      } else if (obj[prop].toString().toLowerCase().includes(keyword.toLowerCase())) return obj;
+    }
+  }
+
+  return feed.filter(filterFunc)
+}
+
+export function filterBySpecialty(feed, specialty) {
+  return feed.filter(card => {
+    if (card.specialties?.includes(specialty)) {
+      return card;
+    }
+  })
+}
+
+export function sortBy(feed, sort, compare) {
+  let sorted = feed;
+
+  if (sort === 'price_per_hour') {
+    sorted = feed.sort((a, b) => {
+      return a[sort] - b[sort];
+    });
+  } else if (sort === 'date') {
+    sorted = feed.sort((a, b) => {
+      return new Date(b[sort]) - new Date(a[sort]);
+    })
+  }
+
+  return compare === 'ascending' ? sorted : sorted.reverse();
+}
