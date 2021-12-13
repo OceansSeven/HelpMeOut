@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon server/index.js",
+    "startChat": "nodemon server/chatServer.js",
     "build": "webpack --config ./webpack.config.js -w",
     "test": "jest"
   },

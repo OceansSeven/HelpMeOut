@@ -10,7 +10,7 @@ import AppContext from "../hooks/context";
 import axios from "axios";
 import ErrorPage from "./pages/ErrorPage";
 import LeaveAReview from "./LeaveAReview";
-
+import AppBar from "./AppBar";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -42,6 +42,7 @@ const App = function App() {
       user,
       setUser
     }}>
+      {user ? <AppBar /> : ''}
       <Router>
         <Routes>
           <Route exact path="/" element={<Landing />} />
