@@ -2,15 +2,19 @@ import React, {useContext, useState} from "react";
 import { Paper } from "@material-ui/core";
 import AppContext from "../hooks/context";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 function JobAvailableCard({data}) {
   const user = useContext(AppContext).user;
 
   // console.log(user);
-  // console.log(data);
+  console.log('data', data);
 
-  function acceptJob() {
+  async function acceptJob() {
+    await axios.put('/api/jobs', {contractor_id: user.id, id: data.id})
+    .then(result => console.log('success'))
+    .catch(err => console.log(err));
   }
 
   return (
