@@ -62,7 +62,7 @@ const App = function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
-          <Route path="/job" element={<Job />} />
+          <Route path="/job" element={<Job/>} />
           <Route path="/job/:edit/:id" element={<Job />} />
           <Route path="/profile/:userID" element={<ProfileView />} />
           <Route path="/profile" element={<MyProfile />} />
