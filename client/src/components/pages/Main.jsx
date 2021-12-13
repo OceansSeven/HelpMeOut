@@ -104,7 +104,6 @@ const Main = function Main() {
     getJobs().then(setJobsAvailable).catch(err => console.error(err));
   }, [])
 
-  //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <MainContext.Provider value={{
       jobsPosted,

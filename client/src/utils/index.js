@@ -43,7 +43,7 @@ export function filterByKeyword(feed, keyword) {
 
 export function filterBySpecialty(feed, specialty) {
   return feed.filter(card => {
-    if (card.specialties.includes(specialty)) {
+    if (card.specialties?.includes(specialty)) {
       return card;
     }
   })
