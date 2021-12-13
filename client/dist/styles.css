@@ -17,6 +17,10 @@ html {
   padding: 0px;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 /* App Bar Styles */
 #background-appbar {
   background: rgb(13, 19, 33);
@@ -55,11 +59,14 @@ html {
   position: relative;
   display: grid;
   justify-content: center;
+  margin: auto;
+  max-width: 900px;
+  width: 100%;
 }
 
 .landing-logo {
   margin-top: 100px;
-  width: 900px;
+  width: 100%;
   height: auto;
 }
 
