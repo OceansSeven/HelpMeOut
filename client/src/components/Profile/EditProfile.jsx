@@ -32,12 +32,12 @@ const EditProfile = () => {
     axios({
       method: "PUT",
       data: {
-        first: data.get("firstName") || user.user.firstname,
-        last: data.get("lastName") || user.user.lastname,
-        setContractor: data.get("setContractor") || user.user.contractor,
+        firstname: data.get("firstName") || user.user.firstname,
+        lastname: data.get("lastName") || user.user.lastname,
+        contractor: data.get("setContractor") || user.user.contractor,
         company: data.get("companyName") || user.user.company,
         tools: myTools,
-        certs: myCerts,
+        certifications: myCerts,
         userId: Number(user.user.id),
       },
       withCredentials: true,
@@ -45,6 +45,16 @@ const EditProfile = () => {
     })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+
+    // console.log({
+    //   first: data.get("firstName") || user.user.firstname,
+    //   last: data.get("lastName") || user.user.lastname,
+    //   setContractor: data.get("setContractor") || user.user.contractor,
+    //   company: data.get("companyName") || user.user.company,
+    //   tools: myTools,
+    //   certs: myCerts,
+    //   userId: Number(user.user.id),
+    // });
   };
 
   useEffect(() => {
