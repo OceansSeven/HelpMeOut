@@ -47,21 +47,22 @@ const App = function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{
-      // user id available to the whole app
-      user,
-      setUser
-    }}>
+    <AppContext.Provider
+      value={{
+        // user id available to the whole app
+        user,
+        setUser,
+      }}
+    >
       <Router>
-      {user ? <AppBar /> : ''}
+        {user ? <AppBar /> : ""}
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
-          <Route path="/profile" element={<ProfileView />} />
-          <Route path="/job" element={<Job/>} />
+          <Route path="/job" element={<Job />} />
           <Route path="/job/:edit/:id" element={<Job />} />
           <Route path="/profile/:userID" element={<ProfileView />} />
           <Route path="/profile" element={<MyProfile />} />
