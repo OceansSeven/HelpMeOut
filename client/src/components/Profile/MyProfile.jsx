@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
-import PersonIcon from "@material-ui/icons/Person";
-import BuildIcon from "@material-ui/icons/Build";
+import MoodIcon from "@material-ui/icons/Mood";
 import Link from "@mui/material/Link";
 
 import AppContext from "../../hooks/context.js";
@@ -20,7 +19,7 @@ const MyProfile = () => {
         <CardHeader style={{ background: "#3d3d3d" }}></CardHeader>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
-            <PersonIcon fontSize="large" />
+            <MoodIcon style={{ fontSize: "72px" }} />
             <div>Member since 12-2021</div>
           </div>
           <div
@@ -47,7 +46,7 @@ const MyProfile = () => {
         <CardHeader style={{ background: "#1d2d44" }}></CardHeader>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
-            <BuildIcon className="profileIcon" />
+            <MoodIcon style={{ fontSize: "72px" }} />
             <div>{currentUser?.rating}</div>
             <Card>
               Tools:
