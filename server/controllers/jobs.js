@@ -32,14 +32,12 @@ module.exports = {
       .catch((err) => console.log);
   },
 
-  editJob: (req, res) => {},
-
   postJobs: (req, res) => {
     let { client_id, title, description, specialties, date, price_per_hour } =
       req.body;
     const sArray = `ARRAY [${specialties.map((item, i) => "'" + item + "'")}]`;
 
-    const sql = `INSERT INTO jobsPosted (client_id, title, specialties, description, completed, date, price_per_hour) VALUES (${client_id}, '${title}', ${sArray}, '${description}', FALSE, '${date}', ${price_per_hour})`;
+    const sql = `INSERT INTO jobsposted (client_id, title, specialties, description, completed, date, price_per_hour) VALUES (${client_id}, '${title}', ${sArray}, '${description}', FALSE, '${date}', ${price_per_hour})`;
     pool
       .query(sql)
       .then((result) => res.status(201).end())
