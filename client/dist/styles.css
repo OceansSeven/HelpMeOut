@@ -109,6 +109,18 @@ html {
   margin-top: 40px;
 }
 
+.itemCard {
+  padding: 20px;
+  background: rgba(62, 92, 118, 0.05);
+}
+
+.itemCard ul {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  font-weight: bold;
+}
+
 .profileLeft {
   display: flex;
   flex-direction: column;

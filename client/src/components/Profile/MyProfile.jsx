@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
-import MoodIcon from "@material-ui/icons/Mood";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Link from "@mui/material/Link";
 
 import AppContext from "../../hooks/context.js";
@@ -15,11 +15,11 @@ const MyProfile = () => {
 
   if (!currentUser?.contractor) {
     return (
-      <Container maxWidth="xs">
+      <Container maxWidth="xs" style={{ marginTop: "44px" }}>
         <CardHeader style={{ background: "#3d3d3d" }}></CardHeader>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
-            <MoodIcon style={{ fontSize: "72px" }} />
+            <AccountCircleIcon style={{ fontSize: "72px" }} />
             <div>Member since 12-2021</div>
           </div>
           <div
@@ -42,24 +42,24 @@ const MyProfile = () => {
     );
   } else {
     return (
-      <Container maxWidth="xs">
+      <Container maxWidth="xs" style={{ marginTop: "44px" }}>
         <CardHeader style={{ background: "#1d2d44" }}></CardHeader>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
-            <MoodIcon style={{ fontSize: "72px" }} />
+            <AccountCircleIcon style={{ fontSize: "72px" }} />
             <div>{currentUser?.rating}</div>
-            <Card>
-              Tools:
-              <Link href="/update">
-                <Button color="secondary">Add</Button>
-              </Link>{" "}
-              <Card>
-                <ul>
-                  {currentUser?.tools?.map((tool) => (
-                    <li key={Math.random()}>{tool}</li>
-                  ))}
-                </ul>
-              </Card>
+            <Card className="itemCard">
+              <div>
+                <p>Tools:</p>
+                <Link href="/update">
+                  <Button color="secondary">Add/Remove</Button>
+                </Link>{" "}
+              </div>
+              <ul>
+                {currentUser?.tools?.map((tool) => (
+                  <li key={Math.random()}>{tool}</li>
+                ))}
+              </ul>
             </Card>
             <div>Member since 12-2021</div>
           </div>
@@ -74,18 +74,20 @@ const MyProfile = () => {
                 <li key={Math.random()}>{specialty}</li>
               ))}
             </ul>
-            <Card>
-              Certifications:
-              <Link href="/update">
-                <Button color="secondary">Add</Button>
-              </Link>{" "}
-              <Card>
-                <ul>
-                  {currentUser?.certifications?.map((cert) => (
-                    <li key={Math.random()}>{cert}</li>
-                  ))}
-                </ul>
-              </Card>
+            <Card className="itemCard">
+              <div>
+                Certifications:
+                <Link href="/update">
+                  <Button color="secondary" style={{ fontSize: "12px" }}>
+                    Add/Remove
+                  </Button>
+                </Link>{" "}
+              </div>
+              <ul>
+                {currentUser?.certifications?.map((cert) => (
+                  <li key={Math.random()}>{cert}</li>
+                ))}
+              </ul>
             </Card>
           </div>
         </Paper>
