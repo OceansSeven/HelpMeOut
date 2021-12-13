@@ -42,15 +42,13 @@ const App = function App() {
   }, []);
 
   return (
-    <AppContext.Provider
-      value={{
-        // user id available to the whole app
-        user,
-        setUser,
-      }}
-    >
-      {user ? <AppBar /> : ""}
+    <AppContext.Provider value={{
+      // user id available to the whole app
+      user,
+      setUser
+    }}>
       <Router>
+      {user ? <AppBar /> : ''}
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
