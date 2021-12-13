@@ -42,8 +42,8 @@ const App = function App() {
       user,
       setUser
     }}>
-      {user ? <AppBar /> : ''}
       <Router>
+      {user ? <AppBar /> : ''}
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
