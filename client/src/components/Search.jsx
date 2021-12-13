@@ -1,55 +1,33 @@
 import React, { useState, useContext } from "react";
-import { specialties, sortByCategories } from '../utils';
+import { specialties, sortByCategories, filterByKeyword, filterBySpecialty, sortBy } from '../utils';
 import MainContext from '../hooks/MainContext.js';
 
 function Search() {
-  const { searchFeedData, searchFeedType, setSearchFeedData, contractorList, jobsAvailable } = useContext(MainContext);
+  const { searchFeedData, searchFeedType, setSearchFeedData, contractorList, jobsAvailable, searchTerm, setSearchTerm } = useContext(MainContext);
+  let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
 
   const handleKeywordSearch = (e) => {
     const keyword = e.target.value;
-    let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
-
-    setSearchFeedData(searchFeed.filter(card => {
-      if (keyword === '') return card;
-      if (searchFeedType === 'jobs' && (card.description.toLowerCase().includes(keyword.toLowerCase()) || card.title.toLowerCase().includes(keyword.toLowerCase()))) {
-        return card;
-      } else if (searchFeedType === 'contractors' && (card.firstname.toLowerCase().includes(keyword.toLowerCase()) || card.lastname.toLowerCase().includes(keyword.toLowerCase()))) {
-        return card;
-      }
-    }))
+    setSearchTerm(e.target.value);
+    setSearchFeedData(filterByKeyword([...searchFeed], keyword));
   };
 
   const handleSpecialtySearch = (e) => {
     const searchSpecialty = e.target.value;
-    let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
-
     if (searchSpecialty === 'All') { return setSearchFeedData(searchFeed); }
-    setSearchFeedData(searchFeed.filter(card => {
-      if (card.specialties.includes(searchSpecialty)) {
-        return card;
-      }
-    }));
+    setSearchFeedData(filterBySpecialty([...searchFeed], searchSpecialty));
   };
 
   const handleSortBySearch = (e) => {
-    const sortCategory = e.target.value;
-    const { compare, sort } = sortByCategories.find(category => category.display === sortCategory);
-    let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
+    const sortDisplay = e.target.value;
+    const { compare, sort } = sortByCategories.find(category => category.display === sortDisplay);
 
-    if (compare === 'ascending') {
-      setSearchFeedData([...searchFeed].sort((a, b) => {
-        return a[sort] - b[sort];
-      }))
-    } else {
-      setSearchFeedData([...searchFeed].sort((a, b) => {
-        return b[sort] - a[sort];
-      }))
-    }
+    setSearchFeedData(sortBy([...searchFeed], sort, compare));
   };
 
   return (
     <div>
-      <input type="text" placeholder="Search by keyword..." onChange={handleKeywordSearch} />
+      <input type="text" placeholder="Search by keyword..." onChange={handleKeywordSearch} value={searchTerm} />
       <select onChange={handleSpecialtySearch}>
         {specialties?.map((specialty, i) => <option value={specialty} key={i}>{specialty}</option>)}
       </select>

@@ -1,45 +1,46 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Container, Card, Paper } from "@material-ui/core";
+import { useLocation } from "react-router-dom";
 
 import ContractorProfile from "./ContractorProfile.jsx";
 import ClientProfile from "./ClientProfile.jsx";
 import EditProfile from "./EditProfile.jsx";
 import MyProfile from "./MyProfile.jsx";
+import AppContext from "../../hooks/context.js";
 
-const ProfileView = ({ currentUser, target }) => {
-  const [user, setUser] = useState({
-    id: 1,
-    firstName: "Derek",
-    lastName: "Mason",
-    isContractor: true,
-    specialties: ["WOOD work", "Clogging/Unclogging Pipes"],
-    tools: ["jackhammer", "quick hardening caulk"],
-    certifications: ["NASM", "HR"],
-  });
+const ProfileView = () => {
+  const currentUser = useContext(AppContext);
   const [isContractor, setIsContractor] = useState(false);
+  const [target, setTarget] = useState();
 
-  const getTargetUser = (id) => {
-    const targetID = target?.userID;
+  const location = useLocation();
 
-    // * * * GET PROFILE DATA FOR CLICKED PROFILE * * *
-    // fetch(`/api/?userId=${targetID}`)
-    // .then(res => res.json())
-    // .then(data => {
-    //   setUser(data);
-    // })
-  };
+  const targetProfileId = location.pathname.split("/").pop();
+
+  const getTargetUser = (id) => {};
 
   useEffect(() => {
-    setIsContractor(user?.isContractor);
-  }, [user]);
+    if (!target) {
+      fetch(`/api/user/${targetProfileId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTarget(data);
+          setIsContractor(data.contractor);
+        });
+    }
+    console.log(target);
+  }, [target]);
 
-  if (1 === user?.id) {
-    return <EditProfile user={user} />;
+  if (!target) {
+    return <div>Loading....</div>;
+  }
+  if (targetProfileId === currentUser?.user.id) {
+    return <MyProfile user={target} />;
   } else {
     return isContractor ? (
-      <ContractorProfile user={user} />
+      <ContractorProfile user={target} />
     ) : (
-      <ClientProfile user={user} />
+      <ClientProfile user={target} />
     );
   }
 };
