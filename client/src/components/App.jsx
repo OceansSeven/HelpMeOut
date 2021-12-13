@@ -21,6 +21,7 @@ import axios from "axios";
 import ErrorPage from "./pages/ErrorPage";
 import LeaveAReview from "./LeaveAReview";
 import AppBar from "./AppBar";
+import MyProfile from "./Profile/MyProfile";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -63,6 +64,7 @@ const App = function App() {
           <Route path="/job" element={<Job/>} />
           <Route path="/job/:edit/:id" element={<Job />} />
           <Route path="/profile/:userID" element={<ProfileView />} />
+          <Route path="/profile" element={<MyProfile />} />
           <Route path="/update" element={<EditProfile />} />
           <Route path="/leaveAReview" element={<LeaveAReview />} />
           <Route path="/*" element={<ErrorPage />} />

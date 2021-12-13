@@ -11,12 +11,10 @@ const MyProfile = () => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    if (!currentUser) {
-      setCurrentUser(user);
-    }
-  }, [currentUser]);
+    setCurrentUser(user);
+  }, [user]);
 
-  if (!user?.contractor) {
+  if (!currentUser?.contractor) {
     return (
       <Container maxWidth="xs">
         <CardHeader style={{ background: "#3d3d3d" }}></CardHeader>
@@ -37,8 +35,8 @@ const MyProfile = () => {
             <Link href="/update">
               <Button color="secondary">Edit Profile</Button>
             </Link>
-            <h2>{user?.firstname}</h2>
-            <h3>{user?.lastname}</h3>
+            <h2>{currentUser?.firstname}</h2>
+            <h3>{currentUser?.lastname}</h3>
           </div>
         </Paper>
       </Container>
@@ -50,7 +48,7 @@ const MyProfile = () => {
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
             <BuildIcon className="profileIcon" />
-            <div>{user?.rating}</div>
+            <div>{currentUser?.rating}</div>
             <Card>
               Tools:
               <Link href="/update">
@@ -58,7 +56,7 @@ const MyProfile = () => {
               </Link>{" "}
               <Card>
                 <ul>
-                  {user?.tools?.map((tool) => (
+                  {currentUser?.tools?.map((tool) => (
                     <li key={Math.random()}>{tool}</li>
                   ))}
                 </ul>
@@ -70,10 +68,10 @@ const MyProfile = () => {
             <Link href="/update">
               <Button color="secondary">Edit Profile</Button>
             </Link>{" "}
-            <h2>{user.company}</h2>
-            <h5>{user.firstname + " " + user.lastname}</h5>
+            <h2>{currentUser.company}</h2>
+            <h5>{currentUser.firstname + " " + currentUser.lastname}</h5>
             <ul className="specialties">
-              {user?.specialties?.map((specialty) => (
+              {currentUser?.specialties?.map((specialty) => (
                 <li key={Math.random()}>{specialty}</li>
               ))}
             </ul>
@@ -84,7 +82,7 @@ const MyProfile = () => {
               </Link>{" "}
               <Card>
                 <ul>
-                  {user?.certifications?.map((cert) => (
+                  {currentUser?.certifications?.map((cert) => (
                     <li key={Math.random()}>{cert}</li>
                   ))}
                 </ul>
