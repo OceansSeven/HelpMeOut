@@ -212,7 +212,7 @@ const EditProfile = () => {
               </IconButton>
             </div>
             <Typography component="h3" variant="caption">
-              My Tools
+              My Tools (click any to remove)
             </Typography>
             <ul
               id="toolList"
@@ -223,7 +223,20 @@ const EditProfile = () => {
               }}
             >
               {myTools?.map((tool) => (
-                <li>{tool}</li>
+                <li
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const results = [];
+                    myTools.forEach((item) => {
+                      if (item !== tool) {
+                        results.push(item);
+                      }
+                    });
+                    setMyTools(results);
+                  }}
+                >
+                  {tool}
+                </li>
               ))}
             </ul>
             Add a certification:
@@ -251,7 +264,7 @@ const EditProfile = () => {
               </IconButton>
             </div>
             <Typography component="h3" variant="caption">
-              My Certifications
+              My Certifications : (click any to remove)
             </Typography>
             <ul
               id="certList"
@@ -262,7 +275,20 @@ const EditProfile = () => {
               }}
             >
               {myCerts?.map((cert) => (
-                <li>{cert}</li>
+                <li
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const results = [];
+                    myCerts.forEach((item) => {
+                      if (item !== cert) {
+                        results.push(item);
+                      }
+                    });
+                    setMyCerts(results);
+                  }}
+                >
+                  {cert}
+                </li>
               ))}
             </ul>
             <Button
