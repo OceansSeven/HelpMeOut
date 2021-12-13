@@ -6,6 +6,7 @@ import Landing from "./pages/Landing";
 import Main from "./pages/Main";
 import Messages from "./pages/Messages";
 import ProfileView from "./Profile/ProfileView";
+import Job from "./pages/Job";
 import AppContext from "../hooks/context";
 import axios from "axios";
 import ErrorPage from "./pages/ErrorPage";
@@ -48,6 +49,8 @@ const App = function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
           <Route path="/profile" element={<ProfileView />} />
+          <Route path="/job" element={<Job/>} />
+          <Route path="/job/:edit/:id" element={<Job />} />
           {/* <Route path="/update" element={<EditProfile />} /> */}
           <Route path="/*" element={<ErrorPage />}/>
         </Routes>

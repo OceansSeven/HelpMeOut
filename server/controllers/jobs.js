@@ -3,22 +3,23 @@ const pool = require('../db');
 module.exports = {
   getJobs: (req, res) => {
     const sql = `SELECT
-       coalesce(json_agg(
-        json_build_object(
-          'id', j.id,
-          'title', j.title,
-          'specialties', j.specialties,
-          'description', j.description,
-          'rate', j.price_per_hour,
-          'date', j.date,
-          'client', (
-            select json_build_object(
-              'client_id', u.id,
-              'firstname', u.firstname,
-              'lastname', u.lastname
-            )
-            from users u
-            WHERE j.client_id = u.id
+      coalesce(
+        json_agg(
+          json_build_object(
+            'id', j.id,
+            'title', j.title,
+            'specialties', j.specialties,
+            'description', j.description,
+            'rate', j.price_per_hour,
+            'date', j.date,
+            'client', (
+              select json_build_object(
+                'client_id', u.id,
+                'firstname', u.firstname,
+                'lastname', u.lastname
+              )
+              from users u
+              WHERE j.client_id = u.id
           )
         )
       ), '[]'::json) AS jobs
@@ -30,6 +31,8 @@ module.exports = {
       })
       .catch((err) => console.log);
   },
+
+  editJob: (req, res) => {},
 
   postJobs: (req, res) => {
     let { client_id, title, description, specialties, date, price_per_hour } =
