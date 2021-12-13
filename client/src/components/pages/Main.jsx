@@ -66,7 +66,7 @@ const Main = function Main() {
       <div>
         <ListManager data={
           showCompleted ? jobsPosted.filter(j => j.completed) : jobsPosted.filter(j => !j.completed)
-          }>
+        }>
           <JobPostedCard />
         </ListManager>
       </div>
@@ -81,8 +81,10 @@ const Main = function Main() {
         <button onClick={handleUserButtonClick}>Jobs Completed</button>
       </div>
       <div>
-        <ListManager data={showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted}>
-          {showCompleted ? <JobAvailableCard /> : <JobPostedCard />}
+        <ListManager data={
+          showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
+        }>
+          <JobAvailableCard />
         </ListManager>
       </div>
     </>
