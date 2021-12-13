@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 import Button from "@mui/material/Button";
@@ -19,11 +20,13 @@ import AppContext from "../../hooks/context.js";
 
 const EditProfile = () => {
   const user = useContext(AppContext);
+  const setUser = useContext(AppContext);
 
   const [myTools, setMyTools] = useState([]);
   const [newTool, setNewTool] = useState("");
   const [myCerts, setMyCerts] = useState([]);
   const [newCert, setNewCert] = useState("");
+  const [updated, setUpdated] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +46,21 @@ const EditProfile = () => {
       withCredentials: true,
       url: "http://localhost:3000/api/user",
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        setUpdated(true);
+      })
+      .then(
+        axios.get(`/api/user/${user.user.id}`).then(({ data }) => {
+          if (data) {
+            setUser.setUser(data);
+          }
+        })
+      )
+      .then((res) => {
+        console.log(res);
+        setUpdated(true);
+      })
       .catch((err) => console.log(err));
 
     // console.log({
@@ -61,7 +78,9 @@ const EditProfile = () => {
     setMyTools(user.user.tools || []);
     setMyCerts(user.user.certifications || []);
   }, [user.user]);
-
+  if (updated) {
+    return <Navigate to="/profile" />;
+  }
   if (!user?.user.contractor) {
     return (
       <Container component="main" maxWidth="xs">
