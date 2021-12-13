@@ -1,62 +1,41 @@
-import React, { useState } from "react";
-import { specialties, sortByCategories } from '../utils';
+import React, { useState, useContext } from "react";
+import { specialties, sortByCategories, filterByKeyword, filterBySpecialty, sortBy } from '../utils';
+import MainContext from '../hooks/MainContext.js';
 
-function Search({ searchType, feed }) {
-  const [keyword, setKeyword] = useState('');
-  // const [selectedSpecialty, setSelectedSpecialty] = useState('');
-  // const [sortBy, setSortBy] = useState('');
-  // console.log('feed: ', feed);
+function Search() {
+  const { searchFeedData, searchFeedType, setSearchFeedData, contractorList, jobsAvailable, searchTerm, setSearchTerm } = useContext(MainContext);
+  let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
 
   const handleKeywordSearch = (e) => {
-    setKeyword(e.target.value);
-    feed = searchType === 'jobs'
-      ? feed.filter(card => {
-          if (keyword === '') {
-            return card;
-          } else if (card.description.toLowerCase().includes(keyword.toLowerCase()) || card.title.toLowerCase().includes(keyword.toLowerCase())) {
-            return card;
-          }
-        })
-      : feed.filter(card => {
-        if (keyword === '') {
-          return card;
-        } else if (card.firstname.toLowerCase().includes(keyword.toLowerCase()) || card.lastname.toLowerCase().includes(keyword.toLowerCase())) {
-          return card;
-        }
-      })
+    const keyword = e.target.value;
+    setSearchTerm(e.target.value);
+    setSearchFeedData(filterByKeyword([...searchFeed], keyword));
   };
 
   const handleSpecialtySearch = (e) => {
     const searchSpecialty = e.target.value;
-    if (searchSpecialty === 'All') {return};
-    feed = feed.filter(card => {
-      if (card.specialties.contains(searchSpecialty)) {
-        return card;
-      }
-    })
-    return;
+    if (searchSpecialty === 'All') { return setSearchFeedData(searchFeed); }
+    setSearchFeedData(filterBySpecialty([...searchFeed], searchSpecialty));
   };
 
   const handleSortBySearch = (e) => {
-    const { sort, compare } = e.target.value;
-    if (compare === 'ascending') {
-      feed = feed.sort((a, b) => a[sort] - b[sort])
-    } else {
-      feed = feed.sort((a, b) => b[sort] - a[sort])
-    }
+    const sortDisplay = e.target.value;
+    const { compare, sort } = sortByCategories.find(category => category.display === sortDisplay);
+
+    setSearchFeedData(sortBy([...searchFeed], sort, compare));
   };
 
   return (
     <div>
-      <input type="text" value={keyword} placeholder="Search by keyword..." onChange={handleKeywordSearch} />
+      <input type="text" placeholder="Search by keyword..." onChange={handleKeywordSearch} value={searchTerm} />
       <select onChange={handleSpecialtySearch}>
         {specialties?.map((specialty, i) => <option value={specialty} key={i}>{specialty}</option>)}
       </select>
-      {searchType === 'jobs'
+      {searchFeedType === 'jobs'
         && (
         <select onChange={handleSortBySearch}>
           <option>Sort By</option>
-          {sortByCategories?.map((category, i) => <option value={category} key={i}>{category.display}</option>)}
+          {sortByCategories?.map((category, i) => <option value={category.display} key={i}>{category.display}</option>)}
         </select>
       )}
     </div>

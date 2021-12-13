@@ -5,18 +5,27 @@
   width: 100vw;
   height: 100vh;
 }
+li {
+  list-style: none;
+}
+/*
+  * * * * * * * * Landing Page * * * * * * * *
+*/
 
 html {
   margin: 0px;
-  padding: 0px
+  padding: 0px;
 }
-
-
 
 /* App Bar Styles */
 #background-appbar {
-  background: rgb(13,19,33);
-  background: linear-gradient(163deg, rgba(13,19,33,1) 0%, rgba(116, 139, 171, 1) 43%, rgba(240,235,216,1) 79%);
+  background: rgb(13, 19, 33);
+  background: linear-gradient(
+    163deg,
+    rgba(13, 19, 33, 1) 0%,
+    rgba(116, 139, 171, 1) 43%,
+    rgba(240, 235, 216, 1) 79%
+  );
   background-size: cover;
 }
 
@@ -24,7 +33,7 @@ html {
   color: black;
   font-weight: bolder;
   height: 60px;
-  width:60px;
+  width: 60px;
 }
 
 /* Landing Page */
@@ -32,8 +41,13 @@ html {
   /* position: absolute; */
   height: 100vh;
   width: 100vw;
-  background: rgb(13,19,33);
-  background: linear-gradient(163deg, rgba(13,19,33,1) 0%, rgba(116,140,171,1) 43%, rgba(240,235,216,1) 79%);
+  background: rgb(13, 19, 33);
+  background: linear-gradient(
+    163deg,
+    rgba(13, 19, 33, 1) 0%,
+    rgba(116, 140, 171, 1) 43%,
+    rgba(240, 235, 216, 1) 79%
+  );
   background-size: cover;
 }
 
@@ -41,11 +55,14 @@ html {
   position: relative;
   display: grid;
   justify-content: center;
+  margin: auto;
+  max-width: 900px;
+  width: 100%;
 }
 
 .landing-logo {
   margin-top: 100px;
-  width: 900px;
+  width: 100%;
   height: auto;
 }
 
@@ -61,7 +78,6 @@ html {
   margin-top: 30px;
 }
 
-
 /* .btn-xl {
   padding: 1.25rem 2.5rem;
 } */
@@ -75,10 +91,6 @@ html {
   height: 69px;
 }
 
-
-
-
-
 /*
   * * * * * * * * Registration Page * * * * * * * *
 */
@@ -86,6 +98,31 @@ html {
 /*
   * * * * * * * * Profile/ edit profile * * * * * * * *
 */
+.profilePage {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.profileIcon {
+  font-size: 80px;
+  margin-top: 40px;
+}
+
+.profileLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 16px;
+}
+
+.profileRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 16px;
+}
 
 /************************* Toggle Client ****************************************
 /*
@@ -150,14 +187,14 @@ html {
   width: fit-content;
   max-width: 70%;
 }
-.to .message-container{
+.to .message-container {
   background-color: #2746ce;
   color: #fff;
 }
 #chat-client #messages .to {
   text-align: start;
 }
-.from .message-container{
+.from .message-container {
   background-color: #bbb;
 }
 #chat-client #messages .from {

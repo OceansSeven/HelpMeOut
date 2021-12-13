@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -10,22 +12,47 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-const EditProfile = ({ user }) => {
-  //const {user} = useContext()   <---- current user from app context
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/Add";
+
+import AppContext from "../../hooks/context.js";
+
+const EditProfile = () => {
+  const user = useContext(AppContext);
+
+  const [myTools, setMyTools] = useState([]);
+  const [newTool, setNewTool] = useState("");
+  const [myCerts, setMyCerts] = useState([]);
+  const [newCert, setNewCert] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(event.target);
-    console.log({
-      first: data.get("firstName"),
-      last: data.get("lastName"),
-      setContractor: data.get("setContractor"),
-      company: data.get("companyName"),
-      tool: data.get("addTool"),
-      cert: data.get("addCert"),
-    });
+
+    axios({
+      method: "PUT",
+      data: {
+        first: data.get("firstName") || user.user.firstname,
+        last: data.get("lastName") || user.user.lastname,
+        setContractor: data.get("setContractor") || user.user.contractor,
+        company: data.get("companyName") || user.user.company,
+        tools: myTools,
+        certs: myCerts,
+        userId: Number(user.user.id),
+      },
+      withCredentials: true,
+      url: "http://localhost:3000/api/user",
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
-  if (!user?.isContractor) {
+  useEffect(() => {
+    setMyTools(user.user.tools || []);
+    setMyCerts(user.user.certifications || []);
+  }, [user.user]);
+
+  if (!user?.user.contractor) {
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -52,7 +79,7 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.firstName}
+              label={user?.user.firstname}
               name="firstName"
             />
             Edit Last Name:
@@ -60,7 +87,7 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.lastName}
+              label={user?.user.lastname}
               id="updateLastName"
             />
             <FormControlLabel
@@ -106,13 +133,13 @@ const EditProfile = ({ user }) => {
             noValidate
             sx={{ mt: 1 }}
           >
-            <h2 style={{ textAlign: "center" }}>{user?.company}</h2>
+            <h2 style={{ textAlign: "center" }}>{user?.user.company}</h2>
             Edit First Name:
             <TextField
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.firstName}
+              label={user?.user.firstname}
               name="firstName"
             />
             Edit Last Name:
@@ -120,7 +147,7 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.lastName}
+              label={user?.user.lastname}
               id="updateLastName"
             />
             Edit Company Name:
@@ -128,23 +155,87 @@ const EditProfile = ({ user }) => {
               margin="normal"
               fullWidth
               name="companyName"
-              label={user?.company}
+              label={user?.user.company}
               id="updateCompanyName"
             />
-            <TextField
-              fullWidth
-              id="addTool"
-              name="addTool"
-              label="Add a tool"
-              variant="filled"
-            />
-            <TextField
-              fullWidth
-              id="addCert"
-              name="addCert"
-              label="Add a certification"
-              variant="filled"
-            />
+            Add a tool:
+            <div>
+              <TextField
+                id="addTool"
+                name="addTool"
+                label="Name of tool"
+                value={newTool}
+                variant="filled"
+                onChange={(e) => {
+                  setNewTool(e.target.value);
+                }}
+              />
+              <IconButton
+                aria-label="add"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const currentTools = myTools;
+                  setMyTools(currentTools.concat(newTool));
+                  setNewTool("");
+                }}
+              >
+                <AddIcon />
+              </IconButton>
+            </div>
+            <Typography component="h3" variant="caption">
+              My Tools
+            </Typography>
+            <ul
+              id="toolList"
+              style={{
+                listStyle: "none",
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              {myTools?.map((tool) => (
+                <li>{tool}</li>
+              ))}
+            </ul>
+            Add a certification:
+            <div>
+              <TextField
+                id="addCert"
+                name="addCert"
+                label="Certification title"
+                value={newCert}
+                variant="filled"
+                onChange={(e) => {
+                  setNewCert(e.target.value);
+                }}
+              />
+              <IconButton
+                aria-label="add"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const currentCerts = myCerts;
+                  setMyCerts(currentCerts.concat(newCert));
+                  setNewCert("");
+                }}
+              >
+                <AddIcon />
+              </IconButton>
+            </div>
+            <Typography component="h3" variant="caption">
+              My Certifications
+            </Typography>
+            <ul
+              id="certList"
+              style={{
+                listStyle: "none",
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              {myCerts?.map((cert) => (
+                <li>{cert}</li>
+              ))}
+            </ul>
             <Button
               type="submit"
               fullWidth

@@ -4,35 +4,38 @@ import BuildIcon from "@material-ui/icons/Build";
 
 const ContractorProfile = ({ user }) => {
   return (
-    <Paper>
+    <Container style={{ display: "flex", justifyContent: "center" }}>
       <CardHeader></CardHeader>
       <div className="profileLeft">
         <BuildIcon />
-        <div>{user.rating}</div>
+        <div>{user?.rating}</div>
         <Card>
           Tools:
-          {user?.tools.map((tool) => (
-            <Card>{tool}</Card>
+          {user?.tools?.map((tool) => (
+            <Card key={Math.random()}>{tool}</Card>
           ))}
         </Card>
         <div>Member since 12-2021</div>
       </div>
       <div className="profileRight">
         <h2>{user?.company}</h2>
+        <h4>
+          {user?.firstname} {user?.lastname}
+        </h4>
         <ul className="specialties">
-          {user.specialties?.map((specialty) => (
-            <li>{specialty}</li>
+          {user?.specialties?.map((specialty) => (
+            <li key={Math.random()}>{specialty}</li>
           ))}
         </ul>
         <Button variant="outlined">Message Me</Button>
         <Card>
           Certifications:
-          {user.certifications?.map((cert) => (
-            <Card>{cert}</Card>
+          {user?.certifications?.map((cert) => (
+            <Card key={Math.random()}>{cert}</Card>
           ))}
         </Card>
       </div>
-    </Paper>
+    </Container>
   );
 };
 

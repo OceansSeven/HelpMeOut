@@ -146,8 +146,8 @@ export default function SignIn() {
               </Grid>
             </Grid>
           </Box>
+          <Copyright sx={{ mt: 8, mb: 4 }} />
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
         </Grid>
       </Grid>
     </ThemeProvider>

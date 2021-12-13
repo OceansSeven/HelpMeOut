@@ -6,25 +6,25 @@ export default function Contractors({data}) {
 
   return (
     <Paper>
-      <div>{data.firstname} {data.lastname}</div>
-      <div>{data.company}</div>
-      <div>{data.specialties ? data.specialties.map((specialty) => {
-        <div>{specialty}</div>
-      })
+      <div id="contractorname">{data.firstname} {data.lastname}</div>
+      <div id="contractorcompany">{data.company}</div>
+      <div id="contractorspecialties">{data.specialties ? data.specialties.map((specialty, i) =>
+        <span key={i}>{specialty}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
+      )
     :null}
       </div>
-      <div>{data.certifications ? data.certifications.map((certification) => {
-        <div>{certification}</div>
+      <div id="contractorcertifications">{data.certifications ? data.certifications.map((certification, i) =>
+        <span key={i}>{certification}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
 
-      })
+      )
       :null}
       </div>
-      <div>{data.tools ? data.tools.map((tool) => {
-        <div>{tool}</div>
-      })
+      <div id="contractortools">{data.tools ? data.tools.map((tool, i) =>
+        <span key={i}>{tool}{i===data?.specialties?.length - 1 ? '' : ', '}</span>
+      )
     :null}
       </div>
-      <div><StarRatings rating={Number(data.rating)}/></div>
+      <div id="contractorrating"><StarRatings rating={Number(data.rating)}/></div>
     </Paper>
   );
 }

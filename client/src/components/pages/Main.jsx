@@ -12,25 +12,19 @@ import { getContractors, getUser, getJobs } from '../../utils';
 const Main = function Main() {
   const { user } = useContext(AppContext);
 
-  //set state necessary for API data
+  // set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
   const [contractorList, setContractorList] = useState([]);
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
   const [searchFeedData, setSearchFeedData] = useState([]);
   const [searchFeedType, setSearchFeedType]  = useState('contractors')
-
-  const searchFeedButtons = (<div>
-    <button onClick={() => { setSearchFeedData(contractorList); setSearchFeedType('contractors')}}>Contractors</button>
-    <button onClick={() => { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs')}}>Jobs Available</button>
-  </div>);
-
-  // button states
-  // show client view or contractor view
   const [showClient, setshowClient] = useState(true);
   const [showCompleted, setShowCompleted] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleButtonClick = (e) => {
+  // Define User Button Click Functionality
+  const handleUserButtonClick = (e) => {
     if (e.target.innerText === 'Client' || e.target.innerText === 'Contractor') {
       setshowClient(e.target.innerText === 'Client' ? true : false);
     } else {
@@ -38,46 +32,65 @@ const Main = function Main() {
     }
   }
 
+  // Define Search Feed Button Click Functionality
+  const handleSearchFeedButtonsClick = (e) => {
+    if (e.target.innerText === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
+    if (e.target.innerText === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
+    setSearchTerm('');
+  }
+
+  // Define Search Feed Buttons
+  const searchFeedButtons = (<div>
+    <button onClick={handleSearchFeedButtonsClick} >Contractors</button>
+    <button onClick={handleSearchFeedButtonsClick}>Jobs Available</button>
+  </div>);
+
+  // Define User Buttons
   const userBtns = (
     <div>
-      <button onClick={handleButtonClick}>
+      <button onClick={handleUserButtonClick}>
         Client
       </button>
-      <button onClick={handleButtonClick}>
+      <button onClick={handleUserButtonClick}>
         Contractor
       </button>
     </div>);
 
+  // Define Client Feed HTML
   const clientFeed = (
     <>
       <div>
-        <button onClick={handleButtonClick}>Jobs Posted</button>
-        <button onClick={handleButtonClick}>Jobs Completed</button>
+        <button onClick={handleUserButtonClick}>Jobs Posted</button>
+        <button onClick={handleUserButtonClick}>Jobs Completed</button>
       </div>
       <div>
         <ListManager data={
           showCompleted ? jobsPosted.filter(j => j.completed) : jobsPosted.filter(j => !j.completed)
-          }>
+        }>
           <JobPostedCard />
         </ListManager>
       </div>
     </>
   );
+
+  // Define Contractor Feed HTML
   const contractorFeed = (
     <>
       <div>
-        <button onClick={handleButtonClick}>Jobs Accepted</button>
-        <button onClick={handleButtonClick}>Jobs Completed</button>
+        <button onClick={handleUserButtonClick}>Jobs Accepted</button>
+        <button onClick={handleUserButtonClick}>Jobs Completed</button>
       </div>
       <div>
-        <ListManager data={showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted}>
-          {showCompleted ? <JobAvailableCard /> : <JobPostedCard />}
+        <ListManager data={
+          showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
+        }>
+          <JobAvailableCard />
         </ListManager>
       </div>
     </>
   );
 
-  //get jobs posted by user from API
+  // Get user data, jobs available, and contractors
   useEffect(() => {
     getUser(user.id).then((results) => {
       setJobsPosted(results.client_tasks);
@@ -91,10 +104,16 @@ const Main = function Main() {
     getJobs().then(setJobsAvailable).catch(err => console.error(err));
   }, [])
 
-  //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <MainContext.Provider value={{
-      jobsPosted
+      jobsPosted,
+      searchFeedData,
+      setSearchFeedData,
+      searchFeedType,
+      jobsAvailable,
+      contractorList,
+      searchTerm,
+      setSearchTerm,
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>
@@ -102,13 +121,13 @@ const Main = function Main() {
           {showClient ? clientFeed : contractorFeed}
         </div>
         <div style={{border: '1px solid black'}} className='searchList'>
-          {/* <Search feed={searchFeedData} searchType={searchFeedType} /> */}
           {user.contractor && searchFeedButtons}
+          <Search feed={searchFeedData} searchType={searchFeedType} />
           {searchFeedType === 'contractors'
-            ? (<ListManager data={contractorList}>
+            ? (<ListManager data={searchFeedData}>
                 <Contractors />
               </ListManager>)
-            : (<ListManager data={jobsAvailable}>
+            : (<ListManager data={searchFeedData}>
                 <JobAvailableCard />
               </ListManager>)}
         </div>
