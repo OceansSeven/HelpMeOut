@@ -62,13 +62,10 @@ const App = function App() {
           <Route path="/profile" element={<ProfileView />} />
           <Route path="/job" element={<Job/>} />
           <Route path="/job/:edit/:id" element={<Job />} />
-          {/* <Route path="/update" element={<EditProfile />} /> */}
-          <Route path="/*" element={<ErrorPage />}/>
           <Route path="/profile/:userID" element={<ProfileView />} />
           <Route path="/update" element={<EditProfile />} />
           <Route path="/leaveAReview" element={<LeaveAReview />} />
           <Route path="/*" element={<ErrorPage />} />
-
         </Routes>
       </Router>
     </AppContext.Provider>
