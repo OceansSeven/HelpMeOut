@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { specialties, sortByCategories } from '../utils';
+import { specialties, sortByCategories, filterByKeyword } from '../utils';
 import MainContext from '../hooks/MainContext.js';
 
 function Search() {
@@ -9,14 +9,7 @@ function Search() {
     const keyword = e.target.value;
     let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
 
-    setSearchFeedData(searchFeed.filter(card => {
-      if (keyword === '') return card;
-      if (searchFeedType === 'jobs' && (card.description.toLowerCase().includes(keyword.toLowerCase()) || card.title.toLowerCase().includes(keyword.toLowerCase()))) {
-        return card;
-      } else if (searchFeedType === 'contractors' && (card.firstname.toLowerCase().includes(keyword.toLowerCase()) || card.lastname.toLowerCase().includes(keyword.toLowerCase()))) {
-        return card;
-      }
-    }))
+    setSearchFeedData(filterByKeyword(searchFeed, keyword))
   };
 
   const handleSpecialtySearch = (e) => {
