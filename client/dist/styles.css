@@ -36,6 +36,10 @@ html {
   width: 60px;
 }
 
+.appbar-text {
+  color: white;
+}
+
 /* Landing Page */
 .landing-page {
   /* position: absolute; */

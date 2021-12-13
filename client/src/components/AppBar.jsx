@@ -45,7 +45,7 @@ export default function AppMenuBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar id="background-appbar" position="static" style={{position: 'fixed', top: '0'}}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" className="appbar-text" component="div" sx={{ flexGrow: 1 }}>
             <b>Help Me Out</b>
           </Typography>
             <div>
