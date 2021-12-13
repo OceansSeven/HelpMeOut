@@ -1,6 +1,27 @@
 const pool = require('../db');
 
 module.exports = {
+  getUserMessages: (req, res) => {
+    const sql = `SELECT
+      id,
+      firstname,
+      lastname
+    FROM users
+    WHERE id IN (
+      SELECT DISTINCT from_id
+      FROM messages
+      WHERE to_id = $1
+    ) AND id IN (
+      SELECT DISTINCT to_id
+      FROM messages
+      WHERE from_id = $1
+    ) ORDER BY firstname ASC;`;
+    const values = [req.params.id];
+    pool
+      .query(sql, values)
+      .then(({ rows }) => res.status(200).send(rows))
+      .catch((err) => res.status(400).send(err));
+  },
   getMessages: (req, res) => {
     console.log('going to get messages');
     const userId = req.query.user_id;

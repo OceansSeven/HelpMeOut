@@ -7,7 +7,7 @@ function ListManager({children, data, id}){
   return (
     <div className="list" id={id}>
       {data?.map((obj, i) => (
-        React.cloneElement(children, {data: obj, key: obj.id || i})
+        React.cloneElement(children, {data: obj, key: i})
       ))}
     </div>
   );
