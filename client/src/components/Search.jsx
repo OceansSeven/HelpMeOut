@@ -28,7 +28,7 @@ function Search() {
   return (
     <div>
       <input type="text" placeholder="Search by keyword..." onChange={handleKeywordSearch} value={searchTerm} />
-      <select onChange={handleSpecialtySearch}>
+      <select id="specialtyDropdown" onChange={handleSpecialtySearch}>
         {specialties?.map((specialty, i) => <option value={specialty} key={i}>{specialty}</option>)}
       </select>
       {searchFeedType === 'jobs'

@@ -37,6 +37,7 @@ const Main = function Main() {
     if (e.target.innerText === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
     if (e.target.innerText === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
     setSearchTerm('');
+    document.getElementById("specialtyDropdown").selectedIndex = 'All';
   }
 
   // Define Search Feed Buttons
