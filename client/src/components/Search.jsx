@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { specialties, sortByCategories, filterByKeyword, filterBySpecialty } from '../utils';
+import { specialties, sortByCategories, filterByKeyword, filterBySpecialty, sortBy } from '../utils';
 import MainContext from '../hooks/MainContext.js';
 
 function Search() {
@@ -19,18 +19,10 @@ function Search() {
   };
 
   const handleSortBySearch = (e) => {
-    const sortCategory = e.target.value;
-    const { compare, sort } = sortByCategories.find(category => category.display === sortCategory);
+    const sortDisplay = e.target.value;
+    const { compare, sort } = sortByCategories.find(category => category.display === sortDisplay);
 
-    if (compare === 'ascending') {
-      setSearchFeedData([...searchFeed].sort((a, b) => {
-        return a[sort] - b[sort];
-      }))
-    } else {
-      setSearchFeedData([...searchFeed].sort((a, b) => {
-        return b[sort] - a[sort];
-      }))
-    }
+    setSearchFeedData(sortBy([...searchFeed], sort, compare));
   };
 
   return (

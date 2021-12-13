@@ -88,7 +88,7 @@ const Main = function Main() {
     </>
   );
 
-  // get jobs posted by user from API
+  // Get user data, jobs available, and contractors
   useEffect(() => {
     getUser(user.id).then((results) => {
       setJobsPosted(results.client_tasks);

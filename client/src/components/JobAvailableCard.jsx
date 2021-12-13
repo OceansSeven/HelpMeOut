@@ -8,7 +8,7 @@ function JobAvailableCard({data}) {
   const user = useContext(AppContext).user;
 
   // console.log(user);
-  console.log(data);
+  // console.log(data);
 
   function acceptJob() {
   }

@@ -48,3 +48,27 @@ export function filterBySpecialty(feed, specialty) {
     }
   })
 }
+
+export function sortBy(feed, sort, compare) {
+  let sorted = feed.sort((a, b) => {
+    return a[sort] - b[sort];
+  });
+
+  if (sort === 'date') {
+    sorted = feed.sort((a, b) => {
+      console.log(sort, Date(a[sort]));
+      return Date(a[sort]) - Date(b[sort]);
+    })
+  }
+
+  return compare === 'ascending' ? sorted : sorted.reverse();
+  // if (compare === 'ascending') {
+  //   return feed.sort((a, b) => {
+  //     return a[sort] - b[sort];
+  //   })
+  // } else {
+  //   return feed.sort((a, b) => {
+  //     return b[sort] - a[sort];
+  //   })
+  // }
+}
