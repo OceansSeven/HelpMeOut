@@ -7,10 +7,15 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import axios from 'axios';
+import AppContext from '../hooks/context';
+import { Navigate } from 'react-router-dom';
 
 export default function AppMenuBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [loggedOut, setLoggedOut] = React.useState(false);
+  const { setUser } = React.useContext(AppContext);
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -20,9 +25,21 @@ export default function AppMenuBar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
+    if (event.target.innerText === 'Log Out') {
+      axios
+        .get('api/logout')
+        .then(() => {
+          setLoggedOut(true);
+          setUser(null);
+        })
+    }
     setAnchorEl(null);
   };
+
+  if (loggedOut) {
+    return (<Navigate to="/"/>)
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -57,7 +74,7 @@ export default function AppMenuBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                <MenuItem onClick={handleClose} key='Log Out'>Log Out</MenuItem>
                 <MenuItem onClick={handleClose}>My Account</MenuItem>
               </Menu>
             </div>
