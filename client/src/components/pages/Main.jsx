@@ -19,6 +19,8 @@ const Main = function Main() {
   const [jobsAccepted, setJobsAccepted] = useState([]);
   const [searchFeedData, setSearchFeedData] = useState([]);
   const [searchFeedType, setSearchFeedType]  = useState('contractors')
+  const [showClient, setshowClient] = useState(true);
+  const [showCompleted, setShowCompleted] = useState(false);
 
   const searchFeedButtons = (<div>
     <button onClick={() => { setSearchFeedData(contractorList); setSearchFeedType('contractors')}}>Contractors</button>
@@ -27,8 +29,6 @@ const Main = function Main() {
 
   // button states
   // show client view or contractor view
-  const [showClient, setshowClient] = useState(true);
-  const [showCompleted, setShowCompleted] = useState(false);
 
   const handleButtonClick = (e) => {
     if (e.target.innerText === 'Client' || e.target.innerText === 'Contractor') {
@@ -51,13 +51,13 @@ const Main = function Main() {
   const clientFeed = (
     <>
       <div>
-        <button onClick={handleButtonClick}>Jobs Posted</button>
-        <button onClick={handleButtonClick}>Jobs Completed</button>
+        <button onClick={handleButtonClick}>Job(s) Posted</button>
+        <button onClick={handleButtonClick}>Job(s) Completed</button>
       </div>
       <div>
         <ListManager data={
           showCompleted ? jobsPosted.filter(j => j.completed) : jobsPosted.filter(j => !j.completed)
-          }>
+        }>
           <JobPostedCard />
         </ListManager>
       </div>
@@ -66,12 +66,14 @@ const Main = function Main() {
   const contractorFeed = (
     <>
       <div>
-        <button onClick={handleButtonClick}>Jobs Accepted</button>
-        <button onClick={handleButtonClick}>Jobs Completed</button>
+        <button onClick={handleButtonClick}>Job(s) Accepted</button>
+        <button onClick={handleButtonClick}>Job(s) Completed</button>
       </div>
       <div>
-        <ListManager data={showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted}>
-          {showCompleted ? <JobAvailableCard /> : <JobPostedCard />}
+        <ListManager data={
+          showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
+        }>
+          <JobAvailableCard />
         </ListManager>
       </div>
     </>
@@ -94,7 +96,12 @@ const Main = function Main() {
   //NOTE: We should create some type of interface that can toggle these lists dynamically, below is placeholder
   return (
     <MainContext.Provider value={{
-      jobsPosted
+      jobsPosted,
+      searchFeedData,
+      setSearchFeedData,
+      searchFeedType,
+      jobsAvailable,
+      contractorList,
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>
@@ -102,13 +109,13 @@ const Main = function Main() {
           {showClient ? clientFeed : contractorFeed}
         </div>
         <div style={{border: '1px solid black'}} className='searchList'>
-          {/* <Search feed={searchFeedData} searchType={searchFeedType} /> */}
           {user.contractor && searchFeedButtons}
+          <Search feed={searchFeedData} searchType={searchFeedType} />
           {searchFeedType === 'contractors'
-            ? (<ListManager data={contractorList}>
+            ? (<ListManager data={searchFeedData}>
                 <Contractors />
               </ListManager>)
-            : (<ListManager data={jobsAvailable}>
+            : (<ListManager data={searchFeedData}>
                 <JobAvailableCard />
               </ListManager>)}
         </div>
