@@ -7,13 +7,16 @@ import axios from 'axios';
 
 function JobAvailableCard({data}) {
   const user = useContext(AppContext).user;
+  const [accepted, setAccepted] = useState(false);
 
   // console.log(user);
-  console.log('data', data);
+  // console.log('data', data);
 
   async function acceptJob() {
     await axios.put('/api/jobs', {contractor_id: user.id, id: data.id})
-    .then(result => console.log('success'))
+    .then(result => {
+      setAccepted(true);
+    })
     .catch(err => console.log(err));
   }
 
@@ -27,10 +30,15 @@ function JobAvailableCard({data}) {
         {data?.description}
       </div>
       <div>
-        <button style={{float:'right'}} onClick={acceptJob}>Accept</button>
+        <div>
+          {accepted ? null : <button style={{float:'right'}} onClick={acceptJob}>Accept</button>}
+        </div>
         <Link to={`/messages/${data.client.client_id}`}>
           <button style={{float:'right'}}>Contact</button>
         </Link>
+      </div>
+      <div>
+        {accepted ? <span id ="jobacceptedbttn" style={{textAlign: center}}>Job accepted!</span> : null}
       </div>
     </Paper>
   );

@@ -44,9 +44,7 @@ module.exports = {
   },
 
   putJobs: (req, res) => {
-    console.log('req', req.body);
     let sql = `UPDATE jobsPosted SET `;
-    // var count = 0;
     if (req.body.id ) {
       var {id} = req.body;
     };
@@ -92,11 +90,9 @@ module.exports = {
     };
     sql = sql.replace(/,\s*$/, "");
     sql = sql.concat(` WHERE id = ${id}`);
-    console.log(sql);
     pool
     .query(sql)
     .then((result) => {
-      console.log('success');
       res.status(201).end()})
     .catch((err) => console.log(err));
   }
