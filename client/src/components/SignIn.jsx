@@ -52,7 +52,6 @@ export default function SignIn() {
       url: "http://localhost:3000/api/login"
     })
     .then(({ data }) => { 
-      console.log('data: ', data);
       if (data === 'No User Exists') {
         setUserExists(false);
       } else {
