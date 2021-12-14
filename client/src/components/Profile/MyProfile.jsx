@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import VerifiedIcon from "@mui/icons-material/Verified";
 import Link from "@mui/material/Link";
 
 import AppContext from "../../hooks/context.js";
@@ -56,7 +57,14 @@ const MyProfile = () => {
                     <Button color="secondary">Add/Remove</Button>
                   </Link>{" "}
                 </div>
-                <ul>
+                <ul
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   {currentUser?.tools?.map((tool) => (
                     <li key={Math.random()}>{tool}</li>
                   ))}
@@ -72,7 +80,18 @@ const MyProfile = () => {
               <h5>{currentUser.firstname + " " + currentUser.lastname}</h5>
               <ul className="specialties">
                 {currentUser?.specialties?.map((specialty) => (
-                  <li key={Math.random()}>{specialty}</li>
+                  <li
+                    key={Math.random()}
+                    style={{
+                      color: "#748cab",
+                      display: "flex",
+                      alignItems: "center",
+                      marginTop: "8px",
+                    }}
+                  >
+                    <VerifiedIcon size="sm" />
+                    {specialty}
+                  </li>
                 ))}
               </ul>
               <Card className="itemCard">
@@ -84,7 +103,14 @@ const MyProfile = () => {
                     </Button>
                   </Link>{" "}
                 </div>
-                <ul>
+                <ul
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   {currentUser?.certifications?.map((cert) => (
                     <li key={Math.random()}>{cert}</li>
                   ))}

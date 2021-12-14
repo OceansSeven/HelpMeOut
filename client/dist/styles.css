@@ -170,6 +170,11 @@ html {
   transition: 0.33s;
 }
 
+.MuiList-root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 /************************* Toggle Client ****************************************
 /*
   * * * * * * * * Client Home * * * * * * * *
