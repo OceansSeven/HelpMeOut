@@ -82,7 +82,7 @@ export default function AppMenuBar() {
                     <MenuItem onClick={handleClose}>Profile</MenuItem>
                   </Link>
                   <Link to='/messages' style={{ textDecoration: 'none', color: 'black' }}>
-                    <MenuItem onclick={handleClose}>Messages</MenuItem>
+                    <MenuItem onClick={handleClose}>Messages</MenuItem>
                   </Link>
                   <MenuItem onClick={handleClose}>Log Out</MenuItem>
                 </div>
