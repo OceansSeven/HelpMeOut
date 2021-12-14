@@ -184,6 +184,34 @@ html {
   width: 100%;
 }
 
+/*
+  * * * * * * * * Contractor Cards * * * * * * * *
+*/
+
+.contractor-card {
+  padding: 10px;
+  margin: 10px;
+}
+
+.contractor-card-lists-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contractor-specialties-list, .contractor-certifications-list, .contractor-tools-list {
+  padding: 10px;
+  margin: 10px;
+}
+
+.contractorspecialties, .contractorcertifications, .contractortools {
+  padding-left: 0;
+
+}
+
+li {
+  list-style: disc;
+}
+
 
 /*
   * * * * * * * * Messages * * * * * * * *

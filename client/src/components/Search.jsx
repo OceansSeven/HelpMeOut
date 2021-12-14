@@ -30,20 +30,20 @@ function Search() {
 
   return (
     <Grid id="search-bar-container" container spacing={2}>
-      <Grid item xs={2}>
-        <TextField fullWidth id="keyword-search" variant="outlined" size="small" onChange={handleKeywordSearch} value={searchTerm} />
+      <Grid item xs={4} md={2}>
+        <TextField fullWidth id="keyword-search" label="Search..." variant="outlined" size="small" onChange={handleKeywordSearch} value={searchTerm} />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={4} md={2}>
         <InputLabel id="specialty-dropdown-label">Filter By</InputLabel>
-        <Select labelId="specialty-dropdown-label" id="specialty-dropdown" label="Filter By" value={selectedSpecialty} onChange={handleSpecialtySearch}>
+        <Select labelId="specialty-dropdown-label" id="specialty-dropdown" label="Filter By" value={selectedSpecialty} onChange={handleSpecialtySearch} style={{ width: '100%' }}>
           {specialties?.map((specialty, i) => <MenuItem value={specialty} key={i}>{specialty}</MenuItem>)}
         </Select>
       </Grid>
       {searchFeedType === 'jobs'
         && (
-        <Grid item xs={2}>
+        <Grid xs={4} md={2}>
           <InputLabel id="sort-by-dropdown-label">Sort By</InputLabel>
-          <Select labelId="sort-by-dropdown-label" id="sort-by-dropdown" label="Sort By" onChange={handleSortBySearch}>
+          <Select labelId="sort-by-dropdown-label" id="sort-by-dropdown" label="Sort By" onChange={handleSortBySearch} style={{ width: '100%' }}>
             {sortByCategories?.map((category, i) => <MenuItem value={category.display} key={i}>{category.display}</MenuItem>)}
           </Select>
         </Grid>

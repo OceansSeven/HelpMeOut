@@ -81,10 +81,11 @@ ALTER TABLE sessions ADD CONSTRAINT sessions_user_id_fkey FOREIGN KEY (user_id) 
 
 
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties, jobs_completed) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1, TRUE, ARRAY ['pipes'], 1);
-INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 5, FALSE, ARRAY ['potatoes']);
-INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('silkWorm', 'password', '1234', 'Ron', 'Jones', 'smooth@hotmail.com', 5, TRUE, ARRAY ['Plumbing']);
-INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('Rockies', 'password', '1234', 'Elvin', 'Sims', 'rockbottom@hotmail.com', 5, TRUE, ARRAY ['Electrical']);
-INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('aces', 'password', '1234', 'Jan', 'Jamone', 'aces@hotmail.com', 5, TRUE, ARRAY ['HVAC']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 4, FALSE, ARRAY ['potatoes']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('silkWorm', 'password', '1234', 'Ron', 'Jones', 'smooth@hotmail.com', 3, TRUE, ARRAY ['Plumbing']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('Rockies', 'password', '1234', 'Elvin', 'Sims', 'rockbottom@hotmail.com', 3, TRUE, ARRAY ['Electrical']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('aces', 'password', '1234', 'Jan', 'Jamone', 'aces@hotmail.com', 2, TRUE, ARRAY ['HVAC']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties, certifications, tools, jobs_completed) VALUES ('diamonds', 'password', '1234', 'Sally', 'Selseeshell', 'diamonds@hotmail.com', 4, TRUE, ARRAY ['Snow/Waste Removal', 'Electrical', 'Plumbing', 'HVAC', 'Mechanic'], ARRAY ['Certified Pimp', 'Expert Shoveler', 'Car Guru', 'Wire Guy'], ARRAY ['bandsaw', 'hammer', 'car jack', 'sand paper', 'helmet', 'potato gun', 'elephant gun'], 0);
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('diamonds', 'password', '1234', 'Sally', 'Selseeshell', 'diamonds@hotmail.com', 5, TRUE, ARRAY ['Snow/Waste Removal']);
 INSERT INTO reviews (client_id, contractor_id, rating, body, date) VALUES (2, 1, 1.2, 'All my questions got punted to the end', '1980-01-01');
 INSERT INTO jobsposted (client_id, title, specialties, description, price_per_hour, completed, contractor_id, date) VALUES (2, 'Clean my potatoes', ARRAY ['pipes'], 'I need someone to come clean my potatoes', 20, FALSE, 0, '1980-01-02');
