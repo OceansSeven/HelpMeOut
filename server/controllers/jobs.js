@@ -87,7 +87,6 @@ module.exports = {
     }
     sql = sql.replace(/,\s*$/, '');
     sql = sql.concat(` WHERE id = ${id}`);
-    console.log('sql', sql);
     pool
       .query(sql)
       .then((result) => {
