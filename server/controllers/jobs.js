@@ -51,22 +51,22 @@ module.exports = {
     };
     if (req.body.client_id ) {
       let {client_id} = req.body;
-      sql = sql.concat(`client_id = ${client_id}`);
+      sql = sql.concat(`client_id = ${client_id},`);
 
     };
     if (req.body.title ) {
       let {title} = req.body;
-      sql = sql.concat(`title = ${title},`);
+      sql = sql.concat(`title = '${title}',`);
 
     };
     if (req.body.specialties ) {
       let {specialties} = req.body;
-      sql = sql.concat(`specialties = ARRAY ${specialties},`);
+      sql = sql.concat(`specialties = ARRAY [${specialties.map((item, i) => "'" + item + "'")}],`);
 
     };
     if (req.body.description ) {
       let {description} = req.body;
-      sql = sql.concat(`description = ${description},`);
+      sql = sql.concat(`description = '${description}',`);
 
     };
     if (req.body.price_per_hour ) {
@@ -86,11 +86,12 @@ module.exports = {
     };
     if (req.body.date ) {
       let {date} = req.body;
-      sql = sql.concat(`date = ${date},`);
+      sql = sql.concat(`date = '${date}',`);
 
     };
     sql = sql.replace(/,\s*$/, "");
     sql = sql.concat(` WHERE id = ${id}`);
+    console.log('sql', sql);
     pool
     .query(sql)
     .then((result) => {
