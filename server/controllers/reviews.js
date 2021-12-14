@@ -49,7 +49,6 @@ module.exports = {
   },
 
   getAReview: async (req, res) => {
-    console.log(req.params);
     const sql = `SELECT client_id, contractor_id, rating, body, date FROM reviews WHERE contractor_id = $1`;
     const values = [req.params.id];
     const client = await pool.connect();

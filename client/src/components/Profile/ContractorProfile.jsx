@@ -2,14 +2,21 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import BuildIcon from "@material-ui/icons/Build";
 import StarRatings from "../StarRatings.jsx";
+import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import AppContext from "../../hooks/context.js";
+import axios from "axios";
 
 const ContractorProfile = ({ user }) => {
   const currentUser = useContext(AppContext);
-  const [userReviews, setUserReviews] = useState([]);
 
-  useEffect(() => {}, [user]);
+  const [userReviews, setUserReviews] = useState();
+
+  useEffect(() => {
+    axios.get(`/api/reviews/${user.user_id}`).then(({ data }) => {
+      setUserReviews(data[0]);
+    });
+  }, [user]);
   return (
     <div className="clientProfile">
       <Container style={{ display: "flex", justifyContent: "center" }}>
@@ -17,12 +24,26 @@ const ContractorProfile = ({ user }) => {
           <div className="profileLeft">
             <BuildIcon style={{ fontSize: "72px" }} />
             <StarRatings rating={Number(user?.rating)} />
-            <Card>
+            <Card style={{ marginBottom: "32px" }}>
               Tools:
               {user?.tools?.map((tool) => (
                 <Card key={Math.random()}>{tool}</Card>
               ))}
             </Card>
+            Reviews from others:
+            <Paper className="pageReviews">
+              {userReviews?.map((review) => (
+                <Card key={Number(user.user_id)}>
+                  <StarRatings rating={Number(review.rating)} />
+                  <Typography component="h4" variant="body2">
+                    {'"' + review.body + '"'}
+                  </Typography>
+                  <Typography component="p" variant="caption">
+                    {review.date.split("T")[0]}
+                  </Typography>
+                </Card>
+              ))}
+            </Paper>
             <div>Member since 12-2021</div>
           </div>
           <div className="profileRight">
