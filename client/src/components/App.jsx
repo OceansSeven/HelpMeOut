@@ -44,7 +44,7 @@ const App = function App() {
     price_per_hour: 50,
     date: '1980-01-02',
     completed: true,
-    contractor: {id: 1, firstname: 'Josh', lastname: 'Elder'},
+    contractor: {id: 1, firstname: 'Josh', lastname: 'Elder', rating: 1, jobsCompleted: 1},
     });
 
   useEffect(() => {
@@ -72,7 +72,6 @@ const App = function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
           <Route path="/messages/:recepient" element={<Messages />} />
-          <Route path="/profile" element={<ProfileView />} />
           <Route path="/job" element={<Job/>} />
           <Route path="/job/:edit/:id" element={<Job />} />
           <Route path="/profile/:userID" element={<ProfileView />} />

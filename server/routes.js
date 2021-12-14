@@ -15,6 +15,8 @@ router.get("/contractors", controller.contractors.getContractors);
 router.get("/jobs", controller.jobs.getJobs);
 router.post("/jobs", controller.jobs.postJobs);
 
+router.post("/reviews", controller.reviews.postReview);
+
 router.post("/login", controller.login.authenticateUser);
 router.get("/logout", controller.login.logOutUser);
 router.post("/register", controller.register.registerUser);

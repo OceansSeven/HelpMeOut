@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {useLocation} from 'react-router-dom';
 import { Paper } from "@material-ui/core";
-import { specialities } from '../../utils';
+import { specialties } from '../../utils';
 
 function Job() {
   const location = useLocation();
@@ -27,7 +27,7 @@ function Job() {
           <label>Describe the Job</label> <br/>
           <textarea type="text" maxLength="200" style={inputStyle}/> <br/>
           <label>Type of Work</label> <br/>
-          {specialities.map((item, i) => {
+          {specialties.map((item, i) => {
             i+=1
             if (i % 3 === 0) {
               return (<span key={i}> <input type="checkbox"/> {item} <br/></span>)

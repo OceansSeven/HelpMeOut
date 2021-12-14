@@ -3,8 +3,8 @@ import { specialties, sortByCategories, filterByKeyword, filterBySpecialty, sort
 import MainContext from '../hooks/MainContext.js';
 
 function Search() {
-  const { searchFeedData, searchFeedType, setSearchFeedData, contractorList,
-    jobsAvailable, searchTerm, setSearchTerm, selectedSpecialty, setSelectedSpecialty } = useContext(MainContext);
+  const { searchFeedType, setSearchFeedData, contractorList, jobsAvailable,
+    searchTerm, setSearchTerm, selectedSpecialty, setSelectedSpecialty } = useContext(MainContext);
   let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
 
   const handleKeywordSearch = (e) => {

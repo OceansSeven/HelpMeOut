@@ -16,7 +16,8 @@ CREATE TABLE users (
  contractor BOOLEAN,
  specialties TEXT [],
  certifications TEXT [],
- tools TEXT []
+ tools TEXT [],
+ jobs_completed INTEGER DEFAULT 0
 );
 
 
@@ -79,7 +80,7 @@ ALTER TABLE messages ADD CONSTRAINT messages_to_id_fkey FOREIGN KEY (to_id) REFE
 ALTER TABLE sessions ADD CONSTRAINT sessions_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
 
 
-INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1, TRUE, ARRAY ['pipes']);
+INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties, jobs_completed) VALUES ('bigPapi', 'password', '1234', 'Josh', 'Elder', 'jelds@hotmail.com', 1, TRUE, ARRAY ['pipes'], 1);
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('potatoMan', 'password', '1234', 'Samwise', 'Gamgee', 'rickitydickity@hotmail.com', 5, FALSE, ARRAY ['potatoes']);
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('silkWorm', 'password', '1234', 'Ron', 'Jones', 'smooth@hotmail.com', 5, TRUE, ARRAY ['Plumbing']);
 INSERT INTO users (company, password, salt, firstname, lastname, email, rating, contractor, specialties) VALUES ('Rockies', 'password', '1234', 'Elvin', 'Sims', 'rockbottom@hotmail.com', 5, TRUE, ARRAY ['Electrical']);
@@ -92,6 +93,7 @@ INSERT INTO jobsposted (client_id, title, specialties, description, price_per_ho
 INSERT INTO jobsposted (client_id, title, specialties, description, price_per_hour, completed, contractor_id, date) VALUES (5, 'solomon v', ARRAY ['pipes'], 'my skis broke', 4, FALSE, 0, '1971-01-02');
 INSERT INTO jobsposted (client_id, title, specialties, description, price_per_hour, completed, contractor_id, date) VALUES (6, 'bringing down the house', ARRAY ['pipes'], 'boom boom pow', 100, FALSE, 0, '1962-01-12');
 INSERT INTO jobsposted (client_id, title, specialties, description, price_per_hour, completed, contractor_id, date) VALUES (3, 'there goes the water', ARRAY ['pipes'], 'its really wet', 30, FALSE, 0, '2021-01-02');
+INSERT INTO jobsposted (client_id, title, specialties, description, price_per_hour, completed, contractor_id, date) VALUES (2, 'my basement is flooding!', ARRAY ['Plumbing'], 'its really wet', 100000, FALSE, 4, '2021-01-02');
 INSERT INTO messages (from_id, to_id, body, date) VALUES (1, 2, 'I can clean ur potatoes', '1980-01-01');
 INSERT INTO messages (from_id, to_id, body, date) VALUES (2, 1, 'Please clean my potatoes', '1980-01-01');
 
