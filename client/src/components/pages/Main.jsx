@@ -69,7 +69,7 @@ const Main = function Main() {
       <div>
         <ListManager data={
           showCompleted ? jobsPosted.filter(j => j.completed) : jobsPosted.filter(j => !j.completed)
-        }>
+        } srcList='client'>
           <JobPostedCard />
         </ListManager>
       </div>
@@ -86,7 +86,7 @@ const Main = function Main() {
       <div>
         <ListManager data={
           showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
-        }>
+        } srcList='contractor'>
           <JobAvailableCard/>
         </ListManager >
       </div>
