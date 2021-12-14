@@ -3,17 +3,26 @@ import { Paper, Button } from "@material-ui/core";
 import AppContext from "../hooks/context";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {getUser} from '../utils';
 
 
-function JobAvailableCard({data}) {
+function JobAvailableCard({data, setJobsAccepted}) {
   const user = useContext(AppContext).user;
   const [accepted, setAccepted] = useState(false);
 
+  async function getAcceptedJobs() {
+    await getUser(user.id)
+    .then((results) => {
+      setJobsAccepted(results.contractor_tasks);
+    })
+  }
 
-  async function acceptJob() {
+  async function acceptJob(props) {
     await axios.put('/api/jobs', {contractor_id: user.id, id: data.id})
-    .then(result => {
+    .then((result) => {
       setAccepted(true);
+      getAcceptedJobs();
+
     })
     .catch(err => console.log(err));
   }
