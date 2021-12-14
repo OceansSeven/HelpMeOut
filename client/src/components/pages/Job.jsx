@@ -1,17 +1,13 @@
 import React, {useContext, useState} from 'react';
 import {Navigate, useLocation} from 'react-router-dom';
 import { Paper } from "@material-ui/core";
-import { specialties, postJobs } from '../../utils';
-import MainContext from '../../hooks/MainContext';
-import JobPostedCard from '../JobPostedCard';
+import { specialties, postJobs, editJobs } from '../../utils';
 import AppContext from '../../hooks/context';
 
 function Job() {
 
   //import context
   const {user, jobsPostedContext} = useContext(AppContext);
-
-  console.log(jobsPostedContext);
 
   //form state vars
   const [title, setTitle] = useState('');
@@ -20,8 +16,29 @@ function Job() {
   const [specialtiesSelected, setSpecialtiesSelected] = useState({});
   const [confirmation, setConfirmation] = useState(false);
   const [posted, setPosted] = useState(false);
+  const [hasRun, setHasRun] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   const location = useLocation();
+  let split = location.pathname.split('/');
+  let jobId = parseInt(split[split.length - 1]);
+
+  if (location.pathname.includes('edit') && !hasRun) {
+    console.log('edit mode');
+    for (let job of jobsPostedContext) {
+      console.log('in loop')
+      if (job.task_id === jobId){
+        setHasRun(true);
+        setEditMode(true);
+        setTitle(job.title);
+        setDescription(job.description);
+        setPPH(job.price_per_hour);
+        job.specialties.map(j => specialtiesSelected[j] = true);
+        console.log(specialtiesSelected);
+        break;
+      }
+    }
+  }
 
   if (posted) {
     return (<Navigate to='/main'/>)
@@ -45,9 +62,9 @@ function Job() {
         {specialties.map((item, i) => {
           i+=1
           if (i % 3 === 0) {
-            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item]}/> {item} <br/></span>)
+            return (<span key={i}> <input type="checkbox" name={item.toLowerCase()} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item.toLowerCase()]}/> {item} <br/></span>)
           } else {
-            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item]}/> {item} |</span>)
+            return (<span key={i}> <input type="checkbox" name={item.toLowerCase()} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item.toLowerCase()]}/> {item} |</span>)
           }
           })}
           <br/>
@@ -96,8 +113,11 @@ function Job() {
 
   function handleConfirm(e) {
     e.preventDefault();
-    postJobs({client_id: user.id, title, description, specialties: Object.keys(specialtiesSelected), date: new Date(), price_per_hour})
-
+    if(editMode) {
+      editJobs({id: jobId, client_id: user.id, title, description, specialties: Object.keys(specialtiesSelected), date: new Date(), price_per_hour})
+    } else {
+      postJobs({client_id: user.id, title, description, specialties: Object.keys(specialtiesSelected), date: new Date(), price_per_hour})
+    }
     setPosted(true);
   }
 

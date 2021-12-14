@@ -43,6 +43,10 @@ export async function postJobs(jobObject) {
   return await axios.post('/api/jobs', jobObject);
 }
 
+export async function editJobs(jobObject) {
+  return await axios.put('/api/jobs', jobObject);
+}
+
 export function filterByKeyword(feed, keyword) {
   const filterFunc = (obj) => {
     if (keyword === '') return obj;
