@@ -22,6 +22,7 @@ const Main = function Main() {
   const [showClient, setshowClient] = useState(true);
   const [showCompleted, setShowCompleted] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSpecialty, setSelectedSpecialty] = useState('All');
 
   // Define User Button Click Functionality
   const handleUserButtonClick = (e) => {
@@ -37,6 +38,7 @@ const Main = function Main() {
     if (e.target.innerText === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
     if (e.target.innerText === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
     setSearchTerm('');
+    setSelectedSpecialty('All');
   }
 
   // Define Search Feed Buttons
@@ -115,6 +117,8 @@ const Main = function Main() {
       contractorList,
       searchTerm,
       setSearchTerm,
+      selectedSpecialty,
+      setSelectedSpecialty,
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>

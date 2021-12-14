@@ -33,6 +33,7 @@ const App = function App() {
     lastname: "Gamgee",
     contractor: true,
   });
+  const [reviewJob, setReviewJob] = useState({});
   const [jobsPostedContext, setJobsPostedContext] = useState([]);
 
   useEffect(() => {
@@ -49,6 +50,8 @@ const App = function App() {
       // user id available to the whole app
       user,
       setUser,
+      reviewJob,
+      setReviewJob,
       jobsPostedContext,
       setJobsPostedContext
     }}>
