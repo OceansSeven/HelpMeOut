@@ -1,4 +1,4 @@
-const pool = require("../db");
+const pool = require('../db');
 
 module.exports = {
   getUser: (req, res) => {
@@ -43,6 +43,7 @@ module.exports = {
             'title', jp.title,
             'description', jp.description,
             'specialties', jp.specialties,
+            'price_per_hour', jp.price_per_hour,
             'date', jp.date,
             'completed', jp.completed
           ) FROM jobsposted jp WHERE contractor_id = $1

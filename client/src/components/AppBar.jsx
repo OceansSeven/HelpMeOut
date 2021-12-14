@@ -44,7 +44,7 @@ export default function AppMenuBar() {
       <AppBar
         id="background-appbar"
         position="static"
-        style={{ position: "fixed", top: "0" }}
+        style={{ position: "fixed", top: "0", zIndex: "900", height: "56px" }}
       >
         <Toolbar>
           <Typography
@@ -53,7 +53,9 @@ export default function AppMenuBar() {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            <b>Help Me Out</b>
+            <Link style={{ textDecoration: "none", color: "white" }} to="/main">
+              <b>Help Me Out</b>
+            </Link>
           </Typography>
           <div>
             <IconButton
@@ -63,6 +65,7 @@ export default function AppMenuBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleMenu}
+              style={{ color: "white" }}
             >
               <AccountCircle className="accountI-icon" />
             </IconButton>
@@ -78,14 +81,12 @@ export default function AppMenuBar() {
                 vertical: "top",
                 horizontal: "right",
               }}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
             >
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  padding: "0px 20px",
+                  padding: "0px 10px",
                 }}
               >
                 <Link
@@ -104,14 +105,17 @@ export default function AppMenuBar() {
                   to="/messages"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem onclick={handleClose}>Messages</MenuItem>
+                  <MenuItem onClick={handleClose}>Messages</MenuItem>
                 </Link>
-                <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                <div>
+                  <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                </div>
               </div>
             </Menu>
           </div>
         </Toolbar>
       </AppBar>
+      <div style={{ height: "56px", width: "100%" }}></div>
     </Box>
   );
 }

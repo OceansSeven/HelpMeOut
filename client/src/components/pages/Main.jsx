@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
 import JobAvailableCard from '../JobAvailableCard';
 import JobPostedCard from '../JobPostedCard';
 import ListManager from '../ListManager';
@@ -8,6 +7,8 @@ import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getUser, getJobs } from '../../utils';
+import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const Main = function Main() {
   const { user, setJobsPostedContext } = useContext(AppContext);
@@ -49,21 +50,21 @@ const Main = function Main() {
 
   // Define User Buttons
   const userBtns = (
-    <div>
+    <span>
       <button onClick={handleUserButtonClick}>
         Client
       </button>
       <button onClick={handleUserButtonClick}>
         Contractor
       </button>
-    </div>);
+    </span>);
 
   // Define Client Feed HTML
   const clientFeed = (
     <>
-      <div>
-        <button onClick={handleUserButtonClick}>Jobs Posted</button>
-        <button onClick={handleUserButtonClick}>Jobs Completed</button>
+      <div style={{display: 'flex', justifyContent: 'space-around', margin: '10px'}}>
+        <Button onClick={handleUserButtonClick} variant="contained">Jobs Posted</Button>
+        <Button onClick={handleUserButtonClick} variant="contained">Jobs Completed</Button>
       </div>
       <div>
         <ListManager data={
@@ -86,7 +87,7 @@ const Main = function Main() {
         <ListManager data={
           showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
         }>
-          <JobAvailableCard setJobsAccepted={setJobsAccepted}/>
+          <JobAvailableCard/>
         </ListManager >
       </div>
     </>
@@ -122,6 +123,9 @@ const Main = function Main() {
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>
+          <Link to='/job'>
+            <button>Post a Job</button>
+          </Link>
           {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
         </div>
@@ -132,7 +136,7 @@ const Main = function Main() {
             ? (<ListManager data={searchFeedData}>
                 <Contractors />
               </ListManager>)
-            : (<ListManager data={searchFeedData}>
+            : (<ListManager data={searchFeedData} setJobsAccepted={setJobsAccepted}>
                 <JobAvailableCard />
               </ListManager>)}
         </div>

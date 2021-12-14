@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useLocation, Navigate} from 'react-router-dom';
 import AppContext from '../../hooks/context';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from '../../utils/socket-utils';
@@ -20,12 +20,14 @@ const Messages = function Messages() {
 
   // set chat room to be determined by the current logged in user and the recepient
   // chat room will allow one to one communication
-  const [room, setRoom] = useState(`${Math.max(user.id, recepient.user_id)}-${Math.min(user.id, recepient.user_id)}`);
+  const [room, setRoom] = useState(`${Math.max(Number(user.id), recepient.user_id)}-${Math.min(Number(user.id), recepient.user_id)}`);
 
   // message is the current text input
   const [message, setMessage] = useState('');
   // chat is the chat log - which will be loaded from DB
   const [chat, setChat] = useState([]);
+
+  const [validUser, setValidUser] = useState(true);
 
   // useEffect to get data from DB
   useEffect(() => {
@@ -34,7 +36,11 @@ const Messages = function Messages() {
       axios.get(`/api/user/${recepient.user_id}`)
     ])
       .then(([chatData, recepientData]) => {
-        setRecepient(recepientData.data);
+        if (recepientData.data) {
+          setRecepient(recepientData.data);
+        } else {
+          setValidUser(false);
+        }
         setChat([...chatData.data]);
         scrollToBottomOfChat();
       })
@@ -88,6 +94,10 @@ const Messages = function Messages() {
   const handleInputChange = (e) => {
     e.preventDefault();
     setMessage(e.target.value);
+  }
+
+  if (!validUser) {
+    return <Navigate to="/main"/>
   }
 
   return (

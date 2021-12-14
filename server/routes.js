@@ -7,7 +7,7 @@ router.get("/user/:user_id", controller.user.getUser);
 router.post("/user", controller.user.postUser);
 router.put("/user", controller.user.editUser);
 
-router.get("/messages/all/:id", controller.messages.getUserMessages);
+router.get("/conversations/:id", controller.messages.getUserMessages);
 router.get("/messages/", controller.messages.getMessages);
 router.post("/messages/", controller.messages.postMessage);
 
