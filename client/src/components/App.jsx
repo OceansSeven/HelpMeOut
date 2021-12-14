@@ -61,15 +61,15 @@ const App = function App() {
           <Route exact path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/messages" element={<MessagesList />}/>
-          <Route path="/messages/:recepient" element={<Messages />} />
-          <Route path="/job" element={<Job/>} />
-          <Route path="/job/:edit/:id" element={<Job />} />
-          <Route path="/profile/:userID" element={<ProfileView />} />
-          <Route path="/profile" element={<MyProfile />} />
-          <Route path="/update" element={<EditProfile />} />
-          <Route path="/leaveAReview" element={<LeaveAReview />} />
+          <Route path="/main" element={user ? <Main /> : <Landing />} />
+          <Route path="/messages" element={user ? <MessagesList /> : <Landing />}/>
+          <Route path="/messages/:recepient" element={user ? <Messages /> : <Landing />} />
+          <Route path="/job" element={user ? <Job/> : <Landing />} />
+          <Route path="/job/:edit/:id" element={user ? <Job /> : <Landing />} />
+          <Route path="/profile/:userID" element={user ? <ProfileView /> : <Landing />} />
+          <Route path="/profile" element={user ? <MyProfile /> : <Landing />} />
+          <Route path="/update" element={user ? <EditProfile /> : <Landing />} />
+          <Route path="/leaveAReview" element={user ? <LeaveAReview /> : <Landing />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </Router>

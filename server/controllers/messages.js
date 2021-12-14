@@ -2,6 +2,7 @@ const pool = require('../db');
 
 module.exports = {
   getUserMessages: (req, res) => {
+    console.log(`getting all messages for ${req.params.id}`)
     const sql = `SELECT
       id,
       firstname,
@@ -11,7 +12,7 @@ module.exports = {
       SELECT DISTINCT from_id
       FROM messages
       WHERE to_id = $1
-    ) AND id IN (
+    ) OR id IN (
       SELECT DISTINCT to_id
       FROM messages
       WHERE from_id = $1

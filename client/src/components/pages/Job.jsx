@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Navigate, useLocation} from 'react-router-dom';
-import { Paper } from "@material-ui/core";
+import { Paper, Button } from "@material-ui/core";
 import { specialties, postJobs, editJobs } from '../../utils';
 import AppContext from '../../hooks/context';
 
@@ -18,6 +18,7 @@ function Job() {
   const [posted, setPosted] = useState(false);
   const [hasRun, setHasRun] = useState(false);
   const [editMode, setEditMode] = useState(false);
+  const [emptyFields, setEmptyFields] = useState(false);
 
   const location = useLocation();
   let split = location.pathname.split('/');
@@ -44,6 +45,10 @@ function Job() {
     return (<Navigate to='/main'/>)
   }
 
+  const emptyComp = (<div style={{color: 'red'}}>
+    Please make sure all fields are filled in.
+  </div>);
+
   const formPage = (
   <Paper>
     <h2>Post a new listing</h2>
@@ -68,7 +73,8 @@ function Job() {
           }
           })}
           <br/>
-          <button onClick={goToConfirm}>Post</button>
+          {emptyFields ? emptyComp : null}
+          <Button onClick={goToConfirm} variant='contained'>Post</Button>
       </form>
   </Paper>
   );
@@ -90,7 +96,7 @@ function Job() {
       {Object.keys(specialtiesSelected).map(item => <li key={item}>{item}</li>)}
     </ul>
 
-    <button onClick={handleConfirm}>Confirm</button> <button onClick={handleEdit}>Edit</button>
+    <Button variant='contained' onClick={handleConfirm}>Confirm</Button> <Button variant='contained' onClick={handleEdit}>Edit</Button>
   </Paper>
   );
 
@@ -104,7 +110,11 @@ function Job() {
 
   function goToConfirm(e) {
     e.preventDefault();
-    setConfirmation(true);
+    if (title && description && price_per_hour && Object.keys(specialtiesSelected).length) {
+      setConfirmation(true);
+    } else {
+      setEmptyFields(true);
+    }
   }
 
   function handleEdit() {
