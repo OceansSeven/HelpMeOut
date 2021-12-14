@@ -3,9 +3,12 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { InputLabel, Select, MenuItem } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
@@ -24,11 +27,18 @@ const EditProfile = () => {
   const user = useContext(AppContext);
   const setUser = useContext(AppContext);
 
+  const [mySpecialties, setMySpecialties] = useState([]);
+  const [newSpecialty, setNewSpecialty] = useState("");
   const [myTools, setMyTools] = useState([]);
   const [newTool, setNewTool] = useState("");
   const [myCerts, setMyCerts] = useState([]);
   const [newCert, setNewCert] = useState("");
   const [updated, setUpdated] = useState(false);
+
+  const handleSelectChange = (e) => {
+    e.preventDefault();
+    setNewSpecialty(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +51,7 @@ const EditProfile = () => {
         lastname: data.get("lastName") || user.user.lastname,
         contractor: data.get("setContractor") || user.user.contractor,
         company: data.get("companyName") || user.user.company,
+        specialties: mySpecialties,
         tools: myTools,
         certifications: myCerts,
         userId: Number(user.user.id),
@@ -67,6 +78,7 @@ const EditProfile = () => {
   };
 
   useEffect(() => {
+    setMySpecialties(user.user.specialties || []);
     setMyTools(user.user.tools || []);
     setMyCerts(user.user.certifications || []);
   }, [user.user]);
@@ -177,6 +189,75 @@ const EditProfile = () => {
               label={user?.user.company}
               id="updateCompanyName"
             />
+            Add a specialty:
+            <div id="addSpecialty" style={{ margin: "20px" }}>
+              <FormControl fullWidth variant="standard">
+                <InputLabel id="selectSpecialty">
+                  Select a specialty:
+                </InputLabel>
+                <Select
+                  labelId="selectSpecialty"
+                  id="selectSpecialty"
+                  value={newSpecialty}
+                  label="Specialty"
+                  onChange={handleSelectChange}
+                >
+                  <MenuItem value={"Appliance Repair"}>
+                    Appliance Repair
+                  </MenuItem>
+                  <MenuItem value={"Carpentry"}>Carpentry</MenuItem>
+                  <MenuItem value={"Electrical"}>Electrical</MenuItem>
+                  <MenuItem value={"HVAC"}>HVAC</MenuItem>
+                  <MenuItem value={"Landscaping"}>Landscaping</MenuItem>
+                  <MenuItem value={"Mechanic"}>Mechanic</MenuItem>
+                  <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
+                  <MenuItem value={"Snow/Waste Removal"}>
+                    Snow/Waste Removal
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              <IconButton
+                aria-label="add"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const currentSpecialties = mySpecialties;
+                  setMySpecialties(currentSpecialties.concat(newSpecialty));
+                }}
+              >
+                <AddIcon />
+              </IconButton>
+            </div>
+            <Typography component="p" variant="body2">
+              Specialties:
+            </Typography>
+            <ul
+              id="specialtyList"
+              style={{
+                listStyle: "none",
+                display: "flex",
+                justifyContent: "space-around",
+                background: "rgba(0,0,0,0.05)",
+                borderRadius: "8px",
+              }}
+            >
+              {mySpecialties?.map((specialty) => (
+                <li className="listItem">
+                  <Chip
+                    label={specialty}
+                    onDelete={(e) => {
+                      e.preventDefault();
+                      const results = [];
+                      mySpecialties.forEach((item) => {
+                        if (item !== specialty) {
+                          results.push(item);
+                        }
+                      });
+                      setMySpecialties(results);
+                    }}
+                  ></Chip>
+                </li>
+              ))}
+            </ul>
             Add a tool:
             <div style={{ margin: "20px" }}>
               <TextField
@@ -210,23 +291,25 @@ const EditProfile = () => {
                 listStyle: "none",
                 display: "flex",
                 justifyContent: "space-around",
+                background: "rgba(0,0,0,0.05)",
+                borderRadius: "8px",
               }}
             >
               {myTools?.map((tool) => (
-                <li
-                  className="listItem"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const results = [];
-                    myTools.forEach((item) => {
-                      if (item !== tool) {
-                        results.push(item);
-                      }
-                    });
-                    setMyTools(results);
-                  }}
-                >
-                  {tool} <BackspaceIcon style={{ fontSize: "24px" }} />
+                <li className="listItem">
+                  <Chip
+                    label={tool}
+                    onDelete={(e) => {
+                      e.preventDefault();
+                      const results = [];
+                      myTools.forEach((item) => {
+                        if (item !== tool) {
+                          results.push(item);
+                        }
+                      });
+                      setMyTools(results);
+                    }}
+                  ></Chip>
                 </li>
               ))}
             </ul>
@@ -263,23 +346,25 @@ const EditProfile = () => {
                 listStyle: "none",
                 display: "flex",
                 justifyContent: "space-around",
+                background: "rgba(0,0,0,0.05)",
+                borderRadius: "8px",
               }}
             >
               {myCerts?.map((cert) => (
-                <li
-                  className="listItem"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const results = [];
-                    myCerts.forEach((item) => {
-                      if (item !== cert) {
-                        results.push(item);
-                      }
-                    });
-                    setMyCerts(results);
-                  }}
-                >
-                  {cert} <BackspaceIcon style={{ fontSize: "24px" }} />
+                <li className="listItem">
+                  <Chip
+                    label={cert}
+                    onDelete={(e) => {
+                      e.preventDefault();
+                      const results = [];
+                      myCerts.forEach((item) => {
+                        if (item !== cert) {
+                          results.push(item);
+                        }
+                      });
+                      setMyCerts(results);
+                    }}
+                  ></Chip>
                 </li>
               ))}
             </ul>
