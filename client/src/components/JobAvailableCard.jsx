@@ -17,7 +17,6 @@ function JobAvailableCard({data, setJobsAccepted}) {
   async function getAcceptedJobs() {
     await getUser(user.id)
     .then((results) => {
-      console.log('success');
       setJobsAccepted(results.contractor_tasks);
     })
   }
