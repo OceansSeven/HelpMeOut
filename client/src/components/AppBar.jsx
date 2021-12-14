@@ -43,13 +43,13 @@ export default function AppMenuBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="background-appbar" position="static" style={{position: 'fixed', top: '0', zIndex: '900'}}>
+      <AppBar id="background-appbar" position="static" style={{position: 'fixed', top: '0', zIndex: '900', height: '56px'}}>
         <Toolbar>
-          <Link to="/main">
-            <Typography variant="h6" className="appbar-text" component="div" sx={{ flexGrow: 1 }}>
-              <b>Help Me Out</b>
-            </Typography>
-          </Link>
+          <Typography variant="h6" className="appbar-text" component="div" sx={{ flexGrow: 1 }}>
+            <Link style={{textDecoration: 'none', color: 'white'}} to="/main">
+                <b>Help Me Out</b>
+            </Link>
+          </Typography>
             <div>
               <IconButton
                 className="account-button"
@@ -58,6 +58,7 @@ export default function AppMenuBar() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
+                style={{color: 'white'}}
               >
                 <AccountCircle className='accountI-icon'/>
               </IconButton>
@@ -94,6 +95,7 @@ export default function AppMenuBar() {
             </div>
         </Toolbar>
       </AppBar>
+      <div style={{height: '56px', width: '100%'}}></div>
     </Box>
   );
 }
