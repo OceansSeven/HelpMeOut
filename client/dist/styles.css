@@ -184,6 +184,10 @@ html {
   width: 100%;
 }
 
+#specialty-dropdown-label, #sort-by-dropdown-label {
+  font-size: 12px;
+}
+
 /*
   * * * * * * * * Contractor Cards * * * * * * * *
 */
