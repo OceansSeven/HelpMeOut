@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Select, MenuItem, InputLabel, TextField, Grid } from "@material-ui/core";
 import { specialties, sortByCategories, filterByKeyword, filterBySpecialty, sortBy } from '../utils';
 import MainContext from '../hooks/MainContext.js';
 
@@ -15,9 +16,9 @@ function Search() {
 
   const handleSpecialtySearch = (e) => {
     const searchSpecialty = e.target.value;
+    setSelectedSpecialty(searchSpecialty);
     if (searchSpecialty === 'All') { return setSearchFeedData(searchFeed); }
     setSearchFeedData(filterBySpecialty([...searchFeed], searchSpecialty));
-    setSelectedSpecialty(searchSpecialty);
   };
 
   const handleSortBySearch = (e) => {
@@ -28,19 +29,26 @@ function Search() {
   };
 
   return (
-    <div>
-      <input type="text" placeholder="Search by keyword..." onChange={handleKeywordSearch} value={searchTerm} />
-      <select id="specialtyDropdown" value={selectedSpecialty} onChange={handleSpecialtySearch}>
-        {specialties?.map((specialty, i) => <option value={specialty} key={i}>{specialty}</option>)}
-      </select>
+    <Grid id="search-bar-container" container spacing={2}>
+      <Grid item xs={2}>
+        <TextField fullWidth id="keyword-search" defaultValue="Search by keyword..." variant="outlined" size="small" onChange={handleKeywordSearch} value={searchTerm} />
+      </Grid>
+      <Grid item xs={2}>
+        <InputLabel id="specialty-dropdown-label">Filter By</InputLabel>
+        <Select labelId="specialty-dropdown-label" id="specialty-dropdown" label="Filter By" value={selectedSpecialty} onChange={handleSpecialtySearch}>
+          {specialties?.map((specialty, i) => <MenuItem value={specialty} key={i}>{specialty}</MenuItem>)}
+        </Select>
+      </Grid>
       {searchFeedType === 'jobs'
         && (
-        <select onChange={handleSortBySearch}>
-          <option>Sort By</option>
-          {sortByCategories?.map((category, i) => <option value={category.display} key={i}>{category.display}</option>)}
-        </select>
+        <Grid item xs={2}>
+          <InputLabel id="sort-by-dropdown-label">Sort By</InputLabel>
+          <Select labelId="sort-by-dropdown-label" id="sort-by-dropdown" label="Sort By" onChange={handleSortBySearch}>
+            {sortByCategories?.map((category, i) => <MenuItem value={category.display} key={i}>{category.display}</MenuItem>)}
+          </Select>
+        </Grid>
       )}
-    </div>
+    </Grid>
   );
 }
 

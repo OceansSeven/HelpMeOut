@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import { Button } from "@material-ui/core";
 import JobAvailableCard from '../JobAvailableCard';
 import JobPostedCard from '../JobPostedCard';
 import ListManager from '../ListManager';
@@ -35,16 +35,16 @@ const Main = function Main() {
 
   // Define Search Feed Button Click Functionality
   const handleSearchFeedButtonsClick = (e) => {
-    if (e.target.innerText === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
-    if (e.target.innerText === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
+    if (e.target.innerHTML === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
+    if (e.target.innerHTML === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
     setSearchTerm('');
     setSelectedSpecialty('All');
   }
 
   // Define Search Feed Buttons
-  const searchFeedButtons = (<div>
-    <button onClick={handleSearchFeedButtonsClick} >Contractors</button>
-    <button onClick={handleSearchFeedButtonsClick}>Jobs Available</button>
+  const searchFeedButtons = (<div className="searchFeedButtonsContainer">
+    <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Contractors</Button>
+    <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Jobs Available</Button>
   </div>);
 
   // Define User Buttons

@@ -152,16 +152,43 @@ html {
   transition: 0.33s;
 }
 
-/************************* Toggle Client ****************************************
+/************************* User Feed/Container ****************************************/
 /*
   * * * * * * * * Client Home * * * * * * * *
 */
 
-/************************* Toggle Contract ****************************************
-
 /*
   * * * * * * * * Contract Home * * * * * * * *
 */
+
+/************************* Search Feed/Container ********************************/
+
+.searchFeedButtonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.searchFeedButton {
+  margin: 0px 10px;
+}
+
+/*
+  * * * * * * * * Search Bar * * * * * * * *
+*/
+
+#search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#specialty-dropdown {
+  width: 100%;
+}
+
 
 /*
   * * * * * * * * Messages * * * * * * * *
