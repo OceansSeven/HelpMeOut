@@ -9,8 +9,9 @@ const MessagesList = function () {
   const [converstations, setConverstations] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/messages/all/${user.id}`)
+    axios.get(`/api/conversations/${user.id}`)
       .then(({data}) => {
+        // console.log(data);
         setConverstations([...data]);
       })
       .catch(console.log)
