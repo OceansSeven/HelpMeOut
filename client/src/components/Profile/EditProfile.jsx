@@ -78,7 +78,6 @@ const EditProfile = () => {
   };
 
   useEffect(() => {
-    console.log(user.user);
     setMySpecialties(user.user.specialties || []);
     setMyTools(user.user.tools || []);
     setMyCerts(user.user.certifications || []);
@@ -192,16 +191,6 @@ const EditProfile = () => {
             />
             Add a specialty:
             <div id="addSpecialty" style={{ margin: "20px" }}>
-              {/* <TextField
-                id="addSpecialty"
-                name="addSpecialty"
-                label="Name of tool"
-                value={newTool}
-                variant="filled"
-                onChange={(e) => {
-                  setNewTool(e.target.value);
-                }}
-              /> */}
               <FormControl fullWidth variant="standard">
                 <InputLabel id="selectSpecialty">
                   Select a specialty:
@@ -227,14 +216,12 @@ const EditProfile = () => {
                   </MenuItem>
                 </Select>
               </FormControl>
-
               <IconButton
                 aria-label="add"
                 onClick={(e) => {
                   e.preventDefault();
                   const currentSpecialties = mySpecialties;
                   setMySpecialties(currentSpecialties.concat(newSpecialty));
-                  // setNewSpecialty("");
                 }}
               >
                 <AddIcon />
@@ -249,6 +236,8 @@ const EditProfile = () => {
                 listStyle: "none",
                 display: "flex",
                 justifyContent: "space-around",
+                background: "rgba(0,0,0,0.05)",
+                borderRadius: "8px",
               }}
             >
               {mySpecialties?.map((specialty) => (
@@ -302,6 +291,8 @@ const EditProfile = () => {
                 listStyle: "none",
                 display: "flex",
                 justifyContent: "space-around",
+                background: "rgba(0,0,0,0.05)",
+                borderRadius: "8px",
               }}
             >
               {myTools?.map((tool) => (
@@ -355,6 +346,8 @@ const EditProfile = () => {
                 listStyle: "none",
                 display: "flex",
                 justifyContent: "space-around",
+                background: "rgba(0,0,0,0.05)",
+                borderRadius: "8px",
               }}
             >
               {myCerts?.map((cert) => (

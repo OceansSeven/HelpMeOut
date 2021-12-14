@@ -1,10 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import BuildIcon from "@material-ui/icons/Build";
 import StarRatings from "../StarRatings.jsx";
 import Link from "@mui/material/Link";
+import AppContext from "../../hooks/context.js";
 
 const ContractorProfile = ({ user }) => {
+  const currentUser = useContext(AppContext);
+  const [userReviews, setUserReviews] = useState([]);
+
+  useEffect(() => {}, [user]);
   return (
     <div className="clientProfile">
       <Container style={{ display: "flex", justifyContent: "center" }}>

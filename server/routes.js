@@ -13,10 +13,11 @@ router.post("/messages/", controller.messages.postMessage);
 
 router.get("/contractors", controller.contractors.getContractors);
 
-router.get('/jobs', controller.jobs.getJobs);
-router.post('/jobs', controller.jobs.postJobs);
-router.put('/jobs', controller.jobs.putJobs);
+router.get("/jobs", controller.jobs.getJobs);
+router.post("/jobs", controller.jobs.postJobs);
+router.put("/jobs", controller.jobs.putJobs);
 
+router.get("/reviews/:id", controller.reviews.getAReview);
 router.post("/reviews", controller.reviews.postReview);
 
 router.post("/login", controller.login.authenticateUser);
