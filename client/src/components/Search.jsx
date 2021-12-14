@@ -41,7 +41,7 @@ function Search() {
       </Grid>
       {searchFeedType === 'jobs'
         && (
-        <Grid xs={4} md={2}>
+        <Grid item xs={4} md={2}>
           <InputLabel id="sort-by-dropdown-label">Sort By</InputLabel>
           <Select labelId="sort-by-dropdown-label" id="sort-by-dropdown" label="Sort By" onChange={handleSortBySearch} style={{ width: '100%' }}>
             {sortByCategories?.map((category, i) => <MenuItem value={category.display} key={i}>{category.display}</MenuItem>)}

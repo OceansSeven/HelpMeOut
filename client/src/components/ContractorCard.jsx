@@ -29,8 +29,8 @@ export default function ContractorCard({data}) {
             {data.certifications &&
               <Card className="contractor-certifications-list">
                 <div><strong>Certifications:</strong></div>
-                <Grid container className="contractorcertifications" spacing={2} columns={{ xs: 2, sm: 3, md: 4 }} direction="column" alignItems="flex-start" justifyContent="flex-start">
-                  {data.certifications.map((certification, i) => <Grid item xs={6} md={3} key={i}><li>{certification}</li></Grid>)}
+                <Grid container className="contractorcertifications" spacing={2} columns={{ xs: 6, sm: 3, md: 4 }} direction="column" alignItems="flex-start" justifyContent="flex-start">
+                  {data.certifications.map((certification, i) => <Grid item xs={4} md={3} key={i}><li>{certification}</li></Grid>)}
                 </Grid>
               </Card>}
             {data.tools &&

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Button } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
 import JobAvailableCard from '../JobAvailableCard';
 import JobPostedCard from '../JobPostedCard';
 import ListManager from '../ListManager';
@@ -121,15 +121,16 @@ const Main = function Main() {
       selectedSpecialty,
       setSelectedSpecialty,
     }}>
-      <div>
-        <div style={{border: '1px solid black'}} className='userPosts'>
+      <Container id="main">
+        <Container className='userPosts'>
           <Link to='/job'>
             <button>Post a Job</button>
           </Link>
           {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
-        </div>
-        <div style={{border: '1px solid black'}} className='searchList'>
+        </Container>
+        <br/>
+        <Container className='searchList'>
           {user.contractor && searchFeedButtons}
           <Search feed={searchFeedData} searchType={searchFeedType} />
           {searchFeedType === 'contractors'
@@ -139,8 +140,8 @@ const Main = function Main() {
             : (<ListManager data={searchFeedData} setJobsAccepted={setJobsAccepted}>
                 <JobAvailableCard />
               </ListManager>)}
-        </div>
-      </div>
+        </Container>
+      </Container>
     </MainContext.Provider>
   );
 };
