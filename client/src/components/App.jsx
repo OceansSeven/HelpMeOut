@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
@@ -11,17 +10,15 @@ import Landing from "./pages/Landing";
 import Main from "./pages/Main";
 import Messages from "./pages/Messages";
 import ProfileView from "./Profile/ProfileView";
-
 import Job from "./pages/Job";
-
 import EditProfile from "./Profile/EditProfile";
-
 import AppContext from "../hooks/context";
 import axios from "axios";
 import ErrorPage from "./pages/ErrorPage";
 import LeaveAReview from "./LeaveAReview";
 import AppBar from "./AppBar";
 import MyProfile from "./Profile/MyProfile";
+import MessagesList from "./pages/MessagesList";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -36,16 +33,8 @@ const App = function App() {
     lastname: "Gamgee",
     contractor: true,
   });
-  const [reviewJob, setReviewJob] = useState({
-    task_id: 12,
-    title: 'posted by 2 complete by 1',
-    specialties: ['pipes'],
-    description: 'posted by 2 complete by 1',
-    price_per_hour: 50,
-    date: '1980-01-02',
-    completed: true,
-    contractor: {id: 1, firstname: 'Josh', lastname: 'Elder', rating: 1, jobsCompleted: 1},
-    });
+  const [reviewJob, setReviewJob] = useState({});
+  const [jobsPostedContext, setJobsPostedContext] = useState([]);
 
   useEffect(() => {
     // axios call to get logged in user
@@ -63,14 +52,17 @@ const App = function App() {
       setUser,
       reviewJob,
       setReviewJob,
+      jobsPostedContext,
+      setJobsPostedContext
     }}>
       <Router>
-      {user ? <AppBar /> : ''}
+        {user ? <AppBar /> : ""}
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/messages" element={<MessagesList />}/>
           <Route path="/messages/:recepient" element={<Messages />} />
           <Route path="/job" element={<Job/>} />
           <Route path="/job/:edit/:id" element={<Job />} />

@@ -15,6 +15,8 @@ import Container from "@mui/material/Container";
 
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
+import BackspaceIcon from "@material-ui/icons/Backspace";
+import SettingsIcon from "@material-ui/icons/Settings";
 
 import AppContext from "../../hooks/context.js";
 
@@ -62,28 +64,19 @@ const EditProfile = () => {
         setUpdated(true);
       })
       .catch((err) => console.log(err));
-
-    // console.log({
-    //   first: data.get("firstName") || user.user.firstname,
-    //   last: data.get("lastName") || user.user.lastname,
-    //   setContractor: data.get("setContractor") || user.user.contractor,
-    //   company: data.get("companyName") || user.user.company,
-    //   tools: myTools,
-    //   certs: myCerts,
-    //   userId: Number(user.user.id),
-    // });
   };
 
   useEffect(() => {
     setMyTools(user.user.tools || []);
     setMyCerts(user.user.certifications || []);
   }, [user.user]);
+
   if (updated) {
     return <Navigate to="/profile" />;
   }
   if (!user?.user.contractor) {
     return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" className="editForm">
         <CssBaseline />
         <Box
           sx={{
@@ -94,7 +87,7 @@ const EditProfile = () => {
           }}
         >
           <Typography component="h1" variant="h5">
-            Update Profile
+            <SettingsIcon /> Update Profile
           </Typography>
           <Box
             component="form"
@@ -121,11 +114,7 @@ const EditProfile = () => {
             />
             <FormControlLabel
               control={
-                <Checkbox
-                  value="checked"
-                  name="setContractor"
-                  color="primary"
-                />
+                <Checkbox value={true} name="setContractor" color="primary" />
               }
               label="I would like to start helping out others!"
             />
@@ -134,6 +123,7 @@ const EditProfile = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              style={{ marginBottom: "44px" }}
             >
               Update
             </Button>
@@ -154,7 +144,7 @@ const EditProfile = () => {
           }}
         >
           <Typography component="h1" variant="h5">
-            Update Profile
+            <SettingsIcon /> Update Profile
           </Typography>
           <Box
             component="form"
@@ -188,7 +178,7 @@ const EditProfile = () => {
               id="updateCompanyName"
             />
             Add a tool:
-            <div>
+            <div style={{ margin: "20px" }}>
               <TextField
                 id="addTool"
                 name="addTool"
@@ -212,7 +202,7 @@ const EditProfile = () => {
               </IconButton>
             </div>
             <Typography component="h3" variant="caption">
-              My Tools
+              My Tools:
             </Typography>
             <ul
               id="toolList"
@@ -223,11 +213,25 @@ const EditProfile = () => {
               }}
             >
               {myTools?.map((tool) => (
-                <li>{tool}</li>
+                <li
+                  className="listItem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const results = [];
+                    myTools.forEach((item) => {
+                      if (item !== tool) {
+                        results.push(item);
+                      }
+                    });
+                    setMyTools(results);
+                  }}
+                >
+                  {tool} <BackspaceIcon style={{ fontSize: "24px" }} />
+                </li>
               ))}
             </ul>
             Add a certification:
-            <div>
+            <div style={{ margin: "20px" }}>
               <TextField
                 id="addCert"
                 name="addCert"
@@ -251,7 +255,7 @@ const EditProfile = () => {
               </IconButton>
             </div>
             <Typography component="h3" variant="caption">
-              My Certifications
+              My Certifications:
             </Typography>
             <ul
               id="certList"
@@ -262,7 +266,21 @@ const EditProfile = () => {
               }}
             >
               {myCerts?.map((cert) => (
-                <li>{cert}</li>
+                <li
+                  className="listItem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const results = [];
+                    myCerts.forEach((item) => {
+                      if (item !== cert) {
+                        results.push(item);
+                      }
+                    });
+                    setMyCerts(results);
+                  }}
+                >
+                  {cert} <BackspaceIcon style={{ fontSize: "24px" }} />
+                </li>
               ))}
             </ul>
             <Button
@@ -270,6 +288,7 @@ const EditProfile = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              style={{ marginBottom: "44px" }}
             >
               Update
             </Button>
