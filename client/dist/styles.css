@@ -3,7 +3,8 @@
   margin: 0;
   font-family: Roboto, sans-serif;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  padding-top: 60px;
 }
 li {
   list-style: none;
@@ -107,6 +108,7 @@ html {
   background-image: none;
   justify-content: center;
   padding: 16px;
+  margin-top: 40px;
 }
 
 .profileIcon {
@@ -125,12 +127,21 @@ html {
   flex-direction: column;
   font-weight: bold;
 }
-
+.clientProfile {
+  background-image: url("./assets/clientWallpaper.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding-top: 64px;
+}
 .profileContainer {
   background-image: url("./assets/handyWallpaper.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 100vh;
+  padding-top: 64px;
 }
 .profileLeft {
   display: flex;

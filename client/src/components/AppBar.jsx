@@ -112,7 +112,6 @@ export default function AppMenuBar() {
           </div>
         </Toolbar>
       </AppBar>
-      <div style={{ minHeight: "64px", width: "100%" }}></div>
     </Box>
   );
 }

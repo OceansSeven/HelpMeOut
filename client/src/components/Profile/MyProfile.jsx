@@ -17,7 +17,6 @@ const MyProfile = () => {
     return (
       <div className="profileContainer">
         <Container maxWidth="xs" style={{ marginTop: "44px" }}>
-          <CardHeader style={{ background: "#3d3d3d" }}></CardHeader>
           <Paper elevation={8} className="profilePage">
             <div className="profileLeft">
               <AccountCircleIcon style={{ fontSize: "72px" }} />
@@ -46,7 +45,6 @@ const MyProfile = () => {
     return (
       <div className="profileContainer">
         <Container maxWidth="xs" style={{ marginTop: "44px" }}>
-          <CardHeader style={{ background: "#1d2d44" }}></CardHeader>
           <Paper elevation={8} className="profilePage">
             <div className="profileLeft">
               <AccountCircleIcon style={{ fontSize: "72px" }} />
