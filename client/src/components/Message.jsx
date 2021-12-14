@@ -7,9 +7,6 @@ const Message = function Message({data}) {
   return (
     <div className={(data.from_id === Number(user.id) || data.fromId === Number(user.id)) ? 'from' : 'to'} >
       <span className='message-container'>
-        <div className='message-from'>
-          {`${data.from_firstname} ${data.from_lastname}`}
-        </div>
         <div className='message-contents'>
           {`${data.body}`}
         </div>

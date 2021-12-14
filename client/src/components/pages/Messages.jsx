@@ -7,16 +7,20 @@ import ListManager from '../ListManager';
 import Message from '../Message';
 
 const Messages = function Messages() {
-  // TODO - need to pull in user id from app context provider
   const { user } = useContext(AppContext);
   // get URL location
   const location = useLocation();
   // get recepient from URL path
-  const recepient = location.pathname.split('/').pop();
+  // need to get recepient information
+  const [recepient, setRecepient] = useState({
+    user_id: location.pathname.split('/').pop(),
+    firstname: null,
+    lastname: null
+  });
 
   // set chat room to be determined by the current logged in user and the recepient
   // chat room will allow one to one communication
-  const [room, setRoom] = useState(`${Math.max(user.id, recepient)}-${Math.min(user.id, recepient)}`);
+  const [room, setRoom] = useState(`${Math.max(user.id, recepient.user_id)}-${Math.min(user.id, recepient.user_id)}`);
 
   // message is the current text input
   const [message, setMessage] = useState('');
@@ -25,9 +29,13 @@ const Messages = function Messages() {
 
   // useEffect to get data from DB
   useEffect(() => {
-    axios.get(`/api/messages/?user_id=${user.id}&recepient_id=${recepient}`)
-      .then(({data}) => {
-        setChat([...data]);
+    Promise.all([
+      axios.get(`/api/messages/?user_id=${user.id}&recepient_id=${recepient.user_id}`),
+      axios.get(`/api/user/${recepient.user_id}`)
+    ])
+      .then(([chatData, recepientData]) => {
+        setRecepient(recepientData.data);
+        setChat([...chatData.data]);
         scrollToBottomOfChat();
       })
       .catch(console.log)
@@ -52,6 +60,10 @@ const Messages = function Messages() {
     }
   }, [room]);
 
+  useEffect(() => {
+    scrollToBottomOfChat();
+  },[chat])
+
   const scrollToBottomOfChat = () => {
     const messageContainer = document.getElementById('messages');
     messageContainer.scrollTo(0, messageContainer.scrollHeight);
@@ -65,7 +77,7 @@ const Messages = function Messages() {
     setMessage('');
     await axios.post(`/api/messages`, {
       from: user.id,
-      to: recepient,
+      to: recepient.user_id,
       body: message,
       date
     })
@@ -81,7 +93,7 @@ const Messages = function Messages() {
   return (
     <>
       <div>
-        <h1>{`Now talking with: ${recepient}`}</h1>
+        <h1>{`Now talking with: ${recepient.firstname} ${recepient.lastname} (${recepient.user_id})`}</h1>
       </div>
       <div>{`Current user: ${user.id}`}</div>
       {/* Chat box */}
