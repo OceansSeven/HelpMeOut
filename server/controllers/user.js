@@ -64,18 +64,20 @@ module.exports = {
       lastname,
       contractor,
       company,
+      specialties,
       tools,
       certifications,
       userId,
     } = req.body;
     pool
       .query(
-        `UPDATE users SET firstname = $1, lastname = $2, contractor = $3, company = $4, tools = $5, certifications = $6 WHERE id = $7`,
+        `UPDATE users SET firstname = $1, lastname = $2, contractor = $3, company = $4, specialties = $5, tools = $6, certifications = $7 WHERE id = $8`,
         [
           firstname,
           lastname,
           contractor,
           company,
+          specialties,
           tools,
           certifications,
           userId,
