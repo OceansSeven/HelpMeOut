@@ -41,18 +41,20 @@ export default function AppMenuBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="background-appbar" position="static">
+      <AppBar
+        id="background-appbar"
+        position="static"
+        style={{ position: "fixed", top: "0" }}
+      >
         <Toolbar>
-          <Link to="/main">
-            <Typography
-              variant="h6"
-              className="appbar-text"
-              component="div"
-              sx={{ flexGrow: 1 }}
-            >
-              <b>Help Me Out</b>
-            </Typography>
-          </Link>
+          <Typography
+            variant="h6"
+            className="appbar-text"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            <b>Help Me Out</b>
+          </Typography>
           <div>
             <IconButton
               className="account-button"
@@ -76,12 +78,14 @@ export default function AppMenuBar() {
                 vertical: "top",
                 horizontal: "right",
               }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
             >
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  padding: "0px 10px",
+                  padding: "0px 20px",
                 }}
               >
                 <Link
@@ -100,7 +104,7 @@ export default function AppMenuBar() {
                   to="/messages"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem onClick={handleClose}>Messages</MenuItem>
+                  <MenuItem onclick={handleClose}>Messages</MenuItem>
                 </Link>
                 <MenuItem onClick={handleClose}>Log Out</MenuItem>
               </div>
