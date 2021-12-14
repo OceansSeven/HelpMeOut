@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
-import PersonIcon from "@material-ui/icons/Person";
-import BuildIcon from "@material-ui/icons/Build";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Link from "@mui/material/Link";
 
 import AppContext from "../../hooks/context.js";
@@ -11,18 +10,16 @@ const MyProfile = () => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    if (!currentUser) {
-      setCurrentUser(user);
-    }
-  }, [currentUser]);
+    setCurrentUser(user);
+  }, [user]);
 
-  if (!user?.contractor) {
+  if (!currentUser?.contractor) {
     return (
-      <Container maxWidth="xs">
+      <Container maxWidth="xs" style={{ marginTop: "44px" }}>
         <CardHeader style={{ background: "#3d3d3d" }}></CardHeader>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
-            <PersonIcon fontSize="large" />
+            <AccountCircleIcon style={{ fontSize: "72px" }} />
             <div>Member since 12-2021</div>
           </div>
           <div
@@ -37,32 +34,32 @@ const MyProfile = () => {
             <Link href="/update">
               <Button color="secondary">Edit Profile</Button>
             </Link>
-            <h2>{user?.firstname}</h2>
-            <h3>{user?.lastname}</h3>
+            <h2>{currentUser?.firstname}</h2>
+            <h3>{currentUser?.lastname}</h3>
           </div>
         </Paper>
       </Container>
     );
   } else {
     return (
-      <Container maxWidth="xs">
+      <Container maxWidth="xs" style={{ marginTop: "44px" }}>
         <CardHeader style={{ background: "#1d2d44" }}></CardHeader>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
-            <BuildIcon className="profileIcon" />
-            <div>{user?.rating}</div>
-            <Card>
-              Tools:
-              <Link href="/update">
-                <Button color="secondary">Add</Button>
-              </Link>{" "}
-              <Card>
-                <ul>
-                  {user?.tools?.map((tool) => (
-                    <li key={Math.random()}>{tool}</li>
-                  ))}
-                </ul>
-              </Card>
+            <AccountCircleIcon style={{ fontSize: "72px" }} />
+            <div>{currentUser?.rating}</div>
+            <Card className="itemCard">
+              <div>
+                <p>Tools:</p>
+                <Link href="/update">
+                  <Button color="secondary">Add/Remove</Button>
+                </Link>{" "}
+              </div>
+              <ul>
+                {currentUser?.tools?.map((tool) => (
+                  <li key={Math.random()}>{tool}</li>
+                ))}
+              </ul>
             </Card>
             <div>Member since 12-2021</div>
           </div>
@@ -70,25 +67,27 @@ const MyProfile = () => {
             <Link href="/update">
               <Button color="secondary">Edit Profile</Button>
             </Link>{" "}
-            <h2>{user.company}</h2>
-            <h5>{user.firstname + " " + user.lastname}</h5>
+            <h2>{currentUser.company}</h2>
+            <h5>{currentUser.firstname + " " + currentUser.lastname}</h5>
             <ul className="specialties">
-              {user?.specialties?.map((specialty) => (
+              {currentUser?.specialties?.map((specialty) => (
                 <li key={Math.random()}>{specialty}</li>
               ))}
             </ul>
-            <Card>
-              Certifications:
-              <Link href="/update">
-                <Button color="secondary">Add</Button>
-              </Link>{" "}
-              <Card>
-                <ul>
-                  {user?.certifications?.map((cert) => (
-                    <li key={Math.random()}>{cert}</li>
-                  ))}
-                </ul>
-              </Card>
+            <Card className="itemCard">
+              <div>
+                Certifications:
+                <Link href="/update">
+                  <Button color="secondary" style={{ fontSize: "12px" }}>
+                    Add/Remove
+                  </Button>
+                </Link>{" "}
+              </div>
+              <ul>
+                {currentUser?.certifications?.map((cert) => (
+                  <li key={Math.random()}>{cert}</li>
+                ))}
+              </ul>
             </Card>
           </div>
         </Paper>

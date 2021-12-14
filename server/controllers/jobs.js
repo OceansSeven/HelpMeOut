@@ -3,22 +3,23 @@ const pool = require('../db');
 module.exports = {
   getJobs: (req, res) => {
     const sql = `SELECT
-       coalesce(json_agg(
-        json_build_object(
-          'id', j.id,
-          'title', j.title,
-          'specialties', j.specialties,
-          'description', j.description,
-          'price_per_hour', j.price_per_hour,
-          'date', j.date,
-          'client', (
-            select json_build_object(
-              'client_id', u.id,
-              'firstname', u.firstname,
-              'lastname', u.lastname
-            )
-            from users u
-            WHERE j.client_id = u.id
+      coalesce(
+        json_agg(
+          json_build_object(
+            'id', j.id,
+            'title', j.title,
+            'specialties', j.specialties,
+            'description', j.description,
+            'rate', j.price_per_hour,
+            'date', j.date,
+            'client', (
+              select json_build_object(
+                'client_id', u.id,
+                'firstname', u.firstname,
+                'lastname', u.lastname
+              )
+              from users u
+              WHERE j.client_id = u.id
           )
         )
       ), '[]'::json) AS jobs
@@ -36,7 +37,7 @@ module.exports = {
       req.body;
     const sArray = `ARRAY [${specialties.map((item, i) => "'" + item + "'")}]`;
 
-    const sql = `INSERT INTO jobsPosted (client_id, title, specialties, description, completed, date, price_per_hour) VALUES (${client_id}, '${title}', ${sArray}, '${description}', FALSE, '${date}', ${price_per_hour})`;
+    const sql = `INSERT INTO jobsposted (client_id, title, specialties, description, completed, date, price_per_hour) VALUES (${client_id}, '${title}', ${sArray}, '${description}', FALSE, '${date}', ${price_per_hour})`;
     pool
       .query(sql)
       .then((result) => res.status(201).end())

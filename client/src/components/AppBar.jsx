@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import axios from 'axios';
 import AppContext from '../hooks/context';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 export default function AppMenuBar() {
   const [auth, setAuth] = React.useState(true);
@@ -43,9 +43,9 @@ export default function AppMenuBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="background-appbar" position="static">
+      <AppBar id="background-appbar" position="static" style={{position: 'fixed', top: '0'}}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" className="appbar-text" component="div" sx={{ flexGrow: 1 }}>
             <b>Help Me Out</b>
           </Typography>
             <div>
@@ -74,12 +74,23 @@ export default function AppMenuBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose} key='Log Out'>Log Out</MenuItem>
-                <MenuItem onClick={handleClose}>My Account</MenuItem>
+                <div style={{display: 'flex', flexDirection: 'column', padding: '0px 20px'}}>
+                  <Link to='/main' style={{ textDecoration: 'none', color: 'black' }}>
+                    <MenuItem onClick={handleClose}>Home</MenuItem>
+                  </Link>
+                  <Link to='/profile' style={{ textDecoration: 'none', color: 'black' }}>
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  </Link>
+                  <Link to='/messages' style={{ textDecoration: 'none', color: 'black' }}>
+                    <MenuItem onclick={handleClose}>Messages</MenuItem>
+                  </Link>
+                  <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                </div>
               </Menu>
             </div>
         </Toolbar>
       </AppBar>
+      <div style={{minHeight: '64px', width: '100%'}}></div>
     </Box>
   );
 }

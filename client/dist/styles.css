@@ -36,6 +36,10 @@ html {
   width: 60px;
 }
 
+.appbar-text {
+  color: white;
+}
+
 /* Landing Page */
 .landing-page {
   /* position: absolute; */
@@ -109,10 +113,23 @@ html {
   margin-top: 40px;
 }
 
+.itemCard {
+  padding: 20px;
+  background: rgba(62, 92, 118, 0.05);
+}
+
+.itemCard ul {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  font-weight: bold;
+}
+
 .profileLeft {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin-right: 16px;
 }
 
@@ -122,6 +139,17 @@ html {
   justify-content: space-around;
   align-items: center;
   margin-left: 16px;
+}
+
+.listItem {
+  transition: 0.33s;
+  border-radius: 4px;
+  padding: 2px;
+}
+.listItem:hover {
+  cursor: pointer;
+  background: rgba(255, 145, 146, 0.5);
+  transition: 0.33s;
 }
 
 /************************* Toggle Client ****************************************
