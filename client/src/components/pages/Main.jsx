@@ -10,7 +10,7 @@ import MainContext from '../../hooks/MainContext';
 import { getContractors, getUser, getJobs } from '../../utils';
 
 const Main = function Main() {
-  const { user } = useContext(AppContext);
+  const { user, setJobsPostedContext } = useContext(AppContext);
 
   // set state necessary for API data
   const [jobsPosted, setJobsPosted] = useState([]);
@@ -94,6 +94,7 @@ const Main = function Main() {
   useEffect(() => {
     getUser(user.id).then((results) => {
       setJobsPosted(results.client_tasks);
+      setJobsPostedContext(results.client_tasks);
       setJobsAccepted(results.contractor_tasks);
     })
     .catch(err => console.error(err));
