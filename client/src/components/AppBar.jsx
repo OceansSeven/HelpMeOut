@@ -81,6 +81,8 @@ export default function AppMenuBar() {
                 vertical: "top",
                 horizontal: "right",
               }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
             >
               <div
                 style={{
