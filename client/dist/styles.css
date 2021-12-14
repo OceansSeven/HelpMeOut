@@ -104,6 +104,7 @@ html {
 */
 .profilePage {
   display: flex;
+  background-image: none;
   justify-content: center;
   padding: 16px;
 }
@@ -125,6 +126,12 @@ html {
   font-weight: bold;
 }
 
+.profileContainer {
+  background-image: url("./assets/handyWallpaper.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 .profileLeft {
   display: flex;
   flex-direction: column;
@@ -148,7 +155,7 @@ html {
 }
 .listItem:hover {
   cursor: pointer;
-  background: rgba(255, 145, 146, 0.5);
+  background: rgba(255, 145, 146, 0.2);
   transition: 0.33s;
 }
 

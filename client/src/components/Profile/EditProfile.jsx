@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -213,20 +214,20 @@ const EditProfile = () => {
               }}
             >
               {myTools?.map((tool) => (
-                <li
-                  className="listItem"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const results = [];
-                    myTools.forEach((item) => {
-                      if (item !== tool) {
-                        results.push(item);
-                      }
-                    });
-                    setMyTools(results);
-                  }}
-                >
-                  {tool} <BackspaceIcon style={{ fontSize: "24px" }} />
+                <li className="listItem">
+                  <Chip
+                    label={tool}
+                    onDelete={(e) => {
+                      e.preventDefault();
+                      const results = [];
+                      myTools.forEach((item) => {
+                        if (item !== tool) {
+                          results.push(item);
+                        }
+                      });
+                      setMyTools(results);
+                    }}
+                  ></Chip>
                 </li>
               ))}
             </ul>
@@ -266,20 +267,20 @@ const EditProfile = () => {
               }}
             >
               {myCerts?.map((cert) => (
-                <li
-                  className="listItem"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const results = [];
-                    myCerts.forEach((item) => {
-                      if (item !== cert) {
-                        results.push(item);
-                      }
-                    });
-                    setMyCerts(results);
-                  }}
-                >
-                  {cert} <BackspaceIcon style={{ fontSize: "24px" }} />
+                <li className="listItem">
+                  <Chip
+                    label={cert}
+                    onDelete={(e) => {
+                      e.preventDefault();
+                      const results = [];
+                      myCerts.forEach((item) => {
+                        if (item !== cert) {
+                          results.push(item);
+                        }
+                      });
+                      setMyCerts(results);
+                    }}
+                  ></Chip>
                 </li>
               ))}
             </ul>
