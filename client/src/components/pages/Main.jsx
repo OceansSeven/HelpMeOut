@@ -44,25 +44,28 @@ const Main = function Main() {
 
   // Define Search Feed Buttons
   const searchFeedButtons = (<div>
-    <button onClick={handleSearchFeedButtonsClick} >Contractors</button>
+    <button onClick={handleSearchFeedButtonsClick}>Contractors</button>
     <button onClick={handleSearchFeedButtonsClick}>Jobs Available</button>
   </div>);
 
   // Define User Buttons
   const userBtns = (
-    <span>
-      <button onClick={handleUserButtonClick}>
+    <span style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '10px'}}>
+      <Link to='/job'>
+        <Button variant="contained">Post a Job</Button>
+      </Link>
+      <Button onClick={handleUserButtonClick} variant="contained">
         Client
-      </button>
-      <button onClick={handleUserButtonClick}>
+      </Button>
+      <Button onClick={handleUserButtonClick} variant="contained">
         Contractor
-      </button>
+      </Button>
     </span>);
 
   // Define Client Feed HTML
   const clientFeed = (
     <>
-      <div style={{display: 'flex', justifyContent: 'space-around', margin: '10px'}}>
+      <div style={{display: 'flex', justifyContent: 'space-evenly', margin: '10px 0px'}}>
         <Button onClick={handleUserButtonClick} variant="contained">Jobs Posted</Button>
         <Button onClick={handleUserButtonClick} variant="contained">Jobs Completed</Button>
       </div>
@@ -123,9 +126,6 @@ const Main = function Main() {
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>
-          <Link to='/job'>
-            <button>Post a Job</button>
-          </Link>
           {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
         </div>
