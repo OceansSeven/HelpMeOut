@@ -7,13 +7,15 @@ const ClientProfile = ({ user }) => {
     <Paper className="profilePage">
       <CardHeader></CardHeader>
       <div className="profileLeft">
-        <PersonIcon fontSize="large" />
+        <PersonIcon style={{ fontSize: "72px" }} />
         <div>Member since 12-2021</div>
       </div>
       <div className="profileRight">
         <h2>{user?.firstName}</h2>
         <h3>{user?.lastName}</h3>
-        <Button variant="outlined">Message Me</Button>
+        <Button variant="outlined" style={{ marginBottom: "44px" }}>
+          Message Me
+        </Button>
       </div>
     </Paper>
   );

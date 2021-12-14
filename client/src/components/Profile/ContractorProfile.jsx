@@ -7,7 +7,7 @@ const ContractorProfile = ({ user }) => {
     <Container style={{ display: "flex", justifyContent: "center" }}>
       <CardHeader></CardHeader>
       <div className="profileLeft">
-        <BuildIcon />
+        <BuildIcon style={{ fontSize: "72px" }} />
         <div>{user?.rating}</div>
         <Card>
           Tools:
@@ -27,7 +27,9 @@ const ContractorProfile = ({ user }) => {
             <li key={Math.random()}>{specialty}</li>
           ))}
         </ul>
-        <Button variant="outlined">Message Me</Button>
+        <Button variant="outlined" style={{ marginBottom: "44px" }}>
+          Message Me
+        </Button>
         <Card>
           Certifications:
           {user?.certifications?.map((cert) => (

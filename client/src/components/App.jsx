@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
@@ -11,17 +10,15 @@ import Landing from "./pages/Landing";
 import Main from "./pages/Main";
 import Messages from "./pages/Messages";
 import ProfileView from "./Profile/ProfileView";
-
 import Job from "./pages/Job";
-
 import EditProfile from "./Profile/EditProfile";
-
 import AppContext from "../hooks/context";
 import axios from "axios";
 import ErrorPage from "./pages/ErrorPage";
 import LeaveAReview from "./LeaveAReview";
 import AppBar from "./AppBar";
 import MyProfile from "./Profile/MyProfile";
+import MessagesList from "./pages/MessagesList";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -36,6 +33,7 @@ const App = function App() {
     lastname: "Gamgee",
     contractor: true,
   });
+  const [jobsPostedContext, setJobsPostedContext] = useState([]);
 
   useEffect(() => {
     // axios call to get logged in user
@@ -47,13 +45,13 @@ const App = function App() {
   }, []);
 
   return (
-    <AppContext.Provider
-      value={{
-        // user id available to the whole app
-        user,
-        setUser,
-      }}
-    >
+    <AppContext.Provider value={{
+      // user id available to the whole app
+      user,
+      setUser,
+      jobsPostedContext,
+      setJobsPostedContext
+    }}>
       <Router>
         {user ? <AppBar /> : ""}
         <Routes>
@@ -61,6 +59,7 @@ const App = function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/messages" element={<MessagesList />}/>
           <Route path="/messages/:recepient" element={<Messages />} />
           <Route path="/job" element={<Job/>} />
           <Route path="/job/:edit/:id" element={<Job />} />
