@@ -87,7 +87,7 @@ const Main = function Main() {
         <ListManager data={
           showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
         }>
-          <JobAvailableCard setJobsAccepted={setJobsAccepted}/>
+          <JobAvailableCard/>
         </ListManager >
       </div>
     </>
@@ -136,7 +136,7 @@ const Main = function Main() {
             ? (<ListManager data={searchFeedData}>
                 <ContractorCard />
               </ListManager>)
-            : (<ListManager data={searchFeedData}>
+            : (<ListManager data={searchFeedData} setJobsAccepted={setJobsAccepted}>
                 <JobAvailableCard />
               </ListManager>)}
         </div>

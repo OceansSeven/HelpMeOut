@@ -147,14 +147,12 @@ html {
   transition: 0.33s;
 }
 
-/************************* User Feed/Container ****************************************/
-/*
-  * * * * * * * * Client Home * * * * * * * *
-*/
-
-/*
-  * * * * * * * * Contract Home * * * * * * * *
-*/
+/************************* Main.jsx ****************************************/
+.list {
+  overflow-y: scroll;
+  max-height: 500px;
+  padding: 5px;
+}
 
 /************************* Search Feed/Container ********************************/
 
@@ -255,4 +253,12 @@ html {
 }
 .message-time {
   font-size: 0.8em;
+}
+
+/*****************Job Cards******************/
+
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
