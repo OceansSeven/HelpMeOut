@@ -86,7 +86,9 @@ export default function AppMenuBar() {
                   <Link to='/messages' style={{ textDecoration: 'none', color: 'black' }}>
                     <MenuItem onClick={handleClose}>Messages</MenuItem>
                   </Link>
-                  <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                  <div>
+                    <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                  </div>
                 </div>
               </Menu>
             </div>

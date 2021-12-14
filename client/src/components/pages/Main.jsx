@@ -8,6 +8,7 @@ import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getUser, getJobs } from '../../utils';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const Main = function Main() {
   const { user, setJobsPostedContext } = useContext(AppContext);
@@ -61,9 +62,9 @@ const Main = function Main() {
   // Define Client Feed HTML
   const clientFeed = (
     <>
-      <div>
-        <button onClick={handleUserButtonClick}>Jobs Posted</button>
-        <button onClick={handleUserButtonClick}>Jobs Completed</button>
+      <div style={{display: 'flex', justifyContent: 'space-around', margin: '10px'}}>
+        <Button onClick={handleUserButtonClick} variant="contained">Jobs Posted</Button>
+        <Button onClick={handleUserButtonClick} variant="contained">Jobs Completed</Button>
       </div>
       <div>
         <ListManager data={
