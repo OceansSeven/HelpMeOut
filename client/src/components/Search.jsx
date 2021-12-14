@@ -31,7 +31,7 @@ function Search() {
   return (
     <Grid id="search-bar-container" container spacing={2}>
       <Grid item xs={2}>
-        <TextField fullWidth id="keyword-search" defaultValue="Search by keyword..." variant="outlined" size="small" onChange={handleKeywordSearch} value={searchTerm} />
+        <TextField fullWidth id="keyword-search" variant="outlined" size="small" onChange={handleKeywordSearch} value={searchTerm} />
       </Grid>
       <Grid item xs={2}>
         <InputLabel id="specialty-dropdown-label">Filter By</InputLabel>

@@ -3,13 +3,12 @@ import { Button } from "@material-ui/core";
 import JobAvailableCard from '../JobAvailableCard';
 import JobPostedCard from '../JobPostedCard';
 import ListManager from '../ListManager';
-import Contractors from '../Contractors';
+import ContractorCard from '../ContractorCard';
 import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getUser, getJobs } from '../../utils';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
 
 const Main = function Main() {
   const { user, setJobsPostedContext } = useContext(AppContext);
@@ -135,7 +134,7 @@ const Main = function Main() {
           <Search feed={searchFeedData} searchType={searchFeedType} />
           {searchFeedType === 'contractors'
             ? (<ListManager data={searchFeedData}>
-                <Contractors />
+                <ContractorCard />
               </ListManager>)
             : (<ListManager data={searchFeedData}>
                 <JobAvailableCard />
