@@ -3,7 +3,8 @@ import { specialties, sortByCategories, filterByKeyword, filterBySpecialty, sort
 import MainContext from '../hooks/MainContext.js';
 
 function Search() {
-  const { searchFeedData, searchFeedType, setSearchFeedData, contractorList, jobsAvailable, searchTerm, setSearchTerm } = useContext(MainContext);
+  const { searchFeedType, setSearchFeedData, contractorList, jobsAvailable,
+    searchTerm, setSearchTerm, selectedSpecialty, setSelectedSpecialty } = useContext(MainContext);
   let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
 
   const handleKeywordSearch = (e) => {
@@ -16,6 +17,7 @@ function Search() {
     const searchSpecialty = e.target.value;
     if (searchSpecialty === 'All') { return setSearchFeedData(searchFeed); }
     setSearchFeedData(filterBySpecialty([...searchFeed], searchSpecialty));
+    setSelectedSpecialty(searchSpecialty);
   };
 
   const handleSortBySearch = (e) => {
@@ -28,7 +30,7 @@ function Search() {
   return (
     <div>
       <input type="text" placeholder="Search by keyword..." onChange={handleKeywordSearch} value={searchTerm} />
-      <select onChange={handleSpecialtySearch}>
+      <select id="specialtyDropdown" value={selectedSpecialty} onChange={handleSpecialtySearch}>
         {specialties?.map((specialty, i) => <option value={specialty} key={i}>{specialty}</option>)}
       </select>
       {searchFeedType === 'jobs'

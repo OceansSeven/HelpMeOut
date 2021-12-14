@@ -33,6 +33,8 @@ const App = function App() {
     lastname: "Gamgee",
     contractor: true,
   });
+  const [reviewJob, setReviewJob] = useState({});
+  const [jobsPostedContext, setJobsPostedContext] = useState([]);
 
   useEffect(() => {
     // axios call to get logged in user
@@ -44,13 +46,15 @@ const App = function App() {
   }, []);
 
   return (
-    <AppContext.Provider
-      value={{
-        // user id available to the whole app
-        user,
-        setUser,
-      }}
-    >
+    <AppContext.Provider value={{
+      // user id available to the whole app
+      user,
+      setUser,
+      reviewJob,
+      setReviewJob,
+      jobsPostedContext,
+      setJobsPostedContext
+    }}>
       <Router>
         {user ? <AppBar /> : ""}
         <Routes>

@@ -26,7 +26,9 @@ module.exports = {
             'contractor', (SELECT json_build_object(
               'id', id,
               'firstname', firstname,
-              'lastname', lastname
+              'lastname', lastname,
+              'rating', rating,
+              'jobsCompleted', jobs_completed
             ) FROM users WHERE users.id = jobsposted.contractor_id)
           ) FROM jobsposted WHERE client_id = $1
         ) AS client_tasks),

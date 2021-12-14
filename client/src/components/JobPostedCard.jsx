@@ -1,12 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Paper } from "@material-ui/core";
+import { Paper, Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import AppContext from "../hooks/context";
-import {Link} from 'react-router-dom';
 
 function JobPostedCard({data}) {
-  const { user } = useContext(AppContext);
-
-
+  const { user, reviewJob, setReviewJob } = useContext(AppContext);
 
   return (
     <Paper>
@@ -21,6 +19,10 @@ function JobPostedCard({data}) {
           <button style={{float:'right'}}>Edit</button>
         </Link>
       </div>
+      {!data.completed && data.contractor &&
+        <Link to="/leaveAReview">
+          <Button color="secondary" onClick={() => setReviewJob(data)}>Mark As Complete</Button>
+        </Link>}
     </Paper>
   );
 }
