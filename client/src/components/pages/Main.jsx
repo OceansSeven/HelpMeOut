@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
 import JobAvailableCard from '../JobAvailableCard';
 import JobPostedCard from '../JobPostedCard';
 import ListManager from '../ListManager';
@@ -8,6 +7,7 @@ import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getUser, getJobs } from '../../utils';
+import { Link } from 'react-router-dom';
 
 const Main = function Main() {
   const { user, setJobsPostedContext } = useContext(AppContext);
@@ -49,14 +49,14 @@ const Main = function Main() {
 
   // Define User Buttons
   const userBtns = (
-    <div>
+    <span>
       <button onClick={handleUserButtonClick}>
         Client
       </button>
       <button onClick={handleUserButtonClick}>
         Contractor
       </button>
-    </div>);
+    </span>);
 
   // Define Client Feed HTML
   const clientFeed = (
@@ -122,6 +122,9 @@ const Main = function Main() {
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>
+          <Link to='/job'>
+            <button>Post a Job</button>
+          </Link>
           {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
         </div>
