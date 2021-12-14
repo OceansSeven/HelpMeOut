@@ -36,7 +36,7 @@ function JobAvailableCard({data}) {
         </Link>
       </div>
       <div>
-        {accepted ? <span id ="jobacceptedbttn" style={{textAlign: center}}>Job accepted!</span> : null}
+        {accepted ? <span id ="jobacceptedbttn" style={{textAlign: 'center'}}>Job accepted!</span> : null}
       </div>
     </Paper>
   );

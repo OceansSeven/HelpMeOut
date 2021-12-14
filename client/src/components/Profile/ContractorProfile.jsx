@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import BuildIcon from "@material-ui/icons/Build";
+import { Link } from 'react-router-dom';
 
 const ContractorProfile = ({ user }) => {
   return (
@@ -27,9 +28,11 @@ const ContractorProfile = ({ user }) => {
             <li key={Math.random()}>{specialty}</li>
           ))}
         </ul>
-        <Button variant="outlined" style={{ marginBottom: "44px" }}>
-          Message Me
-        </Button>
+        <Link to={`/messages/${user.user_id}`}>
+          <Button variant="outlined" style={{ marginBottom: "44px" }}>
+            Message Me
+          </Button>
+        </Link>
         <Card>
           Certifications:
           {user?.certifications?.map((cert) => (
