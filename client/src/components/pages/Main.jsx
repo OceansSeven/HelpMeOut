@@ -34,6 +34,7 @@ const Main = function Main() {
   const searchFeedButtons = (<div className="searchFeedButtonsContainer">
     <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Contractors</Button>
     <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Jobs Available</Button>
+    <Button className="searchFeedButton" variant="contained" color="primary" href="/job">Post a Job</Button>
   </div>);
 
   // Get user data, jobs available, and contractors
@@ -47,7 +48,7 @@ const Main = function Main() {
 
   return (
     <MainContext.Provider value={{
-      jobsPosted,
+      // jobsPosted,
       searchFeedData,
       setSearchFeedData,
       searchFeedType,
