@@ -9,6 +9,7 @@ import {getUser} from '../utils';
 function JobAvailableCard({data, setJobsAccepted}) {
   const user = useContext(AppContext).user;
   const [accepted, setAccepted] = useState(false);
+  const [alreadyAccepted, setAlreadyAccepted] = useState(data.accepted);
 
   async function getAcceptedJobs() {
     await getUser(user.id)
@@ -27,6 +28,8 @@ function JobAvailableCard({data, setJobsAccepted}) {
     .catch(err => console.log(err));
   }
 
+  console.log(data)
+
   return (
     <div>
       <Paper elevation={6}>
@@ -39,7 +42,7 @@ function JobAvailableCard({data, setJobsAccepted}) {
             {data?.description}
           </div>
           <div style={{alignSelf:'flex-end'}}>
-            {accepted ? null : <Button variant='contained' size='small' onClick={acceptJob}>Accept</Button>}
+            {accepted ? null : alreadyAccepted ? null : <Button variant='contained' size='small' onClick={acceptJob}>Accept</Button>}
             <Link to={`/profile/${data.client.client_id}`}>
               <Button variant='contained' size='small'>Contact</Button>
             </Link>
