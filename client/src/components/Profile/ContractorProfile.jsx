@@ -14,7 +14,7 @@ const ContractorProfile = ({ user }) => {
   const [showReviews, setShowReviews] = useState("Reviews from others:");
 
   useEffect(() => {
-    axios.get(`/api/reviews/${user.user_id}`).then(({ data }) => {
+    axios.get(`/api/reviews/${user.id}`).then(({ data }) => {
       setUserReviews(data[0]);
     });
   }, [user]);
@@ -40,7 +40,7 @@ const ContractorProfile = ({ user }) => {
             <p>{showReviews}</p>
             <Paper className="pageReviews">
               {userReviews?.map((review) => (
-                <Card key={Number(user.user_id)}>
+                <Card key={Number(user.id)}>
                   <StarRatings rating={Number(review.rating)} />
                   <Typography component="h4" variant="body2">
                     {'"' + review.body + '"'}
@@ -63,7 +63,7 @@ const ContractorProfile = ({ user }) => {
                 <li key={Math.random()}>{specialty}</li>
               ))}
             </ul>
-            <Link href={`/messages/${user.user_id}`}>
+            <Link href={`/messages/${user.id}`}>
               <Button variant="outlined" style={{ marginBottom: "44px" }}>
                 Message Me
               </Button>
