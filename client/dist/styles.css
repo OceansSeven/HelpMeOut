@@ -186,6 +186,81 @@ html {
   padding: 5px;
 }
 
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/************************* Search Feed/Container ********************************/
+
+.searchList {
+  margin: 25px 10px 10px 10px;
+  padding-top: 15px;
+  /* border: 2px solid darkgray;
+  border-radius: 10px; */
+}
+
+.searchFeedButtonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.searchFeedButton {
+  margin: 0px 10px;
+}
+
+/*
+  * * * * * * * * Search Bar * * * * * * * *
+*/
+
+#search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#specialty-dropdown {
+  width: 100%;
+}
+
+#specialty-dropdown-label, #sort-by-dropdown-label {
+  font-size: 12px;
+}
+
+/*
+  * * * * * * * * Contractor Cards * * * * * * * *
+*/
+
+.contractor-card {
+  padding: 10px;
+  margin: 10px;
+}
+
+.contractor-card-lists-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contractor-specialties-list, .contractor-certifications-list, .contractor-tools-list {
+  padding: 10px;
+  margin: 10px;
+}
+
+.contractorspecialties, .contractorcertifications, .contractortools {
+  padding-left: 0;
+
+}
+
+li {
+  list-style: disc;
+}
+
+
 /*
   * * * * * * * * Messages * * * * * * * *
 */

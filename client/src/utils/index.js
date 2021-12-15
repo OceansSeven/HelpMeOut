@@ -47,6 +47,10 @@ export async function editJobs(jobObject) {
   return await axios.put('/api/jobs', jobObject);
 }
 
+export async function postReview(reviewData) {
+  return await axios.post('/api/reviews', reviewData);
+}
+
 export function filterByKeyword(feed, keyword) {
   const filterFunc = (obj) => {
     if (keyword === '') return obj;

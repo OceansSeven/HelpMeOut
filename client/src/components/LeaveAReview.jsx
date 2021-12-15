@@ -4,6 +4,7 @@ import { Rating } from '@mui/material';
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import AppContext from '../hooks/context';
+import { postReview } from "../utils";
 
 export default function LeaveAReview() {
   const { reviewJob, user } = useContext(AppContext);
@@ -26,8 +27,9 @@ export default function LeaveAReview() {
       contractorRating: reviewJob.contractor.rating,
       contractorJobs: reviewJob.contractor.jobsCompleted
     }
-    axios.post('/api/reviews', reviewData)
-      .then((res) => { setReviewSubmitted(true); alert('Thanks for Writing a Review!'); })
+
+    postReview(reviewData)
+      .then(res => { setReviewSubmitted(true); alert('Thanks for Writing a Review!'); })
       .catch(err => alert('There was a problem submitting your review. Please try again?'));
   }
 
@@ -49,7 +51,7 @@ export default function LeaveAReview() {
         <TextField
           id="addReviewBody"
           name="addReviewBody"
-          label="Review Body"
+          label="Write Your Review"
           value={reviewBody}
           variant="filled"
           onChange={(e) => {

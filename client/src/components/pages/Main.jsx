@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Button, Container } from "@material-ui/core";
 import JobAvailableCard from '../JobAvailableCard';
 import JobPostedCard from '../JobPostedCard';
 import ListManager from '../ListManager';
-import Contractors from '../Contractors';
+import ContractorCard from '../ContractorCard';
 import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getUser, getJobs } from '../../utils';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
 
 const Main = function Main() {
   const { user, setJobsPostedContext } = useContext(AppContext);
@@ -36,21 +36,21 @@ const Main = function Main() {
 
   // Define Search Feed Button Click Functionality
   const handleSearchFeedButtonsClick = (e) => {
-    if (e.target.innerText === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
-    if (e.target.innerText === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
+    if (e.target.innerHTML === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
+    if (e.target.innerHTML === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
     setSearchTerm('');
     setSelectedSpecialty('All');
   }
 
   // Define Search Feed Buttons
-  const searchFeedButtons = (<div>
-    <button onClick={handleSearchFeedButtonsClick}>Contractors</button>
-    <button onClick={handleSearchFeedButtonsClick}>Jobs Available</button>
+  const searchFeedButtons = (<div className="searchFeedButtonsContainer">
+    <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Contractors</Button>
+    <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Jobs Available</Button>
   </div>);
 
   // Define User Buttons
   const userBtns = (
-    <span style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}> 
+    <span style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
       <Button onClick={handleUserButtonClick} variant="contained" style={{marginRight: '10px'}}>
         Client View
       </Button>
@@ -124,23 +124,27 @@ const Main = function Main() {
       selectedSpecialty,
       setSelectedSpecialty,
     }}>
-      <div>
-        <div style={{border: '1px solid black'}} className='userPosts'>
-            {user.contractor ? userBtns : null}
+      <Container id="main">
+        <Container className='userPosts'>
+          <Link to='/job'>
+            <button>Post a Job</button>
+          </Link>
+          {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
-        </div>
-        <div style={{border: '1px solid black'}} className='searchList'>
+        </Container>
+        <br/>
+        <Container className='searchList'>
           {user.contractor && searchFeedButtons}
           <Search feed={searchFeedData} searchType={searchFeedType} />
           {searchFeedType === 'contractors'
             ? (<ListManager data={searchFeedData}>
-                <Contractors />
+                <ContractorCard />
               </ListManager>)
             : (<ListManager data={searchFeedData} setJobsAccepted={setJobsAccepted}>
                 <JobAvailableCard />
               </ListManager>)}
-        </div>
-      </div>
+        </Container>
+      </Container>
     </MainContext.Provider>
   );
 };
