@@ -230,6 +230,15 @@ html {
   justify-content: center;
 }
 
+/*
+  * * * * * * * * Leave a Review * * * * * * * *
+*/
+
+.job-review-container {
+  padding: 5px;
+  margin: 10px;
+}
+
 /************************* Search Feed/Container ********************************/
 
 .searchList {
@@ -260,9 +269,7 @@ html {
 #search-bar {
   display: flex;
   align-items: center;
-  padding: 0 10px;
-  /* background-color: #f0ebd8; */
-  /* width: 60%; */
+  padding-left: 20px;
 }
 
 #keyword-search-grid {
