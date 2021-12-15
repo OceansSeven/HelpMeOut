@@ -10,9 +10,18 @@ Buttons: #3e5c76 */
   font-family: Roboto, sans-serif;
   width: 100vw;
   height: 100%;
+  background-color: #748CAB;
 }
 li {
   list-style: none;
+}
+
+.MuiCard-root {
+  background-color: #f0ebd8;
+}
+
+.MuiButton-root {
+  background-color: #3e5c76;
 }
 /*
   * * * * * * * * Landing Page * * * * * * * *
@@ -235,10 +244,26 @@ html {
 */
 
 #search-bar-container {
+  margin: 5px 10px 0 0;
   display: flex;
   justify-content: center;
+}
+
+#search-bar {
+  display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 0 10px;
+  /* background-color: #f0ebd8; */
+  /* width: 60%; */
+}
+
+#keyword-search-grid {
+  /* display: flex; */
+  justify-self: start;
+}
+
+#specialty-filter-grid, #sort-by-filter-grid {
+  justify-self: end;
 }
 
 #specialty-dropdown {
