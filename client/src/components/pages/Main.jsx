@@ -14,7 +14,6 @@ const Main = function Main() {
   const { user, setJobsPostedContext } = useContext(AppContext);
 
   // set state necessary for API data
-  const [jobsPosted, setJobsPosted] = useState([]);
   const [contractorList, setContractorList] = useState([]);
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
