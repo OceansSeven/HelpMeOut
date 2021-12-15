@@ -9,19 +9,13 @@ function ListManager({children, data, id, setJobsAccepted, srcList}){
 
   if (srcList === 'client') {
     noDataMessage = (<div style={{textAlign: 'center', justifyContent: 'center'}}>
-      There's nothing here yet! <br/>
-      <Button variant='contained' size='small' href="/job">Post a Job</Button>
+      There's nothing here yet!
     </div>)
   } else if (srcList === 'contractor') {
     noDataMessage = (<div>There's nothing here yet!</div>);
   } else if (srcList === 'conversations') {
     noDataMessage = (<div>No conversations started. Message a user to connect!</div>);
-  } else {
-    noDataMessage = (<div></div>);
   }
-
-
-
 
   return (
     <div className="list" id={id}>
