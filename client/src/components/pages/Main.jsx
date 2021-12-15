@@ -20,19 +20,8 @@ const Main = function Main() {
   const [jobsAccepted, setJobsAccepted] = useState([]);
   const [searchFeedData, setSearchFeedData] = useState([]);
   const [searchFeedType, setSearchFeedType]  = useState('contractors')
-  const [showClient, setshowClient] = useState(true);
-  const [showCompleted, setShowCompleted] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialty, setSelectedSpecialty] = useState('All');
-
-  // Define User Button Click Functionality
-  const handleUserButtonClick = (e) => {
-    if (e.target.innerText.toLowerCase() === 'client view' || e.target.innerText.toLowerCase() === 'contractor view') {
-      setshowClient(e.target.innerText.toLowerCase() === 'client view' ? true : false);
-    } else {
-      setShowCompleted(e.target.innerText.toLowerCase().includes('completed'));
-    }
-  }
 
   // Define Search Feed Button Click Functionality
   const handleSearchFeedButtonsClick = (e) => {
@@ -48,62 +37,8 @@ const Main = function Main() {
     <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Jobs Available</Button>
   </div>);
 
-  // Define User Buttons
-  const userBtns = (
-    <span style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
-      <Button onClick={handleUserButtonClick} variant="contained" style={{marginRight: '10px'}}>
-        Client View
-      </Button>
-      <Button onClick={handleUserButtonClick} variant="contained">
-        Contractor View
-      </Button>
-    </span>);
-
-  // Define Client Feed HTML
-  const clientFeed = (
-    <>
-      <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0px'}}>
-        <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 10px'}}>Jobs Posted</Button>
-        <Button onClick={handleUserButtonClick} variant="contained">Jobs Completed</Button>
-        <Link to='/job' style={{textDecoration: 'none'}}>
-          <Button variant="contained" style={{margin: '0px 10px'}}>Post a Job</Button>
-        </Link>
-      </div>
-      <div>
-        <ListManager data={
-          showCompleted ? jobsPosted.filter(j => j.completed) : jobsPosted.filter(j => !j.completed)
-        } srcList='client'>
-          <JobPostedCard />
-        </ListManager>
-      </div>
-    </>
-  );
-
-  // Define Contractor Feed HTML
-  const contractorFeed = (
-    <>
-      <div>
-        <Button variant="contained" onClick={handleUserButtonClick}>Jobs Accepted</Button>
-        <Button variant="contained" onClick={handleUserButtonClick}>Jobs Completed</Button>
-      </div>
-      <div>
-        <ListManager data={
-          showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
-        } srcList='contractor'>
-          <JobAvailableCard/>
-        </ListManager >
-      </div>
-    </>
-  );
-
   // Get user data, jobs available, and contractors
   useEffect(() => {
-    getUser(user.id).then((results) => {
-      setJobsPosted(results.client_tasks);
-      setJobsPostedContext(results.client_tasks);
-      setJobsAccepted(results.contractor_tasks);
-    })
-    .catch(err => console.error(err));
     getContractors().then((results) => {
       setSearchFeedData(results);
       setContractorList(results)
@@ -125,11 +60,6 @@ const Main = function Main() {
       setSelectedSpecialty,
     }}>
       <Container id="main">
-        <h2 style={{margin: '12px'}}>YOUR FEED</h2>
-        <Container className='userPosts'>
-          {user.contractor ? userBtns : null}
-          {showClient ? clientFeed : contractorFeed}
-        </Container>
         <h2 style={{margin: '12px'}}>CLASSIFIEDS FEED</h2>
         <Container className='searchList'>
           {user.contractor && searchFeedButtons}
