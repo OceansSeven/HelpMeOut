@@ -5,12 +5,6 @@ import StarRatings from "./StarRatings";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function ContractorCard({data}) {
-  // const [expanded, setExpanded] = useState(false);
-
-  // const handleChange = (panel) => (e, isExpanded) => {
-  //   setExpanded(isExpanded ? panel : false);
-  // };
-
   return (
     <Box>
         <Card className="contractor-card" variant="outlined">
@@ -24,7 +18,7 @@ export default function ContractorCard({data}) {
             </Grid>
           </Grid>
           <div className="contractor-card-lists-container">
-            {data.specialties &&
+            {data.specialties?.length > 0 &&
               <Accordion className="contractor-specialties-list">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} id="contractor-specialties-accordion-summary">
                   <Typography>Specialties:{' '}{data.specialties.length}</Typography>
@@ -33,7 +27,7 @@ export default function ContractorCard({data}) {
                   {data.specialties.map((specialty, i) => <Typography key={i} className="contractor-list-item">{specialty}</Typography>)}
                 </AccordionDetails>
               </Accordion>}
-            {data.certifications &&
+            {data.certifications?.length > 0 &&
               <Accordion className="contractor-certifications-list">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} id="contractor-certifications-accordion-summary">
                   <Typography>Certifications:{' '}{data.certifications.length}</Typography>
@@ -42,7 +36,7 @@ export default function ContractorCard({data}) {
                   {data.certifications.map((certification, i) => <Typography key={i} className="contractor-list-item">{certification}</Typography>)}
                 </AccordionDetails>
               </Accordion>}
-            {data.tools &&
+            {data.tools?.length > 0 &&
               <Accordion className="contractor-tools-list">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} id="contractor-tools-accordion-summary">
                   <Typography>Tools:{' '}{data.tools.length}</Typography>
