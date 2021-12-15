@@ -234,6 +234,9 @@ const EditProfile = () => {
                 aria-label="add"
                 onClick={(e) => {
                   e.preventDefault();
+                  if (!newSpecialty) {
+                    return;
+                  }
                   const currentSpecialties = mySpecialties;
                   setMySpecialties(currentSpecialties.concat(newSpecialty));
                 }}
@@ -288,6 +291,9 @@ const EditProfile = () => {
                 aria-label="add"
                 onClick={(e) => {
                   e.preventDefault();
+                  if (!newTool) {
+                    return;
+                  }
                   const currentTools = myTools;
                   setMyTools(currentTools.concat(newTool));
                   setNewTool("");
@@ -343,6 +349,9 @@ const EditProfile = () => {
                 aria-label="add"
                 onClick={(e) => {
                   e.preventDefault();
+                  if (!newCert) {
+                    return;
+                  }
                   const currentCerts = myCerts;
                   setMyCerts(currentCerts.concat(newCert));
                   setNewCert("");
