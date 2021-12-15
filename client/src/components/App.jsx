@@ -26,8 +26,27 @@ const App = function App() {
   // TODO - set starting user to be null
   // right now the starting user will be 1 for testing purposes
   // ########################################
-  const [user, setUser] = useState(null);
-  const [reviewJob, setReviewJob] = useState({});
+  const [user, setUser] = useState({certifications: [],
+    company: "The Loose Cannons",
+    contractor: true,
+    email: "rj@hotmail.com",
+    firstname: "Reginald",
+    id: "8",
+    jobs_completed: 0,
+    lastname: "James",
+    password: "$2a$10$rYtmcDHuXceZWxIc8ZKeJufvCdAJqR3Lv4RFwrbAd4KxRKL5hU6zC",
+    rating: null,
+    salt: null,
+    specialties: [],
+    tools: []});
+  const [reviewJob, setReviewJob] = useState({completed: false,
+    contractor: {id: 9, firstname: 'Gordon', lastname: 'Ramsey', rating: null, jobsCompleted: 0},
+    date: "2021-12-15",
+    description: "I made beignets and now my pipes are rusting, and theirs powdered sugar all over the place and my hips hurt",
+    price_per_hour: 10000,
+    specialties: (4) ['appliance repair', 'hvac', 'plumbing', 'electrical'],
+    task_id: 14,
+    title: "Beignet Bonanza"});
   const [jobsPostedContext, setJobsPostedContext] = useState([]);
 
   useEffect(() => {

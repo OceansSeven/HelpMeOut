@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper, TextField } from "@material-ui/core";
 import { Rating } from '@mui/material';
-import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import AppContext from '../hooks/context';
 import { postReview } from "../utils";
@@ -39,14 +38,19 @@ export default function LeaveAReview() {
 
   return (
     <Container>
-      <Card>
-        <div>{reviewJob.title}</div>
+      <Card className="job-review-container" style={{ padding: "8px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between"}}>
+          <div>
+            <div><strong>{reviewJob.title}</strong></div>
+            <div>${reviewJob.price_per_hour}/hr</div>
+          </div>
+          <div>{reviewJob.date}</div>
+        </div>
+        <div>Job Description:</div>
         <div>{reviewJob.description}</div>
-        <div>${reviewJob.price_per_hour}/hr</div>
-        <div>{reviewJob.date}</div>
         <ul>Specialties Required: {reviewJob.specialties?.map(specialty => <li key={specialty}>{specialty}</li>)}</ul>
       </Card>
-      <div>Completed By: {reviewJob.contractor.firstname}{' '}{reviewJob.contractor.lastname}</div>
+      <div>Completed By:{' '}{reviewJob.contractor.firstname}{' '}{reviewJob.contractor.lastname}</div>
       <div>
         <TextField
           id="addReviewBody"
