@@ -86,7 +86,7 @@ const EditProfile = () => {
   }
   if (!user?.contractor) {
     return (
-      <Container component="main" maxWidth="xs" className="editForm">
+      <Container component="main" maxWidth="xs" className="editContainer">
         <CssBaseline />
 
         <Box
@@ -147,7 +147,7 @@ const EditProfile = () => {
     );
   } else {
     return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" className="editContainer">
         <CssBaseline />
 
         <Box
@@ -390,7 +390,12 @@ const EditProfile = () => {
                 </li>
               ))}
             </ul>
-            <Button type="submit" fullWidth variant="contained">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              style={{ marginBottom: "40px", marginTop: "40px" }}
+            >
               Update
             </Button>
           </Box>

@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
+
 import BuildIcon from "@material-ui/icons/Build";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import HardwareIcon from "@mui/icons-material/Hardware";
+import HandymanIcon from "@mui/icons-material/Handyman";
+import FilterFramesIcon from "@mui/icons-material/FilterFrames";
 import StarRatings from "../StarRatings.jsx";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
@@ -26,13 +31,22 @@ const ContractorProfile = ({ user }) => {
       <Container style={{ display: "flex", justifyContent: "center" }}>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
-            <BuildIcon style={{ fontSize: "72px" }} />
-            <StarRatings rating={Number(user?.rating)} />
-            <Card style={{ marginBottom: "32px" }}>
-              Tools:
-              {user?.tools?.map((tool) => (
-                <Card key={Math.random()}>{tool}</Card>
-              ))}
+            <HandymanIcon style={{ fontSize: "80px", alignSelf: "center" }} />
+            <Card className="itemCard">
+              <div className="pListHead">
+                <Typography component="p" variant="caption">
+                  <HardwareIcon /> My Tools:
+                </Typography>
+              </div>
+              <ul className="pAttributes">
+                {user?.tools?.map((tool) => (
+                  <li key={Math.random()} style={{ alignSelf: "baseline" }}>
+                    <Typography component="p" variant="button">
+                      {tool}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
             </Card>
             <p>{showReviews}</p>
             <Paper className="pageReviews">
@@ -48,28 +62,57 @@ const ContractorProfile = ({ user }) => {
                 </Card>
               ))}
             </Paper>
-            <div>Member since 12-2021</div>
+            <Typography component="p" variant="caption">
+              Member since: 12-2021
+            </Typography>
           </div>
           <div className="profileRight">
-            <h2>{user?.company}</h2>
-            <h4>
-              {user?.firstname} {user?.lastname}
-            </h4>
+            <Typography component="h2" variant="display1">
+              {user?.company}
+            </Typography>
+            <br />
+            <Typography component="h5" variant="subhead">
+              {user?.firstname + " " + user?.lastname}
+            </Typography>
             <ul className="specialties">
               {user?.specialties?.map((specialty) => (
-                <li key={Math.random()}>{specialty}</li>
+                <li
+                  key={Math.random()}
+                  style={{
+                    color: "#748cab",
+                    display: "flex",
+                    alignItems: "center",
+                    marginTop: "8px",
+                  }}
+                >
+                  <VerifiedIcon size="sm" />
+                  {specialty}
+                </li>
               ))}
             </ul>
-            <Link href={`/messages/${user.id}`}>
-              <Button variant="outlined" style={{ marginBottom: "44px" }}>
-                Message Me
-              </Button>
-            </Link>
-            <Card>
-              Certifications:
-              {user?.certifications?.map((cert) => (
-                <Card key={Math.random()}>{cert}</Card>
-              ))}
+            <Button
+              variant="outlined"
+              href={`/messages/${user.id}`}
+              style={{ marginBottom: "44px" }}
+            >
+              Message Me
+            </Button>
+            <Card className="itemCard">
+              <div className="pListHead">
+                <Typography component="p" variant="caption">
+                  <FilterFramesIcon style={{ marginRight: "4px" }} />
+                  My Certifications:
+                </Typography>
+              </div>
+              <ul className="pAttributes">
+                {user?.certifications?.map((cert) => (
+                  <li key={Math.random()} style={{ color: "#37474f" }}>
+                    <Typography component="p" variant="button">
+                      {cert}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
             </Card>
           </div>
         </Paper>
