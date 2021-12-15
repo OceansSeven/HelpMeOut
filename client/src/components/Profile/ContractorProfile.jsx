@@ -11,12 +11,19 @@ const ContractorProfile = ({ user }) => {
   const currentUser = useContext(AppContext);
 
   const [userReviews, setUserReviews] = useState();
+  const [showReviews, setShowReviews] = useState("Reviews from others:");
 
   useEffect(() => {
     axios.get(`/api/reviews/${user.user_id}`).then(({ data }) => {
       setUserReviews(data[0]);
     });
   }, [user]);
+
+  useEffect(() => {
+    if (userReviews?.length === 0) {
+      setShowReviews("");
+    }
+  }, [userReviews]);
   return (
     <div className="clientProfile">
       <Container style={{ display: "flex", justifyContent: "center" }}>
@@ -30,7 +37,7 @@ const ContractorProfile = ({ user }) => {
                 <Card key={Math.random()}>{tool}</Card>
               ))}
             </Card>
-            Reviews from others:
+            <p>{showReviews}</p>
             <Paper className="pageReviews">
               {userReviews?.map((review) => (
                 <Card key={Number(user.user_id)}>
