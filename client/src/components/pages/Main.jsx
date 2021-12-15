@@ -50,11 +50,8 @@ const Main = function Main() {
 
   // Define User Buttons
   const userBtns = (
-    <span style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '10px'}}>
-      <Link to='/job'>
-        <Button variant="contained">Post a Job</Button>
-      </Link>
-      <Button onClick={handleUserButtonClick} variant="contained">
+    <span style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}> 
+      <Button onClick={handleUserButtonClick} variant="contained" style={{marginRight: '10px'}}>
         Client
       </Button>
       <Button onClick={handleUserButtonClick} variant="contained">
@@ -65,9 +62,12 @@ const Main = function Main() {
   // Define Client Feed HTML
   const clientFeed = (
     <>
-      <div style={{display: 'flex', justifyContent: 'space-evenly', margin: '10px 0px'}}>
-        <Button onClick={handleUserButtonClick} variant="contained">Jobs Posted</Button>
+      <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0px'}}>
+        <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 10px'}}>Jobs Posted</Button>
         <Button onClick={handleUserButtonClick} variant="contained">Jobs Completed</Button>
+        <Link to='/job' style={{textDecoration: 'none'}}>
+          <Button variant="contained" style={{margin: '0px 10px'}}>Post a Job</Button>
+        </Link>
       </div>
       <div>
         <ListManager data={
@@ -126,7 +126,10 @@ const Main = function Main() {
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>
-          {user.contractor ? userBtns : null}
+            <div style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '10px'}}>
+              
+            </div>
+            {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
         </div>
         <div style={{border: '1px solid black'}} className='searchList'>
