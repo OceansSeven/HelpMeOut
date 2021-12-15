@@ -261,7 +261,7 @@ html {
 */
 
 #search-bar-container {
-  margin: 5px 0 5px 10px;
+  margin: 5px 0 5px 20px;
   display: flex;
   justify-content: center;
 }
@@ -269,7 +269,7 @@ html {
 #search-bar {
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 #keyword-search-grid {
