@@ -101,14 +101,14 @@ const Messages = function Messages() {
   }
 
   return (
-    <>
-      <div>
-        <h1>{`Now talking with: ${recepient.firstname} ${recepient.lastname} (${recepient.user_id})`}</h1>
+    <div style={{height: '100%'}}>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <h1 style={{margin: '0', padding: '8px'}}>{`${recepient.firstname} ${recepient.lastname}`}</h1>
+        <h5 style={{margin: '0', padding: '0 8px', paddingBottom: '8px'}}>{`Company: ${recepient.company}`}</h5>
       </div>
-      <div>{`Current user: ${user.id}`}</div>
       {/* Chat box */}
       <div id="chat-client">
-        <ListManager data={chat} id={'messages'}>
+        <ListManager data={chat} id={'messages'} style={{maxHeight: '600px'}}>
           <Message />
         </ListManager>
         <form id="form" onSubmit={(e) => {
@@ -124,7 +124,7 @@ const Messages = function Messages() {
           }}>Send</button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

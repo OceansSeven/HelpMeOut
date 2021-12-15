@@ -26,13 +26,7 @@ const App = function App() {
   // TODO - set starting user to be null
   // right now the starting user will be 1 for testing purposes
   // ########################################
-  const [user, setUser] = useState({
-    id: "2",
-    company: "potatoMan",
-    firstname: "Samwise",
-    lastname: "Gamgee",
-    contractor: true,
-  });
+  const [user, setUser] = useState(null);
   const [reviewJob, setReviewJob] = useState({});
   const [jobsPostedContext, setJobsPostedContext] = useState([]);
 
