@@ -11,7 +11,7 @@ export default function ContractorCard({data}) {
           <Grid container spacing={2}>
             <Grid item xs={8}>
               <div id="contractorname"><strong>{data.firstname}{' '}{data.lastname}</strong></div>
-              {data.company && <div id="contractorcompany" style={{ color: 'gray' }}>{data.company}</div>}
+              {data.company && <div id="contractorcompany" >{data.company}</div>}
             </Grid>
             <Grid item xs={4} id="contractorrating" style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <StarRatings rating={Number(data.rating)} starSize={"small"}/>
