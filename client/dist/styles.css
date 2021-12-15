@@ -12,6 +12,9 @@ Buttons: #3e5c76 */
   height: 100vh;
   background-color: #fffdf5;
 }
+a {
+  text-decoration: none;
+}
 li {
   list-style: none;
 }
@@ -31,7 +34,13 @@ li {
 .MuiButton-root {
   background-color: #3e5c76;
   color: white;
+  text-decoration: none;
 }
+
+.MuiButton-root:hover {
+  background-color: #1d2d44;
+}
+
 /*
   * * * * * * * * Landing Page * * * * * * * *
 */
@@ -64,14 +73,17 @@ html {
   /* position: absolute; */
   height: 100vh;
   width: 100vw;
-  background: rgb(13, 19, 33);
-  background: linear-gradient(
-    163deg,
-    rgba(13, 19, 33, 1) 0%,
-    rgba(116, 140, 171, 1) 43%,
-    rgba(240, 235, 216, 1) 79%
-  );
+  background: #748cab;
   background-size: cover;
+  background-image: url('./assets/handyWallpaper.jpeg');
+}
+
+.landing-page-container {
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: auto;
+  color: white;
+  padding: 15px;
 }
 
 .logo-landing-contain {
@@ -90,14 +102,17 @@ html {
 }
 
 .about-text {
+  padding-top: 15px;
   text-align: center;
   font-weight: bold;
   font-size: 25px;
+  filter: drop-shadow(0 0 3px black);
 }
 
 .landing-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-self: center;
   margin-top: 30px;
 }
 
@@ -250,10 +265,11 @@ html {
   align-items: center;
   justify-content: center;
   padding: 10px;
+  flex-wrap: wrap;
 }
 
 .searchFeedButton {
-  margin: 0px 10px;
+  margin: 5px;
 }
 
 /*
@@ -398,6 +414,15 @@ html {
 }
 .message-time {
   font-size: 0.7em;
+}
+
+/*****************Summary******************/
+
+#summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /*****************Job Cards******************/
