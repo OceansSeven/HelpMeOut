@@ -4,6 +4,7 @@ import { Rating } from '@mui/material';
 import { Navigate } from "react-router-dom";
 import AppContext from '../hooks/context';
 import { postReview } from "../utils";
+import { maxWidth, textAlign, width } from "@mui/system";
 
 export default function LeaveAReview() {
   const { reviewJob, user } = useContext(AppContext);
@@ -37,8 +38,8 @@ export default function LeaveAReview() {
   }
 
   return (
-    <Container>
-      <Card className="job-review-container" style={{ padding: "8px" }}>
+    <div className="modal">
+      {/* <Card className="job-review-container" style={{ padding: "8px" }}>
         <div style={{ display: "flex", justifyContent: "space-between"}}>
           <div>
             <div><strong>{reviewJob.title}</strong></div>
@@ -49,18 +50,21 @@ export default function LeaveAReview() {
         <div>Job Description:</div>
         <div>{reviewJob.description}</div>
         <ul>Specialties Required: {reviewJob.specialties?.map(specialty => <li key={specialty}>{specialty}</li>)}</ul>
-      </Card>
-      <div>Completed By:{' '}{reviewJob.contractor.firstname}{' '}{reviewJob.contractor.lastname}</div>
-      <div>
-        <TextField
+      </Card> */}
+      <div className="modal-content" style={{background: '#edebe3'}}>
+      <div className="modal-header">Completed By:{' '}{reviewJob.contractor.firstname}{' '}{reviewJob.contractor.lastname}</div>
+      <div className="modal-body" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
+        <textarea
+          className="modal-title"
           id="addReviewBody"
           name="addReviewBody"
-          label="Write Your Review"
+          placeholder="Write Your Review"
           value={reviewBody}
           variant="filled"
           onChange={(e) => {
             setReviewBody(e.target.value);
           }}
+          style={{minWidth: '100%', height: '100px'}}
         />
         <Rating
           name="simple-controlled"
@@ -68,9 +72,11 @@ export default function LeaveAReview() {
           onChange={(e, newRating) => {
             setRating(newRating);
           }}
+          style={{fontSize: '30px'}}
         />
       </div>
-      <Button onClick={handleSubmitReview}>Submit Review</Button>
-    </Container>
+      <Button  className="modal-footer" onClick={handleSubmitReview}>Submit Review</Button>
+    </div>
+    </div>
   )
 };
