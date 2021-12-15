@@ -24,8 +24,10 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import AppContext from "../../hooks/context.js";
 
 const EditProfile = () => {
-  const user = useContext(AppContext);
-  const setUser = useContext(AppContext);
+  const { user, setUser} = useContext(AppContext);
+  // const user = useContext(AppContext);
+  // const setUser = useContext(AppContext);
+  console.log(user);
 
   const [mySpecialties, setMySpecialties] = useState([]);
   const [newSpecialty, setNewSpecialty] = useState("");
@@ -42,19 +44,19 @@ const EditProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(event.target);
+    const data = new FormData(e.target);
 
     axios({
       method: "PUT",
       data: {
-        firstname: data.get("firstName") || user.user.firstname,
-        lastname: data.get("lastName") || user.user.lastname,
-        contractor: data.get("setContractor") || user.user.contractor,
-        company: data.get("companyName") || user.user.company,
+        firstname: data.get("firstName") || user.firstname,
+        lastname: data.get("lastName") || user.lastname,
+        contractor: data.get("setContractor") || user.contractor,
+        company: data.get("companyName") || user.company,
         specialties: mySpecialties,
         tools: myTools,
         certifications: myCerts,
-        userId: Number(user.user.id),
+        userId: Number(user.id),
       },
       withCredentials: true,
       url: "http://localhost:3000/api/user",
@@ -64,29 +66,28 @@ const EditProfile = () => {
         setUpdated(true);
       })
       .then(
-        axios.get(`/api/user/${user.user.id}`).then(({ data }) => {
+        axios.get(`/api/user/${user.id}`).then(({ data }) => {
           if (data) {
-            setUser.setUser(data);
+            setUser(data);
+            setMySpecialties(data.specialties || []);
+            setMyTools(data.tools || []);
+            setMyCerts(data.certifications || []);
           }
         })
       )
-      .then((res) => {
-        console.log(res);
-        setUpdated(true);
-      })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    setMySpecialties(user.user.specialties || []);
-    setMyTools(user.user.tools || []);
-    setMyCerts(user.user.certifications || []);
+    setMySpecialties(user.specialties || []);
+    setMyTools(user.tools || []);
+    setMyCerts(user.certifications || []);
   }, [user.user]);
 
   if (updated) {
     return <Navigate to="/profile" />;
   }
-  if (!user?.user.contractor) {
+  if (!user?.contractor) {
     return (
       <Container component="main" maxWidth="xs" className="editForm">
         <CssBaseline />
@@ -117,7 +118,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.user.firstname}
+              label={user?.firstname}
               name="firstName"
             />
             Edit Last Name:
@@ -125,7 +126,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.user.lastname}
+              label={user?.lastname}
               id="updateLastName"
             />
             <FormControlLabel
@@ -179,13 +180,13 @@ const EditProfile = () => {
             noValidate
             sx={{ mt: 1 }}
           >
-            <h2 style={{ textAlign: "center" }}>{user?.user.company}</h2>
+            <h2 style={{ textAlign: "center" }}>{user?.company}</h2>
             Edit First Name:
             <TextField
               margin="normal"
               fullWidth
               id="updateFirstName"
-              label={user?.user.firstname}
+              label={user?.firstname}
               name="firstName"
             />
             Edit Last Name:
@@ -193,7 +194,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               name="lastName"
-              label={user?.user.lastname}
+              label={user?.lastname}
               id="updateLastName"
             />
             Edit Company Name:
@@ -201,7 +202,7 @@ const EditProfile = () => {
               margin="normal"
               fullWidth
               name="companyName"
-              label={user?.user.company}
+              label={user?.company}
               id="updateCompanyName"
             />
             Add a specialty:

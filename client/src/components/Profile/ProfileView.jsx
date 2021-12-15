@@ -9,13 +9,17 @@ import MyProfile from "./MyProfile.jsx";
 import AppContext from "../../hooks/context.js";
 
 const ProfileView = () => {
-  const currentUser = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const [isContractor, setIsContractor] = useState(false);
   const [target, setTarget] = useState();
+  // console.log("currentUser: ", currentUser);
 
   const location = useLocation();
 
   const targetProfileId = location.pathname.split("/").pop();
+  // console.log("targetProfileId: ", targetProfileId);
+  // console.log("target: ", target);
+
 
   const getTargetUser = (id) => {};
 
@@ -34,7 +38,7 @@ const ProfileView = () => {
   if (!target) {
     return <div>Loading....</div>;
   }
-  if (targetProfileId === currentUser?.user.id) {
+  if (targetProfileId === user?.id) {
     return <MyProfile user={target} />;
   } else {
     return isContractor ? (
