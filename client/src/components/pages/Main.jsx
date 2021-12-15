@@ -55,6 +55,7 @@ const Main = function Main() {
       setSearchTerm,
       selectedSpecialty,
       setSelectedSpecialty,
+      setJobsAccepted
     }}>
       <Container id="main">
         <h2 style={{margin: '12px'}}>CLASSIFIEDS FEED</h2>
@@ -65,7 +66,7 @@ const Main = function Main() {
             ? (<ListManager data={searchFeedData}>
                 <ContractorCard />
               </ListManager>)
-            : (<ListManager data={searchFeedData} setJobsAccepted={setJobsAccepted}>
+            : (<ListManager data={searchFeedData}>
                 <JobAvailableCard />
               </ListManager>)}
         </Container>
