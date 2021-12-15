@@ -155,6 +155,7 @@ const EditProfile = () => {
         <Box
           sx={{
             marginTop: 8,
+            marginBottom: 8,
             display: "flex",
             justifyContent: "center",
             flexDirection: "column",
@@ -391,12 +392,7 @@ const EditProfile = () => {
                 </li>
               ))}
             </ul>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              classname="backToProfile"
-            >
+            <Button type="submit" fullWidth variant="contained">
               Update
             </Button>
           </Box>
