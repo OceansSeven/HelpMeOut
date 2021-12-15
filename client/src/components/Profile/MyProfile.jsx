@@ -53,7 +53,11 @@ const MyProfile = () => {
               <Card className="itemCard">
                 <div>
                   <p>Tools:</p>
-                  <Button href="/update" color="secondary">
+                  <Button
+                    href="/update"
+                    variant="contained"
+                    className="profileBtn"
+                  >
                     Add/Remove
                   </Button>
                 </div>
@@ -73,7 +77,7 @@ const MyProfile = () => {
               <div>Member since 12-2021</div>
             </div>
             <div className="profileRight">
-              <Button href="/update" color="secondary">
+              <Button href="/update" variant="contained" className="profileBtn">
                 Edit Profile
               </Button>
 
@@ -100,7 +104,8 @@ const MyProfile = () => {
                   Certifications:
                   <Button
                     href="/update"
-                    color="secondary"
+                    className="profileBtn"
+                    variant="contained"
                     style={{ fontSize: "12px" }}
                   >
                     Add/Remove

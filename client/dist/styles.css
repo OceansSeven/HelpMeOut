@@ -32,6 +32,19 @@ li {
   background-color: #3e5c76;
   color: white;
 }
+.profileBtn {
+  width: fit-content;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  background: none;
+  color: #1d2d44;
+  transition: 0.25s;
+}
+.profileBtn:hover {
+  color: #e53935;
+  transition: 0.25s;
+}
 /*
   * * * * * * * * Landing Page * * * * * * * *
 */
@@ -56,7 +69,7 @@ html {
 
 .appbar-text {
   color: white;
-  text-decoration: 'none';
+  text-decoration: "none";
 }
 
 /* Landing Page */
@@ -146,7 +159,7 @@ html {
   font-weight: bold;
 }
 .clientProfile {
-  background-image: url('./assets/clientWallpaper.jpeg');
+  background-image: url("./assets/clientWallpaper.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -154,7 +167,7 @@ html {
   padding-top: 64px;
 }
 .profileContainer {
-  background-image: url('./assets/handyWallpaper.jpeg');
+  background-image: url("./assets/handyWallpaper.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
