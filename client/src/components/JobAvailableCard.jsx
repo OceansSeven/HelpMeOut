@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import { Paper, Button } from "@material-ui/core";
+import { Card, Button } from "@material-ui/core";
 import AppContext from "../hooks/context";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -30,7 +30,7 @@ function JobAvailableCard({data, setJobsAccepted}) {
 
   return (
     <div>
-      <Paper elevation={6}>
+      <Card variant="outlined">
         <div className="detail-container">
           <p style={{fontSize:'12px'}}>{data?.date}</p>
           <h3 > {data?.title} ${data?.price_per_hour}/hr</h3>
@@ -49,7 +49,7 @@ function JobAvailableCard({data, setJobsAccepted}) {
             {accepted ? <span id ="jobacceptedbttn" style={{textAlign: 'center'}}>Job accepted!</span> : null}
           </div>
         </div>
-      </Paper>
+      </Card>
       <br/>
     </div>
   );

@@ -9,19 +9,28 @@ Buttons: #3e5c76 */
   margin: 0;
   font-family: Roboto, sans-serif;
   width: 100vw;
-  height: 100%;
-  background-color: #748CAB;
+  height: 100vh;
+  background-color: #fffdf5;
 }
 li {
   list-style: none;
 }
 
 .MuiCard-root {
-  background-color: #f0ebd8;
+  background-color: #edebe3;
+}
+
+.MuiCard-root strong {
+  color: #3e5c76;
+}
+
+.MuiCard-root #contractorcompany {
+  color: #3e5c76;
 }
 
 .MuiButton-root {
   background-color: #3e5c76;
+  color: white;
 }
 /*
   * * * * * * * * Landing Page * * * * * * * *
@@ -47,7 +56,7 @@ html {
 
 .appbar-text {
   color: white;
-  text-decoration: "none";
+  text-decoration: 'none';
 }
 
 /* Landing Page */
@@ -137,7 +146,7 @@ html {
   font-weight: bold;
 }
 .clientProfile {
-  background-image: url("./assets/clientWallpaper.jpeg");
+  background-image: url('./assets/clientWallpaper.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -145,7 +154,7 @@ html {
   padding-top: 64px;
 }
 .profileContainer {
-  background-image: url("./assets/handyWallpaper.jpeg");
+  background-image: url('./assets/handyWallpaper.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -262,7 +271,8 @@ html {
   justify-self: start;
 }
 
-#specialty-filter-grid, #sort-by-filter-grid {
+#specialty-filter-grid,
+#sort-by-filter-grid {
   justify-self: end;
 }
 
@@ -270,7 +280,8 @@ html {
   width: 100%;
 }
 
-#specialty-dropdown-label, #sort-by-dropdown-label {
+#specialty-dropdown-label,
+#sort-by-dropdown-label {
   font-size: 12px;
 }
 
@@ -288,11 +299,15 @@ html {
   flex-direction: column;
 }
 
-.contractor-specialties-list, .contractor-certifications-list, .contractor-tools-list {
+.contractor-specialties-list,
+.contractor-certifications-list,
+.contractor-tools-list {
   margin-top: 10px;
 }
 
-.contractor-specialties, .contractor-certifications, .contractor-tools {
+.contractor-specialties,
+.contractor-certifications,
+.contractor-tools {
   display: block;
   /* flex-direction: row;
   flex-wrap: wrap; */
@@ -367,7 +382,7 @@ html {
   text-align: start;
 }
 .from .message-container {
-  background-color: #f0ebd8
+  background-color: #f0ebd8;
 }
 #chat-client #messages .from {
   text-align: end;
