@@ -52,10 +52,10 @@ const Main = function Main() {
   const userBtns = (
     <span style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}> 
       <Button onClick={handleUserButtonClick} variant="contained" style={{marginRight: '10px'}}>
-        Client
+        Client View
       </Button>
       <Button onClick={handleUserButtonClick} variant="contained">
-        Contractor
+        Contractor View
       </Button>
     </span>);
 
@@ -126,9 +126,6 @@ const Main = function Main() {
     }}>
       <div>
         <div style={{border: '1px solid black'}} className='userPosts'>
-            <div style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '10px'}}>
-              
-            </div>
             {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
         </div>
