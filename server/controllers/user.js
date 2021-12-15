@@ -4,7 +4,7 @@ module.exports = {
   getUser: (req, res) => {
     const user_id = req.params.user_id;
     const sql = `SELECT
-      id user_id,
+      id,
       company,
       firstname,
       lastname,
