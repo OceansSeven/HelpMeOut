@@ -1,17 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Button, Container } from "@material-ui/core";
 import JobAvailableCard from '../JobAvailableCard';
-import JobPostedCard from '../JobPostedCard';
 import ListManager from '../ListManager';
 import ContractorCard from '../ContractorCard';
 import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
-import { getContractors, getUser, getJobs } from '../../utils';
-import { Link } from 'react-router-dom';
+import { getContractors, getJobs } from '../../utils';
 
 const Main = function Main() {
-  const { user, setJobsPostedContext } = useContext(AppContext);
+  const { user } = useContext(AppContext);
 
   // set state necessary for API data
   const [contractorList, setContractorList] = useState([]);
@@ -48,7 +46,6 @@ const Main = function Main() {
 
   return (
     <MainContext.Provider value={{
-      // jobsPosted,
       searchFeedData,
       setSearchFeedData,
       searchFeedType,

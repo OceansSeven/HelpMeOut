@@ -52,7 +52,7 @@ const Summary = function() {
     <>
       <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0px'}}>
         <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Posted</Button>
-        <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Completed</Button>
+        <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Finished</Button>
         <Button href="/job" variant="contained" style={{margin: '0px 5px'}}>Post a Job</Button>
       </div>
       <div>
