@@ -19,6 +19,7 @@ import LeaveAReview from "./LeaveAReview";
 import AppBar from "./AppBar";
 import MyProfile from "./Profile/MyProfile";
 import MessagesList from "./pages/MessagesList";
+import Summary from "./pages/Summary";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
@@ -56,6 +57,7 @@ const App = function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/main" element={user ? <Main /> : <Landing />} />
+          <Route path="/summary" element={user ? <Summary /> : <Landing />} />
           <Route path="/messages" element={user ? <MessagesList /> : <Landing />}/>
           <Route path="/messages/:recepient" element={user ? <Messages /> : <Landing />} />
           <Route path="/job" element={user ? <Job/> : <Landing />} />
