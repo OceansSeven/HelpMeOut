@@ -32,19 +32,7 @@ li {
   background-color: #3e5c76;
   color: white;
 }
-.profileBtn {
-  width: fit-content;
-  margin-top: 8px;
-  margin-bottom: 24px;
-  font-size: 12px;
-  background: none;
-  color: #1d2d44;
-  transition: 0.25s;
-}
-.profileBtn:hover {
-  color: #e53935;
-  transition: 0.25s;
-}
+
 /*
   * * * * * * * * Landing Page * * * * * * * *
 */
@@ -155,6 +143,7 @@ html {
 .itemCard ul {
   display: flex;
   gap: 20px;
+  justify-content: center;
   flex-direction: column;
   font-weight: bold;
 }
@@ -175,19 +164,34 @@ html {
   padding-top: 64px;
 }
 .profileLeft {
+  color: #1d2d44;
+  width: 50%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  gap: 24px;
   margin-right: 16px;
 }
 
 .profileRight {
+  color: #1d2d44;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-left: 16px;
+}
+.pListHead {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  color: #3e5c76;
+}
+.pAttributes {
+  display: flex;
+  flex-direction: column;
 }
 
 .listItem {
@@ -217,6 +221,20 @@ html {
 .backToProfile:hover {
   background: #eee;
   color: #3e5c76;
+  transition: 0.25s;
+}
+
+.profileBtn {
+  width: fit-content;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  background: #eee;
+  color: #1d2d44;
+  transition: 0.25s;
+}
+.profileBtn:hover {
+  color: #e53935;
   transition: 0.25s;
 }
 /************************* Toggle Client ****************************************
