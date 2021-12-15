@@ -90,6 +90,7 @@ const EditProfile = () => {
     return (
       <Container component="main" maxWidth="xs" className="editForm">
         <CssBaseline />
+
         <Box
           sx={{
             marginTop: 8,
@@ -98,6 +99,9 @@ const EditProfile = () => {
             alignItems: "center",
           }}
         >
+          <Button href="/profile" variant="contained">
+            BACK
+          </Button>
           <Typography component="h1" variant="h5">
             <SettingsIcon /> Update Profile
           </Typography>
@@ -147,14 +151,24 @@ const EditProfile = () => {
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+
         <Box
           sx={{
             marginTop: 8,
             display: "flex",
+            justifyContent: "center",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
+          <Button
+            href="/profile"
+            variant="contained"
+            fullWidth
+            className="backToProfile"
+          >
+            BACK
+          </Button>
           <Typography component="h1" variant="h5">
             <SettingsIcon /> Update Profile
           </Typography>
@@ -372,8 +386,7 @@ const EditProfile = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              style={{ marginBottom: "44px" }}
+              classname="backToProfile"
             >
               Update
             </Button>
