@@ -30,7 +30,6 @@ const ContractorProfile = ({ user }) => {
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">
             <BuildIcon style={{ fontSize: "72px" }} />
-            <StarRatings rating={Number(user?.rating)} />
             <Card style={{ marginBottom: "32px" }}>
               Tools:
               {user?.tools?.map((tool) => (
