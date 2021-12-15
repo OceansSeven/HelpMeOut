@@ -23,7 +23,6 @@ function JobAvailableCard({data, setJobsAccepted}) {
     .then((result) => {
       setAccepted(true);
       getAcceptedJobs();
-
     })
     .catch(err => console.log(err));
   }

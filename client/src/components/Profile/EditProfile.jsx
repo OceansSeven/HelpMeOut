@@ -79,7 +79,7 @@ const EditProfile = () => {
     setMySpecialties(user.specialties || []);
     setMyTools(user.tools || []);
     setMyCerts(user.certifications || []);
-  }, [user.user]);
+  }, [user]);
 
   if (updated) {
     return <Navigate to="/profile" />;

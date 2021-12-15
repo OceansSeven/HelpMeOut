@@ -4,12 +4,9 @@ import BuildIcon from "@material-ui/icons/Build";
 import StarRatings from "../StarRatings.jsx";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import AppContext from "../../hooks/context.js";
 import axios from "axios";
 
 const ContractorProfile = ({ user }) => {
-  const currentUser = useContext(AppContext);
-
   const [userReviews, setUserReviews] = useState();
   const [showReviews, setShowReviews] = useState("Reviews from others:");
 
