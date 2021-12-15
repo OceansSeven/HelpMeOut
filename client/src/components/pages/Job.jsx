@@ -85,24 +85,26 @@ function Job() {
 
   const confirmPage = (
   <Card>
-    <h3 style={{padding:5}}>
+    <div style={{textAlign:'center', padding:5}}>
+    <h3 >
       Please confirm the following information is accurate:
     </h3>
-    <div style={{display: 'flex', justifyContent:'center', padding: 5}}></div>
-    <br/>
-    <h5>Listing Title:</h5>
-    <div>{title}</div>
-    <h5>Max Budget:</h5>
-    <div>${price_per_hour}/hr</div>
-    <h5>Description:</h5>
-    <div>{description}</div>
-    <h5>Type(s) of Work:</h5>
-    <ul>
-      {Object.keys(specialtiesSelected).map(item => <li key={item}>{item}</li>)}
-    </ul>
+      <br/>
+      <h5>Listing Title:</h5><br/>
+      <div>{title}</div><br/>
+      <h5>Max Budget:</h5><br/>
+      <div>${price_per_hour}/hr</div><br/>
+      <h5>Description:</h5><br/>
+      <div>{description}</div><br/>
+      <h5>Type(s) of Work:</h5><br/>
+      <ul>
+        {Object.keys(specialtiesSelected).map(item => <li key={item}>{item}</li>)}
+      </ul>
+      <br/>
 
-    <Button variant='contained' onClick={handleConfirm}>Confirm</Button> <Button variant='contained' onClick={handleEdit}>Edit</Button>
-    <br/>
+      <Button variant='contained' onClick={handleConfirm}>Confirm</Button> <Button variant='contained' onClick={handleEdit}>Edit</Button>
+      <br/>
+    </div>
   </Card>
   );
 
