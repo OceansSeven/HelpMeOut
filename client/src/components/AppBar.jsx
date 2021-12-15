@@ -11,6 +11,7 @@ import axios from "axios";
 import AppContext from "../hooks/context";
 import { Link, Navigate } from "react-router-dom";
 
+
 export default function AppMenuBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -96,6 +97,12 @@ export default function AppMenuBar() {
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <MenuItem onClick={handleClose}>Home</MenuItem>
+                </Link>
+                <Link
+                  to="/summary"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <MenuItem onClick={handleClose}>Summary</MenuItem>
                 </Link>
                 <Link
                   to="/profile"
