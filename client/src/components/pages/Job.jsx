@@ -19,7 +19,6 @@ function Job() {
   const [hasRun, setHasRun] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [emptyFields, setEmptyFields] = useState(false);
-  const [allSelected, setAllSelected] = useState(false);
 
   const location = useLocation();
   let split = location.pathname.split('/');
@@ -69,9 +68,9 @@ function Job() {
             return;
           }
           if (i % 2 === 0 || i === specialties.length - 1) {
-            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={allSelected ? allSelected : !!specialtiesSelected[item]}/> {item} <br/></span>)
+            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item]}/> {item} <br/></span>)
           } else {
-            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={allSelected ? allSelected : !!specialtiesSelected[item]}/> {item} |</span>)
+            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item]}/> {item} |</span>)
           }
           })}
           <br/>
@@ -115,20 +114,6 @@ function Job() {
     }
   }
 
-  function setAll(){
-    setSpecialtiesSelected({
-      'All': true,
-      'Appliance Repair': true,
-      'Carpentry': true,
-      'Electrical': true,
-      'HVAC': true,
-      'Landscaping': true,
-      'Mechanic': true,
-      'Plumbing': true,
-      'Snow/Waste Removal': true
-    });
-    setAllSelected(true);
-  }
 
   function goToConfirm(e) {
     e.preventDefault();
