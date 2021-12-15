@@ -69,8 +69,14 @@ const Summary = function() {
   const contractorFeed = (
     <>
       <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0px'}}>
-        <Button variant="contained" onClick={handleUserButtonClick} style={{margin: '0px 5px'}}>Jobs Accepted</Button>
-        <Button variant="contained" onClick={handleUserButtonClick} style={{margin: '0px 5px'}}>Jobs Completed</Button>
+        <Button
+          variant="contained"
+          onClick={handleUserButtonClick}
+          style={{margin: '0px 5px'}}>Jobs Accepted</Button>
+        <Button
+          variant="contained"
+          onClick={handleUserButtonClick}
+          style={{margin: '0px 5px'}}>Jobs Completed</Button>
       </div>
       <div>
         <ListManager data={
@@ -83,13 +89,13 @@ const Summary = function() {
   );
 
   return (
-    <div>
-      <h2 style={{margin: '12px'}}>YOUR FEED</h2>
+    <Container id="summary">
+      <h2 style={{margin: '12px'}}>SUMMARY FEED</h2>
       <Container className='userPosts'>
         {user.contractor ? userBtns : null}
         {showClient ? clientFeed : contractorFeed}
       </Container>
-    </div>
+    </Container>
   );
 }
 
