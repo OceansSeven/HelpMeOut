@@ -16,11 +16,11 @@ function JobPostedCard({data}) {
           <div>
             {data?.description}
           </div>
-          <div style={{alignSelf:'flex-end'}}>
+          <div style={{alignSelf:'flex-end', padding:5}}>
           {!data.completed && data.contractor &&
             <Link to="/leaveAReview">
-              <Button color="secondary" onClick={() => setReviewJob(data)}>Mark As Complete</Button>
-            </Link>}
+              <Button color="secondary" size="small" onClick={() => setReviewJob(data)}>Mark As Complete</Button>
+            </Link>} {'\u00A0'}
             {data.completed ? null :
             <Link to={`/job/edit/${data.task_id}`}>
               <Button variant='contained' size='small'>Edit</Button>
