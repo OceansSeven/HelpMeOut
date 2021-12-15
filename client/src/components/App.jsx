@@ -23,10 +23,6 @@ import Summary from "./pages/Summary";
 
 const App = function App() {
   // user id which is passed into provider so all the app can use it
-  // ########################################
-  // TODO - set starting user to be null
-  // right now the starting user will be 1 for testing purposes
-  // ########################################
   const [user, setUser] = useState(null);
   const [reviewJob, setReviewJob] = useState({});
   const [jobsPostedContext, setJobsPostedContext] = useState([]);
