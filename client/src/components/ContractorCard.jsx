@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from "react";
-import { Card, Box, Grid } from '@material-ui/core';
+import { Card, Box, Grid, Typography, Button, Accordion, AccordionDetails, AccordionSummary } from '@material-ui/core';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import StarRatings from "./StarRatings";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function ContractorCard({data}) {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleChange = (panel) => (e, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
-    <Link to={`/profile/${data.id}`} style={{ textDecoration: 'none' }}>
-      <Box>
+    <Box>
         <Card className="contractor-card" variant="outlined">
           <Grid container spacing={2}>
             <Grid item xs={8}>
@@ -20,29 +25,37 @@ export default function ContractorCard({data}) {
           </Grid>
           <div className="contractor-card-lists-container">
             {data.specialties &&
-              <Card className="contractor-specialties-list">
-                  <div><strong>Specialties:</strong></div>
-                  <div className="contractorspecialties">
-                    {data.specialties.map((specialty, i) => <li key={i}>{specialty}</li>)}
-                  </div>
-              </Card>}
+              <Accordion className="contractor-specialties-list" expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} id="contractor-specialties-accordion-summary">
+                  <Typography>Specialties:{' '}{data.specialties.length}</Typography>
+                </AccordionSummary>
+                <AccordionDetails className="contractor-specialties">
+                  {data.specialties.map((specialty, i) => <Typography key={i}>{specialty}</Typography>)}
+                </AccordionDetails>
+              </Accordion>}
             {data.certifications &&
-              <Card className="contractor-certifications-list">
-                <div><strong>Certifications:</strong></div>
-                <Grid container className="contractorcertifications" spacing={2} columns={{ xs: 6, sm: 3, md: 4 }} direction="column" alignItems="flex-start" justifyContent="flex-start">
-                  {data.certifications.map((certification, i) => <Grid item xs={4} md={3} key={i}><li>{certification}</li></Grid>)}
-                </Grid>
-              </Card>}
+              <Accordion className="contractor-certifications-list">
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} id="contractor-certifications-accordion-summary">
+                  <Typography>Certifications:{' '}{data.certifications.length}</Typography>
+                </AccordionSummary>
+                <AccordionDetails className="contractor-certifications">
+                  {data.certifications.map((certification, i) => <Typography key={i}>{certification}</Typography>)}
+                </AccordionDetails>
+              </Accordion>}
             {data.tools &&
-              <Card className="contractor-tools-list">
-                <div><strong>Tools:</strong></div>
-                <div className="contractortools">
-                  {data.tools.map((tool, i) =><li key={i}>{tool}</li>)}
-                </div>
-              </Card>}
+              <Accordion className="contractor-tools-list">
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} id="contractor-tools-accordion-summary">
+                  <Typography>Tools:{' '}{data.tools.length}</Typography>
+                </AccordionSummary>
+                <AccordionDetails className="contractor-tools">
+                  {data.tools.map((tool, i) =><Typography key={i}>{tool}</Typography>)}
+                </AccordionDetails>
+              </Accordion>}
           </div>
+          <Link to={`/profile/${data.id}`} style={{ textDecoration: 'none' }}>
+            <Button className="contact-contractor-button" variant="contained" color="primary">Contact</Button>
+          </Link>
         </Card>
       </Box>
-    </Link>
   );
 }

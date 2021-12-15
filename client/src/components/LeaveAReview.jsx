@@ -29,7 +29,7 @@ export default function LeaveAReview() {
     }
 
     postReview(reviewData)
-      .then((res) => { setReviewSubmitted(true); alert('Thanks for Writing a Review!'); })
+      .then(res => { setReviewSubmitted(true); alert('Thanks for Writing a Review!'); })
       .catch(err => alert('There was a problem submitting your review. Please try again?'));
   }
 
