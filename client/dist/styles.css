@@ -265,10 +265,11 @@ html {
   align-items: center;
   justify-content: center;
   padding: 10px;
+  flex-wrap: wrap;
 }
 
 .searchFeedButton {
-  margin: 0px 10px;
+  margin: 5px;
 }
 
 /*
@@ -413,6 +414,15 @@ html {
 }
 .message-time {
   font-size: 0.7em;
+}
+
+/*****************Summary******************/
+
+#summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /*****************Job Cards******************/
