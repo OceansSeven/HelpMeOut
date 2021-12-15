@@ -90,6 +90,7 @@ const EditProfile = () => {
     return (
       <Container component="main" maxWidth="xs" className="editForm">
         <CssBaseline />
+
         <Box
           sx={{
             marginTop: 8,
@@ -98,6 +99,9 @@ const EditProfile = () => {
             alignItems: "center",
           }}
         >
+          <Button href="/profile" variant="contained">
+            BACK
+          </Button>
           <Typography component="h1" variant="h5">
             <SettingsIcon /> Update Profile
           </Typography>
@@ -147,14 +151,25 @@ const EditProfile = () => {
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+
         <Box
           sx={{
             marginTop: 8,
+            marginBottom: 8,
             display: "flex",
+            justifyContent: "center",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
+          <Button
+            href="/profile"
+            variant="contained"
+            fullWidth
+            className="backToProfile"
+          >
+            BACK
+          </Button>
           <Typography component="h1" variant="h5">
             <SettingsIcon /> Update Profile
           </Typography>
@@ -220,6 +235,9 @@ const EditProfile = () => {
                 aria-label="add"
                 onClick={(e) => {
                   e.preventDefault();
+                  if (!newSpecialty) {
+                    return;
+                  }
                   const currentSpecialties = mySpecialties;
                   setMySpecialties(currentSpecialties.concat(newSpecialty));
                 }}
@@ -274,6 +292,9 @@ const EditProfile = () => {
                 aria-label="add"
                 onClick={(e) => {
                   e.preventDefault();
+                  if (!newTool) {
+                    return;
+                  }
                   const currentTools = myTools;
                   setMyTools(currentTools.concat(newTool));
                   setNewTool("");
@@ -329,6 +350,9 @@ const EditProfile = () => {
                 aria-label="add"
                 onClick={(e) => {
                   e.preventDefault();
+                  if (!newCert) {
+                    return;
+                  }
                   const currentCerts = myCerts;
                   setMyCerts(currentCerts.concat(newCert));
                   setNewCert("");
@@ -368,13 +392,7 @@ const EditProfile = () => {
                 </li>
               ))}
             </ul>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              style={{ marginBottom: "44px" }}
-            >
+            <Button type="submit" fullWidth variant="contained">
               Update
             </Button>
           </Box>

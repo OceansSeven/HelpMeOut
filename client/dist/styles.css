@@ -184,6 +184,19 @@ html {
   flex-direction: column;
   gap: 8px;
 }
+
+.backToProfile {
+  background: #3e5c76;
+  color: #eee;
+  transition: 0.25s;
+  margin-top: -56px;
+  margin-bottom: 56px;
+}
+.backToProfile:hover {
+  background: #eee;
+  color: #3e5c76;
+  transition: 0.25s;
+}
 /************************* Toggle Client ****************************************
 /*
   * * * * * * * * Client Home * * * * * * * *

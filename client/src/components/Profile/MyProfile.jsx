@@ -53,9 +53,9 @@ const MyProfile = () => {
               <Card className="itemCard">
                 <div>
                   <p>Tools:</p>
-                  <Link href="/update">
-                    <Button color="secondary">Add/Remove</Button>
-                  </Link>{" "}
+                  <Button href="/update" color="secondary">
+                    Add/Remove
+                  </Button>
                 </div>
                 <ul
                   style={{
@@ -73,9 +73,10 @@ const MyProfile = () => {
               <div>Member since 12-2021</div>
             </div>
             <div className="profileRight">
-              <Link href="/update">
-                <Button color="secondary">Edit Profile</Button>
-              </Link>{" "}
+              <Button href="/update" color="secondary">
+                Edit Profile
+              </Button>
+
               <h2>{currentUser.company}</h2>
               <h5>{currentUser.firstname + " " + currentUser.lastname}</h5>
               <ul className="specialties">
@@ -97,11 +98,13 @@ const MyProfile = () => {
               <Card className="itemCard">
                 <div>
                   Certifications:
-                  <Link href="/update">
-                    <Button color="secondary" style={{ fontSize: "12px" }}>
-                      Add/Remove
-                    </Button>
-                  </Link>{" "}
+                  <Button
+                    href="/update"
+                    color="secondary"
+                    style={{ fontSize: "12px" }}
+                  >
+                    Add/Remove
+                  </Button>
                 </div>
                 <ul
                   style={{
