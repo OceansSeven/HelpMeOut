@@ -5,11 +5,11 @@ import StarRatings from "./StarRatings";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function ContractorCard({data}) {
-  const [expanded, setExpanded] = useState(false);
+  // const [expanded, setExpanded] = useState(false);
 
-  const handleChange = (panel) => (e, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+  // const handleChange = (panel) => (e, isExpanded) => {
+  //   setExpanded(isExpanded ? panel : false);
+  // };
 
   return (
     <Box>
@@ -25,12 +25,12 @@ export default function ContractorCard({data}) {
           </Grid>
           <div className="contractor-card-lists-container">
             {data.specialties &&
-              <Accordion className="contractor-specialties-list" expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+              <Accordion className="contractor-specialties-list">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} id="contractor-specialties-accordion-summary">
                   <Typography>Specialties:{' '}{data.specialties.length}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className="contractor-specialties">
-                  {data.specialties.map((specialty, i) => <Typography key={i}>{specialty}</Typography>)}
+                  {data.specialties.map((specialty, i) => <Typography key={i} className="contractor-list-item">{specialty}</Typography>)}
                 </AccordionDetails>
               </Accordion>}
             {data.certifications &&
@@ -39,7 +39,7 @@ export default function ContractorCard({data}) {
                   <Typography>Certifications:{' '}{data.certifications.length}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className="contractor-certifications">
-                  {data.certifications.map((certification, i) => <Typography key={i}>{certification}</Typography>)}
+                  {data.certifications.map((certification, i) => <Typography key={i} className="contractor-list-item">{certification}</Typography>)}
                 </AccordionDetails>
               </Accordion>}
             {data.tools &&
@@ -48,7 +48,7 @@ export default function ContractorCard({data}) {
                   <Typography>Tools:{' '}{data.tools.length}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className="contractor-tools">
-                  {data.tools.map((tool, i) =><Typography key={i}>{tool}</Typography>)}
+                  {data.tools.map((tool, i) => <Typography key={i} className="contractor-list-item">{tool}</Typography>)}
                 </AccordionDetails>
               </Accordion>}
           </div>

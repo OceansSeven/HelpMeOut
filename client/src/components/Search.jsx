@@ -6,6 +6,7 @@ import MainContext from '../hooks/MainContext.js';
 function Search() {
   const { searchFeedType, setSearchFeedData, contractorList, jobsAvailable,
     searchTerm, setSearchTerm, selectedSpecialty, setSelectedSpecialty } = useContext(MainContext);
+  const [sortBySelection, setSortBySelection] = useState('');
   let searchFeed = searchFeedType === 'jobs' ? jobsAvailable : contractorList;
 
   const handleKeywordSearch = (e) => {
@@ -23,8 +24,8 @@ function Search() {
 
   const handleSortBySearch = (e) => {
     const sortDisplay = e.target.value;
+    setSortBySelection(e.target.value);
     const { compare, sort } = sortByCategories.find(category => category.display === sortDisplay);
-
     setSearchFeedData(sortBy([...searchFeed], sort, compare));
   };
 
@@ -43,7 +44,7 @@ function Search() {
         && (
         <Grid item xs={4} md={2}>
           <InputLabel id="sort-by-dropdown-label">Sort By</InputLabel>
-          <Select labelId="sort-by-dropdown-label" id="sort-by-dropdown" label="Sort By" onChange={handleSortBySearch} style={{ width: '100%' }}>
+          <Select labelId="sort-by-dropdown-label" id="sort-by-dropdown" label="Sort By" onChange={handleSortBySearch} style={{ width: '100%' }} value={sortBySelection}>
             {sortByCategories?.map((category, i) => <MenuItem value={category.display} key={i}>{category.display}</MenuItem>)}
           </Select>
         </Grid>
