@@ -11,7 +11,7 @@ function JobPostedCard({data}) {
       <Card >
         <div className="detail-container">
           <p style={{fontSize:'12px'}}>{data?.date}</p>
-          <h3 > {data?.title} {data?.price_per_hour ? '$' + data?.price_per_hour + '/hr' : ''}</h3>
+          <h3 > {data?.title} | {data?.price_per_hour ? '$' + data?.price_per_hour : ''}</h3>
           <p>Category(s): {data?.specialties.map((category, i) => <span key={i}>{category}{i===data?.specialties?.length - 1 ? '' : ', '}</span>)}</p>
           <div>
             {data?.description}
