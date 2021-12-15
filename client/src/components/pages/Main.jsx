@@ -50,26 +50,29 @@ const Main = function Main() {
 
   // Define User Buttons
   const userBtns = (
-    <span>
-      <button onClick={handleUserButtonClick}>
-        Client
-      </button>
-      <button onClick={handleUserButtonClick}>
-        Contractor
-      </button>
+    <span style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
+      <Button onClick={handleUserButtonClick} variant="contained" style={{marginRight: '10px'}}>
+        Client View
+      </Button>
+      <Button onClick={handleUserButtonClick} variant="contained">
+        Contractor View
+      </Button>
     </span>);
 
   // Define Client Feed HTML
   const clientFeed = (
     <>
-      <div style={{display: 'flex', justifyContent: 'space-around', margin: '10px'}}>
-        <Button onClick={handleUserButtonClick} variant="contained">Jobs Posted</Button>
+      <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0px'}}>
+        <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 10px'}}>Jobs Posted</Button>
         <Button onClick={handleUserButtonClick} variant="contained">Jobs Completed</Button>
+        <Link to='/job' style={{textDecoration: 'none'}}>
+          <Button variant="contained" style={{margin: '0px 10px'}}>Post a Job</Button>
+        </Link>
       </div>
       <div>
         <ListManager data={
           showCompleted ? jobsPosted.filter(j => j.completed) : jobsPosted.filter(j => !j.completed)
-        }>
+        } srcList='client'>
           <JobPostedCard />
         </ListManager>
       </div>
@@ -86,7 +89,7 @@ const Main = function Main() {
       <div>
         <ListManager data={
           showCompleted ? jobsAccepted.filter(j => j.completed) : jobsAccepted.filter(j => !j.completed)
-        }>
+        } srcList='contractor'>
           <JobAvailableCard/>
         </ListManager >
       </div>
