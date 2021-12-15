@@ -69,6 +69,7 @@ export default function AppMenuBar() {
               style={{ color: "white" }}
             >
               <AccountCircle className="accountI-icon" />
+            <div style={{paddingLeft: '10px', fontSize: 'large', fontWeight: '500'}}>Menu</div>
             </IconButton>
             <Menu
               id="menu-appbar"
