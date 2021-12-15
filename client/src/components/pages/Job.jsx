@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Navigate, useLocation} from 'react-router-dom';
-import { Paper, Button } from "@material-ui/core";
+import { Card, Button, Container} from "@material-ui/core";
 import { specialties, postJobs, editJobs } from '../../utils';
 import AppContext from '../../hooks/context';
 
@@ -25,9 +25,8 @@ function Job() {
   let jobId = parseInt(split[split.length - 1]);
 
   if (location.pathname.includes('edit') && !hasRun) {
-    console.log('edit mode');
+
     for (let job of jobsPostedContext) {
-      console.log('in loop')
       if (job.task_id === jobId){
         setHasRun(true);
         setEditMode(true);
@@ -35,7 +34,6 @@ function Job() {
         setDescription(job.description);
         setPPH(job.price_per_hour);
         job.specialties.map(j => specialtiesSelected[j] = true);
-        console.log(specialtiesSelected);
         break;
       }
     }
@@ -50,12 +48,13 @@ function Job() {
   </div>);
 
   const formPage = (
-  <Paper>
-    <h2>Post a new listing</h2>
+  <Card>
+    <h2 style={{padding:5, textAlign:'center'}}>Post a new listing</h2>
+    <div style={{display: 'flex', justifyContent:'center', padding: 5}}>
       <form>
         <label>Listing Title</label> <br/>
         <input type="text" placeholder='What you want contractors to see' style={inputStyle} onChange={e => setTitle(e.target.value)} value={title}/> <br/>
-        <label>Hourly Rate</label> <br/>
+        <label>Maximum Budget</label> <br/>
         <input type="text" style={inputStyle} onKeyPress={(e) => {
           if(!/[0-9]/.test(e.key)) {
             e.preventDefault();
@@ -65,39 +64,48 @@ function Job() {
         <textarea type="text" maxLength="200" style={inputStyle} onChange={e => setDescription(e.target.value)} value={description} placeholder='200 characters or less'/> <br/>
         <label>Type of Work</label> <br/>
         {specialties.map((item, i) => {
-          i+=1
-          if (i % 3 === 0) {
-            return (<span key={i}> <input type="checkbox" name={item.toLowerCase()} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item.toLowerCase()]}/> {item} <br/></span>)
+          if(item === 'All') {
+            return;
+          }
+          if (i % 2 === 0 || i === specialties.length - 1) {
+            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item]}/> {item} <br/></span>)
           } else {
-            return (<span key={i}> <input type="checkbox" name={item.toLowerCase()} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item.toLowerCase()]}/> {item} |</span>)
+            return (<span key={i}> <input type="checkbox" name={item} onClick={setCheckBoxes} defaultChecked={!!specialtiesSelected[item]}/> {item} |</span>)
           }
           })}
           <br/>
           {emptyFields ? emptyComp : null}
           <Button onClick={goToConfirm} variant='contained'>Post</Button>
+          <br/>
       </form>
-  </Paper>
+      <br/>
+    </div>
+  </Card>
   );
 
   const confirmPage = (
-  <Paper>
-    <h3>
+  <Card>
+    <div style={{textAlign:'center', padding:5}}>
+    <h3 >
       Please confirm the following information is accurate:
     </h3>
-    <br/>
-    <h5>Listing Title:</h5>
-    <div>{title}</div>
-    <h5>Rate:</h5>
-    <div>${price_per_hour}/hr</div>
-    <h5>Description:</h5>
-    <div>{description}</div>
-    <h5>Type(s) of Work:</h5>
-    <ul>
-      {Object.keys(specialtiesSelected).map(item => <li key={item}>{item}</li>)}
-    </ul>
+      <br/>
+      <h5>Listing Title:</h5><br/>
+      <div>{title}</div><br/>
+      <h5>Max Budget:</h5><br/>
+      <div>${price_per_hour}/hr</div><br/>
+      <h5>Description:</h5><br/>
+      <div>{description}</div><br/>
+      <h5>Type(s) of Work:</h5><br/>
+      <ul>
+        {Object.keys(specialtiesSelected).map(item => <li key={item}>{item}</li>)}
+      </ul>
+      <br/>
 
-    <Button variant='contained' onClick={handleConfirm}>Confirm</Button> <Button variant='contained' onClick={handleEdit}>Edit</Button>
-  </Paper>
+      <Button variant='contained' onClick={handleConfirm}>Confirm</Button> <Button variant='contained' onClick={handleEdit}>Edit</Button>
+      <br/>
+    </div>
+  </Card>
   );
 
   function setCheckBoxes(e){
@@ -107,6 +115,7 @@ function Job() {
       specialtiesSelected[e.target.name] = true;
     }
   }
+
 
   function goToConfirm(e) {
     e.preventDefault();
@@ -136,9 +145,12 @@ function Job() {
   };
 
   return (
-    <div>
-      {confirmation ? confirmPage : formPage}
-    </div>
+    <Container>
+      <br/>
+      <div style={{padding:5}}>
+        {confirmation ? confirmPage : formPage}
+      </div>
+    </Container>
   )
 }
 

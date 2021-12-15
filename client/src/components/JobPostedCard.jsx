@@ -11,16 +11,16 @@ function JobPostedCard({data}) {
       <Card >
         <div className="detail-container">
           <p style={{fontSize:'12px'}}>{data?.date}</p>
-          <h3 > {data?.title} {data?.price_per_hour ? '$' + data?.price_per_hour + '/hr' : ''}</h3>
+          <h3 > {data?.title} | {data?.price_per_hour ? '$' + data?.price_per_hour : ''}</h3>
           <p>Category(s): {data?.specialties.map((category, i) => <span key={i}>{category}{i===data?.specialties?.length - 1 ? '' : ', '}</span>)}</p>
           <div>
             {data?.description}
           </div>
-          <div style={{alignSelf:'flex-end'}}>
+          <div style={{alignSelf:'flex-end', padding:5}}>
           {!data.completed && data.contractor &&
             <Link to="/leaveAReview">
-              <Button color="secondary" onClick={() => setReviewJob(data)}>Mark As Complete</Button>
-            </Link>}
+              <Button color="secondary" size="small" onClick={() => setReviewJob(data)}>Mark As Complete</Button>
+            </Link>} {'\u00A0'}
             {data.completed ? null :
             <Link to={`/job/edit/${data.task_id}`}>
               <Button variant='contained' size='small'>Edit</Button>
