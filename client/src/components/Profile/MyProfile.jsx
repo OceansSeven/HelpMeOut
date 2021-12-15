@@ -14,7 +14,7 @@ const MyProfile = () => {
     setCurrentUser(user);
   }, [user]);
 
-  if (!currentUser?.contractor) {
+  if (!user?.contractor) {
     return (
       <div className="profileContainer">
         <Container maxWidth="xs" style={{ marginTop: "44px" }}>
@@ -69,7 +69,7 @@ const MyProfile = () => {
                     alignItems: "center",
                   }}
                 >
-                  {currentUser?.tools?.map((tool) => (
+                  {user?.tools?.map((tool) => (
                     <li key={Math.random()}>{tool}</li>
                   ))}
                 </ul>
@@ -81,10 +81,10 @@ const MyProfile = () => {
                 Edit Profile
               </Button>
 
-              <h2>{currentUser.company}</h2>
-              <h5>{currentUser.firstname + " " + currentUser.lastname}</h5>
+              <h2>{user.company}</h2>
+              <h5>{user.firstname + " " + user.lastname}</h5>
               <ul className="specialties">
-                {currentUser?.specialties?.map((specialty) => (
+                {user?.specialties?.map((specialty) => (
                   <li
                     key={Math.random()}
                     style={{
@@ -119,7 +119,7 @@ const MyProfile = () => {
                     alignItems: "center",
                   }}
                 >
-                  {currentUser?.certifications?.map((cert) => (
+                  {user?.certifications?.map((cert) => (
                     <li key={Math.random()}>{cert}</li>
                   ))}
                 </ul>
