@@ -196,10 +196,8 @@ html {
 /************************* Search Feed/Container ********************************/
 
 .searchList {
-  margin: 25px 10px 10px 10px;
-  padding-top: 15px;
-  /* border: 2px solid darkgray;
-  border-radius: 10px; */
+  margin-top: 25px;
+  padding: 10px;
 }
 
 .searchFeedButtonsContainer {
@@ -247,13 +245,13 @@ html {
 }
 
 .contractor-specialties-list, .contractor-certifications-list, .contractor-tools-list {
-  padding: 10px;
-  margin: 10px;
+  margin-top: 10px;
 }
 
-.contractorspecialties, .contractorcertifications, .contractortools {
-  padding-left: 0;
-
+.contractor-specialties, .contractor-certifications, .contractor-tools {
+  display: block;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
 }
 
 .contractor-list-item {
@@ -261,12 +259,9 @@ html {
   padding-left: 0px;
 }
 
-.MuiAccordionDetails-root {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.contact-contractor-button {
+  margin-top: 10px;
 }
-
 
 /*
   * * * * * * * * Messages * * * * * * * *
