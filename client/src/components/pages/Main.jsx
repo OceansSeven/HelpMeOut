@@ -83,8 +83,8 @@ const Main = function Main() {
   const contractorFeed = (
     <>
       <div>
-        <button onClick={handleUserButtonClick}>Jobs Accepted</button>
-        <button onClick={handleUserButtonClick}>Jobs Completed</button>
+        <Button variant="contained" onClick={handleUserButtonClick}>Jobs Accepted</Button>
+        <Button variant="contained" onClick={handleUserButtonClick}>Jobs Completed</Button>
       </div>
       <div>
         <ListManager data={
@@ -125,11 +125,12 @@ const Main = function Main() {
       setSelectedSpecialty,
     }}>
       <Container id="main">
+        <h2 style={{margin: '12px'}}>YOUR FEED</h2>
         <Container className='userPosts'>
           {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
         </Container>
-        <br/>
+        <h2 style={{margin: '12px'}}>CLASSIFIEDS FEED</h2>
         <Container className='searchList'>
           {user.contractor && searchFeedButtons}
           <Search feed={searchFeedData} searchType={searchFeedType} />
