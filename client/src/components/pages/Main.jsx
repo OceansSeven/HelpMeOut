@@ -82,8 +82,8 @@ const Main = function Main() {
   // Define Contractor Feed HTML
   const contractorFeed = (
     <>
-      <div>
-        <Button variant="contained" onClick={handleUserButtonClick}>Jobs Accepted</Button>
+      <div style={{margin: '10px 0px', display: 'flex', justifyContent: 'center'}}>
+        <Button variant="contained" onClick={handleUserButtonClick} style={{marginRight: '10px'}}>Jobs Accepted</Button>
         <Button variant="contained" onClick={handleUserButtonClick}>Jobs Completed</Button>
       </div>
       <div>
