@@ -20,7 +20,7 @@ const MessagesList = function () {
   return (
     <div>
       <h3>Conversations:</h3>
-      <ListManager data={converstations} id="converstation-list">
+      <ListManager data={converstations} id="converstation-list" srcList="conversations">
         <MessageCard />
       </ListManager>
     </div>

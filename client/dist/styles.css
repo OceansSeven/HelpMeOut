@@ -1,3 +1,9 @@
+/* Color pallate:
+Background: #748cab
+Cards: #f0ebd8
+App Bar: #1d2d44
+Buttons: #3e5c76 */
+
 #app {
   box-sizing: border-box;
   margin: 0;
@@ -199,13 +205,90 @@ html {
   padding: 5px;
 }
 
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/************************* Search Feed/Container ********************************/
+
+.searchList {
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.searchFeedButtonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.searchFeedButton {
+  margin: 0px 10px;
+}
+
+/*
+  * * * * * * * * Search Bar * * * * * * * *
+*/
+
+#search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#specialty-dropdown {
+  width: 100%;
+}
+
+#specialty-dropdown-label, #sort-by-dropdown-label {
+  font-size: 12px;
+}
+
+/*
+  * * * * * * * * Contractor Cards * * * * * * * *
+*/
+
+.contractor-card {
+  padding: 10px;
+  margin: 10px;
+}
+
+.contractor-card-lists-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contractor-specialties-list, .contractor-certifications-list, .contractor-tools-list {
+  margin-top: 10px;
+}
+
+.contractor-specialties, .contractor-certifications, .contractor-tools {
+  display: block;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+}
+
+.contractor-list-item {
+  padding-right: 5px;
+  padding-left: 0px;
+}
+
+.contact-contractor-button {
+  margin-top: 10px;
+}
+
 /*
   * * * * * * * * Messages * * * * * * * *
 */
 #chat-client {
-  margin: 0;
-  max-width: 70vw;
-  min-width: 200px;
+  margin: auto;
+  max-width: 900px;
+  min-width: 320px;
   border: 1px solid black;
 }
 #chat-client #form {
@@ -239,7 +322,7 @@ html {
   margin: 0;
   padding: 0;
   overflow-y: scroll;
-  height: 70vh;
+  height: 90vh;
 }
 #chat-client #messages > div {
   padding: 0.5rem 1rem;
@@ -252,14 +335,14 @@ html {
   max-width: 70%;
 }
 .to .message-container {
-  background-color: #2746ce;
+  background-color: #1d2d44;
   color: #fff;
 }
 #chat-client #messages .to {
   text-align: start;
 }
 .from .message-container {
-  background-color: #bbb;
+  background-color: #f0ebd8
 }
 #chat-client #messages .from {
   text-align: end;
@@ -268,7 +351,7 @@ html {
   overflow-wrap: break-word;
 }
 .message-time {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 /*****************Job Cards******************/

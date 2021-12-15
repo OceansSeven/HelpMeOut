@@ -44,7 +44,7 @@ export default function AppMenuBar() {
       <AppBar
         id="background-appbar"
         position="static"
-        style={{ position: "fixed", top: "0", zIndex: "900"}}
+        style={{ position: "fixed", top: "0", zIndex: "900", height: '56px'}}
       >
         <Toolbar>
           <Typography
@@ -117,6 +117,7 @@ export default function AppMenuBar() {
           </div>
         </Toolbar>
       </AppBar>
+      <div style={{height: '56px', width: '100%'}}></div>
     </Box>
   );
 }

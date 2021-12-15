@@ -28,8 +28,6 @@ function JobAvailableCard({data, setJobsAccepted}) {
     .catch(err => console.log(err));
   }
 
-  console.log(data)
-
   return (
     <div>
       <Paper elevation={6}>

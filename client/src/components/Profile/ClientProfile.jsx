@@ -4,7 +4,7 @@ import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 const ClientProfile = ({ user }) => {
   return (
-    <div class="clientProfile">
+    <div className="clientProfile">
       <Container maxWidth="xs" style={{ marginTop: "44px" }}>
         <Paper elevation={8} className="profilePage">
           <div className="profileLeft">

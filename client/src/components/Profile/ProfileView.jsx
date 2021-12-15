@@ -28,7 +28,7 @@ const ProfileView = () => {
           setIsContractor(data.contractor);
         });
     }
-    console.log(target);
+    // console.log(target);
   }, [target]);
 
   if (!target) {
