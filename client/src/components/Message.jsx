@@ -5,7 +5,7 @@ const Message = function Message({data}) {
   const {user} = useContext(AppContext);
 
   return (
-    <div className={(data.from_id === Number(user.id) || data.fromId === Number(user.id)) ? 'from' : 'to'} >
+    <div className={(Number(data.from_id) === Number(user.id) || Number(data.fromId) === Number(user.id)) ? 'from' : 'to'} >
       <span className='message-container'>
         <div className='message-contents'>
           {`${data.body}`}

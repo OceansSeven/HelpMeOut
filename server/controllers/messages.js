@@ -6,7 +6,8 @@ module.exports = {
     const sql = `SELECT
       id,
       firstname,
-      lastname
+      lastname,
+      company
     FROM users
     WHERE id IN (
       SELECT DISTINCT from_id

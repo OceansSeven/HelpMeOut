@@ -27,8 +27,8 @@ const Main = function Main() {
 
   // Define User Button Click Functionality
   const handleUserButtonClick = (e) => {
-    if (e.target.innerText === 'Client' || e.target.innerText === 'Contractor') {
-      setshowClient(e.target.innerText === 'Client' ? true : false);
+    if (e.target.innerText.toLowerCase() === 'client view' || e.target.innerText.toLowerCase() === 'contractor view') {
+      setshowClient(e.target.innerText.toLowerCase() === 'client view' ? true : false);
     } else {
       setShowCompleted(e.target.innerText.toLowerCase().includes('completed'));
     }
@@ -126,9 +126,6 @@ const Main = function Main() {
     }}>
       <Container id="main">
         <Container className='userPosts'>
-          <Link to='/job'>
-            <button>Post a Job</button>
-          </Link>
           {user.contractor ? userBtns : null}
           {showClient ? clientFeed : contractorFeed}
         </Container>
