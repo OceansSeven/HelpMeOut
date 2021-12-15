@@ -45,7 +45,9 @@ module.exports = {
             'specialties', jp.specialties,
             'price_per_hour', jp.price_per_hour,
             'date', jp.date,
-            'completed', jp.completed
+            'completed', jp.completed,
+            'accepted', true
+
           ) FROM jobsposted jp WHERE contractor_id = $1
         ) AS contractor_tasks)
     FROM users WHERE id = $1`;
