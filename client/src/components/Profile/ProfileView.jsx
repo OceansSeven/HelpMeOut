@@ -12,16 +12,10 @@ const ProfileView = () => {
   const { user } = useContext(AppContext);
   const [isContractor, setIsContractor] = useState(false);
   const [target, setTarget] = useState();
-  // console.log("currentUser: ", currentUser);
 
   const location = useLocation();
 
   const targetProfileId = location.pathname.split("/").pop();
-  // console.log("targetProfileId: ", targetProfileId);
-  // console.log("target: ", target);
-
-
-  const getTargetUser = (id) => {};
 
   useEffect(() => {
     if (!target) {
@@ -32,7 +26,6 @@ const ProfileView = () => {
           setIsContractor(data.contractor);
         });
     }
-    // console.log(target);
   }, [target]);
 
   if (!target) {

@@ -25,9 +25,6 @@ import AppContext from "../../hooks/context.js";
 
 const EditProfile = () => {
   const { user, setUser} = useContext(AppContext);
-  // const user = useContext(AppContext);
-  // const setUser = useContext(AppContext);
-  console.log(user);
 
   const [mySpecialties, setMySpecialties] = useState([]);
   const [newSpecialty, setNewSpecialty] = useState("");
@@ -297,7 +294,7 @@ const EditProfile = () => {
                     return;
                   }
                   const currentTools = myTools;
-                  setMyTools(currentTools.concat(newTool));
+                  setMyTools([...currentTools].concat(newTool));
                   setNewTool("");
                 }}
               >
@@ -355,7 +352,7 @@ const EditProfile = () => {
                     return;
                   }
                   const currentCerts = myCerts;
-                  setMyCerts(currentCerts.concat(newCert));
+                  setMyCerts([...currentCerts].concat(newCert));
                   setNewCert("");
                 }}
               >
