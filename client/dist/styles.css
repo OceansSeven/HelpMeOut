@@ -307,25 +307,23 @@ html {
 */
 
 #search-bar-container {
-  margin: 5px 0 5px 20px;
-  display: flex;
-  justify-content: center;
+  margin: 5px 15px;
 }
 
 #search-bar {
   display: flex;
   align-items: center;
-  /* padding-left: 20px; */
+  justify-content: space-between;
 }
 
 #keyword-search-grid {
-  /* display: flex; */
-  justify-self: start;
+  flex-basis: 60%
 }
 
 #specialty-filter-grid,
 #sort-by-filter-grid {
-  justify-self: end;
+  flex-basis: 40%;
+  margin: 0 5px;
 }
 
 #specialty-dropdown {
