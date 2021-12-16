@@ -12,16 +12,12 @@ import AppContext from "../hooks/context";
 import { Link, Navigate } from "react-router-dom";
 
 
+
 export default function AppMenuBar() {
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [loggedOut, setLoggedOut] = React.useState(false);
   const { setUser } = React.useContext(AppContext);
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
-
+  
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };

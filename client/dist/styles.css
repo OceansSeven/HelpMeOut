@@ -76,7 +76,7 @@ html {
   width: 100vw;
   background: #748cab;
   background-size: cover;
-  background-image: url("./assets/handyWallpaper.jpeg");
+  background-image: url("./assets/handyWallpaper.webp");
 }
 
 .landing-page-container {
@@ -163,7 +163,7 @@ html {
   font-weight: bold;
 }
 .clientProfile {
-  background-image: url("./assets/clientWallpaper.jpeg");
+  background-image: url("./assets/clientWallpaper.webp");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -171,7 +171,7 @@ html {
   padding-top: 64px;
 }
 .profileContainer {
-  background-image: url("./assets/handyWallpaper.jpeg");
+  background-image: url("./assets/handyWallpaper.webp");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;

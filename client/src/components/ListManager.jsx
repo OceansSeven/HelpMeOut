@@ -1,5 +1,3 @@
-import { Button } from "@material-ui/core";
-import { Link } from 'react-router-dom';
 import React from "react";
 
 function ListManager({children, data, id, setJobsAccepted, srcList}){
@@ -27,8 +25,4 @@ function ListManager({children, data, id, setJobsAccepted, srcList}){
 
 export default ListManager;
 
-/*
-  <ListManager data={<array of objs>} id={<id for list>}>
-    <Message />
-  </ListManager>
-*/
+

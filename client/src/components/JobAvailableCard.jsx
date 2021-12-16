@@ -3,13 +3,9 @@ import { Card, Button } from "@material-ui/core";
 import AppContext from "../hooks/context";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {getUser} from '../utils';
-import MainContext from "../hooks/MainContext";
-
 
 function JobAvailableCard({data}) {
   const user = useContext(AppContext).user;
-  // const setJobsAccepted = useContext(MainContext).setJobsAccepted
   const [accepted, setAccepted] = useState(false);
   const [alreadyAccepted, setAlreadyAccepted] = useState(data.accepted);
 
