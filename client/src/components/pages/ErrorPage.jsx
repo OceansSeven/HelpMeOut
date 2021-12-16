@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 const ErrorPage = function ErrorPage() {
-
-  // useEffect()
 
   return (
     <div style={{display: 'flex', flexDirection: 'column',  alignItems: 'center', background: `linear-gradient(

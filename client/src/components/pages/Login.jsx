@@ -1,5 +1,4 @@
-import { AppBar } from '@mui/material';
-import React, {useEffect} from 'react';
+import React from 'react';
 import SignIn from '../SignIn';
 
 const Login = function Login() {

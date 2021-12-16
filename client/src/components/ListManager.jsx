@@ -1,10 +1,7 @@
-import { Button } from "@material-ui/core";
-import { Link } from 'react-router-dom';
 import React from "react";
 
 function ListManager({children, data, id, setJobsAccepted, srcList}){
   //data refers to an array of Objects containing necessary props for sub-component
-  // console.log(children);
   let noDataMessage = (<div></div>);
 
   if (srcList === 'client') {
@@ -28,8 +25,4 @@ function ListManager({children, data, id, setJobsAccepted, srcList}){
 
 export default ListManager;
 
-/*
-  <ListManager data={<array of objs>} id={<id for list>}>
-    <Message />
-  </ListManager>
-*/
+

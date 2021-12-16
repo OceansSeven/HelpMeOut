@@ -2,7 +2,6 @@ const pool = require('../db');
 
 module.exports = {
   getUserMessages: (req, res) => {
-    console.log(`getting all messages for ${req.params.id}`)
     const sql = `SELECT
       id,
       firstname,
@@ -27,7 +26,6 @@ module.exports = {
   getMessages: (req, res) => {
     const userId = req.query.user_id;
     const recepientId = req.query.recepient_id;
-    console.log(`going to get messages between ${userId} and ${recepientId}`);
     const sql = `SELECT
       messages.id,
       messages.from_id from_id,
@@ -48,7 +46,6 @@ module.exports = {
   },
 
   postMessage: (req, res) => {
-    console.log(`posting ${req.body.from} ${req.body.to} ${req.body.body} ${req.body.date}`)
     const sql = `INSERT INTO
     messages (from_id, to_id, body, date)
     VALUES ($1, $2, $3, $4);`;
