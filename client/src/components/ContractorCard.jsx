@@ -26,7 +26,11 @@ export default function ContractorCard({ data }) {
                 </strong>
               </div>
             </Link>
-            {data.company && <div id="contractorcompany">{data.company}</div>}
+            {data.company && (
+              <div id="contractorcompany" style={{ fontVariant: "small-caps" }}>
+                {data.company}
+              </div>
+            )}
           </Grid>
           <Grid
             item
