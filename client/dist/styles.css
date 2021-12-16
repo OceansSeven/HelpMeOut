@@ -9,7 +9,8 @@ Buttons: #3e5c76 */
   margin: 0;
   font-family: Roboto, sans-serif;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   background-color: #fffdf5;
 }
 a {
@@ -75,7 +76,7 @@ html {
   width: 100vw;
   background: #748cab;
   background-size: cover;
-  background-image: url('./assets/handyWallpaper.jpeg');
+  background-image: url("./assets/handyWallpaper.jpeg");
 }
 
 .landing-page-container {
@@ -163,7 +164,7 @@ html {
 }
 .clientProfile {
   background-image: url("./assets/clientWallpaper.jpeg");
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -171,10 +172,11 @@ html {
 }
 .profileContainer {
   background-image: url("./assets/handyWallpaper.jpeg");
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 150vh;
   padding-top: 64px;
 }
 .profileLeft {
@@ -195,6 +197,27 @@ html {
   justify-content: space-around;
   align-items: center;
   margin-left: 16px;
+}
+
+.pageReviews {
+  background: rgba(240, 235, 216, 0.33);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.contractorReviewCard {
+  width: 90%;
+  background: rgba(240, 235, 216, 0.66);
+  color: #3e5c76;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-direction: column;
+  text-align: center;
 }
 .pListHead {
   display: flex;
@@ -249,6 +272,7 @@ html {
 }
 .profileBtn:hover {
   color: #e53935;
+  background: #fff;
   transition: 0.25s;
 }
 /************************* Toggle Client ****************************************
@@ -307,27 +331,25 @@ html {
 */
 
 #search-bar-container {
-  margin: 5px 15px;
+  margin: 5px;
 }
 
 #search-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #keyword-search-grid {
-  flex-basis: 60%
+  flex-basis: 50%;
 }
 
 #specialty-filter-grid,
 #sort-by-filter-grid {
-  flex-basis: 40%;
+  flex-basis: 50%;
   margin: 0 5px;
-}
-
-#specialty-dropdown {
-  width: 100%;
+  max-width: 200px;
 }
 
 #specialty-dropdown-label,
@@ -341,7 +363,7 @@ html {
 
 .contractor-card {
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
 }
 
 .contractor-card-lists-container {
@@ -460,8 +482,6 @@ html {
   padding: 5px;
 }
 
-
-
 .modal {
   position: fixed;
   left: 0;
@@ -479,12 +499,13 @@ html {
   background-color: #fff;
 }
 
-.modal-header, .modal-footer {
+.modal-header,
+.modal-footer {
   padding: 10px;
 }
 
 .modal-title {
-  margin: 0
+  margin: 0;
 }
 
 .modal-body {
