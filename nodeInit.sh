@@ -1,6 +1,6 @@
 sudo apt update -y
 
-git clone https://github.com/OceansSeven/HelpMeOut.git
+# git clone https://github.com/OceansSeven/HelpMeOut.git
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
