@@ -59,7 +59,7 @@ const EditProfile = () => {
       url: "http://localhost:3000/api/user",
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setUpdated(true);
       })
       .then(

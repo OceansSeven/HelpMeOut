@@ -13,7 +13,7 @@ const MessagesList = function () {
       .then(({data}) => {
         setConverstations([...data]);
       })
-      .catch(console.log)
+      .catch(console.log);
   }, []);
 
   return (

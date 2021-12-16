@@ -400,7 +400,6 @@ html {
   outline: none;
 }
 #chat-client #form > button {
-  background: #333;
   border: none;
   padding: 0 1rem;
   margin: 0.25rem;
