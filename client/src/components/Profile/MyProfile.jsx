@@ -122,10 +122,9 @@ const MyProfile = () => {
                 Edit Profile
               </Button>
 
-              <Typography component="h2" variant="display1">
+              <Typography component="h2" variant="h2">
                 {user.company}
               </Typography>
-              <br />
               <Typography component="h5" variant="subhead">
                 {user.firstname + " " + user.lastname}
               </Typography>

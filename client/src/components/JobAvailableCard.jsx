@@ -43,7 +43,7 @@ function JobAvailableCard({ data }) {
 
           <Typography element="h5" variant="subtitle2">
             {" "}
-            {data?.client.firstname} {data?.client.lastname}.
+            {data?.client.firstname} {data?.client.lastname}
           </Typography>
           <Typography
             element="p"
@@ -74,7 +74,10 @@ function JobAvailableCard({ data }) {
                 Accept
               </Button>
             )}
-            <Link to={`/profile/${data.client.id}`} style={{ textDecoration: "none", marginLeft: "5px" }}>
+            <Link
+              to={`/profile/${data.client.id}`}
+              style={{ textDecoration: "none", marginLeft: "5px" }}
+            >
               <Button variant="contained" size="small">
                 Contact
               </Button>
