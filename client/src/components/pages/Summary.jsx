@@ -34,7 +34,6 @@ const Summary = function() {
       setshowClient(e.target.innerText.toLowerCase() === 'client view' ? true : false);
     } else {
       setShowCompleted(e.target.innerText.toLowerCase().includes('completed'));
-      console.log(e);
     }
   }
 
