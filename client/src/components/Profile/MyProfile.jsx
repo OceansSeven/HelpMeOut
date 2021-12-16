@@ -78,8 +78,8 @@ const MyProfile = () => {
                   </Typography>
                 </div>
                 <ul className="pAttributes">
-                  {user?.tools?.map((tool) => (
-                    <li key={Math.random()} style={{ alignSelf: "baseline" }}>
+                  {user?.tools?.map((tool, i) => (
+                    <li key={i} style={{ alignSelf: "baseline" }}>
                       <Typography component="p" variant="button">
                         {tool}
                       </Typography>
@@ -103,8 +103,8 @@ const MyProfile = () => {
                 >
                   {showReviews}
                 </Typography>
-                {userReviews?.map((review) => (
-                  <Card key={Number(user.id)} className="contractorReviewCard">
+                {userReviews?.map((review, i) => (
+                  <Card key={i} className="contractorReviewCard">
                     <StarRatings rating={Number(review.rating)} />
                     <Typography component="h4" variant="body2">
                       {'"' + review.body + '"'}
@@ -132,9 +132,9 @@ const MyProfile = () => {
                 {user.firstname + " " + user.lastname}
               </Typography>
               <ul className="specialties">
-                {user?.specialties?.map((specialty) => (
+                {user?.specialties?.map((specialty, i) => (
                   <li
-                    key={Math.random()}
+                    key={i}
                     style={{
                       color: "#748cab",
                       display: "flex",
@@ -155,8 +155,8 @@ const MyProfile = () => {
                   </Typography>
                 </div>
                 <ul className="pAttributes">
-                  {user?.certifications?.map((cert) => (
-                    <li key={Math.random()} style={{ color: "#37474f" }}>
+                  {user?.certifications?.map((cert, i) => (
+                    <li key={i} style={{ color: "#37474f" }}>
                       <Typography component="p" variant="button">
                         {cert}
                       </Typography>
