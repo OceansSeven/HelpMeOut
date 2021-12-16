@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useLocation, Navigate} from 'react-router-dom';
+import { Button } from "@material-ui/core";
 import AppContext from '../../hooks/context';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from '../../utils/socket-utils';
@@ -13,14 +14,14 @@ const Messages = function Messages() {
   // get recepient from URL path
   // need to get recepient information
   const [recepient, setRecepient] = useState({
-    user_id: location.pathname.split('/').pop(),
+    id: location.pathname.split('/').pop(),
     firstname: null,
     lastname: null
   });
 
   // set chat room to be determined by the current logged in user and the recepient
   // chat room will allow one to one communication
-  const [room, setRoom] = useState(`${Math.max(Number(user.id), recepient.user_id)}-${Math.min(Number(user.id), recepient.user_id)}`);
+  const [room, setRoom] = useState(`${Math.max(Number(user.id), recepient.id)}-${Math.min(Number(user.id), recepient.id)}`);
 
   // message is the current text input
   const [message, setMessage] = useState('');
@@ -32,8 +33,8 @@ const Messages = function Messages() {
   // useEffect to get data from DB
   useEffect(() => {
     Promise.all([
-      axios.get(`/api/messages/?user_id=${user.id}&recepient_id=${recepient.user_id}`),
-      axios.get(`/api/user/${recepient.user_id}`)
+      axios.get(`/api/messages/?user_id=${user.id}&recepient_id=${recepient.id}`),
+      axios.get(`/api/user/${recepient.id}`)
     ])
       .then(([chatData, recepientData]) => {
         if (recepientData.data) {
@@ -83,7 +84,7 @@ const Messages = function Messages() {
     setMessage('');
     await axios.post(`/api/messages`, {
       from: user.id,
-      to: recepient.user_id,
+      to: recepient.id,
       body: message,
       date
     })
@@ -101,14 +102,14 @@ const Messages = function Messages() {
   }
 
   return (
-    <div style={{height: '100%'}}>
+    <div style={{height: 'inherit'}}>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <h1 style={{margin: '0', padding: '8px'}}>{`${recepient.firstname} ${recepient.lastname}`}</h1>
-        <h5 style={{margin: '0', padding: '0 8px', paddingBottom: '8px'}}>{`Company: ${recepient.company}`}</h5>
+        {recepient.company ? <h5 style={{margin: '0', padding: '0 8px', paddingBottom: '8px'}}>{`Company: ${recepient.company}`}</h5> : ''}
       </div>
       {/* Chat box */}
       <div id="chat-client">
-        <ListManager data={chat} id={'messages'} style={{maxHeight: '600px'}}>
+        <ListManager data={chat} id={'messages'} srcList="messages" style={{maxHeight: '600px'}}>
           <Message />
         </ListManager>
         <form id="form" onSubmit={(e) => {
@@ -117,11 +118,11 @@ const Messages = function Messages() {
             }
           }}>
           <input type="text" id="input" autoComplete='off' value={message} onChange={handleInputChange}/>
-          <button onClick={(e) => {
+          <Button variant="contained" onClick={(e) => {
             if (message !== '') {
               handleSubmit(e);
             }
-          }}>Send</button>
+          }}>Send</Button>
         </form>
       </div>
     </div>

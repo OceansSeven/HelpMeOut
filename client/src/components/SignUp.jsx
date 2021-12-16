@@ -47,7 +47,7 @@ export default function SignUp() {
     const firstName = data.get('firstName');
     const lastName = data.get('lastName');
     const company = data.get('company');
-    
+
     setValidData(true);
     setUserExists(false);
 
@@ -63,7 +63,7 @@ export default function SignUp() {
         data: {
           email: data.get('email'),
           password: data.get('password'),
-          contractor: checked, 
+          contractor: checked,
           firstName: data.get('firstName'),
           lastName: data.get('lastName'),
           company: data.get('company')
@@ -72,7 +72,7 @@ export default function SignUp() {
         url: "http://localhost:3000/api/register",
       })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         if (data === 'User Already Exists') {
           setUserExists(true);
         } else {

@@ -32,7 +32,7 @@ const Summary = function() {
     if (e.target.innerText.toLowerCase() === 'client view' || e.target.innerText.toLowerCase() === 'contractor view') {
       setshowClient(e.target.innerText.toLowerCase() === 'client view' ? true : false);
     } else {
-      setShowCompleted(e.target.innerText.toLowerCase().includes('completed'));
+      setShowCompleted(e.target.innerText.toLowerCase().includes('finished'));
     }
   }
 
