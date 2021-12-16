@@ -12,7 +12,6 @@ function JobAvailableCard({data}) {
   // const setJobsAccepted = useContext(MainContext).setJobsAccepted
   const [accepted, setAccepted] = useState(false);
   const [alreadyAccepted, setAlreadyAccepted] = useState(data.accepted);
-  console.log(data);
 
   async function acceptJob(props) {
     await axios.put('/api/jobs', {contractor_id: user.id, id: data.id})
