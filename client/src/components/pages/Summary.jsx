@@ -34,7 +34,6 @@ const Summary = function() {
   const handleUserButtonClick = (e) => {
     if (e.target.innerText.toLowerCase() === 'client view' || e.target.innerText.toLowerCase() === 'contractor view') {
       setshowClient(e.target.innerText.toLowerCase() === 'client view' ? true : false);
-      // console.log(e);
 
       if (showCompleted) {
         setFeedPath({ ...feedPath, 'mainView': e.target.innerText, 'subMainView': 'Jobs Completed' })
@@ -110,7 +109,7 @@ const Summary = function() {
     <Container id="summary">
       <h2 style={{margin: '12px'}}>SUMMARY FEED</h2>
       <Container className='userPosts'>
-        {user.contractor ? userBtns : null}
+        {user.contractor && userBtns}
         {showClient ? clientFeed : contractorFeed}
       </Container>
     </Container>

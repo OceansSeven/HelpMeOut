@@ -392,8 +392,6 @@ html {
 .contractor-certifications,
 .contractor-tools {
   display: block;
-  /* flex-direction: row;
-  flex-wrap: wrap; */
 }
 
 .contractor-list-item {
