@@ -33,7 +33,8 @@ const Summary = function() {
     if (e.target.innerText.toLowerCase() === 'client view' || e.target.innerText.toLowerCase() === 'contractor view') {
       setshowClient(e.target.innerText.toLowerCase() === 'client view' ? true : false);
     } else {
-      setShowCompleted(e.target.innerText.toLowerCase().includes('finished'));
+      setShowCompleted(e.target.innerText.toLowerCase().includes('completed'));
+      console.log(e);
     }
   }
 
@@ -53,7 +54,7 @@ const Summary = function() {
     <>
       <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0px'}}>
         <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Posted</Button>
-        <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Finished</Button>
+        <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Completed</Button>
         <Link to={`/job`} style={{ textDecoration: 'none' }}>
           <Button className="searchFeedButton" variant="contained" color="primary">Post a Job</Button>
         </Link>
