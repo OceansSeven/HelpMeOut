@@ -18,7 +18,7 @@ const Main = function Main() {
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
   const [searchFeedData, setSearchFeedData] = useState([]);
-  const [searchFeedType, setSearchFeedType]  = useState('contractors')
+  const [searchFeedType, setSearchFeedType]  = useState('contractors');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialty, setSelectedSpecialty] = useState('All');
 
