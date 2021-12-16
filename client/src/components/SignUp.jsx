@@ -72,7 +72,6 @@ export default function SignUp() {
         url: "http://localhost:3000/api/register",
       })
       .then(({ data }) => {
-        // console.log(data);
         if (data === 'User Already Exists') {
           setUserExists(true);
         } else {

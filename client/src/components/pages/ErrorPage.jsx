@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom';
 
 const ErrorPage = function ErrorPage() {
 
-  // useEffect()
-
   return (
     <div style={{display: 'flex', flexDirection: 'column',  alignItems: 'center', background: `linear-gradient(
       163deg,

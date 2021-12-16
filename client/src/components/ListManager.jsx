@@ -4,7 +4,6 @@ import React from "react";
 
 function ListManager({children, data, id, setJobsAccepted, srcList}){
   //data refers to an array of Objects containing necessary props for sub-component
-  // console.log(children);
   let noDataMessage = (<div></div>);
 
   if (srcList === 'client') {
