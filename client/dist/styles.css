@@ -65,7 +65,7 @@ html {
 
 .appbar-text {
   color: white;
-  text-decoration: 'none';
+  text-decoration: "none";
 }
 
 /* Landing Page */
@@ -157,11 +157,12 @@ html {
 .itemCard ul {
   display: flex;
   gap: 20px;
+  justify-content: center;
   flex-direction: column;
   font-weight: bold;
 }
 .clientProfile {
-  background-image: url('./assets/clientWallpaper.jpeg');
+  background-image: url("./assets/clientWallpaper.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -169,7 +170,7 @@ html {
   padding-top: 64px;
 }
 .profileContainer {
-  background-image: url('./assets/handyWallpaper.jpeg');
+  background-image: url("./assets/handyWallpaper.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -177,19 +178,34 @@ html {
   padding-top: 64px;
 }
 .profileLeft {
+  color: #1d2d44;
+  width: 50%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  gap: 24px;
   margin-right: 16px;
 }
 
 .profileRight {
+  color: #1d2d44;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-left: 16px;
+}
+.pListHead {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  color: #3e5c76;
+}
+.pAttributes {
+  display: flex;
+  flex-direction: column;
 }
 
 .listItem {
@@ -221,6 +237,20 @@ html {
   color: #3e5c76;
   transition: 0.25s;
 }
+
+.profileBtn {
+  width: fit-content;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  background: #eee;
+  color: #1d2d44;
+  transition: 0.25s;
+}
+.profileBtn:hover {
+  color: #e53935;
+  transition: 0.25s;
+}
 /************************* Toggle Client ****************************************
 /*
   * * * * * * * * Client Home * * * * * * * *
@@ -234,7 +264,7 @@ html {
 /************************* Main.jsx ****************************************/
 .list {
   overflow-y: scroll;
-  max-height: 500px;
+  max-height: 675px;
   padding: 5px;
 }
 
@@ -277,25 +307,23 @@ html {
 */
 
 #search-bar-container {
-  margin: 5px 10px 0 0;
-  display: flex;
-  justify-content: center;
+  margin: 5px 15px;
 }
 
 #search-bar {
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  justify-content: space-between;
 }
 
 #keyword-search-grid {
-  /* display: flex; */
-  justify-self: start;
+  flex-basis: 60%
 }
 
 #specialty-filter-grid,
 #sort-by-filter-grid {
-  justify-self: end;
+  flex-basis: 40%;
+  margin: 0 5px;
 }
 
 #specialty-dropdown {
@@ -372,7 +400,6 @@ html {
   outline: none;
 }
 #chat-client #form > button {
-  background: #333;
   border: none;
   padding: 0 1rem;
   margin: 0.25rem;
@@ -431,4 +458,37 @@ html {
   display: flex;
   flex-direction: column;
   padding: 5px;
+}
+
+
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 500px;
+  background-color: #fff;
+}
+
+.modal-header, .modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }

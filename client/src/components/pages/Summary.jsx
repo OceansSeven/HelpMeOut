@@ -5,6 +5,7 @@ import JobPostedCard from '../JobPostedCard';
 import JobAvailableCard from '../JobAvailableCard';
 import ListManager from '../ListManager';
 import { getUser } from '../../utils';
+import { Link } from 'react-router-dom';
 
 const Summary = function() {
 
@@ -32,7 +33,7 @@ const Summary = function() {
     if (e.target.innerText.toLowerCase() === 'client view' || e.target.innerText.toLowerCase() === 'contractor view') {
       setshowClient(e.target.innerText.toLowerCase() === 'client view' ? true : false);
     } else {
-      setShowCompleted(e.target.innerText.toLowerCase().includes('completed'));
+      setShowCompleted(e.target.innerText.toLowerCase().includes('finished'));
     }
   }
 
@@ -53,7 +54,9 @@ const Summary = function() {
       <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0px'}}>
         <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Posted</Button>
         <Button onClick={handleUserButtonClick} variant="contained" style={{margin: '0px 5px'}}>Jobs Finished</Button>
-        <Button href="/job" variant="contained" style={{margin: '0px 5px'}}>Post a Job</Button>
+        <Link to={`/job`} style={{ textDecoration: 'none' }}>
+          <Button className="searchFeedButton" variant="contained" color="primary">Post a Job</Button>
+        </Link>
       </div>
       <div>
         <ListManager data={

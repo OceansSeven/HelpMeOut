@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import HardwareIcon from "@mui/icons-material/Hardware";
+import FilterFramesIcon from "@mui/icons-material/FilterFrames";
 import Link from "@mui/material/Link";
 
 import AppContext from "../../hooks/context.js";
@@ -14,14 +18,18 @@ const MyProfile = () => {
     setCurrentUser(user);
   }, [user]);
 
-  if (!currentUser?.contractor) {
+  if (!user?.contractor) {
     return (
       <div className="profileContainer">
         <Container maxWidth="xs" style={{ marginTop: "44px" }}>
           <Paper elevation={8} className="profilePage">
             <div className="profileLeft">
-              <AccountCircleIcon style={{ fontSize: "72px" }} />
-              <div>Member since 12-2021</div>
+              <AccountCircleIcon
+                style={{ fontSize: "80px", alignSelf: "center" }}
+              />
+              <Typography component="p" variant="caption">
+                Member since: 12-2021
+              </Typography>
             </div>
             <div
               className="profileRight"
@@ -48,39 +56,50 @@ const MyProfile = () => {
         <Container maxWidth="xs" style={{ marginTop: "44px" }}>
           <Paper elevation={8} className="profilePage">
             <div className="profileLeft">
-              <AccountCircleIcon style={{ fontSize: "72px" }} />
-              <div>{currentUser?.rating}</div>
+              <AccountCircleIcon
+                style={{ fontSize: "80px", alignSelf: "center" }}
+              />
               <Card className="itemCard">
-                <div>
-                  <p>Tools:</p>
-                  <Button href="/update" color="secondary">
-                    Add/Remove
-                  </Button>
+                <div className="pListHead">
+                  <Typography component="p" variant="caption">
+                    <HardwareIcon /> My Tools:
+                  </Typography>
                 </div>
-                <ul
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  {currentUser?.tools?.map((tool) => (
-                    <li key={Math.random()}>{tool}</li>
+                <ul className="pAttributes">
+                  {user?.tools?.map((tool) => (
+                    <li key={Math.random()} style={{ alignSelf: "baseline" }}>
+                      <Typography component="p" variant="button">
+                        {tool}
+                      </Typography>
+                    </li>
                   ))}
                 </ul>
+                <Button
+                  href="/update"
+                  variant="contained"
+                  className="profileBtn"
+                >
+                  Add/Remove
+                </Button>
               </Card>
-              <div>Member since 12-2021</div>
+              <Typography component="p" variant="caption">
+                Member since: 12-2021
+              </Typography>
             </div>
             <div className="profileRight">
-              <Button href="/update" color="secondary">
+              <Button href="/update" variant="contained" className="profileBtn">
                 Edit Profile
               </Button>
 
-              <h2>{currentUser.company}</h2>
-              <h5>{currentUser.firstname + " " + currentUser.lastname}</h5>
+              <Typography component="h2" variant="display1">
+                {user.company}
+              </Typography>
+              <br />
+              <Typography component="h5" variant="subhead">
+                {user.firstname + " " + user.lastname}
+              </Typography>
               <ul className="specialties">
-                {currentUser?.specialties?.map((specialty) => (
+                {user?.specialties?.map((specialty) => (
                   <li
                     key={Math.random()}
                     style={{
@@ -96,28 +115,29 @@ const MyProfile = () => {
                 ))}
               </ul>
               <Card className="itemCard">
-                <div>
-                  Certifications:
-                  <Button
-                    href="/update"
-                    color="secondary"
-                    style={{ fontSize: "12px" }}
-                  >
-                    Add/Remove
-                  </Button>
+                <div className="pListHead">
+                  <Typography component="p" variant="caption">
+                    <FilterFramesIcon style={{ marginRight: "4px" }} />
+                    My Certifications:
+                  </Typography>
                 </div>
-                <ul
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  {currentUser?.certifications?.map((cert) => (
-                    <li key={Math.random()}>{cert}</li>
+                <ul className="pAttributes">
+                  {user?.certifications?.map((cert) => (
+                    <li key={Math.random()} style={{ color: "#37474f" }}>
+                      <Typography component="p" variant="button">
+                        {cert}
+                      </Typography>
+                    </li>
                   ))}
                 </ul>
+                <Button
+                  href="/update"
+                  className="profileBtn"
+                  variant="contained"
+                  style={{ fontSize: "12px" }}
+                >
+                  Add/Remove
+                </Button>
               </Card>
             </div>
           </Paper>

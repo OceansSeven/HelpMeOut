@@ -25,9 +25,9 @@ module.exports = {
       .catch((err) => res.status(400).send(err));
   },
   getMessages: (req, res) => {
-    console.log('going to get messages');
     const userId = req.query.user_id;
-    const recipientId = req.query.recepient_id;
+    const recepientId = req.query.recepient_id;
+    console.log(`going to get messages between ${userId} and ${recepientId}`);
     const sql = `SELECT
       messages.id,
       messages.from_id from_id,
@@ -39,7 +39,7 @@ module.exports = {
     ON users.id = messages.from_id
     WHERE (to_id = $1 AND from_id =$2) OR (from_id = $1 AND to_id = $2)
     ORDER BY messages.id ASC;`;
-    const values = [userId, recipientId];
+    const values = [userId, recepientId];
 
     pool
       .query(sql, values)
@@ -48,6 +48,7 @@ module.exports = {
   },
 
   postMessage: (req, res) => {
+    console.log(`posting ${req.body.from} ${req.body.to} ${req.body.body} ${req.body.date}`)
     const sql = `INSERT INTO
     messages (from_id, to_id, body, date)
     VALUES ($1, $2, $3, $4);`;
