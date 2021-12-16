@@ -33,7 +33,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const { setUser } = React.useContext(AppContext);
+  const { setUser, feedPath, setFeedPath } = React.useContext(AppContext);
   const [userExists, setUserExists] = React.useState(true);
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -51,12 +51,13 @@ export default function SignIn() {
       withCredentials: true,
       url: "http://localhost:3000/api/login"
     })
-    .then(({ data }) => { 
+    .then(({ data }) => {
       if (data === 'No User Exists') {
         setUserExists(false);
       } else {
         setUser(data);
         setLoggedIn(true);
+        setFeedPath({ 'pagePath': 'Search' })
       }
     });
   };
@@ -120,7 +121,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            {!userExists && 
+            {!userExists &&
               <div style={{color: 'red'}}>
                 Invalid email or password
               </div>
