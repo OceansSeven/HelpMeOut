@@ -63,7 +63,7 @@ export default function LeaveAReview() {
           style={{fontSize: '30px'}}
         />
       </div>
-      <Button  className="modal-footer" onClick={handleSubmitReview}>Submit Review</Button>
+      <Button className="modal-footer" onClick={handleSubmitReview}>Submit Review</Button>
     </div>
     </div>
   )

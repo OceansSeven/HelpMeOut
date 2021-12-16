@@ -81,11 +81,11 @@ function JobAvailableCard({ data }) {
             </Link>
           </div>
           <div>
-            {accepted ? (
+            {accepted && (
               <span id="jobacceptedbttn" style={{ textAlign: "center" }}>
                 Job accepted!
               </span>
-            ) : null}
+            )}
           </div>
         </div>
       </Card>

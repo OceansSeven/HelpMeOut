@@ -26,7 +26,6 @@ const App = function App() {
   const [user, setUser] = useState(null);
   const [reviewJob, setReviewJob] = useState({});
   const [jobsPostedContext, setJobsPostedContext] = useState([]);
-  // const [feedPath, setFeedPath] = useState({ searchPath: 'Contractors', summaryPath: 'Client' });
   const [feedPath, setFeedPath] = useState({});
 
   useEffect(() => {
