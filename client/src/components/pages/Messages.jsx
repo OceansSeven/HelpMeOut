@@ -102,14 +102,14 @@ const Messages = function Messages() {
   }
 
   return (
-    <div style={{height: 'inherit'}}>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    <div id="chat-client-container">
+      <div id="chat-client-title">
         <h1 style={{margin: '0', padding: '8px'}}>{`${recepient.firstname} ${recepient.lastname}`}</h1>
         {recepient.company ? <h5 style={{margin: '0', padding: '0 8px', paddingBottom: '8px'}}>{`Company: ${recepient.company}`}</h5> : ''}
       </div>
       {/* Chat box */}
       <div id="chat-client">
-        <ListManager data={chat} id={'messages'} srcList="messages" style={{maxHeight: '600px'}}>
+        <ListManager data={chat} id={'messages'} srcList="messages">
           <Message />
         </ListManager>
         <form id="form" onSubmit={(e) => {
