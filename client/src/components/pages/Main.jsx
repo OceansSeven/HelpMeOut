@@ -8,10 +8,11 @@ import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getJobs } from '../../utils';
 import { Link } from "react-router-dom";
+import FeedPath from '../FeedPath';
 
 
 const Main = function Main() {
-  const { user } = useContext(AppContext);
+  const { user, setFeedPath, feedPath } = useContext(AppContext);
 
   // set state necessary for API data
   const [contractorList, setContractorList] = useState([]);
@@ -24,8 +25,16 @@ const Main = function Main() {
 
   // Define Search Feed Button Click Functionality
   const handleSearchFeedButtonsClick = (e) => {
-    if (e.target.innerHTML === 'Contractors') { setSearchFeedData(contractorList); setSearchFeedType('contractors'); }
-    if (e.target.innerHTML === 'Jobs Available') { setSearchFeedData(jobsAvailable); setSearchFeedType('jobs'); }
+    if (e.target.innerHTML === 'Contractors') {
+      setSearchFeedData(contractorList);
+      setSearchFeedType('contractors');
+      setFeedPath({ ...feedPath, 'mainView': e.target.innerHTML });
+    }
+    if (e.target.innerHTML === 'Jobs Available') {
+      setSearchFeedData(jobsAvailable);
+      setSearchFeedType('jobs');
+      setFeedPath({ ...feedPath, 'mainView': e.target.innerHTML });
+    }
     setSearchTerm('');
     setSelectedSpecialty('All');
   }
@@ -46,6 +55,7 @@ const Main = function Main() {
       setContractorList(results)
     }).catch(err => console.error(err));
     getJobs().then(setJobsAvailable).catch(err => console.error(err));
+    setFeedPath({ 'pagePath': 'Search', 'mainView': 'Contractors' });
   }, [])
 
   return (
@@ -66,6 +76,7 @@ const Main = function Main() {
         <Container className='searchList'>
           {user.contractor && searchFeedButtons}
           <Search feed={searchFeedData} searchType={searchFeedType} />
+          <FeedPath main={'search'} />
           {searchFeedType === 'contractors'
             ? (<ListManager data={searchFeedData}>
                 <ContractorCard />
