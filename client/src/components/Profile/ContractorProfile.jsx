@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
-
+import React, { useState, useEffect, useContext } from "react";
+import { Button, Container, Card, Paper } from "@material-ui/core";
+import axios from "axios";
 import BuildIcon from "@material-ui/icons/Build";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import HardwareIcon from "@mui/icons-material/Hardware";
 import HandymanIcon from "@mui/icons-material/Handyman";
 import FilterFramesIcon from "@mui/icons-material/FilterFrames";
+import { Typography, Link } from "@mui/material/";
 import StarRatings from "../StarRatings.jsx";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import axios from "axios";
 
 const ContractorProfile = ({ user }) => {
   const [userReviews, setUserReviews] = useState();
@@ -23,7 +21,7 @@ const ContractorProfile = ({ user }) => {
 
   useEffect(() => {
     if (userReviews?.length === 0) {
-      setShowReviews("");
+      setShowReviews(null);
     }
   }, [userReviews]);
   return (
@@ -39,8 +37,8 @@ const ContractorProfile = ({ user }) => {
                 </Typography>
               </div>
               <ul className="pAttributes">
-                {user?.tools?.map((tool) => (
-                  <li key={Math.random()} style={{ alignSelf: "baseline" }}>
+                {user?.tools?.map((tool, i) => (
+                  <li key={i} style={{ alignSelf: "baseline" }}>
                     <Typography component="p" variant="button">
                       {tool}
                     </Typography>
@@ -48,10 +46,13 @@ const ContractorProfile = ({ user }) => {
                 ))}
               </ul>
             </Card>
-            <p>{showReviews}</p>
+
             <Paper className="pageReviews">
-              {userReviews?.map((review) => (
-                <Card key={Number(user.id)}>
+              <Typography component="h4" variant="caption">
+                {showReviews}
+              </Typography>
+              {userReviews?.map((review, i) => (
+                <Card key={i} className="contractorReviewCard">
                   <StarRatings rating={Number(review.rating)} />
                   <Typography component="h4" variant="body2">
                     {'"' + review.body + '"'}
@@ -75,9 +76,9 @@ const ContractorProfile = ({ user }) => {
               {user?.firstname + " " + user?.lastname}
             </Typography>
             <ul className="specialties">
-              {user?.specialties?.map((specialty) => (
+              {user?.specialties?.map((specialty, i) => (
                 <li
-                  key={Math.random()}
+                  key={i}
                   style={{
                     color: "#748cab",
                     display: "flex",
@@ -105,8 +106,8 @@ const ContractorProfile = ({ user }) => {
                 </Typography>
               </div>
               <ul className="pAttributes">
-                {user?.certifications?.map((cert) => (
-                  <li key={Math.random()} style={{ color: "#37474f" }}>
+                {user?.certifications?.map((cert, i) => (
+                  <li key={i} style={{ color: "#37474f" }}>
                     <Typography component="p" variant="button">
                       {cert}
                     </Typography>

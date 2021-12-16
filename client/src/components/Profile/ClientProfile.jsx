@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { Button, Container, Card, Paper } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
-
 import PersonIcon from "@material-ui/icons/Person";
+
 const ClientProfile = ({ user }) => {
   return (
     <div className="clientProfile">

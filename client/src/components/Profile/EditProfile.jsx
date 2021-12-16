@@ -2,19 +2,23 @@ import React, { useState, useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
-import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import { InputLabel, Select, MenuItem } from "@mui/material";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import {
+  Button,
+  Chip,
+  CssBaseline,
+  TextField,
+  FormControl,
+  FormControlLabel,
+  InputLabel,
+  Select,
+  MenuItem,
+  Checkbox,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from "@mui/material";
 
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
@@ -24,7 +28,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import AppContext from "../../hooks/context.js";
 
 const EditProfile = () => {
-  const { user, setUser} = useContext(AppContext);
+  const { user, setUser } = useContext(AppContext);
 
   const [mySpecialties, setMySpecialties] = useState([]);
   const [newSpecialty, setNewSpecialty] = useState("");
@@ -59,7 +63,6 @@ const EditProfile = () => {
       url: "http://localhost:3000/api/user",
     })
       .then((res) => {
-        // console.log(res);
         setUpdated(true);
       })
       .then(
@@ -88,7 +91,6 @@ const EditProfile = () => {
     return (
       <Container component="main" maxWidth="xs" className="editContainer">
         <CssBaseline />
-
         <Box
           sx={{
             marginTop: 8,
@@ -149,7 +151,6 @@ const EditProfile = () => {
     return (
       <Container component="main" maxWidth="xs" className="editContainer">
         <CssBaseline />
-
         <Box
           sx={{
             marginTop: 8,
@@ -256,8 +257,8 @@ const EditProfile = () => {
                 borderRadius: "8px",
               }}
             >
-              {mySpecialties?.map((specialty) => (
-                <li className="listItem">
+              {mySpecialties?.map((specialty, i) => (
+                <li className="listItem" key={i}>
                   <Chip
                     label={specialty}
                     onDelete={(e) => {
@@ -314,8 +315,8 @@ const EditProfile = () => {
                 borderRadius: "8px",
               }}
             >
-              {myTools?.map((tool) => (
-                <li className="listItem">
+              {myTools?.map((tool, i) => (
+                <li className="listItem" key={i}>
                   <Chip
                     label={tool}
                     onDelete={(e) => {
@@ -372,8 +373,8 @@ const EditProfile = () => {
                 borderRadius: "8px",
               }}
             >
-              {myCerts?.map((cert) => (
-                <li className="listItem">
+              {myCerts?.map((cert, i) => (
+                <li className="listItem" key={i}>
                   <Chip
                     label={cert}
                     onDelete={(e) => {
