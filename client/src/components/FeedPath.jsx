@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Typography } from "@material-ui/core";
 import AppContext from '../hooks/context.js';
 
 const FeedPath = () => {
@@ -6,9 +7,9 @@ const FeedPath = () => {
   const finalPath = feedPath.subMainView ? feedPath.mainView + ' ' + '>' + ' ' + feedPath.subMainView : feedPath.mainView;
 
   return (
-    <div>
+    <Typography component="p" variant="caption" className="feed-path">
       {feedPath.pagePath}{' '}{'>'}{' '}{finalPath}
-    </div>
+    </Typography>
   );
 }
 

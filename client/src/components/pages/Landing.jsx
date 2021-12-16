@@ -18,10 +18,10 @@ const Landing = function Landing() {
             </h3>
             </div>
             <span className="landing-buttons">
-            <Link to="/login">
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <Button size="large">Log In</Button>
             </Link>
-            <Link to="/register">
+            <Link to="/register" style={{ textDecoration: "none" }}>
               <Button size="large">Register</Button>
             </Link>
             </span>
