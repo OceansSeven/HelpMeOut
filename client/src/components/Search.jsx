@@ -20,6 +20,7 @@ function Search() {
     setSelectedSpecialty(searchSpecialty);
     if (searchSpecialty === 'All') { return setSearchFeedData(searchFeed); }
     setSearchFeedData(filterBySpecialty([...searchFeed], searchSpecialty));
+    setSortBySelection('');
   };
 
   const handleSortBySearch = (e) => {
@@ -27,6 +28,7 @@ function Search() {
     setSortBySelection(e.target.value);
     const { compare, sort } = sortByCategories.find(category => category.display === sortDisplay);
     setSearchFeedData(sortBy([...searchFeed], sort, compare));
+    setSelectedSpecialty('All');
   };
 
   return (
