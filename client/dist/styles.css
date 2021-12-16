@@ -164,7 +164,7 @@ html {
 }
 .clientProfile {
   background-image: url("./assets/clientWallpaper.jpeg");
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -172,10 +172,11 @@ html {
 }
 .profileContainer {
   background-image: url("./assets/handyWallpaper.jpeg");
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 150vh;
   padding-top: 64px;
 }
 .profileLeft {
@@ -340,7 +341,7 @@ html {
 }
 
 #keyword-search-grid {
-  flex-basis: 60%
+  flex-basis: 60%;
 }
 
 #specialty-filter-grid,
