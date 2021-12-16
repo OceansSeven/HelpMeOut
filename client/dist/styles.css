@@ -42,6 +42,10 @@ li {
   background-color: #1d2d44;
 }
 
+.feed-path {
+  padding: 5px 10px 0;
+}
+
 /*
   * * * * * * * * Landing Page * * * * * * * *
 */

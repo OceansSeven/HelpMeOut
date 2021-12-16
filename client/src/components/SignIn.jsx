@@ -32,7 +32,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const { setUser } = React.useContext(AppContext);
+  const { setUser, feedPath, setFeedPath } = React.useContext(AppContext);
   const [userExists, setUserExists] = React.useState(true);
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -56,6 +56,7 @@ export default function SignIn() {
       } else {
         setUser(data);
         setLoggedIn(true);
+        setFeedPath({ 'pagePath': 'Search' })
       }
     });
   };

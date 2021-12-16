@@ -74,7 +74,7 @@ function JobAvailableCard({ data }) {
                 Accept
               </Button>
             )}
-            <Link to={`/profile/${data.client.id}`}>
+            <Link to={`/profile/${data.client.id}`} style={{ textDecoration: "none", marginLeft: "5px" }}>
               <Button variant="contained" size="small">
                 Contact
               </Button>
