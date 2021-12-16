@@ -106,3 +106,5 @@ typings/
 # bundle
 *bundle.js
 package-lock.json
+
+.pem
