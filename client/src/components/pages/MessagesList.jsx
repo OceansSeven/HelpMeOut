@@ -11,10 +11,9 @@ const MessagesList = function () {
   useEffect(() => {
     axios.get(`/api/conversations/${user.id}`)
       .then(({data}) => {
-        // console.log(data);
         setConverstations([...data]);
       })
-      .catch(console.log)
+      .catch(console.log);
   }, []);
 
   return (

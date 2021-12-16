@@ -14,7 +14,7 @@ module.exports = {
             'date', j.date,
             'client', (
               select json_build_object(
-                'client_id', u.id,
+                'id', u.id,
                 'firstname', u.firstname,
                 'lastname', u.lastname
               )

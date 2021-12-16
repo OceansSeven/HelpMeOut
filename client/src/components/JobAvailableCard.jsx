@@ -27,14 +27,14 @@ function JobAvailableCard({data}) {
         <div className="detail-container">
           <p style={{fontSize:'12px'}}>{data?.date}</p>
           <h3 > {data?.title} | Budget: ${data?.price_per_hour}</h3>
-          <h5> {data?.client.firstname} {data?.client.lastname[0]}.</h5>
+          <h5> {data?.client.firstname} {data?.client.lastname}.</h5>
           <p>Category(s): {data?.specialties.map((category, i) => <span key={i}>{category}{i===data?.specialties?.length - 1 ? '' : ', '}</span>)}</p>
           <div className="description-box">
             {data?.description}
           </div>
           <div style={{alignSelf:'flex-end'}}>
             {accepted ? null : alreadyAccepted ? null : <Button variant='contained' size='small' onClick={acceptJob}>Accept</Button>}
-            <Link to={`/profile/${data.client.client_id}`}>
+            <Link to={`/profile/${data.client.id}`}>
               <Button variant='contained' size='small'>Contact</Button>
             </Link>
           </div>

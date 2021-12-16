@@ -9,7 +9,7 @@ let socket;
 export const initiateSocket = (room) => {
   // connect to chat server to specific room
   socket = io(`http://localhost:8080`);
-  console.log(`Connecting to socket...`);
+  // console.log(`Connecting to socket...`);
   // have socket connect to the chat room for user to user communication
   // emit join event
   if (socket && room) {
@@ -19,7 +19,7 @@ export const initiateSocket = (room) => {
 
 // disconnect from socket to ensure minimal number of sockets are open
 export const disconnectSocket = () => {
-  console.log(`Disconnecting socket...`);
+  // console.log(`Disconnecting socket...`);
   if (socket) {
     socket.disconnect();
   }

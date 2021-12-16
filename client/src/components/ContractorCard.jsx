@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Card, Box, Grid, Typography, Button, Accordion, AccordionDetails, AccordionSummary } from '@material-ui/core';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import StarRatings from "./StarRatings";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ContractorCard({data}) {
   return (
@@ -10,7 +10,9 @@ export default function ContractorCard({data}) {
         <Card className="contractor-card" variant="outlined">
           <Grid container spacing={2}>
             <Grid item xs={8}>
-              <div id="contractorname"><strong>{data.firstname}{' '}{data.lastname}</strong></div>
+              <Link to={`/profile/${data.id}`} style={{ textDecoration: 'none' }}>
+                <div id="contractorname"><strong>{data.firstname}{' '}{data.lastname}</strong></div>
+              </Link>
               {data.company && <div id="contractorcompany" >{data.company}</div>}
             </Grid>
             <Grid item xs={4} id="contractorrating" style={{ display: 'flex', justifyContent: 'flex-end' }}>

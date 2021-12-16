@@ -287,7 +287,7 @@ html {
 /************************* Main.jsx ****************************************/
 .list {
   overflow-y: scroll;
-  max-height: 500px;
+  max-height: 675px;
   padding: 5px;
 }
 
@@ -330,25 +330,23 @@ html {
 */
 
 #search-bar-container {
-  margin: 5px 10px 0 0;
-  display: flex;
-  justify-content: center;
+  margin: 5px 15px;
 }
 
 #search-bar {
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  justify-content: space-between;
 }
 
 #keyword-search-grid {
-  /* display: flex; */
-  justify-self: start;
+  flex-basis: 60%
 }
 
 #specialty-filter-grid,
 #sort-by-filter-grid {
-  justify-self: end;
+  flex-basis: 40%;
+  margin: 0 5px;
 }
 
 #specialty-dropdown {
@@ -425,7 +423,6 @@ html {
   outline: none;
 }
 #chat-client #form > button {
-  background: #333;
   border: none;
   padding: 0 1rem;
   margin: 0.25rem;

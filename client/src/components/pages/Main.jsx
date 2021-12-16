@@ -7,6 +7,8 @@ import AppContext from '../../hooks/context';
 import Search from '../Search.jsx';
 import MainContext from '../../hooks/MainContext';
 import { getContractors, getJobs } from '../../utils';
+import { Link } from "react-router-dom";
+
 
 const Main = function Main() {
   const { user } = useContext(AppContext);
@@ -16,7 +18,7 @@ const Main = function Main() {
   const [jobsAvailable, setJobsAvailable] = useState([]);
   const [jobsAccepted, setJobsAccepted] = useState([]);
   const [searchFeedData, setSearchFeedData] = useState([]);
-  const [searchFeedType, setSearchFeedType]  = useState('contractors')
+  const [searchFeedType, setSearchFeedType]  = useState('contractors');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialty, setSelectedSpecialty] = useState('All');
 
@@ -32,7 +34,9 @@ const Main = function Main() {
   const searchFeedButtons = (<div className="searchFeedButtonsContainer">
     <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Contractors</Button>
     <Button className="searchFeedButton" variant="contained" color="primary" onClick={handleSearchFeedButtonsClick}>Jobs Available</Button>
-    <Button className="searchFeedButton" variant="contained" color="primary" href="/job">Post a Job</Button>
+    <Link to={`/job`} style={{ textDecoration: 'none' }}>
+      <Button className="searchFeedButton" variant="contained" color="primary">Post a Job</Button>
+    </Link>
   </div>);
 
   // Get user data, jobs available, and contractors
