@@ -307,27 +307,25 @@ html {
 */
 
 #search-bar-container {
-  margin: 5px 15px;
+  margin: 5px;
 }
 
 #search-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #keyword-search-grid {
-  flex-basis: 60%
+  flex-basis: 50%
 }
 
 #specialty-filter-grid,
 #sort-by-filter-grid {
-  flex-basis: 40%;
+  flex-basis: 50%;
   margin: 0 5px;
-}
-
-#specialty-dropdown {
-  width: 100%;
+  max-width: 200px;
 }
 
 #specialty-dropdown-label,
@@ -341,7 +339,7 @@ html {
 
 .contractor-card {
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
 }
 
 .contractor-card-lists-container {

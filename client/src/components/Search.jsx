@@ -37,7 +37,7 @@ function Search() {
         <div id="keyword-search-grid">
           <TextField fullWidth id="keyword-search" label="Search..." variant="outlined" size="small" onChange={handleKeywordSearch} value={searchTerm} />
         </div>
-        <div style={{ flexBasis: "40%", display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ flexBasis: "50%", display: "flex", justifyContent: "flex-end" }}>
           <div id="specialty-filter-grid">
             <InputLabel id="specialty-dropdown-label">Filter By</InputLabel>
             <Select labelId="specialty-dropdown-label" id="specialty-dropdown" label="Filter By" value={selectedSpecialty} onChange={handleSpecialtySearch} style={{ width: '100%' }}>
