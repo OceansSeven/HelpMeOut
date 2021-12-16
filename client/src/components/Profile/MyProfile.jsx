@@ -7,16 +7,28 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import HardwareIcon from "@mui/icons-material/Hardware";
 import FilterFramesIcon from "@mui/icons-material/FilterFrames";
 import Link from "@mui/material/Link";
+import axios from "axios";
+
+import StarRatings from "../StarRatings.jsx";
 
 import AppContext from "../../hooks/context.js";
 
 const MyProfile = () => {
   const { user } = useContext(AppContext);
-  const [currentUser, setCurrentUser] = useState();
+
+  const [userReviews, setUserReviews] = useState();
+  const [showReviews, setShowReviews] = useState("Reviews from others:");
 
   useEffect(() => {
-    setCurrentUser(user);
+    axios.get(`/api/reviews/${user.id}`).then(({ data }) => {
+      setUserReviews(data[0]);
+    });
   }, [user]);
+  useEffect(() => {
+    if (userReviews?.length === 0) {
+      setShowReviews("");
+    }
+  }, [userReviews]);
 
   if (!user?.contractor) {
     return (
@@ -43,8 +55,8 @@ const MyProfile = () => {
               <Link href="/update">
                 <Button color="secondary">Edit Profile</Button>
               </Link>
-              <h2>{currentUser?.firstname}</h2>
-              <h3>{currentUser?.lastname}</h3>
+              <h2>{user?.firstname}</h2>
+              <h3>{user?.lastname}</h3>
             </div>
           </Paper>
         </Container>
@@ -82,6 +94,27 @@ const MyProfile = () => {
                   Add/Remove
                 </Button>
               </Card>
+
+              <Paper className="pageReviews">
+                <Typography
+                  component="p"
+                  variant="caption"
+                  style={{ color: "#748cab" }}
+                >
+                  {showReviews}
+                </Typography>
+                {userReviews?.map((review) => (
+                  <Card key={Number(user.id)} className="contractorReviewCard">
+                    <StarRatings rating={Number(review.rating)} />
+                    <Typography component="h4" variant="body2">
+                      {'"' + review.body + '"'}
+                    </Typography>
+                    <Typography component="p" variant="caption">
+                      {review.date.split("T")[0]}
+                    </Typography>
+                  </Card>
+                ))}
+              </Paper>
               <Typography component="p" variant="caption">
                 Member since: 12-2021
               </Typography>

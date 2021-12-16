@@ -26,7 +26,7 @@ const ContractorProfile = ({ user }) => {
 
   useEffect(() => {
     if (userReviews?.length === 0) {
-      setShowReviews("");
+      setShowReviews(null);
     }
   }, [userReviews]);
   return (
@@ -51,10 +51,13 @@ const ContractorProfile = ({ user }) => {
                 ))}
               </ul>
             </Card>
-            <p>{showReviews}</p>
+
             <Paper className="pageReviews">
+              <Typography component="h4" variant="caption">
+                {showReviews}
+              </Typography>
               {userReviews?.map((review) => (
-                <Card key={Number(user.id)}>
+                <Card key={Number(user.id)} className="contractorReviewCard">
                   <StarRatings rating={Number(review.rating)} />
                   <Typography component="h4" variant="body2">
                     {'"' + review.body + '"'}
