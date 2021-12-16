@@ -34,7 +34,7 @@ function JobAvailableCard({data}) {
           </div>
           <div style={{alignSelf:'flex-end'}}>
             {accepted ? null : alreadyAccepted ? null : <Button variant='contained' size='small' onClick={acceptJob}>Accept</Button>}
-            <Link to={`/profile/${data.client.client_id}`}>
+            <Link to={`/profile/${data.client.id}`}>
               <Button variant='contained' size='small'>Contact</Button>
             </Link>
           </div>
