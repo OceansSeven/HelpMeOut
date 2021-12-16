@@ -167,8 +167,10 @@ html {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   padding-top: 64px;
+  padding-bottom: 64px;
 }
 .profileContainer {
   background-image: url("./assets/handyWallpaper.webp");
@@ -176,8 +178,10 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 150vh;
+  min-height: 100vh;
+  height: 100%;
   padding-top: 64px;
+  padding-bottom: 64px;
 }
 .profileLeft {
   color: #1d2d44;
