@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Card, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import AppContext from "../hooks/context";
@@ -6,7 +6,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import { Typography } from "@mui/material";
 
 function JobPostedCard({ data }) {
-  const { user, reviewJob, setReviewJob } = useContext(AppContext);
+  const { setReviewJob } = useContext(AppContext);
 
   return (
     <div>

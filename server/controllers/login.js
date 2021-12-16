@@ -11,7 +11,6 @@ module.exports = {
         req.logIn(user, (err) => {
           if (err) throw err;
           res.send(req.user);
-          console.log(req.user);
         });
       }
     })(req, res, next);

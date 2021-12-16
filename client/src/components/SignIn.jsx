@@ -10,7 +10,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import AppContext from '../hooks/context';
@@ -51,7 +50,7 @@ export default function SignIn() {
       withCredentials: true,
       url: "http://localhost:3000/api/login"
     })
-    .then(({ data }) => { 
+    .then(({ data }) => {
       if (data === 'No User Exists') {
         setUserExists(false);
       } else {
@@ -120,7 +119,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            {!userExists && 
+            {!userExists &&
               <div style={{color: 'red'}}>
                 Invalid email or password
               </div>

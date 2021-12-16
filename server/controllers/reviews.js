@@ -12,7 +12,6 @@ module.exports = {
       contractorRating,
       contractorJobs,
     } = req.body;
-    console.log(req.body);
     const newRating =
       (contractorRating * contractorJobs + reviewRating) / (contractorJobs + 1);
 
