@@ -153,7 +153,7 @@ function Job() {
         <br />
         <div>
           <Typography element="h4" variant="h4">
-            ${price_per_hour}/hr
+            ${price_per_hour}
           </Typography>
         </div>
         <br />
