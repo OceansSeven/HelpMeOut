@@ -60,7 +60,7 @@ const EditProfile = () => {
         userId: Number(user.id),
       },
       withCredentials: true,
-      url: "http://localhost:3000/api/user",
+      url: "/api/user",
     })
       .then((res) => {
         setUpdated(true);
