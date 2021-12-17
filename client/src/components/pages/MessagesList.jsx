@@ -17,11 +17,16 @@ const MessagesList = function () {
   }, []);
 
   return (
-    <div>
-      <h3>Conversations:</h3>
-      <ListManager data={converstations} id="converstation-list" srcList="conversations">
-        <MessageCard />
-      </ListManager>
+    // 56xp is the height of the app header bar
+    <div id="conversation-container" style={{height: `${window.innerHeight - 56}px`}}>
+      <div id="conversations-header">
+        <h2 style={{paddingLeft: '8px', marginBottom: '0px', paddingTop: '12px', paddingBottom: '0px', }}>CONVERSATIONS</h2>
+      </div>
+      <div id="conversation-list-container">
+        <ListManager data={converstations} id="conversation-list" srcList="conversations">
+          <MessageCard />
+        </ListManager>
+      </div>
     </div>
   );
 };

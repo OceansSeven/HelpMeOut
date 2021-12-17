@@ -98,22 +98,27 @@ const Main = function Main() {
         setJobsAccepted,
       }}
     >
-      <Container id="main">
-        <h2 style={{ margin: "12px" }}>CLASSIFIEDS FEED</h2>
-        <Container className="searchList">
-          {user.contractor && searchFeedButtons}
-          <Search feed={searchFeedData} searchType={searchFeedType} />
+      {/* 56xp is the height of the app header bar */}
+      <Container id="main" style={{ height: `${window.innerHeight - 56}px` }}>
+        <div id="main-title">
+          <h2 style={{ margin: "12px" }}>CLASSIFIEDS FEED</h2>
+        </div>
+        {user.contractor && searchFeedButtons}
+        <Search feed={searchFeedData} searchType={searchFeedType} />
+        <div id="feed-path">
           <FeedPath main={"search"} />
+        </div>
+        <div className="searchList">
           {searchFeedType === "contractors" ? (
-            <ListManager data={searchFeedData}>
+            <ListManager id="main-feed" data={searchFeedData}>
               <ContractorCard />
             </ListManager>
           ) : (
-            <ListManager data={searchFeedData}>
+            <ListManager id="main-feed" data={searchFeedData}>
               <JobAvailableCard />
             </ListManager>
           )}
-        </Container>
+        </div>
       </Container>
     </MainContext.Provider>
   );
