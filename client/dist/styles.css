@@ -552,12 +552,15 @@ html {
 }
 #summary-title {
   flex-grow: 0;
+  width: 100%;
+  text-align: center;
 }
 #feed-title {
   flex-grow: 0;
 }
 #user-buttons {
   flex-grow: 0;
+  width: 100%;
 }
 #feed-buttons {
   flex-grow: 0;
@@ -575,11 +578,13 @@ html {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 #summary-list-container {
   flex-grow: 1;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 #summary-feed {
   position: absolute;
@@ -588,6 +593,7 @@ html {
   right: 0;
   bottom: 0;
   overflow: auto;
+  width: 100%;
 }
 /*****************Job Cards******************/
 

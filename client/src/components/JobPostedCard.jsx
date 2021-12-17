@@ -51,7 +51,7 @@ function JobPostedCard({ data }) {
           </div>
           <div style={{ alignSelf: "flex-end", padding: 5 }}>
             {!data.completed && data.contractor && (
-              <Link to="/leaveAReview">
+              <Link to="/leaveAReview" style={{textDecoration: 'none'}}>
                 <Button
                   color="secondary"
                   size="small"
@@ -63,7 +63,7 @@ function JobPostedCard({ data }) {
             )}{" "}
             {"\u00A0"}
             {data.completed ? null : (
-              <Link to={`/job/edit/${data.task_id}`}>
+              <Link to={`/job/edit/${data.task_id}`} style={{textDecoration: 'none'}}>
                 <Button variant="contained" size="small">
                   Edit
                 </Button>
