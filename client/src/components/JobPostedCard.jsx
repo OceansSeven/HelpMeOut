@@ -55,7 +55,7 @@ function JobPostedCard({ data }) {
                 <Button
                   color="secondary"
                   size="small"
-                  onClick={() => setReviewJob(data)}
+                  onClick={() => {setReviewJob(data)}}
                 >
                   Mark As Complete
                 </Button>

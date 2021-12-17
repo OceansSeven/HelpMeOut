@@ -606,7 +606,7 @@ html {
   padding: 5px;
 }
 
-.modal {
+#modal {
   position: fixed;
   left: 0;
   top: 0;
