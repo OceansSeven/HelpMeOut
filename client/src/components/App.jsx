@@ -26,6 +26,7 @@ const App = function App() {
   const [user, setUser] = useState(null);
   const [reviewJob, setReviewJob] = useState({});
   const [jobsPostedContext, setJobsPostedContext] = useState([]);
+  const [feedPath, setFeedPath] = useState({});
 
   useEffect(() => {
     // axios call to get logged in user
@@ -44,7 +45,9 @@ const App = function App() {
       reviewJob,
       setReviewJob,
       jobsPostedContext,
-      setJobsPostedContext
+      setJobsPostedContext,
+      feedPath,
+      setFeedPath,
     }}>
       <Router>
         {user ? <AppBar /> : ""}

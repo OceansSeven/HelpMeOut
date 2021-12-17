@@ -9,7 +9,6 @@ let socket;
 export const initiateSocket = (room) => {
   // connect to chat server to specific room
   socket = io(`http://localhost:8080`);
-  // console.log(`Connecting to socket...`);
   // have socket connect to the chat room for user to user communication
   // emit join event
   if (socket && room) {
@@ -19,7 +18,6 @@ export const initiateSocket = (room) => {
 
 // disconnect from socket to ensure minimal number of sockets are open
 export const disconnectSocket = () => {
-  // console.log(`Disconnecting socket...`);
   if (socket) {
     socket.disconnect();
   }
@@ -35,7 +33,6 @@ export const subscribeToChat = (cb) => {
   // if there is a socket, on a chat emit message and return callback
   // callback will be used to change React component state
   socket.on('chat', (msg) => {
-    // console.log(`Websocket event received!!`);
     return cb(null, msg);
   });
 }

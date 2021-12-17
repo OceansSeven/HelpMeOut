@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import { Button, Container, Card, CardHeader, Paper } from "@material-ui/core";
-import Typography from "@mui/material/Typography";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { Button, Container, Card, Paper } from "@material-ui/core";
+import { Typography, Link } from "@mui/material/";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import HardwareIcon from "@mui/icons-material/Hardware";
 import FilterFramesIcon from "@mui/icons-material/FilterFrames";
-import Link from "@mui/material/Link";
-import axios from "axios";
 
 import StarRatings from "../StarRatings.jsx";
-
 import AppContext from "../../hooks/context.js";
 
 const MyProfile = () => {
@@ -124,10 +122,9 @@ const MyProfile = () => {
                 Edit Profile
               </Button>
 
-              <Typography component="h2" variant="display1">
+              <Typography component="h2" variant="h2">
                 {user.company}
               </Typography>
-              <br />
               <Typography component="h5" variant="subhead">
                 {user.firstname + " " + user.lastname}
               </Typography>

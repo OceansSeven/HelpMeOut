@@ -106,3 +106,9 @@ typings/
 # bundle
 *bundle.js
 package-lock.json
+
+# pem file
+*.pem
+
+# DS Store
+*.DS_Store

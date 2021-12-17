@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
-
-import AppContext from "../../hooks/context";
 
 const Landing = function Landing() {
   return (
     <div className="landing-page">
       <div className="landing-page-container">
         <div className="logo-landing-contain">
-          <img className="landing-logo" src={"../assets/helpmeout_logo.png"} />
+          <img className="landing-logo" src={"../assets/helpmeout_logo.webp"} alt="logo" />
         </div>
         <br/>
           <div className="about-text">
@@ -20,10 +18,10 @@ const Landing = function Landing() {
             </h3>
             </div>
             <span className="landing-buttons">
-            <Link to="/login">
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <Button size="large">Log In</Button>
             </Link>
-            <Link to="/register">
+            <Link to="/register" style={{ textDecoration: "none" }}>
               <Button size="large">Register</Button>
             </Link>
             </span>

@@ -72,7 +72,7 @@ const Messages = function Messages() {
   },[chat])
 
   const scrollToBottomOfChat = () => {
-    const messageContainer = document.getElementById('messages');
+    const messageContainer = document.getElementById('messages-list-container');
     messageContainer.scrollTo(0, messageContainer.scrollHeight);
   };
 
@@ -102,22 +102,27 @@ const Messages = function Messages() {
   }
 
   return (
-    <div style={{height: 'inherit'}}>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    // 56xp is the height of the app header bar
+    <div id="chat-client-container" style={{height: `${window.innerHeight - 56}px`}}>
+      <div id="chat-client-title">
         <h1 style={{margin: '0', padding: '8px'}}>{`${recepient.firstname} ${recepient.lastname}`}</h1>
         {recepient.company ? <h5 style={{margin: '0', padding: '0 8px', paddingBottom: '8px'}}>{`Company: ${recepient.company}`}</h5> : ''}
       </div>
       {/* Chat box */}
       <div id="chat-client">
-        <ListManager data={chat} id={'messages'} srcList="messages" style={{maxHeight: '600px'}}>
-          <Message />
-        </ListManager>
-        <form id="form" onSubmit={(e) => {
+        <div id="messages-list-container">
+          <ListManager data={chat} id={'messages'} srcList="messages">
+            <Message />
+          </ListManager>
+        </div>
+      </div>
+      <div id="chat-form-container">
+        <form id="chat-form" onSubmit={(e) => {
             if (message !== '') {
               handleSubmit(e);
             }
           }}>
-          <input type="text" id="input" autoComplete='off' value={message} onChange={handleInputChange}/>
+          <input type="text" id="chat-input" autoComplete='off' value={message} onChange={handleInputChange}/>
           <Button variant="contained" onClick={(e) => {
             if (message !== '') {
               handleSubmit(e);

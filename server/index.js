@@ -28,7 +28,6 @@ require("./passportConfig.js")(passport);
 app.use('/api/',router);
 
 app.get('*', (req, res) => {
-  console.log(`responding to ${req.url}`);
   res.sendFile(path.join(__dirname, '../client/dist/index.html'))
 });
 

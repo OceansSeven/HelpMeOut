@@ -40,13 +40,10 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     const email = data.get('email');
     const password = data.get('password');
-    const contractor = checked;
     const firstName = data.get('firstName');
     const lastName = data.get('lastName');
-    const company = data.get('company');
 
     setValidData(true);
     setUserExists(false);
@@ -69,10 +66,9 @@ export default function SignUp() {
           company: data.get('company')
         },
         withCredentials: true,
-        url: "http://localhost:3000/api/register",
+        url: "/api/register",
       })
       .then(({ data }) => {
-        // console.log(data);
         if (data === 'User Already Exists') {
           setUserExists(true);
         } else {
