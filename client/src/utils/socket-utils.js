@@ -8,7 +8,7 @@ let socket;
 
 export const initiateSocket = (room) => {
   // connect to chat server to specific room
-  socket = io(`http://localhost:8080`);
+  socket = io(`http://${process.env.LOCAL_IP || 'localhost'}:8080`);
   // have socket connect to the chat room for user to user communication
   // emit join event
   if (socket && room) {
