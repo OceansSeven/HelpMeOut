@@ -66,7 +66,7 @@ export default function SignUp() {
           company: data.get('company')
         },
         withCredentials: true,
-        url: "http://localhost:3000/api/register",
+        url: "/api/register",
       })
       .then(({ data }) => {
         if (data === 'User Already Exists') {

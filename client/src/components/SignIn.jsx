@@ -48,7 +48,7 @@ export default function SignIn() {
         password: password,
       },
       withCredentials: true,
-      url: "http://localhost:3000/api/login"
+      url: "/api/login"
     })
     .then(({ data }) => {
       if (data === 'No User Exists') {
