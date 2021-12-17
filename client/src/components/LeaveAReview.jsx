@@ -38,7 +38,7 @@ export default function LeaveAReview() {
   }
 
   return (
-    <div className="modal">
+    <div id="modal">
       <div className="modal-content" style={{background: '#edebe3'}}>
       <div className="modal-header">Completed By:{' '}{reviewJob.contractor.firstname}{' '}{reviewJob.contractor.lastname}</div>
       <div className="modal-body" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
