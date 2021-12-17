@@ -10,7 +10,7 @@ const MessagesList = function ({data}) {
         <h5>
           {`${data.firstname} ${data.lastname}`}
         </h5>
-        {`Company: ${data.company}`}
+        {data.company ? `Company: ${data.company}` : ''}
       </Card>
     </Link>
   );
