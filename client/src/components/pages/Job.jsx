@@ -93,7 +93,7 @@ function Job() {
       <h5>Listing Title:</h5><br/>
       <div>{title}</div><br/>
       <h5>Max Budget:</h5><br/>
-      <div>${price_per_hour}/hr</div><br/>
+      <div>${price_per_hour}</div><br/>
       <h5>Description:</h5><br/>
       <div>{description}</div><br/>
       <h5>Type(s) of Work:</h5><br/>
